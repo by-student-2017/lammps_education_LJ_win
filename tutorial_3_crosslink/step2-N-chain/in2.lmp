@@ -1,8 +1,10 @@
 # ----- condition settings -----
-variable        n     index 8 # number of replicate
+variable        nch   index 10 # for data1_10.in, 5 = data1_5.in
+variable        n     index 10 # number of replicate
 variable        rho   index 0.85 # density
+variable        rcut  index 1.12246 # or 2.5
 
-variable        rsize equal (5*$n^3/${rho})^(1/3)/2 # density
+variable        rsize equal (${nch}*$n^3/${rho})^(1/3)/2
 
 # ----- main process -----
 units           lj
@@ -16,8 +18,8 @@ read_restart    restart1.200000
 reset_timestep  200000
 replicate       $n $n $n
 
-pair_style      lj/expand 1.12246
-pair_coeff      * * 1.0 1.0 0.0 1.12246
+pair_style      lj/expand ${rcut}
+pair_coeff      * * 1.0 1.0 0.0 ${rcut}
 
 bond_style      fene
 bond_coeff      1 30.0 1.5 1.0 1.0

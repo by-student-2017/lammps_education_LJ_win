@@ -1,3 +1,6 @@
+# ----- condition settings -----
+variable        rcut  index 1.12246 # or 2.5
+
 units           lj
 atom_style      bond
 special_bonds   fene
@@ -6,13 +9,15 @@ neighbor        0.4 bin
 neigh_modify    every 1 delay 1 check yes
 
 read_data       data1.in
+#read_data       data1_5.in
+#read_data       data1_10.in
 
 velocity        all create 0.0 12345 dist uniform
 
 reset_timestep  0
 
-pair_style      lj/expand 1.12246
-pair_coeff      * * 1.0 1.0 0.0 1.12246
+pair_style      lj/expand ${rcut}
+pair_coeff      * * 1.0 1.0 0.0 ${rcut}
 
 bond_style      fene
 bond_coeff      1 30.0 1.5 1.0 1.0

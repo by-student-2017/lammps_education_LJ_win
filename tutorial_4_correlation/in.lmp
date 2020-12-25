@@ -1,7 +1,6 @@
 # ----- condition settings -----
-# rcut = 2^(1/6) = 1.12246
-variable nstep equal 10^5
-
+variable        rcut  index 1.12246 # rcut = 2^(1/6) = 1.12246 or rcut = 2.5
+variable        nstep equal 10^5
 
 # ----- main process -----
 units           lj
@@ -13,15 +12,15 @@ comm_modify     cutoff 2.0
 neighbor        0.4 bin
 neigh_modify    every 1 delay 1 # check yes
 
-#pair_style      lj/cut 1.12246
-pair_style      lj/expand 1.12246
+#pair_style      lj/cut ${rcut}
+pair_style      lj/expand ${rcut}
 bond_style      fene
 
-#read_restart   data.in3.restart2
+#read_restart   data.in4.restart
 read_data       data.in3.restart
 
-#pair_coeff      * * 1.0 1.0 1.12246
-pair_coeff      * * 1.0 1.0 0.0 1.12246
+#pair_coeff      * * 1.0 1.0 ${rcut}
+pair_coeff      * * 1.0 1.0 0.0 ${rcut}
 pair_modify     shift yes
 bond_coeff      1 30.0 1.5 1.0 1.0
 
@@ -58,4 +57,4 @@ dump_modify     d1 element C N C
 
 run ${nstep}
 
-write_restart data.in4.restart2
+write_restart data.in4.restart
