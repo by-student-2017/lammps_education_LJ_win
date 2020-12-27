@@ -1,0 +1,19 @@
+#!/usr/bin/gnuplot
+
+set terminal win font "Arial,12"
+#set xlabel "Step"
+#set xlabel "Strain, {/Symbol D}x/x_0"
+set xlabel "Lattice constant, a [{/Symbol s}]"
+set mxtics 5
+set ylabel "Stress, {/Symbol s}_x_x - ({/Symbol s}_y_y+{/Symbol s}_z_z)/2"
+#set ylabel "Stress, {/Symbol s}_x_x - ({/Symbol s}_y_y+{/Symbol s}_z_z)/2 [{/Symbol e/s^3}]"
+set mytics 5
+#plot "press.txt" u ($1):(-$2+($3+$4)/2) w lp t "step vs. stress"
+#plot "press.txt" u ($8):(-$2+($3+$4)/2) w lp t "strain vs. stress"
+plot "press.txt" u ($9):(-$2+($3+$4)/2) w lp t "La vs. stress"
+
+# pause -1
+
+#set terminal postscript color enhanced lw 2
+#set out "energy.ps"
+#replot

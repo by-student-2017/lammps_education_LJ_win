@@ -1,5 +1,6 @@
 # ----- condition settings -----
 variable        rcut  index 1.12246 # or 2.5
+variable        lx0   equal lx
 
 units           lj
 atom_style      bond
@@ -23,7 +24,11 @@ fix 2 all langevin 1.0 1.0 2.0 12345
 fix 5 all deform 10 x erate 0.005 y volume z volume remap x units lattice
 
 compute pres all pressure thermo_temp
-fix 6 all ave/time 2000 1 2000 c_pres[1] c_pres[2] c_pres[3] c_pres[4] c_pres[5] c_pres[6] file press.txt ave one
+variable stra equal (lx-${lx0})/${lx0}
+variable la equal lx
+variable lb equal ly
+variable lc equal lz
+fix 6 all ave/time 2000 1 2000 c_pres[1] c_pres[2] c_pres[3] c_pres[4] c_pres[5] c_pres[6] v_stra v_la v_lb v_lc file press.txt ave one
 
 timestep        0.001
 thermo_style    multi
