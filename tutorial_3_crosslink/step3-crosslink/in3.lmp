@@ -1,3 +1,6 @@
+# Auther (original): Yoshizawa @ RIST on Dec/8/2020
+# slightly modified: By Student on Dec/31/2020
+
 # ----- condition settings -----
 variable        rcut  index 1.12246 # or 2.5
 variable        exbond index 16

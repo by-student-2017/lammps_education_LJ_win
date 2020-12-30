@@ -1,3 +1,6 @@
+# Auther (original): Yoshizawa @ RIST on Dec/8/2020
+# slightly modified: By Student on Dec/31/2020
+
 # ----- condition settings -----
 variable        nch   index 10 # for data1_10.in, 5 = data1_5.in
 variable        n     index 10 # number of replicate
