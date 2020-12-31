@@ -21,7 +21,7 @@ neigh_modify    every 1 delay 1 # check yes
 pair_style      lj/expand ${rcut}
 bond_style      fene
 
-#read_restart   data.in4.restart
+#read_data       data.in4.restart
 read_data       data.in3.restart
 
 #pair_coeff      * * 1.0 1.0 ${rcut} # for pair_style lj/cut ${rcut}

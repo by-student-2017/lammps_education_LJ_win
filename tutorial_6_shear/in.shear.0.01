@@ -1,0 +1,64 @@
+# FENE beadspring benchmark
+# Auther (original): Murashima @ Tohoku Univ on Dec/8/2020
+# slightly modified: By Student on Dec/31/2020
+
+# ----- condition settings -----
+#variable filename string data.in3 # for "data.in3.restart"
+variable filename string N10M1000
+variable rcut equal 2.0^(1.0/6.0)  # rcut = 2^(1/6) = 1.12246 or rcut = 2.5
+variable shear_rate equal 0.01
+
+# ----- main process -----
+units		lj
+comm_modify	cutoff 2.0
+atom_style	bond
+special_bonds   fene
+bond_style      fene
+pair_style	lj/cut ${rcut}
+
+read_data      ${filename}.data
+#read_data   ${filename}.restart
+
+neighbor	0.4 bin
+neigh_modify	every 1 delay 1
+
+bond_coeff	1 30.0 1.5 1.0 1.0
+
+pair_modify	shift yes
+pair_coeff	1 1 1.0 1.0 ${rcut}
+
+change_box all triclinic
+
+fix 1 all nve
+fix 2 all langevin 1.0 1.0 2.0 904297
+fix 3 all deform 1 xy erate ${shear_rate} remap v
+
+compute mytemp all temp/deform
+fix_modify 2 temp mytemp
+
+compute mypress all pressure mytemp
+variable pxx equal c_mypress[1]
+variable pyy equal c_mypress[2]
+variable pzz equal c_mypress[3]
+variable pxy equal c_mypress[4]
+variable pxz equal c_mypress[5]
+variable pyz equal c_mypress[6]
+variable pxxyy equal v_pxx-v_pyy
+variable pxxzz equal v_pxx-v_pzz
+variable pyyzz equal v_pyy-v_pzz
+
+thermo_style custom step c_mytemp v_pxx v_pyy v_pzz v_pxy v_pxz v_pyz
+
+thermo          1000
+timestep	0.01
+
+fix ave1 all ave/time 1 100 100 v_pxx v_pyy v_pzz v_pxy v_pxz v_pyz c_mytemp file pressure.${shear_rate}.txt
+
+run		100000
+
+write_restart ${filename}.${shear_rate}.res
+#write_restart data.in6.${shear_rate}.restart
+
+
+
+
