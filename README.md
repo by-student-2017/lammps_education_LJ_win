@@ -55,11 +55,24 @@ The Kremer-Grest model is used in macromolecules.
 
 
 □ tutorial_3_crosslink
-  Kremer-Grestモデルを用いた計算。step3まで進めると次のtutorial_4_correlation用の構造データを得ることができます。
+  Kremer-Grestモデルを用いた計算。step3まで進めると次のtutorial_4_correlation用（5,6,7のtutorialの入力データも作成してコピーする）の構造データを得ることができます。粗視化MD。
 
 
 □ tutorial_4_correlation
-  応力の時間相関関数を用いた緩和弾性率の計算。
+  応力の時間相関関数を用いた緩和弾性率の計算。粗視化MD。
+
+
+□ tutorial_5_G1G2
+  貯蔵弾性率(Storage modulus)と損失弾性率(Loss modulus)の計算。積分は台形公式で計算。python3のprint形式にしている。python3をインストールしていない場合は、コマンドプロンプト（PowerShell）でpythonと入力すると、Python3.9を入手する画面が現れる。粗視化MDの計算結果を用いる。
+
+
+□ tutorial_6_shear [LJ2]
+  せん断変形の計算（非平衡計算）。"ひずみ速度 > (1/Rouse緩和時間)"の場合、非線形性を示す。粗視化MD。
+
+
+□ tutorial_7_uni [LJ2]
+  軸伸長変形の計算（非平衡計算）。"ひずみ速度 > (1/Rouse緩和時間)"の場合、非線形性を示す。粗視化MD。
+  計算が途中で破綻してしまう場合、USER-UEFEX を使う[LJ3]。
 
 
 ※ 兵庫県立大のlammpsセミナーをノートPCで行うために作りました。東北大の村島先生のgnuplotやpythonスクリプトを用いると図で視覚的にRouseとの比較をすることができます。
@@ -67,14 +80,19 @@ The Kremer-Grest model is used in macromolecules.
 ■ References
 
 
-[LJ1] lammps セミナー, 兵庫県立大
+[LJ1] lammps講習会, 兵庫県立大
 
 
-[LJ2] http://www.cmpt.phys.tohoku.ac.jp/~murasima/
+[LJ2] https://github.com/t-murash/lammps-hands-on/tree/master/04deform
+
+
+[LJ3] http://www.cmpt.phys.tohoku.ac.jp/~murasima/
 
 
   https://github.com/t-murash/lammps-hands-on
 
 
   https://github.com/t-murash/USER-UEFEX
+
+
 ------------------------------------------------------------------------------
