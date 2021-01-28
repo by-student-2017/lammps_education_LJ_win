@@ -13,14 +13,15 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 ■ lammps
 
-□ インストール方法
-1. http://packages.lammps.org/windows.html のHPで"64-bit Windows download area"をクリックする
+□ lammpsのインストール
+1. http://packages.lammps.org/windows.html のHPで"their own download area"と”64bit”をクリックする
+  （LAMMPS Binaries Repository: ./admin/64bit）
 2. LAMMPS-64bit-18Jun2019.exe をダウンロードして解凍する
 3. ディフォルトの設定のまま最後まで進めばよい
 以上で lammps のダウンロードと設定は完了です
+※ 配布元のHPが変更を加えるなどして、別のバージョンのlammpsを使う必要になった場合には、run.batで["C:\Program Files\LAMMPS 64-bit 18Jun2019\bin\lmp_serial.exe" -in in.lmp]の部分をインストールしたlammpsのバージョンに対応するものに書き換えてください。または[C:\Program Files\LAMMPS 64-bit **********]を書き換えるという方法もあります
 
-
-□ 描画ソフト
+□ 描画ソフト（gnuplotとOvito）
  ・gnuplot（http://www.gnuplot.info/）
   http://www.yamamo10.jp/yamamoto/comp/gnuplot/inst_win/index.php
 ・Ovito（https://www.ovito.org/windows-downloads/）
