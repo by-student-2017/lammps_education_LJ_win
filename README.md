@@ -10,78 +10,36 @@ The elements in the input and output are tentative.
 The Kremer-Grest model is used in macromolecules.
 
 
-------------------------------------------------------------------------------
-■ lammps
+## lammps (windows 10 (64 bit))
 
-□ lammpsのインストール
-1. http://packages.lammps.org/windows.html のHPで"their own download area"と”64bit”をクリックする
-  （LAMMPS Binaries Repository: ./admin/64bit）
-2. LAMMPS-64bit-18Jun2019.exe をダウンロードして解凍する
-3. ディフォルトの設定のまま最後まで進めばよい
-以上で lammps のダウンロードと設定は完了です
-※ 配布元のHPが変更を加えるなどして、別のバージョンのlammpsを使う必要になった場合には、run.batで["C:\Program Files\LAMMPS 64-bit 18Jun2019\bin\lmp_serial.exe" -in in.lmp]の部分をインストールしたlammpsのバージョンに対応するものに書き換えてください。または[C:\Program Files\LAMMPS 64-bit **********]を書き換えるという方法もあります
 
-□ 描画ソフト（gnuplotとOvito）
- ・gnuplot（http://www.gnuplot.info/）
+## Installation
+1. LAMMPS Windows Installer Repository (http://packages.lammps.org/windows.html) > "their own download area" > ”64bit"
+  (https://rpm.lammps.org/windows/admin/64bit/index.html)
+2. LAMMPS-64bit-18Jun2019.exe (https://rpm.lammps.org/windows/admin/64bit/LAMMPS-64bit-18Jun2019.exe)
+
+
+## gnuplot and Ovito
+* gnuplot（http://www.gnuplot.info/）
   http://www.yamamo10.jp/yamamoto/comp/gnuplot/inst_win/index.php
-・Ovito（https://www.ovito.org/windows-downloads/）
-※ web上に情報がありますので、お手数をおかけしますが、そちらをご参照ください
-※ gnuplotのインストールと環境設定 (Edit: Dec/11/2020)
-1. gnuplot - Browse /gnuplot at SourceForge.net から gp528-win64-mingw.exe を得る
-  gp528-win64-mingw.exe をダブルクリック。設定はディフォルトのままでよい
-2. コントロール パネル > システムとセキュリティ > システム
-3. システムの環境設定 > 環境変数（N）... > システム環境変数（S）のPath > 編集（I）... > 新規（N）> C:\Program Files\gnuplot\bin を追加する > OK > OK
-------------------------------------------------------------------------------
-■ 分子動力学シミュレーション
+* Ovito（https://www.ovito.org/windows-downloads/）
 
 
-□ 入力ファイルのダウンロード
-  by-student-2017 の lammps_education_LJ_win (https://github.com/by-student-2017/lammps_education_LJ_win.git) から入力ファイルをダウンロードして解凍する。右側の[Clone or download]をクリックしていただくと Download ZIP が表示されます
+## Usage
+1. click run.bat
+2. cfg folder > click *.cfg
 
 
-□ シミュレーションの実行
-1. 各種のフォルダの中にある run.bat をダブルクリックすれば計算が走る
-2. cfg を Ovito で開けば構造が得られる
-3. plot と記載のあるファイルをダブルクリックすれば図が得られる
-  ※ 温度が目的の値になっているか、エネルギーが一定の値になっているかを確認してみてください
-※ 以上の手順は、data.inにある原子の情報、そして、in.lmpのポテンシャルと出力の原子の情報を書きかえれば他の材料でも同様に計算が可能です（Avogadroなどのフリーソフトを用いて構造のファイル（data.in）を作られる方もいます）
+※ I reccomend to see Dr. T. Murashima's homepage.
+* Murashima, Takahiro: http://www.cmpt.phys.tohoku.ac.jp/~murasima/
+* https://github.com/t-murash/lammps-hands-on
+* https://github.com/t-murash/USER-UEFEX
+* https://github.com/t-murash/USER-PPA
+
+## References
 
 
-□ tutorial_1_colloid
-  コロイドの計算。2dが2次元、3dが3次元での計算。
-
-
-□ tutorial_2_micelle_Kremer-Grest-model
-  Kremer-Grestモデルを用いたミセルの計算。
-
-
-□ tutorial_3_crosslink
-  Kremer-Grestモデルを用いた計算。step3まで進めると次のtutorial_4_correlation用（5,6,7のtutorialの入力データも作成してコピーする）の構造データを得ることができます。粗視化MD。
-
-
-□ tutorial_4_correlation
-  応力の時間相関関数を用いた緩和弾性率の計算。粗視化MD。
-
-
-□ tutorial_5_G1G2
-  貯蔵弾性率(Storage modulus)と損失弾性率(Loss modulus)の計算。積分は台形公式で計算。python3のprint形式にしている。python3をインストールしていない場合は、コマンドプロンプト（PowerShell）でpythonと入力すると、Python3.9を入手する画面が現れる。粗視化MDの計算結果を用いる。
-
-
-□ tutorial_6_shear [LJ2]
-  せん断変形の計算（非平衡計算）。"ひずみ速度 > (1/Rouse緩和時間)"の場合、非線形性を示す。粗視化MD。
-
-
-□ tutorial_7_uni [LJ2]
-  軸伸長変形の計算（非平衡計算）。"ひずみ速度 > (1/Rouse緩和時間)"の場合、非線形性を示す。粗視化MD。
-  計算が途中で破綻してしまう場合、USER-UEFEX を使う[LJ3]。
-
-
-※ 兵庫県立大のlammpsセミナーをノートPCで行うために作りました。東北大の村島先生のgnuplotやpythonスクリプトを用いると図で視覚的にRouseとの比較をすることができます。
-------------------------------------------------------------------------------
-■ References
-
-
-[LJ1] lammps講習会, 兵庫県立大
+[LJ1] lammps seminar, University of Hyogo
 
 
 [LJ2] https://github.com/t-murash/lammps-hands-on/tree/master/04deform
