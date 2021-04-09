@@ -30,11 +30,12 @@ The Kremer-Grest model is used in macromolecules.
 2. cfg folder > click *.cfg
 
 
-Å¶ I reccomend to see Dr. T. Murashima's homepage.
+## I reccomend to see Dr. T. Murashima's homepage.
 * Murashima, Takahiro: http://www.cmpt.phys.tohoku.ac.jp/~murasima/
 * https://github.com/t-murash/lammps-hands-on
 * https://github.com/t-murash/USER-UEFEX
 * https://github.com/t-murash/USER-PPA
+
 
 ## References
 
