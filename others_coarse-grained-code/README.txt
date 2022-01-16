@@ -13,7 +13,7 @@
   fix_rlp.zip (GPL 2.0 GNU's GPL)
 ----------------------------------------------------------------------------
 lammps-cgpva-code [FE1]
-Å† Installation (Ubuntu 18.04 LTS)
+Installation (Ubuntu 18.04 LTS)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
 3. unzip w6ct8yrn2z-1.zip
@@ -33,13 +33,13 @@ lammps-cgpva-code [FE1]
 -----
 11. make debian
 
-Å† Test
+Test
 1. cd ~/lammps-cgpva-code
 2. tar zxvf test.tar.gz
 3. cd test
 4. mpirun -np 2 ~/lammps-24Sept07/src/lmp_debian < test.in
 ----------------------------------------------------------------------------
-Å† Installation (Ubuntu 18.04 LTS) [FE2]
+Installation (Ubuntu 18.04 LTS) [FE2]
 (https://download.lammps.org/tars/)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
@@ -51,11 +51,12 @@ lammps-cgpva-code [FE1]
 8. cp ./fluidmembrane/*.cpp ./lammps-30Jul16/src
 9. cd ~/lammps-30Jul16/src
 10. make yes-PERI
-11. make mpi
+11. make yes-ASPHERE
+12. make mpi
 Å¶ lammps-14May2016 may also be OK.
 Å¶ make yes-MOLECULE
 
-Å† make data file (MATLAB code)
+make data file (MATLAB code)
 1. sudo apt install octave
 2. octave
 3. run ("create_rbc_with_water.m")
@@ -66,10 +67,18 @@ lammps-cgpva-code [FE1]
 Å† run
 1. cd ~/fluidmembrane
 2. mpirun -np 2 ~/lammps-30Jul16/src/lmp_mpi < in_example
-Å¶ VMD 1.9.1
+
+Å† VMD 1.9.1
+1. vmd
+2. File -> New Molecule... -> Filename: dump.rbc_D...
+3. Graphics -> Representations...
+  Selected Atoms [type 1 2 3 4 5]
+  Drawing Method [VDW]
+  Sphere Scale 0.5
+  Sphere Resolution 12
 ----------------------------------------------------------------------------
-Åü Near Lammps 7 january 2014 version [FE3]
-Å† Installation (Ubuntu 18.04 LTS)
+Near Lammps 7 january 2014 version [FE3]
+Installation (Ubuntu 18.04 LTS)
 (https://download.lammps.org/tars/)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
@@ -83,12 +92,12 @@ lammps-cgpva-code [FE1]
 10. cd ~/lammps-1Feb14/src
 11. make stubs
 12. make serial
-Å† run
+run
 1. cd fix_rlp
 2. ~/lammps-1Feb14/src/lmp_serial < test_input.dat
 ----------------------------------------------------------------------------
-Åü Near Lammps 15 april 2016 version [FE3]
-Å† Installation (Ubuntu 18.04 LTS)
+Near Lammps 15 april 2016 version [FE3]
+Installation (Ubuntu 18.04 LTS)
 (https://download.lammps.org/tars/)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
@@ -101,12 +110,12 @@ lammps-cgpva-code [FE1]
 9. cp ./fix_rlp/fix_rlp.html ./lammps-14May16/doc/html 
 10. cd ~/lammps-14May16/src
 11. make mpi
-Å† run
+run
 1. cd fix_rlp
 2. mpirun -np 2 ~/lammps-14May16/src/lmp_mpi < test_input.dat
 ----------------------------------------------------------------------------
 LAMMPS-3SPN2 [DN1] 
-Å† Installation (Ubuntu 18.04 LTS)
+Installation (Ubuntu 18.04 LTS)
 (https://download.lammps.org/tars/)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
@@ -124,24 +133,24 @@ LAMMPS-3SPN2 [DN1]
 14. make yes-USER-3SPN2
 15. make serial
 
-Å† compiling "icnf.exe"
+compiling "icnf.exe"
 1. cd ~/USER-3SPN2/DSIM_ICNF
 2. make
 
-Å† run
+run
 1. cd ~/USER-3SPN2/examples
 2. cd adna
 3. ../../DSIM_ICNF/icnf.exe ../seq 2 1 . 0
 4. ~/lammps-7Aug19/src/lmp_serial < adna.in
 
-Å† manual
+manual
 1. sudo apt -y install evince
 2. cd ~/USER-3SPN2
 ----------------------------------------------------------------------------
-Å† USER-UEFEX (https://github.com/t-murash/USER-UEFEX)
+USER-UEFEX (https://github.com/t-murash/USER-UEFEX)
 (Edit: Jan/10/2022)
 
-Å† Installation (Ubuntu 18.04 LTS)
+Installation (Ubuntu 18.04 LTS)
 1. sudo apt update
 2. sudo apt -y install unzip mpich g++ fftw-dev
 3. wget https://download.lammps.org/tars/lammps-29Sep2021.tar.gz
@@ -154,7 +163,7 @@ LAMMPS-3SPN2 [DN1]
 10. make yes-uefex
 11. make mpi mode=static
 
-Å† Usage
+Usage
 1. cd ~/USER-UEFEX/examples
 2. mpirun -np 2 ~/lammps-29Sep2021/src/lmp_mpi < in.chain.uefex.eng
 ------------------------------------------------------------------------------
