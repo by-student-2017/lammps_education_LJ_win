@@ -35,7 +35,7 @@ dump_modify	2 pad 3
 #dump_modify	3 pad 3
 
 dump            d1 all cfg 25 cfg/run.*.cfg mass type xs ys zs id type q
-dump_modify     d1 element C C O H N C C C O H H S O H
+dump_modify     d1 element C C O H N C C C O H H S OH HH # OH and HH for H2O
 
 compute		bnd all property/local btype batom1 batom2
 dump		4 peptide local 300 bond/dump.bond index c_bnd[1] c_bnd[2] c_bnd[3]
