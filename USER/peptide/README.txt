@@ -11,7 +11,7 @@ suggestions on how to work around this issue.
 Ovito v.3.0.0-dev791
 ---------- ---------- ---------- ---------- ---------- ---------- 
 A. transparecy
-1. click cfg file (or drag&drop cfg on Ovito.
+1. click cfg file (or drag&drop cfg on Ovito).
 2. Add modification -> Selection -> Select type -> check HH and OH
 3. Add modification -> Modification -> Compute property
   -> Output poroperty [Transparency] -> check "Compute only for selected elements"
@@ -19,7 +19,7 @@ A. transparecy
 4. Add modification -> Selection -> Select type
 
 B. delete atom
-1. click cfg file (or drag&drop cfg on Ovito.
+1. click cfg file (or drag&drop cfg on Ovito).
 2. Add modification -> Selection -> Select type -> check C, H, N, O and S
 3. Add modification -> Selection -> Expand selection -> Cutoff distance [5]
 4. Add modification -> Selection -> Invert selection
