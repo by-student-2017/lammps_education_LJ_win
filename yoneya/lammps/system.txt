@@ -1,0 +1,6 @@
+import "gaff.lt"
+
+import "bpy.lt"
+
+BPY = new bpy [128]
+
