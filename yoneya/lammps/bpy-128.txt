@@ -1,9 +1,0 @@
-tolerance 2.0
-add_box_sides 2.0
-
-structure bpy.pdb
-  number 128
-  inside box 0. 0. 0. 45. 45. 45.
-end structure
-
-output bpy-128.pdb

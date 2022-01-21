@@ -1,5 +1,0 @@
-package require topotools
-topo readlammpsdata bpy-128_md.lmp full
-topo guessatom lammps data
-animate write psf bpy-128_md.psf
-quit
