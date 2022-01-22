@@ -65,6 +65,7 @@ output bpy-128.pdb
 6. "C:\Program Files (x86)\VMD\vmd.exe" \\wsl$\ubuntu-20.04\home\username\bpy-128.pdb
   pbc box
   {or (echo "user add key b {pbc box -color green}" >> vmd.rc) (and b)}
+  (please, replace username with your username)
   ※ (command prompt on windows 10)
 7. antechamber -fi mdl -i bpy.mol -fo mol2 -o bpy.mol2 -at gaff -c gas -rn bpy -dr no
   (MDL-mol file -> sybyl-mol2 file)
@@ -120,7 +121,9 @@ write_data bpy-128_min.lmp
 13. lmp < em.txt
   (please check: open bpy-128_min.lmp on Ovito)
 14. atomsk bpy-128_min.lmp pdb
+  (In my case it doesn't convert well for some reason !!!)
 15. "C:\Program Files (x86)\VMD\vmd.exe" \\wsl$\ubuntu-20.04\home\username\bpy-128_min.pdb
+  (please, replace username with your username)
   ※ (command prompt on windows 10)
 16. unix2dos -n system.in su.txt
 17. vi su.txt
@@ -211,7 +214,13 @@ write_data bpy-128_md.lmp
 --------- --------- --------- --------- --------- --------- --------- ---------
 20. lmp < md.txt
   (please check: open bpy-128_md.lmp on Ovito)
-21. vi lmp2psf.txt
+21. cp bpy-128_md.lmp /mnt/c/Users/username/Desktop/
+  (please, replace username with your username)
+22. cp bpy-128_md.xtc /mnt/c/Users/username/Desktop/
+  (please, change username with your username)
+◇ command prompt on windows 10
+23. cd Desktop
+24. notepad lmp2psf.txt
 --------- --------- --------- --------- --------- --------- --------- ---------
 package require topotools
 topo readlammpsdata bpy-128_md.lmp full
@@ -219,11 +228,10 @@ topo guessatom lammps data
 animate write psf bpy-128_md.psf
 quit
 --------- --------- --------- --------- --------- --------- --------- ---------
-20. cd \\wsl$\ubuntu-20.04\home\username\
-    ※ (command prompt on windows 10)
-21. "C:\Program Files (x86)\VMD\vmd.exe" -dispdev text -e lmp2psf.txt
-22. "C:\Program Files (x86)\VMD\vmd.exe" bpy-128_md.psf bpy-128_md.xtc
-※ GAFF = general AMBER force field
+25. "C:\Program Files (x86)\VMD\vmd.exe" -dispdev text -e lmp2psf.txt
+26. "C:\Program Files (x86)\VMD\vmd.exe" bpy-128_md.psf bpy-128_md.xtc
+27. pbc box -color green -width 1
+※ GAFF = general AMBER force field (charge: H, C, N, O, P, S and halogen)
 ※ "-c gas" = Gastiger method (charge)
 ※ packmol: First randomly placed initial structure
 
@@ -233,18 +241,52 @@ B) system.in : lammps script file (conditions)
 C) system.in.init : initial settings of force field (GAFF)
 D) system.in.settings : force field parameter file
 
-□ RESP (Restrained Electro Static Potential) charge from Gaussian
+□ Ovito (lmp -> xyz file)
+1. open bpy-128_md.lmp on Ovito.
+2. File -> Export File -> XYZ file
+3. [Move up] and [Move down]
+  [check] Mass
+  [check] Position.X
+  [check] Position.Y
+  [check] Position.Z
+4. replace mass with atomic symbol.
+5. open *.xyz on VMD, VESTA or Avogadro.
+
+□ RESP charge from Gaussian (no check)
+  (RESP = Restrained Electro Static Potential)
 1. antechamber -fi mdl -i bpy.mol -fo gcrt -o bpy.com -dr no
 2. g09 bpy.com
 3. antechamber -fi gout -i bpy.log -fo mol2 -o bpy.mol2 -at gaff -c resp -dr no
   (bpy.log -> Sybyl-mol2)
-4. mol2 file -> mol22lt.pl -> moltemplate file
+4. mol22lt.pl < bpy.mol2 > bpy.lt
+5. vi system.txt
+-----
+import "gaff.lt"
+import "bpy.lt"
+BPY = new bpy [128]
+-----
+6. moltemplate.sh -atomstyle full -pdb bpy-128.pdb system.txt
+7. unix2dos -n system.in em.txt
+8. vi em.txt
+9. lmp < em.txt
 
 □ References
-[O1] LAMMPSと連携ソフトウエアによる有機材料の分子動力学計算
+[O1] https://makoto-yoneya.github.io/LAMMPS-organics/
   https://makoto-yoneya.github.io/
-[O2] LAMMPS+Packmol+Moltemplate+OPLS-AAで溶液のMD ...
+[O2] https://wiki.akionux.net/index.php/LAMMPS%2BPackmol%2BMoltemplate%2BOPLS-AA%E3%81%A7%E6%BA%B6%E6%B6%B2%E3%81%AEMD
 [O3] https://www1.gifu-u.ac.jp/~ysr_labo/share/WSL_ubuntu.html
+[C1] https://gitlab.msu.edu/vermaasj/PuReMD/-/blob/master/tools/lmp2pdb.awk
+[C2] https://github.com/scottie33/amorphous_polymer_lammps/blob/master/lmp2pdb.py 
+[A1] https://qiita.com/Ag_smith/items/430e9efb32a855d4c511
+[A2] https://morita-rikuri.blogspot.com/2020/11/gamess-resp.html
+  GAMESS-US: antechamber -fi mol2 -i ligand_resp.mol2 -fo prepi -o ligand.prep -nc 0
+  antechamber package (ambermd.org)
+[A3] https://pablito-playground.readthedocs.io/en/latest/tutorials/qmmm_amber_cpmd/RESP_charges.html
+[A4] http://archive.ambermd.org/200812/att-0116/resp_fit.htm
+[A5] https://ambermd.org/Questions/resp.html
+[A6] https://ambermd.org/tutorials/advanced/tutorial1/section1.htm
+[A7] https://computational-chemistry.com/top/blog/2016/09/14/antechamber_input/
+[VMD1 https://mumeiyamibito.0am.jp/%E5%88%86%E5%AD%90%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3/vmd
 
 □ uninstall
 1. sudo apt remove lammps
