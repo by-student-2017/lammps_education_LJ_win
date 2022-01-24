@@ -1,0 +1,8 @@
+integrator          =  md  
+dt                  =  0.0005  
+nsteps              =  2000  
+nstxtcout           =  10  
+tcoupl              =  v-rescale  
+tc-grps             =  SYSTEM  
+tau_t               =  0.03  
+ref_t               =  300.0
