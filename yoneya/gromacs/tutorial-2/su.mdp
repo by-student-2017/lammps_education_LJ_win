@@ -1,0 +1,12 @@
+integrator          =  md
+dt                  =  0.00025
+nsteps              =  4000
+pbc                 =  no
+cutoff-scheme       =  group
+tcoupl              =  v-rescale
+tc-grps             =  SYSTEM
+tau_t               =  0.002
+ref_t               =  200.0
+gen_vel             =  yes
+gen_temp            =  200.0
+

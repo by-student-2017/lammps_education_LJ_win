@@ -1,0 +1,15 @@
+; Remark line goes here
+
+[ bondtypes ]
+; i    j  func       b0          kb
+
+[ angletypes ]
+;  i    j    k  func       th0       cth
+
+[ dihedraltypes ] ; improper stuff
+;i   j   k   l	   func
+c3  o   c   os   4   180.0     4.60240    2 ; Same as X -o -c -o , penalty score= 49.6 (use general term))
+c3  h4  c   o    4   180.0    43.93200    2 ; Using general improper torsional angle  X- X- c- o, penalty score=  6.0)
+
+[ dihedraltypes ] ; proper stuff
+;i  j   k  l	 func      phase      kd      pn

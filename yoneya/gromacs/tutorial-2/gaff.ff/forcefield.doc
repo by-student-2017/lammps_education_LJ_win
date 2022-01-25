@@ -1,0 +1,90 @@
+AMBER General Force Field for organic molecules (Version 1.81, May 2017)
+
+; ---------------------------------------------------------------------------------------------------------------------------
+; This is an improved version of gaff 1.0. We have modified some parameters 
+; according to users' feedback. We would like to thank users who provide    
+; nice feedback/suggestion, especially David Mobley and Gabriel Rocklin. We 
+; are in a process of developing a new generation of general amber force    
+; field (gaff2). This version is a meta-version between gaff1 and gaff2.    
+; !!!Suggestions/criticisms/comments are always welcome !!! 
+; ---------------------------------------------------------------------------
+; Equilibrium  Sources
+; SOURCE1
+; Authors: Frank H. Allen, Olga Kennard and David G. Watson
+; Title : Tables of Bond lengths determined by X-ray and neutron
+; diffraction. Part 1. Bond lengths in organic compounds
+; Journal: J. Chem. Soc. Perkin Trans. II 1987, S1-S19
+; SOURCE2
+; Authors: Harmony, M. D.; Laurie, V. W.; Kuczkowski, R. L.; Schwendeman,
+; R. H.; Ramsay, D. A.; Lovas, F. J.; Lafferty, W. J.; Maki, A. G.
+; Title : Molecular structures of gas-phase polyatomic molecules determined
+; by spectroscopic methods
+; Journal: J. Phys. Chem. Ref. Data, Vol 8, 1979, 619
+; SOURCE3
+; Optimized geometries at MP2/6-31G* level
+; SOURCE4
+; Optimized geometries at B3LYP/6-31G* level
+; SOURCE5
+; Optimized geometries at B3LYP/6-31G* level (30 thousand molecules)
+; CORR 
+; re-corrected to maintain the integrity of the force field for the equivalent atom types
+; NEW
+; newly added entries to maintain the integrity of the force field for the equivalent atom types
+; Bond stretching parameter format
+; atom_type  force_constant   equ. length  source_ID occurrence rmsd
+; xx-yy          581.1           1.288      SOURCE1     103    0.0100
+; atom_type  force_constant   equ. angle   source_ID   occurrence   rmsd
+; xx-yy-zz      35.450          103.620     SOURCE3         3      0.7078
+; ---------------------------------------------------------------------------
+; Major changes from gaff.dat version 1.0
+; 1. All the sp2 carbon in a AR2 ring (such as pyrrole, furan, pyrazole)
+; only have cc or cd atom types (no c2). This is suggested by Gabriel
+; Rocklin from UCSF. This modification improves the planarity of
+; multiple-ring systems
+; 2. New van der Waals parameters have been developed for br and i atom
+; types. The current parameters can well reproduce the experimental density
+; data of CH3Br (1.6755, 20 degree) and CH3I (2.2789, 20 degree): 1.642 for
+; CH3Br and 2.25 for CH3I, in contrast, the old parameters give 1.31 and
+; 1.84, respectively. (Junmei, unpublished result)
+; 3. New van der Waals parameters have been suggested by David Mobley for
+; c1, cg and ch atom types. The justification of the changes is discussed at
+; http://dx.doi.org/10.1021/ct800409d
+; 4. We have performed B3LYP/6-31G* optimization for 15 thousands marketed
+; or experimental drugs/bio-actives. Reliable bond length and bond angle
+; equilibrium parameters were obtained by statistics: each bond length
+; parameter must show up in at least five times and has a rmsd smaller than
+; 0.02 angstroms; each bond angle parameter must show up at least five times
+; and has a rmsd smaller than 2.5 degrees. Those new parameters not showing
+; up in old gaff were directly added into gaff 1.x; and some low-quality
+; gaff parameters which show up less than five times or have large rmsd
+; values (>0.02 angstroms for bond length and >5 degrees for bond angles)
+; were replaced with those newly generated. Here are the numbers:
+; Bond length: 59 low quality parameters were replaced and 56 new parameters
+; were introduced.
+; Bond angle:  437 low quality parameters were replaced and 618 new
+; parameters were introduced.
+; ---------------------------------------------------------------------------
+; Updates to GAFF 1.5, January, 2013:
+;    change the X-ca-c-X torsion; add vdW parameters for pc,pd,pe,pf
+; ---------------------------------------------------------------------------
+; Updates to GAFF 1.6, September, 2013:
+;    make equivalent bond and angle parameters to share the same values.
+; The changed parameters are labled as "CORRECTED"
+;    make X-n-pc-X and X-n-pd-X share the same value
+;    make X-n-pe-X and X-n-pe-X share the same value
+;    added new parameters to main the integrity of the force field
+; ---------------------------------------------------------------------------
+; Updates to GAFF 1.7, November, 2013:
+;    the parameters of P and S for calculating the bond angle force constants
+;    were revised  and the involved bond angle force constants were updated.
+; ---------------------------------------------------------------------------
+; Updates to GAFF 1.8, Mar, 2013:
+;    improved bond length and bond angle parameters using 30 thousand
+;    molecules (labeled as SOURCE5);
+;    added 20 special torsional angle parameters to better
+;    reproduce rotational profiles of several PTM residues.
+; ---------------------------------------------------------------------------
+; Updates to GAFF 1.81, May, 2017:
+;    added new atom types for n3/n4/n/nh/os/ss in RG3 and RG4
+;    updated bond length/angle parameters involved by the newly introduced atom types
+; ---------------------------------------------------------------------------

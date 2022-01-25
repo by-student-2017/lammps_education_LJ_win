@@ -1,0 +1,4 @@
+integrator=steep
+nsteps=100
+pbc=no
+cutoff-scheme=group

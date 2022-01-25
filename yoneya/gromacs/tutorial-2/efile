@@ -1,0 +1,12 @@
+
+Command 'start' not found, did you mean:
+
+  command 'smart' from deb smartpm-core
+  command 'rstart' from deb x11-session-utils
+  command 'stat' from deb coreutils
+  command 'kstart' from deb kde-runtime
+  command 'tart' from deb tart
+  command 'startx' from deb xinit
+
+Try: sudo apt install <deb name>
+
