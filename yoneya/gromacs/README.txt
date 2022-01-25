@@ -416,33 +416,6 @@ ref_t               =  300.0
 4. mol22rtp.pl < 3lla.mol2 > 3lla.rtp
   (mol2 file -> rtp file)
 -----------------------------------------------------------------------
-■ Gromacs + other code [G1] (failed)
-(Edit: 24/Jun/2022)
-
-◇ code
-・ChemSketch
-  https://www.acdlabs.com/resources/freeware/chemsketch/
-・OpenBabel (OpenBabel-2.4.1)
-  http://openbabel.org/wiki/Main_Page
-・VMD
-  https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD
-・Gow (need Gow-0.5.0.exe)
-  https://github.com/bmatzelle/gow/releases
-  Asset -> Gow-0.5.0.exe
-（AVGからFileRepMalwareに感染していると表示される。設定から例外として認識しないといけない）
-
-□ Installation (GROMACS and topolBuild)
-  (command prompt on windows10)
-1. wget https://github.com/makoto-yoneya/makoto-yoneya.github.io/raw/master/MDforPRIMERS/install_dos.bat
------ ----- -----(Error !!!)
---2022-01-24 10:13:39--  https://github.com/makoto-yoneya/makoto-yoneya.github.io/raw/master/MDforPRIMERS/install_dos.bat
-Resolving github.com... 52.192.72.89
-Connecting to github.com|52.192.72.89|:443... connected.
-OpenSSL: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
-Unable to establish SSL connection.
------ ----- -----
-2. install_dos.bat
------------------------------------------------------------------------
 ■ References
 
 [G1] GROMACSと連携ソフトウエアによる分子動力学計算 updated (makoto-yoneya.github.io)
