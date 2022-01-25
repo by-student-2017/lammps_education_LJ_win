@@ -1,0 +1,11 @@
+; topolbuild version 1.3
+; Command line:
+;     topolbuild -n bpy-aa -dir /home/inukai/topolbuild1_3/ -ff gaff -purge 0
+;
+[ atomtypes ]
+; name        mass      charge    ptype               sigma             epsilon
+CP         12.01100     0.00000        A        3.399676e-01        3.598240e-01 ;     1.91  0.0860
+CA         12.01100     0.00000        A        3.399676e-01        3.598240e-01 ;     1.91  0.0860
+NB         14.00670     0.00000        A        3.250004e-01        7.112800e-01 ;     1.82  0.1700
+HA          1.00800     0.00000        A        2.599647e-01        6.276000e-02 ;     1.46  0.0150
+H4          1.00800     0.00000        A        2.510557e-01        6.276000e-02 ;     1.41  0.0150

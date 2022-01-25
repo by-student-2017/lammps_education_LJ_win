@@ -1,0 +1,333 @@
+topolbuild version 1.3
+Command line:
+     topolbuild -n bpy-aa -dir /home/inukai/topolbuild1_3/ -ff gaff -purge 0
+
+Molecule Name bpy-aa
+Model Type SMALL
+Charge Method GASTEIGER
+Has 20 atoms and 21 bonds
+
+ Atom Record
+     no.    name   type residue  Sym seg atno            coordinates             charge     mass  bonds
+      1        C   C.ar    LIG    C   1    6    19.1625    -5.2109     0.0002   -0.0149   12.0110   3    main
+      2        C   C.ar    LIG    C   1    6    18.4787    -6.1583    -0.6374   -0.0359   12.0110   3    main
+      3        C   C.ar    LIG    C   1    6    18.5270    -4.2303     0.6374   -0.0359   12.0110   3
+      4        C   C.ar    LIG    C   1    6    17.1503    -6.1248    -0.6377    0.0281   12.0110   3    main
+      5        C   C.ar    LIG    C   1    6    17.1986    -4.1963     0.6376    0.0281   12.0110   3
+      6        N   N.ar    LIG    N   1    7    16.5175    -5.1440    -0.0001   -0.2630   14.0067   2    main
+      7        C   C.ar    LIG    C   1    6    20.5780    -5.2465     0.0011   -0.0149   12.0110   3    main
+      8        C   C.ar    LIG    C   1    6    21.2626    -4.2864    -0.6166   -0.0359   12.0110   3    main
+      9        C   C.ar    LIG    C   1    6    21.2120    -6.2396     0.6200   -0.0359   12.0110   3    main
+     10        C   C.ar    LIG    C   1    6    22.5910    -4.3197    -0.6153    0.0281   12.0110   3    main
+     11        C   C.ar    LIG    C   1    6    22.5403    -6.2735     0.6217    0.0281   12.0110   3    main
+     12        N   N.ar    LIG    N   1    7    23.2223    -5.3132     0.0040   -0.2628   14.0067   2    main
+     13        H      H    LIG    H   1    1    18.9940    -6.9424    -1.1468    0.0639    1.0080   1
+     14        H      H    LIG    H   1    1    19.0812    -3.4732     1.1469    0.0639    1.0080   1
+     15        H      H    LIG    H   1    1    16.5950    -6.8812    -1.1469    0.0830    1.0080   1
+     16        H      H    LIG    H   1    1    16.6820    -3.4129     1.1467    0.0830    1.0080   1
+     17        H      H    LIG    H   1    1    20.7481    -3.4926    -1.1114    0.0639    1.0080   1
+     18        H      H    LIG    H   1    1    20.6570    -7.0066     1.1135    0.0639    1.0080   1
+     19        H      H    LIG    H   1    1    23.1473    -3.5535    -1.1085    0.0830    1.0080   1
+     20        H      H    LIG    H   1    1    23.0561    -7.0669     1.1159    0.0830    1.0080   1
+
+===============================================================
+----------------------ring property (I)------------------------
+
+        Ring 1
+
+    1     1     1     C
+    1     2     2     C
+    1     3     3     C
+    1     4     4     C
+    1     5     5     C
+    1     6     6     N
+
+        Ring 2
+
+    2     1     7     C
+    2     2     8     C
+    2     3     9     C
+    2     4    10     C
+    2     5    11     C
+    2     6    12     N
+
+===============================================================
+---------------------ring property (II)------------------------
+atom[    1] (C   ) belongs to one member of 6-membered ring (No  1)
+atom[    2] (C   ) belongs to one member of 6-membered ring (No  1)
+atom[    3] (C   ) belongs to one member of 6-membered ring (No  1)
+atom[    4] (C   ) belongs to one member of 6-membered ring (No  1)
+atom[    5] (C   ) belongs to one member of 6-membered ring (No  1)
+atom[    6] (N   ) belongs to one member of 6-membered ring (No  1)
+atom[    7] (C   ) belongs to one member of 6-membered ring (No  2)
+atom[    8] (C   ) belongs to one member of 6-membered ring (No  2)
+atom[    9] (C   ) belongs to one member of 6-membered ring (No  2)
+atom[   10] (C   ) belongs to one member of 6-membered ring (No  2)
+atom[   11] (C   ) belongs to one member of 6-membered ring (No  2)
+atom[   12] (N   ) belongs to one member of 6-membered ring (No  2)
+
+===============================================================
+---------------------ring property (III)-----------------------
+atom[    1] (C   ) involved in 1 6-member ring(s)
+atom[    2] (C   ) involved in 1 6-member ring(s)
+atom[    3] (C   ) involved in 1 6-member ring(s)
+atom[    4] (C   ) involved in 1 6-member ring(s)
+atom[    5] (C   ) involved in 1 6-member ring(s)
+atom[    6] (N   ) involved in 1 6-member ring(s)
+atom[    7] (C   ) involved in 1 6-member ring(s)
+atom[    8] (C   ) involved in 1 6-member ring(s)
+atom[    9] (C   ) involved in 1 6-member ring(s)
+atom[   10] (C   ) involved in 1 6-member ring(s)
+atom[   11] (C   ) involved in 1 6-member ring(s)
+atom[   12] (N   ) involved in 1 6-member ring(s)
+atom[   13] (H   ) is not in any ring (number[13]=1)
+atom[   14] (H   ) is not in any ring (number[14]=1)
+atom[   15] (H   ) is not in any ring (number[15]=1)
+atom[   16] (H   ) is not in any ring (number[16]=1)
+atom[   17] (H   ) is not in any ring (number[17]=1)
+atom[   18] (H   ) is not in any ring (number[18]=1)
+atom[   19] (H   ) is not in any ring (number[19]=1)
+atom[   20] (H   ) is not in any ring (number[20]=1)
+
+===============================================================
+----------------------aromatic property------------------------
+atom[    1] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    2] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    3] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    4] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    5] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    6] (N   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    7] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    8] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[    9] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[   10] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[   11] (C   ) is in 1 pure aromatic ring(s) (AR1)
+atom[   12] (N   ) is in 1 pure aromatic ring(s) (AR1)
+
+===============================================================
+---------------------electronic property-----------------------
+atom[    1] (C   ) is not an electron withdrawing atom
+atom[    2] (C   ) is not an electron withdrawing atom
+atom[    3] (C   ) is not an electron withdrawing atom
+atom[    4] (C   ) is not an electron withdrawing atom
+atom[    5] (C   ) is not an electron withdrawing atom
+atom[    6] (N   ) is an electron withdrawing atom
+atom[    7] (C   ) is not an electron withdrawing atom
+atom[    8] (C   ) is not an electron withdrawing atom
+atom[    9] (C   ) is not an electron withdrawing atom
+atom[   10] (C   ) is not an electron withdrawing atom
+atom[   11] (C   ) is not an electron withdrawing atom
+atom[   12] (N   ) is an electron withdrawing atom
+atom[   13] (H   ) is not an electron withdrawing atom
+atom[   14] (H   ) is not an electron withdrawing atom
+atom[   15] (H   ) is not an electron withdrawing atom
+atom[   16] (H   ) is not an electron withdrawing atom
+atom[   17] (H   ) is not an electron withdrawing atom
+atom[   18] (H   ) is not an electron withdrawing atom
+atom[   19] (H   ) is not an electron withdrawing atom
+atom[   20] (H   ) is not an electron withdrawing atom
+
+===============================================================
+--------------------connectivity property----------------------
+atom[    1] (C   )     2     C
+atom[    1] (C   )     3     C
+atom[    1] (C   )     7     C
+atom[    2] (C   )     1     C
+atom[    2] (C   )     4     C
+atom[    2] (C   )    13     H
+atom[    3] (C   )     1     C
+atom[    3] (C   )     5     C
+atom[    3] (C   )    14     H
+atom[    4] (C   )     2     C
+atom[    4] (C   )     6     N
+atom[    4] (C   )    15     H
+atom[    5] (C   )     3     C
+atom[    5] (C   )     6     N
+atom[    5] (C   )    16     H
+atom[    6] (N   )     4     C
+atom[    6] (N   )     5     C
+atom[    7] (C   )     1     C
+atom[    7] (C   )     8     C
+atom[    7] (C   )     9     C
+atom[    8] (C   )     7     C
+atom[    8] (C   )    10     C
+atom[    8] (C   )    17     H
+atom[    9] (C   )     7     C
+atom[    9] (C   )    11     C
+atom[    9] (C   )    18     H
+atom[   10] (C   )     8     C
+atom[   10] (C   )    12     N
+atom[   10] (C   )    19     H
+atom[   11] (C   )     9     C
+atom[   11] (C   )    12     N
+atom[   11] (C   )    20     H
+atom[   12] (N   )    10     C
+atom[   12] (N   )    11     C
+atom[   13] (H   )     2     C
+atom[   14] (H   )     3     C
+atom[   15] (H   )     4     C
+atom[   16] (H   )     5     C
+atom[   17] (H   )     8     C
+atom[   18] (H   )     9     C
+atom[   19] (H   )    10     C
+atom[   20] (H   )    11     C
+------------------------------end------------------------------
+
+
+Found 32 angles, 44 torsions, and 10 impropers
+
+In /home/inukai/topolbuild1_3//dat/antechamber/ATOMTYPE_GFF.DEF there are 5 WILDATOM lines and 274 ATD lines
+Number of correlation entries in file = 120
+
+	Found
+		71 atom records
+		739 bond records
+		3504 angle records
+		696 torsion records
+		39 impropers records
+		67 van der Waals records
+		0 van der Waals equivalence records with 0 maximum record length
+
+
+	Atom Force Field Results
+     no.    name   type   pol.   radius     pot.
+      1        C     CP   0.360   1.9080   0.0860
+      2        C     CA   0.360   1.9080   0.0860
+      3        C     CA   0.360   1.9080   0.0860
+      4        C     CA   0.360   1.9080   0.0860
+      5        C     CA   0.360   1.9080   0.0860
+      6        N     NB   0.530   1.8240   0.1700
+      7        C     CP   0.360   1.9080   0.0860
+      8        C     CA   0.360   1.9080   0.0860
+      9        C     CA   0.360   1.9080   0.0860
+     10        C     CA   0.360   1.9080   0.0860
+     11        C     CA   0.360   1.9080   0.0860
+     12        N     NB   0.530   1.8240   0.1700
+     13        H     HA   0.135   1.4590   0.0150
+     14        H     HA   0.135   1.4590   0.0150
+     15        H     H4   0.135   1.4090   0.0150
+     16        H     H4   0.135   1.4090   0.0150
+     17        H     HA   0.135   1.4590   0.0150
+     18        H     HA   0.135   1.4590   0.0150
+     19        H     H4   0.135   1.4090   0.0150
+     20        H     H4   0.135   1.4090   0.0150
+
+	Bond Force Field Results
+  no.     bond    type  interp.  force  length   measured
+   1     C-    C   ar     8      466.1   1.395      1.331
+   2     C-    C   ar     7      466.1   1.395      1.331
+   3     C-    C    1     1      346.5   1.490      1.416
+   4     C-    C   ar     7      478.4   1.387      1.329
+   5     C-    H    1     1      344.3   1.087      1.068
+   6     C-    C   ar     8      478.4   1.387      1.329
+   7     C-    H    1     1      344.3   1.087      1.068
+   8     C-    N   ar     8      483.1   1.342      1.330
+   9     C-    H    1     1      342.9   1.088      1.068
+  10     C-    N   ar     7      483.1   1.342      1.330
+  11     C-    H    1     1      342.9   1.088      1.068
+  12     C-    C   ar     8      466.1   1.395      1.331
+  13     C-    C   ar     7      466.1   1.395      1.331
+  14     C-    C   ar     7      478.4   1.387      1.329
+  15     C-    H    1     1      344.3   1.087      1.068
+  16     C-    C   ar     8      478.4   1.387      1.329
+  17     C-    H    1     1      344.3   1.087      1.068
+  18     C-    N   ar     8      483.1   1.342      1.330
+  19     C-    H    1     1      342.9   1.088      1.068
+  20     C-    N   ar     7      483.1   1.342      1.330
+  21     C-    H    1     1      342.9   1.088      1.068
+
+	Angles Force Field Results
+Angle        Atoms        force    angle     method measured
+   1     C-    C-    C     67.1   118.75        1    120.560
+   2     C-    C-    C     62.6   127.01        1    119.734
+   3     C-    C-    C     67.2   119.07        1    119.718
+   4     C-    C-    H     48.0   121.08        1    120.222
+   5     C-    C-    C     62.6   127.01        1    119.706
+   6     C-    C-    C     67.2   119.07        1    119.752
+   7     C-    C-    H     48.0   121.08        1    120.203
+   8     C-    C-    C     62.6   127.01        1    119.715
+   9     C-    C-    C     62.6   127.01        1    119.688
+  10     H-    C-    C     48.5   120.01        1    120.060
+  11     C-    C-    N     69.2   122.63        1    119.611
+  12     C-    C-    H     48.2   121.09        1    120.147
+  13     H-    C-    C     48.5   120.01        1    120.045
+  14     C-    C-    N     69.2   122.63        1    119.582
+  15     C-    C-    H     48.2   121.09        1    120.171
+  16     H-    C-    N     51.8   115.94        1    120.242
+  17     C-    N-    C     68.6   115.86        1    120.777
+  18     H-    C-    N     51.8   115.94        1    120.248
+  19     C-    C-    C     67.1   118.75        1    120.596
+  20     C-    C-    C     67.2   119.07        1    119.709
+  21     C-    C-    H     48.0   121.08        1    120.233
+  22     C-    C-    C     67.2   119.07        1    119.726
+  23     C-    C-    H     48.0   121.08        1    120.224
+  24     H-    C-    C     48.5   120.01        1    120.058
+  25     C-    C-    N     69.2   122.63        1    119.581
+  26     C-    C-    H     48.2   121.09        1    120.164
+  27     H-    C-    C     48.5   120.01        1    120.050
+  28     C-    C-    N     69.2   122.63        1    119.578
+  29     C-    C-    H     48.2   121.09        1    120.168
+  30     H-    C-    N     51.8   115.94        1    120.255
+  31     C-    N-    C     68.6   115.86        1    120.810
+  32     H-    C-    N     51.8   115.94        1    120.254
+
+	Torsions Force Field Results
+Simple Torsions
+Tors           Atoms           mul force   phase   term   measured   purge
+   1     C-    C-    C-    C    4  14.50   180.0    2.0     0.000    5
+   2     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+   3     C-    C-    C-    C    4  14.50   180.0    2.0   180.000    5
+   4     C-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+   5     C-    C-    C-    C    4  14.50   180.0    2.0     0.000    4
+   6     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+   7     C-    C-    C-    C    4  14.50   180.0    2.0   180.000    0
+   8     C-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+   9     C-    C-    C-    C    4   4.00   180.0    2.0   114.224    5
+  10     C-    C-    C-    C    4   4.00   180.0    2.0   294.205    5
+  11     C-    C-    C-    C    4   4.00   180.0    2.0   294.207    5
+  12     C-    C-    C-    C    4   4.00   180.0    2.0   114.187    5
+  13     C-    C-    C-    N    4  14.50   180.0    2.0     0.000    5
+  14     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  15     H-    C-    C-    N    4  14.50   180.0    2.0   180.000    0
+  16     H-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  17     C-    C-    C-    N    4  14.50   180.0    2.0     0.000    4
+  18     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  19     H-    C-    C-    N    4  14.50   180.0    2.0   180.000    0
+  20     H-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  21     C-    C-    N-    C    2   9.60   180.0    2.0     0.000    5
+  22     H-    C-    N-    C    2   9.60   180.0    2.0   180.000    0
+  23     C-    C-    N-    C    2   9.60   180.0    2.0     0.000    4
+  24     H-    C-    N-    C    2   9.60   180.0    2.0   180.000    0
+  25     C-    C-    C-    C    4  14.50   180.0    2.0   180.000    5
+  26     C-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  27     C-    C-    C-    C    4  14.50   180.0    2.0     0.000    5
+  28     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  29     C-    C-    C-    C    4  14.50   180.0    2.0   180.000    5
+  30     C-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  31     C-    C-    C-    C    4  14.50   180.0    2.0     0.000    5
+  32     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  33     C-    C-    C-    N    4  14.50   180.0    2.0     0.000    5
+  34     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  35     H-    C-    C-    N    4  14.50   180.0    2.0   180.000    0
+  36     H-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  37     C-    C-    C-    N    4  14.50   180.0    2.0     0.000    5
+  38     C-    C-    C-    H    4  14.50   180.0    2.0   180.000    0
+  39     H-    C-    C-    N    4  14.50   180.0    2.0   180.000    0
+  40     H-    C-    C-    H    4  14.50   180.0    2.0     0.000    0
+  41     C-    C-    N-    C    2   9.60   180.0    2.0     0.000    5
+  42     H-    C-    N-    C    2   9.60   180.0    2.0   180.000    0
+  43     C-    C-    N-    C    2   9.60   180.0    2.0     0.000    5
+  44     H-    C-    N-    C    2   9.60   180.0    2.0   180.000    0
+
+	Improper Force Field Results
+  no.       Improper Locus       force  phase   measured
+   1     C-    C-    C-    C      1.1  180.0     0.000
+   2     C-    C-    C-    H      1.1  180.0     0.000
+   3     C-    C-    C-    H      1.1  180.0     0.000
+   4     C-    N-    C-    H      1.1  180.0     0.000   default values
+   5     C-    N-    C-    H      1.1  180.0     0.000   default values
+   6     C-    C-    C-    C      1.1  180.0     0.000   default values
+   7     C-    C-    C-    H      1.1  180.0     0.000
+   8     C-    C-    C-    H      1.1  180.0     0.000
+   9     C-    N-    C-    H      1.1  180.0     0.000   default values
+  10     C-    N-    C-    H      1.1  180.0     0.000   default values

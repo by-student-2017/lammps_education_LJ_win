@@ -1,0 +1,83 @@
+c    12.01000 ; Sp2 C carbonyl group 
+c1   12.01000 ; Sp C
+c2   12.01000 ; Sp2 C  
+c3   12.01000 ; Sp3 C
+ca   12.01000 ; Sp2 C in pure aromatic systems
+cp   12.01000 ; Head Sp2 C that connect two rings in biphenyl sys. 
+cq   12.01000 ; Head Sp2 C that connect two rings in biphenyl sys. identical to cp 
+cc   12.01000 ; Sp2 carbons in non-pure aromatic systems
+cd   12.01000 ; Sp2 carbons in non-pure aromatic systems, identical to cc
+ce   12.01000 ; Inner Sp2 carbons in conjugated systems
+cf   12.01000 ; Inner Sp2 carbons in conjugated systems, identical to ce
+cg   12.01000 ; Inner Sp carbons in conjugated systems
+ch   12.01000 ; Inner Sp carbons in conjugated systems, identical to cg
+cx   12.01000 ; Sp3 carbons in triangle systems
+cy   12.01000 ; Sp3 carbons in square systems
+cu   12.01000 ; Sp2 carbons in triangle systems
+cv   12.01000 ; Sp2 carbons in square systems
+cz   12.01000 ; Sp2 carbon in guanidine group
+h1    1.00800 ; H bonded to aliphatic carbon with 1 electrwd. group  
+h2    1.00800 ; H bonded to aliphatic carbon with 2 electrwd. group 
+h3    1.00800 ; H bonded to aliphatic carbon with 3 electrwd. group 
+h4    1.00800 ; H bonded to non-sp3 carbon with 1 electrwd. group 
+h5    1.00800 ; H bonded to non-sp3 carbon with 2 electrwd. group 
+ha    1.00800 ; H bonded to aromatic carbon  
+hc    1.00800 ; H bonded to aliphatic carbon without electrwd. group 
+hn    1.00800 ; H bonded to nitrogen atoms
+ho    1.00800 ; Hydroxyl group
+hp    1.00800 ; H bonded to phosphate 
+hs    1.00800 ; Hydrogen bonded to sulphur 
+hw    1.00800 ; Hydrogen in water 
+hx    1.00800 ; H bonded to C next to positively charged group  
+f    19.00000 ; Fluorine
+cl   35.45000 ; Chlorine 
+br   79.90000 ; Bromine 
+i   126.90000 ; Iodine 
+n    14.01000 ; Sp2 nitrogen in amide groups
+n1   14.01000 ; Sp N  
+n2   14.01000 ; aliphatic Sp2 N with two connected atoms 
+n3   14.01000 ; Sp3 N with three connected atoms
+n4   14.01000 ; Sp3 N with four connected atoms 
+na   14.01000 ; Sp2 N with three connected atoms 
+nb   14.01000 ; Sp2 N in pure aromatic systems 
+nc   14.01000 ; Sp2 N in non-pure aromatic systems
+nd   14.01000 ; Sp2 N in non-pure aromatic systems, identical to nc
+ne   14.01000 ; Inner Sp2 N in conjugated systems
+nf   14.01000 ; Inner Sp2 N in conjugated systems, identical to ne
+nh   14.01000 ; Amine N connected one or more aromatic rings 
+no   14.01000 ; Nitro N  
+ni   14.01000
+nj   14.01000
+nk   14.01000 ; n4 in 3-memberred rings
+nl   14.01000 ; n4 in 4-memberred rings
+nm   14.01000 ; nh in 3-memberred rings
+nn   14.01000 ; nh in 4-memberred rings
+np   14.01000 ; n3 in 3-memberred rings
+nq   14.01000 ; n3 in 4-memberred rings
+o    16.00000 ; Oxygen with one connected atom
+oh   16.00000 ; Oxygen in hydroxyl group
+os   16.00000 ; Ether and ester oxygen
+op   16.00000 ; os in 3-memberred rings
+oq   16.00000 ; os in 4-memberred rings
+ow   16.00000 ; Oxygen in water 
+p2   30.97000 ; Phosphate with two connected atoms 
+p3   30.97000 ; Phosphate with three connected atoms, such as PH3
+p4   30.97000 ; Phosphate with three connected atoms, such as O=P(CH3)2
+p5   30.97000 ; Phosphate with four connected atoms, such as O=P(OH)3
+pb   30.97000 ; Sp2 P in pure aromatic systems 
+pc   30.97000 ; Sp2 P in non-pure aromatic systems
+pd   30.97000 ; Sp2 P in non-pure aromatic systems, identical to pc
+pe   30.97000 ; Inner Sp2 P in conjugated systems
+pf   30.97000 ; Inner Sp2 P in conjugated systems, identical to pe
+px   30.97000 ; Special p4 in conjugated systems
+py   30.97000 ; Special p5 in conjugated systems
+s    32.06000 ; S with one connected atom 
+s2   32.06000 ; S with two connected atom, involved at least one double bond  
+s4   32.06000 ; S with three connected atoms 
+s6   32.06000 ; S with four connected atoms 
+sh   32.06000 ; Sp3 S connected with hydrogen 
+ss   32.06000 ; Sp3 S in thio-ester and thio-ether
+sp   32.06000 ; ss in 3-memberred rings
+sq   32.06000 ; ss in 4-memberred rings
+sx   32.06000 ; Special s4 in conjugated systems
+sy   32.06000 ; Special s6 in conjugated systems

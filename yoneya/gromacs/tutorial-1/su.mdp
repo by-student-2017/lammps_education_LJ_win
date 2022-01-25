@@ -1,0 +1,9 @@
+integrator          =  md  
+dt                  =  0.00025  
+nsteps              =  500  
+tcoupl              =  v-rescale  
+tc-grps             =  SYSTEM  
+tau_t               =  0.002  
+ref_t               =  200.0  
+gen_vel             =  yes  
+gen_temp            =  200.0 

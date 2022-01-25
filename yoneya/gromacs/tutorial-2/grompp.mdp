@@ -1,0 +1,10 @@
+integrator          =  md
+dt                  =  0.0005
+nsteps              =  20000
+nstxtcout           =  10
+pbc                 =  no
+cutoff-scheme       =  group
+tcoupl              =  v-rescale
+tc-grps             =  SYSTEM
+tau_t               =  0.03
+ref_t               =  300.0
