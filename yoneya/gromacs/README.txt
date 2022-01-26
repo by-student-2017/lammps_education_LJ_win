@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------
 Å° Gromacs + other code [G1, G2]
-(Edit: 24/Jun/2022)
+(Edit: 24/Jan/2022)
 
 Å† Installation (Gromacs (version 2018.1))
 (ubuntu 18.04 LTS)
