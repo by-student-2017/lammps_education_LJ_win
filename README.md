@@ -37,7 +37,8 @@ The Kremer-Grest model is used in macromolecules.
 * https://github.com/t-murash/USER-PPA
 
 
-## References
+------------------------------------------------------------------------------
+# References
 
 
 [LJ1] lammps seminar, University of Hyogo
@@ -55,4 +56,146 @@ The Kremer-Grest model is used in macromolecules.
   https://github.com/t-murash/USER-UEFEX
 
 
+------------------------------------------------------------------------------
+# Input file
+
+
+## LJ
+
+
+[IFL1] P. G. Boyd et al., J. Phys. Chem. Lett. 8 (2017) 357-363.
+  https://doi.org/10.1021/acs.jpclett.6b02532 (MOF)
+
+
+[IFL2] K. Banlusan et al., J. Phys. Chem. C 119 (2015) 25845-25852.
+  https://doi.org/10.1021/acs.jpcc.5b05446 (MOF)
+
+
+[IFL3] M. Witman et al., J. Phys. Chem. Lett. 10 (2019) 5929-5934.
+  https://doi.org/10.1021/acs.jpclett.9b02449 (MOF)
+
+
+[IFL4] J. P. Ruffley et al., J. Phys. Chem. C 124 (2020) 19873.
+  https://doi.org/10.1021/acs.jpcc.0c07650 (MOF)
+
+
+[IFL5] R. Anderson et al., Chem. Mater, 32 (2020) 8106-8119.
+  https://doi.org/10.1021/acs.chemmater.0c00744 (MOF)
+
+
+[IFL6] A. v. Wedelstedt et al., J. Chem. Inf. Model. 62 (2022) 1154-1159.
+  https://doi.org/10.1021/acs.jcim.2c00158 (input file of MOF on Lammps and CP2k code)
+
+
+[IFL7] J. J. Wardzala et al., J. Phys. Chem. C 124 (2020) 28469-28478.
+  https://doi.org/10.1021/acs.jpcc.0c07040 (MOF)
+
+
+[IFL8] M. C. Oliver et al., J. Phys. Chem. C 127 (2023) 6503-6514.
+  https://doi.org/10.1021/acs.jpcc.2c08695 (MOF)
+
+
+[IFL9] H. Xu et al., J. Chem. Theory Comput. 18 (2022) 2826-2835.
+  https://doi.org/10.1021/acs.jctc.2c00094 (MOF)
+  https://archive.materialscloud.org/record/2022.37
+
+
+[IFL10] J. M. Findley et al., J. Phys. Chem. C 125 (2021) 8418-8429.
+  https://doi.org/10.1021/acs.jpcc.1c00943 (input file of MOF on Lammps and RASPA code)
+
+
+[IFL11] A. S. S. Daou et al., J. Phys. Chem. C 125 (2021) 5296-5305.
+  https://doi.org/10.1021/acs.jpcc.0c09952 (input file of MOF on Lammps and RASPA code)
+
+
+[IFL12] Z. Zhu et al., ACS Omega 7 (2022) 37640-37653.
+  https://doi.org/10.1021/acsomega.2c04517 (input file of MOF on Lammps and RASPA code)
+
+
+[IFL13] T. Weng et al., J. Phys. Chem. A 123 (2019) 3000-3012.
+  https://doi.org/10.1021/acs.jpca.8b12311 (ZIF-8)
+
+
+[IFL14] S. Wang et al., J. Chem. Theory Comput. 17 (2021) 5198-5213.
+  https://doi.org/10.1021/acs.jctc.0c01132 (Zeolite)
+
+
+[IFL15] P. Saidi et al., J. Phys. Chem. C 124 (2020) 26864-26873.
+  https://doi.org/10.1021/acs.jpcc.0c08817 (GO)
+
+
+[IFL17] M. Deffner et al., J. Chem. Theory Comput. 19 (2023) 992-1002.
+  https://doi.org/10.1021/acs.jctc.2c00648
+
+
+[IFL18] W. A. Pisani et al., Ind. Eng. Chem. Res. 60 (2021) 13604-13613.
+  https://doi.org/10.1021/acs.iecr.1c02440
+
+
+[IFL19] K. Goloviznina et al., J. Chem. Theory Comput. 17 (2021) 1606-1617.
+  https://doi.org/10.1021/acs.jctc.0c01002
+
+
+[IFL20] C. Han et al., J. Phys. Chem. C 124 (2020) 20203-20212.
+  https://doi.org/10.1021/acs.jpcc.0c05942
+
+
+[IFL21] S. Sharma et al., J. Phys. Chem. A 124 (2020) 7832-7842.
+  https://doi.org/10.1021/acs.jpca.0c06721
+
+
+[IFL22] E. Braun et al., J. Chem. Theory Comput. 14 (2018) 5262-5272.
+  https://doi.org/10.1021/acs.jctc.8b00446
+
+
+[IFL23] Y. Chen et al., J. Phys. Chem. B 125 (2021) 8193-8204.
+  https://doi.org/10.1021/acs.jpcb.1c01966
+
+
+[IFL24] Y. Zhang et al., J. Phys. Chem. B 124 (2020) 5251-5264.
+  https://doi.org/10.1021/acs.jpcb.0c04058
+
+
+[IFL25] C. M. Tenney et al., J. Phys. Chem. C 117 (2013) 24673-24684.
+  https://doi.org/10.1021/jp4039122
+
+
+[IFL26] S. K. Achar et al., J. Phys. Chem. C 125 (2021) 14874-14882.
+  https://doi.org/10.1021/acs.jpcc.1c01411
+
+
+## Other
+
+[IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
+  https://doi.org/10.1021/acsanm.2c03564 (lammps input file)
+
+
+[IFM2] S. K. Achar et al., J. Chem. Theory Comput. 18 (2022) 3593-3606.
+  https://doi.org/10.1021/acs.jctc.2c00010
+
+
+[IFM3] M. Qamar et al., J. Chem. Theory, Comput. XXX (2023) XXX-XXXX.
+  https://doi.org/10.1021/acs.jctc.2c01149
+
+
+[IFM4] Y. A. Zulueta et al., Inorg. Chem. 59 (2020) 11841-11846.
+  https://doi.org/10.1021/acs.inorgchem.0c01923 (Transition-Metal-Doped Li2SnO3)
+
+
+[IFR1] M. L. Urquiza et al., ACS Nano 15 (2021) 12945-12954.
+  https://doi.org/10.1021/acsnano.1c01466 (HfO2)
+------------------------------------------------------------------------------
+# Structure
+
+
+[S1] N. Sakhavand et al., ACS Appl. Mater. Interfaces 7 (2015) 18312-18319.
+  https://doi.org/10.1021/acsami.5b03967
+
+
+[S2] M. Agrawal et al., J. Phys. Chem. Lett. 10 (2019) 7823-7830.
+  https://doi.org/10.1021/acs.jpclett.9b03119
+
+
+[S3] R. Thyagarajan et al., Chem. Mater. 32 (2020) 8020-8033.
+  https://doi.org/10.1021/acs.chemmater.0c03057
 ------------------------------------------------------------------------------
