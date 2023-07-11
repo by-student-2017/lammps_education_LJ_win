@@ -180,6 +180,14 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acsbiomaterials.7b00292
 
 
+[IFL31] K. V. Lee et al., American Journal of Physics 88 (2020) 401-422.
+  https://doi.org/10.1119/10.0000654
+
+
+[IFL32] Large biomolecular simulation on HPC platforms
+  II. DL POLY, Gromacs, LAMMPS and NAMD
+  https://www.researchgate.net/profile/Hannes-Loeffler/publication/315786259_Large_biomolecular_simulation_on_HPC_platforms_II_DL_POLY_Gromacs_LAMMPS_and_NAMD/links/58e4c9a1aca2727858c55b1d/Large-biomolecular-simulation-on-HPC-platforms-II-DL-POLY-Gromacs-LAMMPS-and-NAMD.pdf
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -228,4 +236,7 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # Electron-phonon dynamics for LAMMPS
   https://www.osti.gov/biblio/1488434
+------------------------------------------------------------------------------
+# Sensitivity Analysis and Uncertainty Quantification for the LAMMPS Molecular Dynamics Simulation Code
+  https://www.osti.gov/biblio/1372820
 ------------------------------------------------------------------------------
