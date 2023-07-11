@@ -249,6 +249,9 @@ The Kremer-Grest model is used in macromolecules.
 # Sensitivity Analysis and Uncertainty Quantification for the LAMMPS Molecular Dynamics Simulation Code
   https://www.osti.gov/biblio/1372820
 ------------------------------------------------------------------------------
+# LAVA
+  https://www.osti.gov/biblio/1872392
+------------------------------------------------------------------------------
 # Hydrodynamic forces implemented into LAMMPS through a lattice-Boltzmann fluid
   https://doi.org/10.1016/j.cpc.2013.03.024
 ------------------------------------------------------------------------------
