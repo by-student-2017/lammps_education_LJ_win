@@ -204,6 +204,13 @@ The Kremer-Grest model is used in macromolecules.
 
 [IFU1] A guide to the SPH-USER package
   https://bioweb.pasteur.fr/docs/modules/lammps/30Oct14/USER/sph/SPH_LAMMPS_userguide.pdf
+
+
+[IFG1] A. Jagusiak et al., J. Mol. Liq. 279 (2019) 640-648.
+  https://doi.org/10.1016/j.molliq.2019.02.012
+
+
+
 ------------------------------------------------------------------------------
 # Structure
 
