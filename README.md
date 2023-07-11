@@ -171,6 +171,11 @@ The Kremer-Grest model is used in macromolecules.
 [IFL28] C. Luo et al., Comput. Phys. Commun. 180 (2009)  1382-1391.
   https://doi.org/10.1016/j.cpc.2009.01.028
 
+
+[IFL29] L. J. Abbott et al., Theor Chem Acc 132 (2013) 1334.
+  https://doi.org/10.1007/s00214-013-1334-z
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -191,6 +196,10 @@ The Kremer-Grest model is used in macromolecules.
 
 [IFR1] M. L. Urquiza et al., ACS Nano 15 (2021) 12945-12954.
   https://doi.org/10.1021/acsnano.1c01466 (HfO2)
+
+
+[IFU1] A guide to the SPH-USER package
+  https://bioweb.pasteur.fr/docs/modules/lammps/30Oct14/USER/sph/SPH_LAMMPS_userguide.pdf
 ------------------------------------------------------------------------------
 # Structure
 
