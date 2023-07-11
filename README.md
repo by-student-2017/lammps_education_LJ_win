@@ -208,9 +208,6 @@ The Kremer-Grest model is used in macromolecules.
 
 [IFG1] A. Jagusiak et al., J. Mol. Liq. 279 (2019) 640-648.
   https://doi.org/10.1016/j.molliq.2019.02.012
-
-
-
 ------------------------------------------------------------------------------
 # Structure
 
@@ -228,4 +225,7 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # Input File Creation for the Molecular Dynamics Program LAMMPS.
   https://www.osti.gov/biblio/1230587
+------------------------------------------------------------------------------
+# Electron-phonon dynamics for LAMMPS
+  https://www.osti.gov/biblio/1488434
 ------------------------------------------------------------------------------
