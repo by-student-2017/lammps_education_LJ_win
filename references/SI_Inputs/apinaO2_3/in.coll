@@ -1,0 +1,77 @@
+### Sets up a LAMMPS simulation of a collision between 2 peroxy radicals
+units real
+dimension 3
+boundary p p p
+atom_style full
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style cvff
+
+pair_style lj/cut/coul/cut 30.0
+
+read_data data.coll
+
+pair_modify mix geometric
+special_bonds lj/coul 0.0 0.0 0.5
+
+neigh_modify every 1 delay 0 check yes
+
+group mol1 molecule 1
+group mol2 molecule 2
+
+velocity mol1 create 300.0 9441 dist gaussian mom yes
+velocity mol2 create 300.0 3559 dist gaussian mom yes
+
+# make some temp computes to track individual molecular temps
+# make a compute to track com separation of both molecules.
+
+compute temp1 mol1 temp/com
+compute temp2 mol2 temp/com
+compute com1 mol1 com
+compute com2 mol2 com
+
+# restart 5000 backup
+
+timestep 0.2
+
+# equilibrate separately to make sure each has the right temp.
+
+fix NVT1 mol1 nvt temp 300.0 300.0 20.0
+fix NVT2 mol2 nvt temp 300.0 300.0 20.0
+
+dump DATA all xyz 50 coll.xyz
+dump_modify DATA element C C C C H H H H C H H H C H H H C H C OC C H H H C H OC OS OP
+
+variable dx equal c_com1[1]-c_com2[1]
+variable dy equal c_com1[2]-c_com2[2]
+variable dz equal c_com1[3]-c_com2[3]
+variable dr equal v_dx^2+v_dy^2+v_dz^2
+
+variable vcm1sq equal vcm(mol1,x)^2+vcm(mol1,y)^2+vcm(mol1,z)^2
+variable vcm2sq equal vcm(mol2,x)^2+vcm(mol2,y)^2+vcm(mol2,z)^2
+
+thermo_style custom step temp c_temp1 c_temp2 v_dr v_vcm1sq v_vcm2sq pe ke etotal press
+
+thermo 50
+
+# equilibration
+
+run 200000
+
+unfix NVT1
+unfix NVT2
+
+fix NVE all nve
+
+# add some velocity to the mol2 c.o.m.
+
+variable vxnew atom -0.00270
+
+velocity mol2 set v_vxnew NULL NULL sum yes
+
+run 4000000
+
+dump FINAL all custom 1 data.final.coll id mol type q x y z
+
+run 1

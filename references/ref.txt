@@ -2,4 +2,10 @@
   https://doi.org/10.1063/1.4758700
   NaCl
 
-- 
+- C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
+  https://doi.org/10.1021/acsearthspacechem.2c00159
+  SI_Inputs
+
+- M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
+  https://doi.org/10.1063/5.0137226
+  paper_si

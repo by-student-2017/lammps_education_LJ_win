@@ -216,6 +216,10 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jctc.2c01040
 
 
+[IFL40] C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
+  https://doi.org/10.1021/acsearthspacechem.2c00159
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -266,6 +270,10 @@ The Kremer-Grest model is used in macromolecules.
 
 [S4] K. Li et al., J. Chem. Phys. 154 (2021) 184505.
   https://doi.org/10.1063/5.0046073
+
+
+[S5] R. DeVane et al., J. Phys. Chem. B 114 (2010) 16364–16372.
+  https://doi.org/10.1021/jp1070264
 ------------------------------------------------------------------------------
 # Input File Creation for the Molecular Dynamics Program LAMMPS.
   https://www.osti.gov/biblio/1230587
