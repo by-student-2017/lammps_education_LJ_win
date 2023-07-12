@@ -212,6 +212,10 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1063/1.4758700
 
 
+[IFL39] C. J. Leverant et al., J. Chem. Theory Comput. 19 (2023) 3054-3062.
+  https://doi.org/10.1021/acs.jctc.2c01040
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
