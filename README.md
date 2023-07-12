@@ -332,5 +332,8 @@ The Kremer-Grest model is used in macromolecules.
   https://www.repository.cam.ac.uk/items/35c30a45-f343-4fa2-bf85-6aa2984d1169
   https://doi.org/10.17863/CAM.69854
 ------------------------------------------------------------------------------
+# BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
+  https://doi.org/10.1021/acs.jcim.7b00695
+------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
