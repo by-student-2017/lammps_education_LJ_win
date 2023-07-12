@@ -308,5 +308,13 @@ The Kremer-Grest model is used in macromolecules.
   https://www.repository.cam.ac.uk/items/b172fdb0-aed8-427d-be58-3d400dfee80c
   https://doi.org/10.17863/CAM.8607
 ------------------------------------------------------------------------------
+# Stabilization of AgI’s polar surfaces by the aqueous environment, and its implications for ice formation (data set)
+  https://www.repository.cam.ac.uk/items/40aa2d96-6b55-4b3d-acb0-409a183966b3
+  https://doi.org/10.17863/CAM.43502
+------------------------------------------------------------------------------
+# Research data supporting 'Physics-driven coarse-grained model for biomolecular phase separation with near-quantitative accuracy'
+  https://www.repository.cam.ac.uk/items/35c30a45-f343-4fa2-bf85-6aa2984d1169
+  https://doi.org/10.17863/CAM.69854
+------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
