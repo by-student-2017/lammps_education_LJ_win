@@ -239,6 +239,10 @@ The Kremer-Grest model is used in macromolecules.
 
 [S3] R. Thyagarajan et al., Chem. Mater. 32 (2020) 8020-8033.
   https://doi.org/10.1021/acs.chemmater.0c03057
+
+
+[S4] K. Li et al., J. Chem. Phys. 154 (2021) 184505.
+  https://doi.org/10.1063/5.0046073
 ------------------------------------------------------------------------------
 # Input File Creation for the Molecular Dynamics Program LAMMPS.
   https://www.osti.gov/biblio/1230587
@@ -254,4 +258,6 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # Hydrodynamic forces implemented into LAMMPS through a lattice-Boltzmann fluid
   https://doi.org/10.1016/j.cpc.2013.03.024
+------------------------------------------------------------------------------
+# GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
