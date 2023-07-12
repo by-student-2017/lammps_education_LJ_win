@@ -284,5 +284,13 @@ The Kremer-Grest model is used in macromolecules.
 # Coarse-Grained Reactive Molecular Dynamics Simulations of Heterogeneities in Shocked Energetic Materials (LDRD Final Report)
   https://www.osti.gov/biblio/1733244
 ------------------------------------------------------------------------------
+# Research data supporting 'Theoretical prediction of thermal polarisation'
+  https://www.repository.cam.ac.uk/items/96675177-1b90-4fa3-918a-bff9e9e9e1e5
+  https://doi.org/10.17863/CAM.22951
+------------------------------------------------------------------------------
+# Research data supporting "Numerical Evidence for Thermally Induced Monopoles"
+  https://www.repository.cam.ac.uk/items/b172fdb0-aed8-427d-be58-3d400dfee80c
+  https://doi.org/10.17863/CAM.8607
+------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
