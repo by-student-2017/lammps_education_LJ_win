@@ -1,0 +1,599 @@
+Input files to compute the \Delta A_1 term for the Einstein molecule method.
+
+-----------------
+\Delta A_1 files|
+-----------------
+1) grompp.false
+---------------
+; VARIOUS PREPROCESSING OPTIONS
+
+; RUN CONTROL PARAMETERS
+integrator               = md
+; Start time and timestep in ps
+tinit                    = 0
+dt                       = 0.000
+nsteps 			 = 1
+; mode for center of mass motion removal
+;comm-mode                = Linear
+comm-mode                = None
+; number of steps for center of mass motion removal
+nstcomm                  = 1
+; group(s) for center of mass motion removal
+comm-grps                =
+
+; OUTPUT CONTROL OPTIONS
+; Output frequency for coords (x), velocities (v) and forces (f)
+nstxout                  = 10000
+nstvout                  = 10000
+nstfout                  = 10000
+; Output frequency for energies to log file and energy file
+nstlog                   = 1000
+nstenergy                = 100
+; Output frequency and precision for xtc file
+nstxtcout                = 5000 
+xtc-precision            = 1000
+
+; NEIGHBORSEARCHING PARAMETERS
+; nblist update frequency
+nstlist                  = 1
+; ns algorithm (simple or grid)
+ns_type                  = grid
+; Periodic boundary conditions: xyz (default), no (vacuum)
+; or full (infinite systems only)
+pbc                      = xyz
+; nblist cut-off        
+rlist                    = 0.92 
+domain-decomposition     = no
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+; Method for doing electrostatics
+rcoulomb                 = 0.92
+
+; Method for doing Van der Waals
+vdw-type                 = shift
+rvdw                     = 0.92
+rvdw-switch              = 0.919
+; Apply long range dispersion corrections for Energy and Pressure
+;DispCorr                 = EnerPres 
+; Extension of the potential lookup tables beyond the cut-off
+table-extension          = 1
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+; Temperature coupling  
+Tcoupl                   = v-rescale
+ld_seed 		 = 17433014
+tau_t                    = 1.
+ref_t 			 = 240.
+tc-grps                  = system
+
+Pcoupl                   =  no 
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel 		 = yes
+gen_seed 		 = 17553114
+gen_temp                 = 240.0 
+
+; frozen group(s)
+freezegrps = S 
+freezedim  = Y Y Y
+#############################################################################
+2) grompp_ideal.mdp
+-------------------
+; VARIOUS PREPROCESSING OPTIONS
+
+; RUN CONTROL PARAMETERS
+integrator               = md
+; Start time and timestep in ps
+tinit                    = 0
+dt                       = 0.005
+nsteps 			 = 1000000
+; mode for center of mass motion removal
+;comm-mode                = Linear
+comm-mode                = None
+; number of steps for center of mass motion removal
+nstcomm                  = 1
+; group(s) for center of mass motion removal
+comm-grps                =
+
+; OUTPUT CONTROL OPTIONS
+; Output frequency for coords (x), velocities (v) and forces (f)
+nstxout                  = 10000
+nstvout                  = 10000
+nstfout                  = 10000
+; Output frequency for energies to log file and energy file
+nstlog                   = 1000
+nstenergy                = 1000
+; Output frequency and precision for xtc file
+nstxtcout                = 100 
+xtc-precision            = 1000
+
+; NEIGHBORSEARCHING PARAMETERS
+; nblist update frequency
+nstlist                  = 1
+; ns algorithm (simple or grid)
+ns_type                  = grid
+; Periodic boundary conditions: xyz (default), no (vacuum)
+; or full (infinite systems only)
+pbc                      = xyz
+; nblist cut-off        
+rlist                    = 0.92 
+domain-decomposition     = no
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+; Method for doing electrostatics
+rcoulomb                 = 0.92
+
+; Method for doing Van der Waals
+vdw-type                 = shift
+rvdw                     = 0.92
+rvdw-switch              = 0.919
+; Apply long range dispersion corrections for Energy and Pressure
+;DispCorr                 = EnerPres 
+; Extension of the potential lookup tables beyond the cut-off
+table-extension          = 1
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+; Temperature coupling  
+Tcoupl                   = v-rescale
+ld_seed 		 = 17433014
+tau_t                    = 1.
+ref_t 			 = 240.
+tc-grps                  = system
+
+Pcoupl                   =  no 
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel 		 = yes
+gen_seed 		 = 17553114
+gen_temp                 = 240.0 
+
+; frozen group(s)
+freezegrps = S 
+freezedim  = Y Y Y
+##############################################################################
+3) topol_ideal.top
+------------------
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+  1             2               no              1.0     1.0
+
+[ atomtypes ]
+;name  at.num      mass        charge   ptype      V(c6)     W(c12)
+   S    18      39.948         0.00        A     0.0    0.0        
+   Ar   18      39.948         0.00        A     0.0    0.0        
+
+[ moleculetype ]
+; molname       nrexcl
+S                1
+[ atoms ]
+; id    at type res nr  residu name     at name  cg nr   charge
+1       S        1       S               S         1       0
+
+[ moleculetype ]
+; molname       nrexcl
+Ar              1
+[ atoms ]
+; id    at type res nr  residu name     at name  cg nr   charge
+1       Ar       1       Ar              Ar        1       0
+
+[ position_restraints ]
+; ai  funct   fcx       fcy        fcz
+   1    1    997680.   997680.   997680.   ; restrains to a point
+
+[ system ]
+; Name
+lj
+
+[ molecules ]
+; Compound        #mols
+S                 1
+Ar                255
+###################################################################################
+4) topol.sts
+------------
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+  1             2               no              1.0     1.0
+
+[ atomtypes ]
+;name  at.num      mass        charge   ptype      V(c6)     W(c12)
+   S    18      39.948         0.00        A     0.34050    0.99768        
+   Ar   18      39.948         0.00        A     0.34050    0.99768        
+
+[ moleculetype ]
+; molname       nrexcl
+S                1
+[ atoms ]
+; id    at type res nr  residu name     at name  cg nr   charge
+1       S        1       S               S         1       0
+
+[ moleculetype ]
+; molname       nrexcl
+Ar              1
+[ atoms ]
+; id    at type res nr  residu name     at name  cg nr   charge
+1       Ar       1       Ar              Ar        1       0
+
+[ system ]
+; Name
+lj
+
+[ molecules ]
+; Compound        #mols
+S                 1
+Ar                255 
+#############################################################################
+5) deltaA1.sh
+--------------
+#!/bin/bash
+
+##################################
+#Script to compute Delta A_1 term#
+##################################
+
+# Variable definitions
+### N = number of configurations
+### tstep = the time intervale in ps between the stored configurations of the ideal gas run
+###         (tstep=dt*nstxtcout, where dt corresponds to the time step used in the ideal gas run and
+###         nstxtcout the frequency for saving configurations)
+### T = temperature
+### nmol = number of atoms
+### ulattgrom = U_lattice energy (in GROMACS units)
+N=10000
+tstep=0.5
+T=240.
+nmol=256
+ulattgrom=-1609.99
+
+# Save initial configuration
+cp conf.g96 conf_ini.g96
+# Remove old run files
+rm energies.dat exp_u_sol-u_latt.dat grompp.mdp kt_energies.dat topol.top u_sol-u_latt.dat
+# Copy files for the run
+cp topol.sts topol.top
+cp grompp.false grompp.mdp
+
+(for ((i=1; i<$N+1; i++)); do
+
+# Calculate the frame position of the ideal gas trajectory to analyze
+frame=`echo $i $tstep | awk '{print $1*$2}'`
+echo $frame
+# Extract from the trajectory file (traj_id.xtc) the corresponfing configuration to a conf.g96 file
+/usr/local/bin/trjconv_d -f traj_id.xtc -s topol.oneconf -dump $frame -o conf.g96 << EOF
+0
+EOF
+
+# Execute gromacs
+ /usr/local/bin/grompp_d -maxwarn 1
+ /usr/local/bin/mdrun_d -c confout.g96
+
+# Compute the potential energy of the configuration using the g_energy GROMACS's tool 
+ ./extrae_a1.sh > kk
+
+ tail -1 kk > save
+
+ read numkk ener kk4 kk5 kk6 kk7 < save
+# Save the energy of the configuration in the energies.dat file
+ echo $i $ener >> energies.dat
+
+# Remove useless files
+ rm energy.xvg confout.g96 topol.tpr
+ rm traj.* ener.edr md.log mdout.mdp
+ rm state.cpt grompp.log kk kk2 save
+ rm state* conf.g96
+
+done) 
+
+# Convert lattice energy from GROMACS units to k_BT units
+ulatt=`echo $T $ulattgrom | awk '{print $2*1000/(8.314*$1)}'`
+ulattnkt=`echo $T $ulattgrom $nmol | awk '{print $2*1000/($3*8.314*$1)}'`
+
+
+echo ""
+echo "--------------------------"
+echo "U_latt (kT units) ----> " $ulatt
+echo "U_latt (NkT units) ----> " $ulattnkt
+
+# Convert the potential energy of each configuration (energies.dat) to k_BT units
+# and compute the Delta A_1 term. 
+awk -v temp=$T '{print $1,($2*1000)/(8.314*temp)}' energies.dat > kt_energies.dat
+awk -v latt=$ulatt '{print $1,($2-latt)}' kt_energies.dat > u_sol-u_latt.dat
+awk '{print $1,exp(-$2)}' u_sol-u_latt.dat > exp_u_sol-u_latt.dat
+prod=`echo $OUTPUT | awk '{s+=$2}END{print s/NR}' exp_u_sol-u_latt.dat`
+
+echo "av_exp(-beta(U_sol-U_latt)) ----> " $prod
+
+logN=`echo $prod $nmol | awk '{print log($1)/$2}'`
+
+echo "1/N ln[av_exp(-beta(U_sol-U_latt))] ----> " $logN
+
+deltaA1=`echo $ulatt $nmol | awk -v aver=$logN '{print ($1/$2)-(aver)}'`
+
+echo ""
+echo "--------------------------"
+echo ""
+echo "DA_1/NkT ----> " $deltaA1
+
+# "The devils are in the details
+# and looks like the devils are here to stay"
+#############################################################################
+6) extrae_a1.sh
+---------------
+#!/bin/bash
+
+/usr/local/gromacs/bin/g_energy_d << EOF
+3
+0
+EOF 
+#############################################################################
+7) conf.g96
+------------
+TITLE
+lj
+END
+POSITION
+    1 S     S          1    0.099562804    0.099562804    0.099562804
+    2 Ar    Ar         2    0.348469814    0.348469814    0.099562804
+    3 Ar    Ar         3    0.348469814    0.099562804    0.348469814
+    4 Ar    Ar         4    0.099562804    0.348469814    0.348469814
+    5 Ar    Ar         5    0.099562804    0.099562804    0.597376824
+    6 Ar    Ar         6    0.348469814    0.348469814    0.597376824
+    7 Ar    Ar         7    0.348469814    0.099562804    0.846283834
+    8 Ar    Ar         8    0.099562804    0.348469814    0.846283834
+    9 Ar    Ar         9    0.099562804    0.099562804    1.095190844
+   10 Ar    Ar        10    0.348469814    0.348469814    1.095190844
+   11 Ar    Ar        11    0.348469814    0.099562804    1.344097854
+   12 Ar    Ar        12    0.099562804    0.348469814    1.344097854
+   13 Ar    Ar        13    0.099562804    0.099562804    1.593004864
+   14 Ar    Ar        14    0.348469814    0.348469814    1.593004864
+   15 Ar    Ar        15    0.348469814    0.099562804    1.841911874
+   16 Ar    Ar        16    0.099562804    0.348469814    1.841911874
+   17 Ar    Ar        17    0.099562804    0.597376824    0.099562804
+   18 Ar    Ar        18    0.348469814    0.846283834    0.099562804
+   19 Ar    Ar        19    0.348469814    0.597376824    0.348469814
+   20 Ar    Ar        20    0.099562804    0.846283834    0.348469814
+   21 Ar    Ar        21    0.099562804    0.597376824    0.597376824
+   22 Ar    Ar        22    0.348469814    0.846283834    0.597376824
+   23 Ar    Ar        23    0.348469814    0.597376824    0.846283834
+   24 Ar    Ar        24    0.099562804    0.846283834    0.846283834
+   25 Ar    Ar        25    0.099562804    0.597376824    1.095190844
+   26 Ar    Ar        26    0.348469814    0.846283834    1.095190844
+   27 Ar    Ar        27    0.348469814    0.597376824    1.344097854
+   28 Ar    Ar        28    0.099562804    0.846283834    1.344097854
+   29 Ar    Ar        29    0.099562804    0.597376824    1.593004864
+   30 Ar    Ar        30    0.348469814    0.846283834    1.593004864
+   31 Ar    Ar        31    0.348469814    0.597376824    1.841911874
+   32 Ar    Ar        32    0.099562804    0.846283834    1.841911874
+   33 Ar    Ar        33    0.099562804    1.095190844    0.099562804
+   34 Ar    Ar        34    0.348469814    1.344097854    0.099562804
+   35 Ar    Ar        35    0.348469814    1.095190844    0.348469814
+   36 Ar    Ar        36    0.099562804    1.344097854    0.348469814
+   37 Ar    Ar        37    0.099562804    1.095190844    0.597376824
+   38 Ar    Ar        38    0.348469814    1.344097854    0.597376824
+   39 Ar    Ar        39    0.348469814    1.095190844    0.846283834
+   40 Ar    Ar        40    0.099562804    1.344097854    0.846283834
+   41 Ar    Ar        41    0.099562804    1.095190844    1.095190844
+   42 Ar    Ar        42    0.348469814    1.344097854    1.095190844
+   43 Ar    Ar        43    0.348469814    1.095190844    1.344097854
+   44 Ar    Ar        44    0.099562804    1.344097854    1.344097854
+   45 Ar    Ar        45    0.099562804    1.095190844    1.593004864
+   46 Ar    Ar        46    0.348469814    1.344097854    1.593004864
+   47 Ar    Ar        47    0.348469814    1.095190844    1.841911874
+   48 Ar    Ar        48    0.099562804    1.344097854    1.841911874
+   49 Ar    Ar        49    0.099562804    1.593004864    0.099562804
+   50 Ar    Ar        50    0.348469814    1.841911874    0.099562804
+   51 Ar    Ar        51    0.348469814    1.593004864    0.348469814
+   52 Ar    Ar        52    0.099562804    1.841911874    0.348469814
+   53 Ar    Ar        53    0.099562804    1.593004864    0.597376824
+   54 Ar    Ar        54    0.348469814    1.841911874    0.597376824
+   55 Ar    Ar        55    0.348469814    1.593004864    0.846283834
+   56 Ar    Ar        56    0.099562804    1.841911874    0.846283834
+   57 Ar    Ar        57    0.099562804    1.593004864    1.095190844
+   58 Ar    Ar        58    0.348469814    1.841911874    1.095190844
+   59 Ar    Ar        59    0.348469814    1.593004864    1.344097854
+   60 Ar    Ar        60    0.099562804    1.841911874    1.344097854
+   61 Ar    Ar        61    0.099562804    1.593004864    1.593004864
+   62 Ar    Ar        62    0.348469814    1.841911874    1.593004864
+   63 Ar    Ar        63    0.348469814    1.593004864    1.841911874
+   64 Ar    Ar        64    0.099562804    1.841911874    1.841911874
+   65 Ar    Ar        65    0.597376824    0.099562804    0.099562804
+   66 Ar    Ar        66    0.846283834    0.348469814    0.099562804
+   67 Ar    Ar        67    0.846283834    0.099562804    0.348469814
+   68 Ar    Ar        68    0.597376824    0.348469814    0.348469814
+   69 Ar    Ar        69    0.597376824    0.099562804    0.597376824
+   70 Ar    Ar        70    0.846283834    0.348469814    0.597376824
+   71 Ar    Ar        71    0.846283834    0.099562804    0.846283834
+   72 Ar    Ar        72    0.597376824    0.348469814    0.846283834
+   73 Ar    Ar        73    0.597376824    0.099562804    1.095190844
+   74 Ar    Ar        74    0.846283834    0.348469814    1.095190844
+   75 Ar    Ar        75    0.846283834    0.099562804    1.344097854
+   76 Ar    Ar        76    0.597376824    0.348469814    1.344097854
+   77 Ar    Ar        77    0.597376824    0.099562804    1.593004864
+   78 Ar    Ar        78    0.846283834    0.348469814    1.593004864
+   79 Ar    Ar        79    0.846283834    0.099562804    1.841911874
+   80 Ar    Ar        80    0.597376824    0.348469814    1.841911874
+   81 Ar    Ar        81    0.597376824    0.597376824    0.099562804
+   82 Ar    Ar        82    0.846283834    0.846283834    0.099562804
+   83 Ar    Ar        83    0.846283834    0.597376824    0.348469814
+   84 Ar    Ar        84    0.597376824    0.846283834    0.348469814
+   85 Ar    Ar        85    0.597376824    0.597376824    0.597376824
+   86 Ar    Ar        86    0.846283834    0.846283834    0.597376824
+   87 Ar    Ar        87    0.846283834    0.597376824    0.846283834
+   88 Ar    Ar        88    0.597376824    0.846283834    0.846283834
+   89 Ar    Ar        89    0.597376824    0.597376824    1.095190844
+   90 Ar    Ar        90    0.846283834    0.846283834    1.095190844
+   91 Ar    Ar        91    0.846283834    0.597376824    1.344097854
+   92 Ar    Ar        92    0.597376824    0.846283834    1.344097854
+   93 Ar    Ar        93    0.597376824    0.597376824    1.593004864
+   94 Ar    Ar        94    0.846283834    0.846283834    1.593004864
+   95 Ar    Ar        95    0.846283834    0.597376824    1.841911874
+   96 Ar    Ar        96    0.597376824    0.846283834    1.841911874
+   97 Ar    Ar        97    0.597376824    1.095190844    0.099562804
+   98 Ar    Ar        98    0.846283834    1.344097854    0.099562804
+   99 Ar    Ar        99    0.846283834    1.095190844    0.348469814
+  100 Ar    Ar       100    0.597376824    1.344097854    0.348469814
+  101 Ar    Ar       101    0.597376824    1.095190844    0.597376824
+  102 Ar    Ar       102    0.846283834    1.344097854    0.597376824
+  103 Ar    Ar       103    0.846283834    1.095190844    0.846283834
+  104 Ar    Ar       104    0.597376824    1.344097854    0.846283834
+  105 Ar    Ar       105    0.597376824    1.095190844    1.095190844
+  106 Ar    Ar       106    0.846283834    1.344097854    1.095190844
+  107 Ar    Ar       107    0.846283834    1.095190844    1.344097854
+  108 Ar    Ar       108    0.597376824    1.344097854    1.344097854
+  109 Ar    Ar       109    0.597376824    1.095190844    1.593004864
+  110 Ar    Ar       110    0.846283834    1.344097854    1.593004864
+  111 Ar    Ar       111    0.846283834    1.095190844    1.841911874
+  112 Ar    Ar       112    0.597376824    1.344097854    1.841911874
+  113 Ar    Ar       113    0.597376824    1.593004864    0.099562804
+  114 Ar    Ar       114    0.846283834    1.841911874    0.099562804
+  115 Ar    Ar       115    0.846283834    1.593004864    0.348469814
+  116 Ar    Ar       116    0.597376824    1.841911874    0.348469814
+  117 Ar    Ar       117    0.597376824    1.593004864    0.597376824
+  118 Ar    Ar       118    0.846283834    1.841911874    0.597376824
+  119 Ar    Ar       119    0.846283834    1.593004864    0.846283834
+  120 Ar    Ar       120    0.597376824    1.841911874    0.846283834
+  121 Ar    Ar       121    0.597376824    1.593004864    1.095190844
+  122 Ar    Ar       122    0.846283834    1.841911874    1.095190844
+  123 Ar    Ar       123    0.846283834    1.593004864    1.344097854
+  124 Ar    Ar       124    0.597376824    1.841911874    1.344097854
+  125 Ar    Ar       125    0.597376824    1.593004864    1.593004864
+  126 Ar    Ar       126    0.846283834    1.841911874    1.593004864
+  127 Ar    Ar       127    0.846283834    1.593004864    1.841911874
+  128 Ar    Ar       128    0.597376824    1.841911874    1.841911874
+  129 Ar    Ar       129    1.095190844    0.099562804    0.099562804
+  130 Ar    Ar       130    1.344097854    0.348469814    0.099562804
+  131 Ar    Ar       131    1.344097854    0.099562804    0.348469814
+  132 Ar    Ar       132    1.095190844    0.348469814    0.348469814
+  133 Ar    Ar       133    1.095190844    0.099562804    0.597376824
+  134 Ar    Ar       134    1.344097854    0.348469814    0.597376824
+  135 Ar    Ar       135    1.344097854    0.099562804    0.846283834
+  136 Ar    Ar       136    1.095190844    0.348469814    0.846283834
+  137 Ar    Ar       137    1.095190844    0.099562804    1.095190844
+  138 Ar    Ar       138    1.344097854    0.348469814    1.095190844
+  139 Ar    Ar       139    1.344097854    0.099562804    1.344097854
+  140 Ar    Ar       140    1.095190844    0.348469814    1.344097854
+  141 Ar    Ar       141    1.095190844    0.099562804    1.593004864
+  142 Ar    Ar       142    1.344097854    0.348469814    1.593004864
+  143 Ar    Ar       143    1.344097854    0.099562804    1.841911874
+  144 Ar    Ar       144    1.095190844    0.348469814    1.841911874
+  145 Ar    Ar       145    1.095190844    0.597376824    0.099562804
+  146 Ar    Ar       146    1.344097854    0.846283834    0.099562804
+  147 Ar    Ar       147    1.344097854    0.597376824    0.348469814
+  148 Ar    Ar       148    1.095190844    0.846283834    0.348469814
+  149 Ar    Ar       149    1.095190844    0.597376824    0.597376824
+  150 Ar    Ar       150    1.344097854    0.846283834    0.597376824
+  151 Ar    Ar       151    1.344097854    0.597376824    0.846283834
+  152 Ar    Ar       152    1.095190844    0.846283834    0.846283834
+  153 Ar    Ar       153    1.095190844    0.597376824    1.095190844
+  154 Ar    Ar       154    1.344097854    0.846283834    1.095190844
+  155 Ar    Ar       155    1.344097854    0.597376824    1.344097854
+  156 Ar    Ar       156    1.095190844    0.846283834    1.344097854
+  157 Ar    Ar       157    1.095190844    0.597376824    1.593004864
+  158 Ar    Ar       158    1.344097854    0.846283834    1.593004864
+  159 Ar    Ar       159    1.344097854    0.597376824    1.841911874
+  160 Ar    Ar       160    1.095190844    0.846283834    1.841911874
+  161 Ar    Ar       161    1.095190844    1.095190844    0.099562804
+  162 Ar    Ar       162    1.344097854    1.344097854    0.099562804
+  163 Ar    Ar       163    1.344097854    1.095190844    0.348469814
+  164 Ar    Ar       164    1.095190844    1.344097854    0.348469814
+  165 Ar    Ar       165    1.095190844    1.095190844    0.597376824
+  166 Ar    Ar       166    1.344097854    1.344097854    0.597376824
+  167 Ar    Ar       167    1.344097854    1.095190844    0.846283834
+  168 Ar    Ar       168    1.095190844    1.344097854    0.846283834
+  169 Ar    Ar       169    1.095190844    1.095190844    1.095190844
+  170 Ar    Ar       170    1.344097854    1.344097854    1.095190844
+  171 Ar    Ar       171    1.344097854    1.095190844    1.344097854
+  172 Ar    Ar       172    1.095190844    1.344097854    1.344097854
+  173 Ar    Ar       173    1.095190844    1.095190844    1.593004864
+  174 Ar    Ar       174    1.344097854    1.344097854    1.593004864
+  175 Ar    Ar       175    1.344097854    1.095190844    1.841911874
+  176 Ar    Ar       176    1.095190844    1.344097854    1.841911874
+  177 Ar    Ar       177    1.095190844    1.593004864    0.099562804
+  178 Ar    Ar       178    1.344097854    1.841911874    0.099562804
+  179 Ar    Ar       179    1.344097854    1.593004864    0.348469814
+  180 Ar    Ar       180    1.095190844    1.841911874    0.348469814
+  181 Ar    Ar       181    1.095190844    1.593004864    0.597376824
+  182 Ar    Ar       182    1.344097854    1.841911874    0.597376824
+  183 Ar    Ar       183    1.344097854    1.593004864    0.846283834
+  184 Ar    Ar       184    1.095190844    1.841911874    0.846283834
+  185 Ar    Ar       185    1.095190844    1.593004864    1.095190844
+  186 Ar    Ar       186    1.344097854    1.841911874    1.095190844
+  187 Ar    Ar       187    1.344097854    1.593004864    1.344097854
+  188 Ar    Ar       188    1.095190844    1.841911874    1.344097854
+  189 Ar    Ar       189    1.095190844    1.593004864    1.593004864
+  190 Ar    Ar       190    1.344097854    1.841911874    1.593004864
+  191 Ar    Ar       191    1.344097854    1.593004864    1.841911874
+  192 Ar    Ar       192    1.095190844    1.841911874    1.841911874
+  193 Ar    Ar       193    1.593004864    0.099562804    0.099562804
+  194 Ar    Ar       194    1.841911874    0.348469814    0.099562804
+  195 Ar    Ar       195    1.841911874    0.099562804    0.348469814
+  196 Ar    Ar       196    1.593004864    0.348469814    0.348469814
+  197 Ar    Ar       197    1.593004864    0.099562804    0.597376824
+  198 Ar    Ar       198    1.841911874    0.348469814    0.597376824
+  199 Ar    Ar       199    1.841911874    0.099562804    0.846283834
+  200 Ar    Ar       200    1.593004864    0.348469814    0.846283834
+  201 Ar    Ar       201    1.593004864    0.099562804    1.095190844
+  202 Ar    Ar       202    1.841911874    0.348469814    1.095190844
+  203 Ar    Ar       203    1.841911874    0.099562804    1.344097854
+  204 Ar    Ar       204    1.593004864    0.348469814    1.344097854
+  205 Ar    Ar       205    1.593004864    0.099562804    1.593004864
+  206 Ar    Ar       206    1.841911874    0.348469814    1.593004864
+  207 Ar    Ar       207    1.841911874    0.099562804    1.841911874
+  208 Ar    Ar       208    1.593004864    0.348469814    1.841911874
+  209 Ar    Ar       209    1.593004864    0.597376824    0.099562804
+  210 Ar    Ar       210    1.841911874    0.846283834    0.099562804
+  211 Ar    Ar       211    1.841911874    0.597376824    0.348469814
+  212 Ar    Ar       212    1.593004864    0.846283834    0.348469814
+  213 Ar    Ar       213    1.593004864    0.597376824    0.597376824
+  214 Ar    Ar       214    1.841911874    0.846283834    0.597376824
+  215 Ar    Ar       215    1.841911874    0.597376824    0.846283834
+  216 Ar    Ar       216    1.593004864    0.846283834    0.846283834
+  217 Ar    Ar       217    1.593004864    0.597376824    1.095190844
+  218 Ar    Ar       218    1.841911874    0.846283834    1.095190844
+  219 Ar    Ar       219    1.841911874    0.597376824    1.344097854
+  220 Ar    Ar       220    1.593004864    0.846283834    1.344097854
+  221 Ar    Ar       221    1.593004864    0.597376824    1.593004864
+  222 Ar    Ar       222    1.841911874    0.846283834    1.593004864
+  223 Ar    Ar       223    1.841911874    0.597376824    1.841911874
+  224 Ar    Ar       224    1.593004864    0.846283834    1.841911874
+  225 Ar    Ar       225    1.593004864    1.095190844    0.099562804
+  226 Ar    Ar       226    1.841911874    1.344097854    0.099562804
+  227 Ar    Ar       227    1.841911874    1.095190844    0.348469814
+  228 Ar    Ar       228    1.593004864    1.344097854    0.348469814
+  229 Ar    Ar       229    1.593004864    1.095190844    0.597376824
+  230 Ar    Ar       230    1.841911874    1.344097854    0.597376824
+  231 Ar    Ar       231    1.841911874    1.095190844    0.846283834
+  232 Ar    Ar       232    1.593004864    1.344097854    0.846283834
+  233 Ar    Ar       233    1.593004864    1.095190844    1.095190844
+  234 Ar    Ar       234    1.841911874    1.344097854    1.095190844
+  235 Ar    Ar       235    1.841911874    1.095190844    1.344097854
+  236 Ar    Ar       236    1.593004864    1.344097854    1.344097854
+  237 Ar    Ar       237    1.593004864    1.095190844    1.593004864
+  238 Ar    Ar       238    1.841911874    1.344097854    1.593004864
+  239 Ar    Ar       239    1.841911874    1.095190844    1.841911874
+  240 Ar    Ar       240    1.593004864    1.344097854    1.841911874
+  241 Ar    Ar       241    1.593004864    1.593004864    0.099562804
+  242 Ar    Ar       242    1.841911874    1.841911874    0.099562804
+  243 Ar    Ar       243    1.841911874    1.593004864    0.348469814
+  244 Ar    Ar       244    1.593004864    1.841911874    0.348469814
+  245 Ar    Ar       245    1.593004864    1.593004864    0.597376824
+  246 Ar    Ar       246    1.841911874    1.841911874    0.597376824
+  247 Ar    Ar       247    1.841911874    1.593004864    0.846283834
+  248 Ar    Ar       248    1.593004864    1.841911874    0.846283834
+  249 Ar    Ar       249    1.593004864    1.593004864    1.095190844
+  250 Ar    Ar       250    1.841911874    1.841911874    1.095190844
+  251 Ar    Ar       251    1.841911874    1.593004864    1.344097854
+  252 Ar    Ar       252    1.593004864    1.841911874    1.344097854
+  253 Ar    Ar       253    1.593004864    1.593004864    1.593004864
+  254 Ar    Ar       254    1.841911874    1.841911874    1.593004864
+  255 Ar    Ar       255    1.841911874    1.593004864    1.841911874
+  256 Ar    Ar       256    1.593004864    1.841911874    1.841911874
+END
+BOX
+    1.991256080    1.991256080    1.991256080
+END
+########################################################################
+
+
+
+

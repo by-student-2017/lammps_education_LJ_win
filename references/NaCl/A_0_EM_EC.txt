@@ -1,0 +1,74 @@
+FORTRAN codes to compute the A_0 term for the Einstein
+crystal (A_0_ec.f) and Einstein molecule (A_0_em.f) methods.
+
+----------
+LJ system|
+----------
+1) A_0_em.f
+------------
+       pi=acos(-1.000) 
+       xlanda_e=2500.
+       xlanda=3.405 
+       rho=1.28
+       xn=256.
+       t1=3./2.*(1.-1./xn)
+       t2=alog(xlanda_e*xlanda**2/pi)
+       t3=1./xn*alog(rho)
+       a0=t1*t2+t3
+       write(6,*) "A_0/(NkT)=",a0
+       stop
+       end 
+####################################################
+2) A_0_ec.f
+------------
+       pi=acos(-1.000) 
+       xlanda_e=2500.
+       xlanda=3.405 
+       rho=1.28
+       xn=256.
+       t1=3./2.*(1.-1./xn)
+       t2=alog(xlanda_e*xlanda**2/pi)
+       t3=1./xn*alog(rho)
+       t4=-3./(2.*xn)*alog(xn)
+       a0=t1*t2+t3+t4
+       write(6,*) "A_0/(NkT)=",a0
+       stop
+       end 
+###################################################
+
+------------
+NaCl system|
+------------
+1) A_0_em.f
+------------
+       pi=acos(-1.000)
+       xlanda_e=4000.
+       xlanda=1.
+       rho=1000./24130. 
+       xn=1000.
+       t1=3./2.*(1.-1./xn)
+       t2=alog(xlanda_e*xlanda**2/pi)
+       t3=1./xn*alog(rho)
+       a0=t1*t2+t3
+       write(6,*) "A_0/(NkT)=",a0
+       stop
+       end
+####################################################
+2) A_0_ec.f
+------------
+       pi=acos(-1.000)
+       xlanda_e=4000.
+       xlanda=1.
+       rho=1000./24130.
+       xn=1000.
+       t1=3./2.*(1.-1./xn)
+       t2=alog(xlanda_e*xlanda**2/pi)
+       t3=1./xn*alog(rho)
+       t4=-3./(2.*xn)*alog(xn)
+       a0=t1*t2+t3+t4
+       write(6,*) "A_0/(NkT)=",a0
+       stop
+       end
+###################################################
+
+

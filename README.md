@@ -201,6 +201,17 @@ The Kremer-Grest model is used in macromolecules.
   Sr1-xLa2x/3TiO3 
 
 
+[IFL36] H. Liu et al., Chem. Phys. Chem. 13 (2012) 1701-1707.
+  https://doi.org/10.1002/cphc.201200016
+
+
+[IFL37] B. Cheng et al., https://core.ac.uk/download/pdf/148017767.pdf
+
+
+[IFL38] J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
+  https://doi.org/10.1063/1.4758700
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -269,6 +280,9 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # SpecTAD
   https://www.osti.gov/biblio/1404911
+------------------------------------------------------------------------------
+# Coarse-Grained Reactive Molecular Dynamics Simulations of Heterogeneities in Shocked Energetic Materials (LDRD Final Report)
+  https://www.osti.gov/biblio/1733244
 ------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
