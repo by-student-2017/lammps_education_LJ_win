@@ -13,3 +13,7 @@
 - K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
   https://doi.org/10.1021/acs.macromol.8b02750
   DPD
+
+- A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
+  https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
+  beta-HMX

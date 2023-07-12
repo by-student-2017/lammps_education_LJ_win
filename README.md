@@ -240,6 +240,10 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/ma201927n
 
 
+[IFL46] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
+  https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
