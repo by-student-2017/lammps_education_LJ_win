@@ -9,3 +9,7 @@
 - M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
   paper_si
+
+- K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
+  https://doi.org/10.1021/acs.macromol.8b02750
+  DPD

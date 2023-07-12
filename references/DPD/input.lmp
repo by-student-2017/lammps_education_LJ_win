@@ -1,0 +1,75 @@
+#############################################################
+#                                                           #
+#    Author: Kevin Kempfer                                  #
+#    Group: Thermodynamique et Interactions Moléculaires    #
+#           Institut de Chimie de Clermont-Ferrand          #
+#           F-63000 Clermont-Ferrand, France                #
+#                                                           #
+#    Date of issue: Novembre 9, 2018                        #
+#                                                           #
+#    Compatible LAMMPS version: March 16, 2018              #
+#                                                           #
+#############################################################
+
+
+#############################################################
+### General parameters ######################################
+
+# Variables
+variable vTEMP    equal 300.0             # Temperature
+variable vPRESS   equal 1.0               # Pressure
+variable vTIME    equal 50.0              # DPD timestep
+variable vNSTEP   equal 1000000/${vTIME}  # Number of steps (1 ns)
+variable vNPRINT  equal 1000/${vTIME}     # Dump thermo (every 1 ps)
+variable vNDUMP   equal 50000/${vTIME}    # Dump trajectory (every 50 ps)
+
+# Initialization
+units             real
+boundary          p p p
+
+# Force Field
+atom_style        full
+bond_style        class2
+angle_style       harmonic
+pair_style        hybrid/overlay &
+                  dpd/tstat ${vTEMP} ${vTEMP} 20. 12345 &
+                  table linear 10001
+special_bonds     lj/coul 1.e-10 0.5 1
+pair_modify       pair dpd/tstat special lj 1 1 1
+
+# Initial configuration
+read_data         data.lmp
+
+# Coeff
+bond_coeff        * 4.2902143053 3.78331969217 3.85037837687 1.6458548924907612
+angle_coeff       * 1.0248277958367014 143.43385796021772
+pair_coeff        * * table pair.table G-G
+pair_coeff        * * dpd/tstat 5.35341775e+01
+
+# Interprocessor communication
+neighbor          0. bin
+neigh_modify      delay 0 check no one 5000 page 100000
+comm_modify       vel yes
+
+# Output
+thermo_style      custom time etotal ke pe ebond eangle epair temp press pxx pyy pzz pxy pxz pyz vol density
+thermo            ${vNPRINT}
+dump              dCONF all custom ${vNDUMP} dump.lammpstrj id mol type element xu yu zu
+dump_modify       dCONF sort id element Gt G
+
+
+#############################################################
+### Run #####################################################
+
+velocity          all create ${vTEMP} 12345
+timestep          ${vTIME}
+
+fix               fNVE all nve
+fix               fPRESS all press/berendsen iso 1. 1. 50000. modulus 1000.
+run               ${vNSTEP}
+unfix             fPRESS
+unfix             fNVE
+
+
+#############################################################
+undump            dCONF
