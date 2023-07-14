@@ -85,3 +85,11 @@
 - M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
   https://doi.org/10.1039/C8SC04971H
   cocrystal
+  
+- E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
+  https://doi.org/10.1107/S1600576715013242
+  xtds
+  
+- M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
+  https://doi.org/10.1063/5.0029490
+  C60_BN
