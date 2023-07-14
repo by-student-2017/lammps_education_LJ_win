@@ -32,7 +32,7 @@
   
 - Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
   https://doi.org/10.1021/acsanm.0c03336
-  EMD, NEMD
+  EMD_CGCMM, NEMD
   
 - J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
   https://doi.org/10.1063/1.4812362
@@ -49,3 +49,7 @@
 - C. C. Walker et al., J. Chem. Phys. 152 (2020) 044903.
   https://doi.org/10.1063/1.5126213
   PVB
+  
+- S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
+  https://doi.org/10.1007/s10973-020-10134-x
+  EMD_water

@@ -1,0 +1,330 @@
+LAMMPS (26 Jan 2017-ICMS)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (../comm.cpp:90)
+  using 1 OpenMP thread(s) per MPI task
+#THERMAL CONDUCTIVITY of water SPC/E model
+
+#The SPC water model specifies a 3-site rigid water molecule with charges and Lennard-Jones parameters assigned to each of the 3 atoms. In LAMMPS the fix shake command can be used to hold the two O-H bonds and the H-O-H angle rigid. A bond style of harmonic and an angle style of harmonic or charmm should also be used.
+
+#These are the additional parameters (in real units) to set for O and H atoms and the water molecule to run a rigid SPC model:O mass = 15.9994;H mass = 1.008;O charge = -0.820;H charge = 0.410;LJ epsilon of OO = 0.1553;LJ sigma of OO = 3.166;LJ epsilon, sigma of OH, HH = 0.0;r0 of OH bond = 1.0;theta of HOH angle = 109.47
+
+#the SPC model was run with a 9 Angstrom cutoff for both LJ and Coulommbic terms.
+
+#The SPC/E (extended) water model is the same, except the partial charge assignemnts change:O charge = -0.8476;H charge = 0.4238
+
+# Initialization #
+
+units real
+
+dimension 3
+
+boundary p p p
+
+variable    T equal 350
+variable    V equal vol
+variable    dt equal 0.25
+variable    p equal 100     # correlation length
+variable    s equal 10      # sample interval
+variable    d equal $p*$s   # dump interval
+variable    d equal 100*$s   
+variable    d equal 100*10   
+
+#For real units: mass = grams/mole;distance = Angstroms;time = femtoseconds;energy = Kcal/mole;velocity = Angstroms/femtosecond;temperature = Kelvin; pressure = atmospheres;dynamic viscosity = Poise;density = gram/cm^dim.
+
+#For style si, these are the units:mass = kilograms;distance = meters;time = seconds;energy = Joules;velocity = meters/second;force = Newtons;temperature = Kelvin;density = kilograms/meter^dim
+
+# convert from LAMMPS real units to SI
+
+variable    kB equal 1.3806504e-23    # [J/K] Boltzmann
+variable    kCal2J equal 4186.0/6.02214e23
+variable    A2m equal 1.0e-10
+variable    fs2s equal 1.0e-15
+variable    convert equal ${kCal2J}*${kCal2J}/${fs2s}/${A2m}
+variable    convert equal 6.95101741241486e-021*${kCal2J}/${fs2s}/${A2m}
+variable    convert equal 6.95101741241486e-021*6.95101741241486e-021/${fs2s}/${A2m}
+variable    convert equal 6.95101741241486e-021*6.95101741241486e-021/1e-015/${A2m}
+variable    convert equal 6.95101741241486e-021*6.95101741241486e-021/1e-015/1e-010
+#timestep     ${dt}
+thermo       $d
+thermo       1000
+
+atom_style full
+#attributes:bonds, angles, dihedrals, impropers, charge
+
+pair_style lj/cut/coul/long 9.0
+
+#The lj/cut styles compute the standard 12/6 Lennard-Jones potential with coulombic pairwise interaction.The Coulombic cutoff specified for this style means that pairwise interactions within this distance are computed.
+
+bond_style harmonic
+
+#Harmonic bonds are used for description of the so-called Urey-Bradley term which is a harmonic potential between atoms separated by two covalent bonds.
+
+angle_style harmonic
+
+#A bond style of harmonic and an angle style of harmonic or charmm should be used in SPC/E model.The harmonic bond style uses the potential E= K(r-r0)^2 where r0 is the equilibrium bond distance.The following coefficients must be defined for each bond type via the bond_coeff command: K (energy/distance^2);r0 (distance)
+
+# Atom definition #
+read_data datafile2.dat
+  orthogonal box = (-0.0734434 -0.143987 -0.267214) to (19.6376 19.567 19.4438)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  768 atoms
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  1 = max angles/atom
+  reading bonds ...
+  512 bonds
+  reading angles ...
+  256 angles
+  2 = max # of 1-2 neighbors
+  1 = max # of 1-3 neighbors
+  1 = max # of 1-4 neighbors
+  2 = max # of special neighbors
+
+# create groups
+
+group hy type 1
+256 atoms in group hy
+group ox type 2
+512 atoms in group ox
+
+ set group hy charge  0.4238 #charge of H
+  256 settings made for charge
+ set group ox charge -0.8476 #charge of O
+  512 settings made for charge
+
+# Settings
+
+kspace_style pppm 1e-4
+
+# kspace_style command:Define a long-range solver for LAMMPS to use each timestep to compute long-range Coulombic interactions.Most of the long-range solvers perform their computation in K-space, hence the name of this command.When such a solver is used in conjunction with an appropriate pair style, the cutoff for Coulombic or 1/r^N interactions is effectively infinite.The pppm style invokes a particle-particle particle-mesh solver which maps atom charge to a 3d mesh.
+
+
+neighbor 2.0 bin
+
+#Syntax:neighbor skin style
+#skin = extra distance beyond force cutoff (distance units).This command sets parameters that affect the building of pairwise neighbor lists. All atom pairs within a neighbor cutoff distance equal to the their force cutoff plus the skin distance are stored in the list. Typically, the larger the skin distance, the less often neighborlists need to be built, but more pairs must be checked for possible force interactions every timestep.
+#The style value selects what algorithm is used to build the list. The bin style creates the list by binning which is an operation that scales linearly with N/P, the number of atoms per processor where N = total number of atoms and P = number of processors.
+
+neigh_modify every 1
+
+#equilibration and thermalization
+
+velocity     all create $T 102486 mom yes rot yes dist gaussian
+velocity     all create 350 102486 mom yes rot yes dist gaussian
+
+#creates ensemble of velocities for 'all' atoms using random number generator (with seed=102486) at a specific temperature (T*=$T)
+
+pair_coeff 1 1 0.1553 3.166 #LJ epsilon and sigma of OO
+pair_coeff 1 2 0.00 0.00  #LJ epsilon and sigma of OH
+pair_coeff 2 2 0.00 0.00 #LJ epsilon and sigma of HH
+
+fix 1 all shake 1e-4 100 0 b 1 a 1
+  0 = # of size 2 clusters
+  0 = # of size 3 clusters
+  0 = # of size 4 clusters
+  256 = # of frozen angles
+
+#Bond and angle constraints are applied to specified bonds and angles in the simulation by either the SHAKE or RATTLE algorithms.Each timestep the specified bonds and angles are reset to their equilibrium lengths and angular values via the SHAKE algorithm.This is done by applying an additional constraint force so that the new positions preserve the desired atom separations. The equations for the additional force are solved via an iterative method that typically converges to an accurate solution in a few iterations. The desired tolerance (e.g. 1.0e-4 = 1 part in 10000) and maximum # of iterations are specified as arguments.
+#In LAMMPS, only small clusters of atoms can be constrained.LAMMPS allows for the following kinds of clusters to be constrained: one central atom bonded to 1 or 2 or 3 atoms, or one central atom bonded to 2 others and the angle between the 3 atoms also constrained.b values = one or more bond types;a values = one or more angle types that will be constrained. The fix shake command can be used to hold the two O-H bonds and the H-O-H angle rigid.
+
+
+fix   NVT all nvt temp $T $T 10 drag 0.2
+fix   NVT all nvt temp 350 $T 10 drag 0.2
+fix   NVT all nvt temp 350 350 10 drag 0.2
+
+reset_timestep 0
+compute      myKE all ke/atom
+compute      myPE all pe/atom
+compute      myStress all stress/atom NULL virial
+compute      flux all heat/flux myKE myPE myStress
+
+variable     Jx equal c_flux[1]/vol
+variable     Jy equal c_flux[2]/vol
+variable     Jz equal c_flux[3]/vol
+fix          JJ all ave/correlate $s $p $d              c_flux[1] c_flux[2] c_flux[3] type auto file J0Jt.dat ave running
+fix          JJ all ave/correlate 10 $p $d              c_flux[1] c_flux[2] c_flux[3] type auto file J0Jt.dat ave running
+fix          JJ all ave/correlate 10 100 $d              c_flux[1] c_flux[2] c_flux[3] type auto file J0Jt.dat ave running
+fix          JJ all ave/correlate 10 100 1000              c_flux[1] c_flux[2] c_flux[3] type auto file J0Jt.dat ave running
+
+
+variable     scale equal ${convert}/${kB}/$T/$T/$V*$s*${dt}
+variable     scale equal 4.83166430676946e-016/${kB}/$T/$T/$V*$s*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/$T/$T/$V*$s*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/350/$T/$V*$s*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/350/350/$V*$s*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/350/350/7658.187122431*$s*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/350/350/7658.187122431*10*${dt}
+variable     scale equal 4.83166430676946e-016/1.3806504e-023/350/350/7658.187122431*10*0.25
+variable     k11 equal trap(f_JJ[3])*${scale}
+variable     k11 equal trap(f_JJ[3])*0.0932590475990117
+variable     k22 equal trap(f_JJ[4])*${scale}
+variable     k22 equal trap(f_JJ[4])*0.0932590475990117
+variable     k33 equal trap(f_JJ[5])*${scale}
+variable     k33 equal trap(f_JJ[5])*0.0932590475990117
+
+thermo_style custom step temp v_Jx v_Jy v_Jz v_k11 v_k22 v_k33
+
+#dump coord all custom 1 test.dump id type x y z
+# Run a simulation
+
+run 100000
+PPPM initialization ...
+WARNING: System is not charge neutral, net charge = -325.478 (../kspace.cpp:298)
+WARNING: Using 12-bit tables for long-range coulomb (../kspace.cpp:317)
+  G vector (1/distance) = 0.318706
+  grid = 15 15 15
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0142744
+  estimated relative force accuracy = 4.2987e-005
+  using double precision FFTs
+  3d grid and FFT values/proc = 10648 3375
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 11
+  ghost atom cutoff = 11
+  binsize = 5.5, bins = 4 4 4
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/coul/long, half, perpetual
+      pair build: half/bin/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Memory usage per processor = 14.2254 Mbytes
+Step Temp v_Jx v_Jy v_Jz v_k11 v_k22 v_k33 
+       0    525.34247  0.002846703 0.00051215112 -0.0042727261    22.161403    0.7173138     49.92557 
+    1000    331.35701 -0.00041547757 -0.00084617695 -0.00054524403   -4.9096771    9.4258892   -9.2282314 
+    2000    351.43337 0.00024018494 -0.0010200426 0.0013016785   0.77696243   0.98093724    -1.553976 
+    3000     357.0805 0.00057767735 -0.00012016626 3.214942e-005 -0.012836362    1.2495675  -0.33624317 
+    4000    352.61857 0.00037732483 -0.00016859355 3.2922452e-005 0.0065302247    1.8829243  -0.28396352 
+    5000    336.62951 -0.00029783665 0.00055220554 -0.00038261356   0.32124213    1.8074202  -0.16698088 
+    6000    339.14938 -0.00032990803 0.00089739964 0.00011037741   0.46767036    1.0115318  -0.11339192 
+    7000    358.56397 -0.00047806182 -0.00017540898 0.00073798551    0.4436671    1.4475848  -0.33544329 
+    8000    347.58624 0.00066713911 0.00057882213 -9.3632524e-005   0.52345695    1.1883669 -0.082745831 
+    9000    372.24734 -0.00096530404 2.3225106e-005 0.00067695295   0.32597202    1.7047994  0.056099766 
+   10000    375.45477 -0.00042896494 0.00096694036 -0.00036837061   0.26100133    1.4680967  0.063499277 
+   11000     358.6306 -0.00089661745 0.00018525225 0.00015564437   0.68779316    1.3496618  0.023694398 
+   12000    335.98269 -0.00081365542 -0.00087350607 -0.00011855453   0.74450145    1.3126044 -0.0095725695 
+   13000    343.18402 -0.00067228413 0.00062346282 0.00089416486   0.96038515    1.2361532 0.0068264237 
+   14000    345.54427 -0.00066903974 -0.00061729512 -0.00090992926    1.0103175    1.1816245   0.14092155 
+   15000    355.03113 -0.00049449708 -0.00070410332 0.00014801966    1.1303566     1.129656   0.15634518 
+   16000    331.39144 -1.9347641e-005 -0.0007862306 -0.00040744196    1.1855427    1.0745662   0.20944074 
+   17000    375.56527 -0.00034220805 0.00067249245 -0.00034946838    1.1648682    1.0089045   0.23483148 
+   18000     340.2908 -0.00031153569 0.00010653627 7.0846878e-006    1.0986793   0.96413076   0.23533135 
+   19000    344.47115 -5.6266506e-005 -0.00060645032 -0.00081613182    1.2330201   0.88285392   0.30911657 
+   20000    325.47438 -0.00049930405 0.00050479974 -4.2205345e-005    1.2568907   0.78748626   0.31904187 
+   21000    333.56728 0.00067956052 -0.001333851 0.00054231624    1.2450071   0.77752868   0.44590901 
+   22000    332.39926 4.5737036e-005 -0.00038503606 6.6244184e-005    1.1826423   0.76790269   0.47629079 
+   23000    354.61711 -0.00039029808 0.00035160883 -0.0012769743    1.0817681   0.77738947   0.47463666 
+   24000    344.96773 0.00015844239 0.00054820863 0.00062607765    1.0195931    0.8493062   0.43923541 
+   25000     354.6913 0.00065336156 5.3458375e-006 -0.00090386767    1.0558731   0.81979988   0.39265731 
+   26000    345.99986 -0.0007040598 -0.00077309089 0.0004440351    1.0485183   0.78756271   0.36420145 
+   27000    347.90786 -0.00079285906 -0.00034517153 -0.00077766043   0.99724984   0.81328053   0.36515194 
+   28000     371.0127 -3.0444646e-005 -0.00030383726 0.0002702122    1.0026578   0.79744267   0.37791061 
+   29000    373.36718 0.00065576991 -0.00014569553 -0.00020478128   0.92910107   0.76035644   0.36280131 
+   30000    350.75277 -0.0011667795 0.0004734632 -0.00037651778   0.90750825   0.76184593    0.4186677 
+   31000    349.79205 -0.0010669209 0.00054002416 -0.00040680922   0.91168559   0.78921711   0.51576312 
+   32000    344.56965 0.00087914161 -0.00012717413 -0.00040187954   0.90530325    0.7599977   0.50242915 
+   33000    344.42212 -0.00038171651 0.00011788481 0.00049282634   0.88432802   0.76143258   0.51142279 
+   34000    362.45234 -0.001016429 -0.0004383357 -0.00051606214   0.83933282   0.70641395   0.50650732 
+   35000    331.48919 -0.0006258054 4.9520936e-005 -0.00032524691   0.79175099   0.70591567   0.52215121 
+   36000    350.17574 0.00019958895 6.1638772e-005 0.00034646726   0.79510843   0.59590494   0.51890042 
+   37000    341.04472 -0.0013416306 0.0013603129 0.00044314554   0.80274752   0.59085537   0.53649779 
+   38000    349.12383 -0.00016462693 -0.00013889844 0.00095557552   0.78252666    0.6253446   0.51264016 
+   39000    346.85454 0.00039708534 0.00036337134 0.00046598879   0.77134336    0.6410232    0.5015084 
+   40000    330.83815 -0.00026795916 4.1310393e-005 0.00066180225    0.7403298   0.63523624   0.64732593 
+   41000    344.29709 -0.00036633402 -3.0797367e-005 0.00012856583   0.72255535   0.63708689   0.58275759 
+   42000    351.15738 -0.00076725815 0.00025598196 0.00080960397   0.70209533   0.60501882   0.55640047 
+   43000    352.94415 -0.00037091505 -0.0013800642 -0.00045490671   0.71548949   0.56999268   0.55753282 
+   44000     349.4743 -0.00018499118 0.0011871018 0.00028400726   0.69075625   0.55624204   0.54259613 
+   45000    337.49422 0.0011789614 -0.00030332772 -0.00023674942   0.72374727   0.55391744   0.55236143 
+   46000      357.906 -0.00050204249 -0.00015517277 -0.00025790601   0.71690831   0.49594091   0.58206291 
+   47000    357.69122 0.0010573538 -0.00014037616 -0.00071340633   0.70914959   0.47351797   0.53467641 
+   48000    349.98672 0.00036958412 2.3214288e-005 -0.00089805202   0.66532646   0.47426055   0.52051615 
+   49000    339.32071 -0.00059958023 0.00035646817 8.2801076e-005   0.63446171    0.4798948   0.52268383 
+   50000    358.58172 0.00024224068 0.00015475562 -0.00039944947   0.65525712   0.46493812   0.53218725 
+   51000    355.07622 0.00037715243 0.00019166908 -0.0003843723   0.64012826   0.43803794   0.56054472 
+   52000     353.8821 0.00015927613 -5.886765e-005 0.00065108165   0.62288103   0.42222539    0.5805565 
+   53000    366.58844 -0.00094849599 0.00093621173 -0.00072881102   0.61084323   0.41376385   0.55771325 
+   54000    361.45249 3.4029181e-005 0.00032006072 0.00012683612   0.60436441   0.40301183   0.56839503 
+   55000    356.45821 4.8889894e-005 -0.00051041361 0.0010102828   0.57412947   0.42641872    0.5628505 
+   56000    353.14467 0.00020741781 0.00061962945 -0.00058225619    0.5852126   0.42467342   0.55458094 
+   57000    351.74829 -0.0011633721 0.00048855469 0.00019752583   0.61798524   0.45304334   0.55298235 
+   58000    344.77411 0.00031396458 -0.0016916895 0.00091664213    0.6238019   0.46262226   0.55179792 
+   59000    349.93883 0.00038992661 -0.00038301699 0.0011191878   0.60009035   0.44221742    0.5532272 
+   60000    352.99843 0.00098678505 0.00047866061 -0.00085158843   0.59791224   0.44059283   0.55278059 
+   61000     339.8523 0.0009569556 -0.00075572771 0.00047718617   0.59428234   0.43543767   0.58148526 
+   62000    330.83163 0.00099410406 -0.0009659781 -0.00039356413   0.59027766   0.44148277   0.58182934 
+   63000     339.9242 0.00075039479 0.00079574109 -0.0008186859   0.57410746   0.42396914   0.57623046 
+   64000    344.20392 -0.00010452978 0.00083081305 0.00079808117   0.59305161    0.4194123   0.57234598 
+   65000    369.55158 -0.00019340259 -0.00028163568 -0.0011713744   0.63446571   0.41407161   0.54721825 
+   66000    345.14238 0.00023011625 0.00058824293 0.0001197285   0.63402634   0.40366146   0.56345271 
+   67000    343.53568 -0.00055855565 0.00068747805 0.00065325532   0.61224556   0.48098088   0.56736075 
+   68000    352.10334 0.0001223948 -0.00072166952 -0.00036416513   0.62515325   0.51742948   0.56611894 
+   69000    351.66529 -0.00033551314 -0.00027456843 0.00047168058   0.62118859   0.51045823    0.5571613 
+   70000    355.65206 0.00033322983 -6.0340167e-005 0.00055646771   0.59973757   0.48379014   0.54938311 
+   71000    338.53296 0.0015207948 0.0010553054 -0.00072601177   0.61767451   0.48766617   0.53447065 
+   72000    347.72432 0.00019721369 -0.0007039246 7.6655618e-005   0.61275231   0.47836333   0.56469281 
+   73000    352.52427 0.00066927372 -0.00045077939 -0.00049076591   0.60839852   0.46277872   0.52425834 
+   74000    385.01664 0.00028712219 -0.00025352819 -0.00052251347   0.60160008   0.45913963   0.51734261 
+   75000    338.26383 -0.00058813142 -0.00022912469 0.00018410923   0.59374359   0.50554953    0.5014664 
+   76000    356.90728 -0.00025139501 -0.00018129641 0.00036026165    0.5980382   0.48787234   0.53579006 
+   77000    351.98089 -0.0014721968 1.1229825e-005 -0.00019374271   0.67117441   0.45167938   0.54043792 
+   78000    356.20892 -0.00053962415 4.4461637e-005 0.00055203295   0.65677681   0.42912289   0.53777354 
+   79000    356.46207 -0.00065410325 0.00039635518 -0.00077162223   0.64781648   0.45159437   0.55627359 
+   80000    342.39069 0.00017944565 -0.00036586539 -5.3173833e-005   0.66503859   0.44598132   0.53478694 
+   81000    346.29446 0.00077243637 0.00033292482 -0.00011882555   0.67081301   0.48180214   0.52052405 
+   82000     358.1746 -9.576727e-005 0.00031081386 -0.00024759886   0.64644567   0.44292217   0.51164576 
+   83000    353.17536 0.0018078048 0.0002283467 0.00032142266   0.65984284   0.45977959   0.50195212 
+   84000    345.28952 -2.1664096e-005 0.00023252819 0.0014024875   0.65724702   0.43539237   0.49964147 
+   85000    355.43504 0.00021893865 -0.0011106057 -0.00060498446   0.65151702   0.42963084   0.48565535 
+   86000    355.13888 -1.0294332e-005 -0.001589007 0.00054923999    0.6447635   0.43064679   0.46919065 
+   87000    352.89415 -0.00062972012 -0.00095922787 0.00054049005    0.6645599   0.43193381   0.47318241 
+   88000    354.18338 0.00093130294 0.00081829145 0.00030254866   0.64387885   0.43537293    0.4686466 
+   89000    346.88761 -0.00021249768 -0.002353755 0.00021355893   0.63319272   0.44319769   0.48088038 
+   90000    342.76609 -1.748586e-006 4.589984e-005 0.0005755772   0.62197201   0.46946992   0.49467525 
+   91000    332.24948 -0.00089045696 0.00048217957 -9.9341846e-005   0.67238065   0.46167873   0.49056052 
+   92000    355.40359 6.9772298e-005 0.00063897455 0.00014999636   0.65390928   0.46274258   0.46833636 
+   93000    345.37668  0.000575084 -0.00012415521 0.00089871138   0.65121562   0.44704885    0.4757495 
+   94000    350.09448 -7.8199322e-005 -0.0012006575 -0.00096032209   0.64481732   0.45843564   0.48301306 
+   95000    364.15611 0.00077936907 0.00014864208 -2.996738e-005    0.6853354   0.46579809   0.47721528 
+   96000    355.99349 0.00095589743 -0.00019570227 0.00068781421   0.68954949    0.4485614   0.46874304 
+   97000    338.55158 0.00018800589 4.9423899e-005 0.0011890403    0.6714336   0.44990146   0.53071369 
+   98000    345.52127 0.0006156472 -0.0010254086 -0.00012278929   0.66018966   0.49689403   0.52004396 
+   99000    342.58637 -0.00012918518 0.00040584314 0.00042386871   0.65470261    0.4810888   0.51017633 
+  100000    340.39106 0.00068607553 0.00019093381 0.00042107296   0.65546964   0.48368449   0.50829068 
+Loop time of 591.253 on 1 procs for 100000 steps with 768 atoms
+
+Performance: 14.613 ns/day, 1.642 hours/ns, 169.132 timesteps/s
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 409.3      | 409.3      | 409.3      |   0.0 | 69.23
+Bond    | 0.90612    | 0.90612    | 0.90612    |   0.0 |  0.15
+Kspace  | 145.37     | 145.37     | 145.37     |   0.0 | 24.59
+Neigh   | 23.245     | 23.245     | 23.245     |   0.0 |  3.93
+Comm    | 3.0462     | 3.0462     | 3.0462     |   0.0 |  0.52
+Output  | 0.55754    | 0.55754    | 0.55754    |   0.0 |  0.09
+Modify  | 7.8894     | 7.8894     | 7.8894     |   0.0 |  1.33
+Other   |            | 0.9373     |            |       |  0.16
+
+Nlocal:    768 ave 768 max 768 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    6504 ave 6504 max 6504 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    213858 ave 213858 max 213858 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 213858
+Ave neighs/atom = 278.461
+Ave special neighs/atom = 2
+Neighbor list builds = 3396
+Dangerous builds = 2
+variable     k equal (v_k11+v_k22+v_k33)/3.0
+variable     ndens equal count(all)/vol
+print        "average conductivity: $k[W/mK] @ $T K, ${ndens} /A^3"
+average conductivity: 0.549148270720973[W/mK] @ 350 K, 0.100284830825106 /A^3
+
+Total wall time: 0:09:51

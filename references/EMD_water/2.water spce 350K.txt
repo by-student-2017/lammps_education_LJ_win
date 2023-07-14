@@ -1,0 +1,125 @@
+#THERMAL CONDUCTIVITY of water SPC/E model
+
+#The SPC water model specifies a 3-site rigid water molecule with charges and Lennard-Jones parameters assigned to each of the 3 atoms. In LAMMPS the fix shake command can be used to hold the two O-H bonds and the H-O-H angle rigid. A bond style of harmonic and an angle style of harmonic or charmm should also be used.
+
+#These are the additional parameters (in real units) to set for O and H atoms and the water molecule to run a rigid SPC model:O mass = 15.9994;H mass = 1.008;O charge = -0.820;H charge = 0.410;LJ epsilon of OO = 0.1553;LJ sigma of OO = 3.166;LJ epsilon, sigma of OH, HH = 0.0;r0 of OH bond = 1.0;theta of HOH angle = 109.47
+
+#the SPC model was run with a 9 Angstrom cutoff for both LJ and Coulommbic terms.
+
+#The SPC/E (extended) water model is the same, except the partial charge assignemnts change:O charge = -0.8476;H charge = 0.4238
+
+# Initialization 
+
+units real
+
+dimension 3
+
+boundary p p p
+
+variable    T equal 350
+variable    V equal vol
+variable    dt equal 0.25
+variable    p equal 100     # correlation length
+variable    s equal 10      # sample interval
+variable    d equal $p*$s   # dump interval
+
+#For real units: mass = grams/mole;distance = Angstroms;time = femtoseconds;energy = Kcal/mole;velocity = Angstroms/femtosecond;temperature = Kelvin; pressure = atmospheres;dynamic viscosity = Poise;density = gram/cm^dim.
+
+#For style si, these are the units:mass = kilograms;distance = meters;time = seconds;energy = Joules;velocity = meters/second;force = Newtons;temperature = Kelvin;density = kilograms/meter^dim
+
+# convert from LAMMPS real units to SI
+
+variable    kB equal 1.3806504e-23    # [J/K] Boltzmann
+variable    kCal2J equal 4186.0/6.02214e23
+variable    A2m equal 1.0e-10
+variable    fs2s equal 1.0e-15
+variable    convert equal ${kCal2J}*${kCal2J}/${fs2s}/${A2m}
+thermo       $d
+
+atom_style full
+#attributes:bonds, angles, dihedrals, impropers, charge
+
+pair_style lj/cut/coul/long 9.0
+
+#The lj/cut styles compute the standard 12/6 Lennard-Jones potential with coulombic pairwise interaction.The Coulombic cutoff specified for this style means that pairwise interactions within this distance are computed.
+
+bond_style harmonic
+
+#Harmonic bonds are used for description of the so-called Urey-Bradley term which is a harmonic potential between atoms separated by two covalent bonds.
+
+angle_style harmonic
+
+#A bond style of harmonic and an angle style of harmonic or charmm should be used in SPC/E model.The harmonic bond style uses the potential E= K(r-r0)^2 where r0 is the equilibrium bond distance.The following coefficients must be defined for each bond type via the bond_coeff command: K (energy/distance^2);r0 (distance) 
+
+# Atom definition 
+read_data datafile2.dat
+
+# create groups 
+
+group hy type 1
+group ox type 2
+ 
+ set group hy charge  0.4238 #charge of H
+ set group ox charge -0.8476 #charge of O
+
+# Settings
+ 
+kspace_style pppm 1e-4
+
+# kspace_style command:Define a long-range solver for LAMMPS to use each timestep to compute long-range Coulombic interactions.Most of the long-range solvers perform their computation in K-space, hence the name of this command.
+
+
+neighbor 2.0 bin
+
+#Syntax:neighbor skin style
+#skin = extra distance beyond force cutoff (distance units).This command sets parameters that affect the building of pairwise neighbor lists. All atom pairs within a neighbor cutoff distance equal to the their force cutoff plus the skin distance are stored in the list. Typically, the larger the skin distance, the less often neighborlists need to be built, but more pairs must be checked for possible force interactions every timestep.
+#The style value selects what algorithm is used to build the list. The bin style creates the list by binning which is an operation that scales linearly with N/P, the number of atoms per processor where N = total number of atoms and P = number of processors. 
+
+neigh_modify every 1
+
+#equilibration and thermalization
+
+velocity     all create $T 102486 mom yes rot yes dist gaussian
+
+#creates ensemble of velocities for 'all' atoms using random number generator (with seed=102486) at a specific temperature (T*=$T)
+
+pair_coeff 1 1 0.1553 3.166 #LJ epsilon and sigma of OO
+pair_coeff 1 2 0.00 0.00  #LJ epsilon and sigma of OH
+pair_coeff 2 2 0.00 0.00 #LJ epsilon and sigma of HH
+
+fix 1 all shake 1e-4 100 0 b 1 a 1
+
+#Bond and angle constraints are applied to specified bonds and angles in the simulation by either the SHAKE or RATTLE algorithms.Each timestep the specified bonds and angles are reset to their equilibrium lengths and angular values via the SHAKE algorithm.This is done by applying an additional constraint force so that the new positions preserve the desired atom separations. The equations for the additional force are solved via an iterative method that typically converges to an accurate solution in a few iterations. The desired tolerance (e.g. 1.0e-4 = 1 part in 10000) and maximum # of iterations are specified as arguments. 
+#In LAMMPS, only small clusters of atoms can be constrained.LAMMPS allows for the following kinds of clusters to be constrained: one central atom bonded to 1 or 2 or 3 atoms, or one central atom bonded to 2 others and the angle between the 3 atoms also constrained.b values = one or more bond types;a values = one or more angle types that will be constrained. The fix shake command can be used to hold the two O-H bonds and the H-O-H angle rigid.
+
+
+fix   NVT all nvt temp $T $T 10 drag 0.2
+
+reset_timestep 0
+compute      myKE all ke/atom
+compute      myPE all pe/atom
+compute      myStress all stress/atom NULL virial
+compute      flux all heat/flux myKE myPE myStress
+
+variable     Jx equal c_flux[1]/vol
+variable     Jy equal c_flux[2]/vol
+variable     Jz equal c_flux[3]/vol
+fix          JJ all ave/correlate $s $p $d &
+             c_flux[1] c_flux[2] c_flux[3] type auto file J0Jt.dat ave running
+
+
+variable     scale equal ${convert}/${kB}/$T/$T/$V*$s*${dt}
+variable     k11 equal trap(f_JJ[3])*${scale}
+variable     k22 equal trap(f_JJ[4])*${scale}
+variable     k33 equal trap(f_JJ[5])*${scale}
+
+thermo_style custom step temp v_Jx v_Jy v_Jz v_k11 v_k22 v_k33
+
+#dump coord all custom 1 test.dump id type x y z
+# Run a simulation 
+
+run 100000
+variable     k equal (v_k11+v_k22+v_k33)/3.0
+variable     ndens equal count(all)/vol
+print        "average conductivity: $k[W/mK] @ $T K, ${ndens} /A^3"
+
