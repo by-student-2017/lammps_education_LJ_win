@@ -1,0 +1,89 @@
+## Title:   Optimizing Non-bonded Interactions of the OPLS Force Field for Aqueous Solutions of Carbohydrates: How to Capture Both Thermodynamics and Dynamics
+## Authors: Jamali, S. H., van Weste, T., Moultos, O. A., and Vlugt, T. J. H.
+## Journal: Journal of Chemical Theory and Computation
+## Date:    26-10-2018 
+## Purpose: Computing the density of a glucose-water mixture with a mass fraction of 50%
+
+#################### INITIALIZATION ####################
+units real
+dimension 3
+newton on
+boundary p p p
+atom_style full
+
+#################### VARIABLES ####################
+variable COEF equal (1)					# How many replicate of the system
+
+variable Temp equal 298.15					# Temperature in K
+variable Pres equal 1.0						# Pressure in atm.
+
+variable MoleMass equal 10809.26			# Total mass of the system
+variable MoleAtom equal 1620                # Total number of atoms in the system
+
+variable RandomSeed equal 12345             # The random seed for velocity
+variable tstep equal 1.0                    # 1fs integration time step
+variable nininpt equal 100000               # Initialize the NPT ensemble
+variable nsimnpt equal 2000000              # Production in the NPT ensemble
+variable Nf equal 100000 		            # The total number of sampling
+variable Ne equal  100                      # Sample every 10 cycles
+variable Nr equal ${Nf}/${Ne}               # The number of samples
+variable N_thermo equal ${Nf}               # 100 ps show results    
+variable Nblock equal ${nsimnpt}/5			# Averaging with 5 local averages
+
+variable nAvog equal 6.0221415e26           # Avogadro's number
+variable A3_in_m3 equal 1e-30              # Angstrom^3 in m^3
+variable nAtoms equal atoms                 # Total number of atoms
+variable nMolecules equal v_nAtoms/${MoleAtom} # Number of atoms per molecule
+variable MoleculeMass equal (${MoleMass}/${nAvog}) # /(kg/molecule)
+
+#################### ATOM DEFINITION and FORCEFIELD ####################
+read_data ./data.system                     # read the positions
+include forcefield.data                     # read the force field
+replicate ${COEF} ${COEF} ${COEF}
+
+#################### SETTINGS ####################
+
+min_style cg
+min_modify dmax 0.05 
+
+neighbor 2.0 bin
+neigh_modify every 1 delay 0 check yes
+
+reset_timestep 0
+run_style verlet
+
+dump whole_minimization all xyz 1000 minimization.xyz
+minimize 1.0e-8 1.0e-8 10000 100000
+undump whole_minimization
+reset_timestep 0
+
+#################### FIXES/Initialization of the system ####################
+fix integrate all npt temp ${Temp} ${Temp} 100.0 iso ${Pres} ${Pres} 1000.0
+
+velocity all create ${Temp} ${RandomSeed}  
+
+thermo ${N_thermo}
+
+# Just to initiate the atoms
+timestep 0.01
+run ${nininpt} 
+timestep 0.1
+run ${nininpt} 
+timestep 0.2
+run ${nininpt} 
+timestep 0.5
+run ${nininpt} 
+timestep ${tstep}
+run ${nininpt}
+reset_timestep 0
+
+#################### 2) Run the system with all averages ######################
+variable Volu equal vol
+fix VoluAve all ave/time 1 ${nsimnpt} ${nsimnpt} v_Volu file volume.dat
+
+variable Dens equal v_nMolecules*${MoleculeMass}/(vol*${A3_in_m3})
+fix DensAve all ave/time 1 ${Nblock} ${Nblock} v_Dens file density.dat
+
+run ${nsimnpt}
+
+quit
