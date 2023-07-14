@@ -73,3 +73,7 @@
 - A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
   https://doi.org/10.1021/acs.jpcb.2c08843
   pi-Conjugated_Polymers
+  
+- M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
+  https://doi.org/10.1021/jp103862v
+  ionic_liquid-CO2

@@ -307,6 +307,10 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jpcb.2c08843
 
 
+[IFL63] S. W. Robert, (2019).
+  https://core.ac.uk/download/pdf/188181601.pdf
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -410,6 +414,9 @@ The Kremer-Grest model is used in macromolecules.
 # Research data supporting "Classical quantum friction at water-carbon interfaces"
   https://www.repository.cam.ac.uk/items/3a91176e-428c-4163-9852-dcfcd6c40627
   https://doi.org/10.17863/CAM.89536
+------------------------------------------------------------------------------
+# Simulation Toolkit for Renewable Energy Advanced Materials Modeling
+  https://www.osti.gov/biblio/1259315
 ------------------------------------------------------------------------------
 # BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
   https://doi.org/10.1021/acs.jcim.7b00695
