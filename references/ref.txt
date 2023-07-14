@@ -93,3 +93,7 @@
 - M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
   https://doi.org/10.1063/5.0029490
   C60_BN
+  
+- S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
+  https://doi.org/10.1063/5.0095130
+  CaSO4-xH2O
