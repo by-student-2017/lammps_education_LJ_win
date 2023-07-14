@@ -69,3 +69,7 @@
 - S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
   https://doi.org/10.1021/acs.jctc.8b00909
   Aqueous_Solutions_of_Carbohydrates_OPLS
+  
+- A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
+  https://doi.org/10.1021/acs.jpcb.2c08843
+  pi-Conjugated_Polymers
