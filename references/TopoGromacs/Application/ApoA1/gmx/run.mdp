@@ -1,0 +1,35 @@
+; Parameters describing what to do, when to stop and what to save
+integrator	= md		; Algorithm
+nsteps		= 1000	  	; 
+tinit = 0
+dt = 0.001 ; 1fs timesteps
+
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+nstlist		    = 20		    ; Frequency to update the neighbor list and long range forces
+cutoff-scheme   = verlet
+ns_type		    = grid		; Method to determine neighbor list (simple, grid)
+coulombtype	    = PME		; Treatment of long range electrostatic interactions
+fourier-nx = 108
+fourier-ny = 108
+fourier-nz = 80
+pme-order = 4
+ewald-rtol = 1e-06
+vdwtype = Switch
+rvdw-switch = 1
+rcoulomb-switch = 1.0
+rcoulomb            = 1.2                ; Short-range electrostatic cut-off
+rvdw                = 1.2                ; Short-range Van der Waals cut-off
+pbc                     = xyz           ; Periodic Boundary Conditions (yes/no)
+;nstxout = 100;
+nstlog = 100;
+nstenergy                      = 100;
+periodic-molecules = no
+constraints = h-bonds
+constraint-algorithm = LINCS
+lincs_iter = 2
+continuation = no
+gen_vel = yes
+gen_temp = 300
+gen_seed = 123456
+Tcoupl = no
+pcoupl = no

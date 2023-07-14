@@ -1,0 +1,45 @@
+structure ../INPUT/xylosolv.psf
+coordinates ../INPUT/minimize.coor ;#This is really a pdb formatted file.
+
+paraTypeCharmm on
+parameters           ../INPUT/par_all36_carb.prm
+exclude              scaled1-4
+1-4scaling           1.0
+temperature          300
+firsttimestep 0
+switching on
+switchdist 10
+cutoff 12
+pairlistdist 14
+timestep 2.0
+rigidBonds all
+margin 1
+wrapWater on
+cellBasisVector1    70 0 0
+cellBasisVector2    0 70 0
+cellBasisVector3    0 0 70
+cellOrigin          0 0 0
+
+PME on
+PMEInterpOrder 4
+PMEGridSpacing 1.2
+#PMEOffload no
+outputname xyloglucan
+outputtiming         1000
+outputenergies 1000
+DCDfreq 1000
+xstfreq 1000
+
+#Barostat
+LangevinPiston on
+LangevinPistonTarget 1.01325
+LangevinPistonPeriod 200
+LangevinPistonDecay 100
+LangevinPistonTemp 300
+
+#Thermostat
+langevin on
+langevinTemp 300
+langevinDamping 1.0
+
+run 5000000

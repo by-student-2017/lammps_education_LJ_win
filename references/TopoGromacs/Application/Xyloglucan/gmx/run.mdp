@@ -1,0 +1,40 @@
+; Parameters describing what to do, when to stop and what to save
+integrator	= sd		; Algorithm
+nsteps		= 10000000	  	; 
+tinit = 0
+dt = 0.002 ; 2fs timesteps
+
+nstxout = 1000
+nstlog = 1000
+nstenergy = 1000
+nstlist		    = 10
+cutoff-scheme   = verlet
+ns-type = grid
+continuation=no
+
+pbc = xyz
+periodic-molecules = no
+coulombtype = PME
+vdwtype = Switch
+ewald-rtol = 1e-6
+pme-order = 4
+
+constraint-algorithm = LINCS
+constraints = h-bonds
+lincs_iter = 2
+
+rvdw-switch = 1.0
+rcoulomb	    = 1.2		; Short-range electrostatic cut-off
+rvdw		    = 1.2		; Short-range Van der Waals cut-off
+
+pcoupl = Parrinello-Rahman
+pcoupltype = isotropic
+compressibility = 4.5e-5
+ref-p = 1.01325
+tau-p = 1
+ref-t = 300
+tc-grps = system
+tau-t = 2
+
+gen-vel yes
+gen-temp 300

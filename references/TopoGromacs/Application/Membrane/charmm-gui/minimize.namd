@@ -1,0 +1,48 @@
+
+cellBasisVector1     111.067 0.0 0.0
+cellBasisVector2     0.0 111.067 0.0
+cellBasisVector3     0.0 0.0 163.506
+cellOrigin           0.0 0.0 0.0
+
+coordinates          step5_assembly.pdb
+temperature          300
+seed                 74269
+
+switching            on
+switchdist           10
+cutoff               12
+pairlistdist         13.5
+margin               0
+stepspercycle        20
+
+PME                  on
+PMEGridSpacing 1.2
+
+structure            step5_assembly.xplor.psf
+paraTypeCharmm on
+parameters     ../../toppar/par_all36_lipid.prm
+parameters     ../../toppar/par_all36_prot.prm
+parameters     ../../toppar/par_all36_na.prm
+parameters     ../../toppar/par_all36_na_additions.prm
+parameters     ../../toppar/par_water_ions.prm
+exclude              scaled1-4
+1-4scaling           1.0
+
+timestep             2.0
+rigidbonds all
+
+numsteps             500
+#outputtiming         20
+
+#constant pressure control
+useFlexibleCell yes
+useConstantRatio yes
+langevinPiston        on
+langevinPistonTarget  1.01325
+langevinPistonPeriod  200
+langevinPistonDecay   200
+langevinPistonTemp    300
+
+outputname           minimize
+
+minimize 1000

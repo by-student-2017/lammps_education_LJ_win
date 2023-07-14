@@ -1,0 +1,20 @@
+REMARK original generated coordinate pdb file
+ATOM      1  OH2 TIP3    1      -1.399   1.613  -0.621  1.00  0.00      WAT  O
+ATOM      2  H1  TIP3    1      -0.429   1.693  -0.654  1.00  0.00      WAT  H
+ATOM      3  H2  TIP3    1      -1.725   2.335  -1.163  1.00  0.00      WAT  H
+ATOM      4  OH2 TIP3    2      -2.237  -1.075  -0.591  1.00  0.00      WAT  O
+ATOM      5  H1  TIP3    2      -2.664  -1.329  -1.412  1.00  0.00      WAT  H
+ATOM      6  H2  TIP3    2      -2.027  -0.133  -0.701  1.00  0.00      WAT  H
+ATOM      7  OH2 TIP3    3       1.361   1.570  -0.282  1.00  0.00      WAT  O
+ATOM      8  H1  TIP3    3       1.754   0.718  -0.585  1.00  0.00      WAT  H
+ATOM      9  H2  TIP3    3       2.029   2.236  -0.461  1.00  0.00      WAT  H
+ATOM     10  OH2 TIP3    4       2.086  -0.905  -0.977  1.00  0.00      WAT  O
+ATOM     11  H1  TIP3    4       2.909  -1.382  -0.848  1.00  0.00      WAT  H
+ATOM     12  H2  TIP3    4       1.420  -1.395  -0.436  1.00  0.00      WAT  H
+ATOM     13  OH2 TIP3    5       0.180  -1.924   0.589  1.00  0.00      WAT  O
+ATOM     14  H1  TIP3    5       0.111  -1.260   1.294  1.00  0.00      WAT  H
+ATOM     15  H2  TIP3    5      -0.687  -1.853   0.158  1.00  0.00      WAT  H
+ATOM     16  OH2 TIP3    6      -0.028   0.524   2.059  1.00  0.00      WAT  O
+ATOM     17  H1  TIP3    6       0.514   1.045   1.449  1.00  0.00      WAT  H
+ATOM     18  H2  TIP3    6      -0.905   0.900   1.942  1.00  0.00      WAT  H
+END

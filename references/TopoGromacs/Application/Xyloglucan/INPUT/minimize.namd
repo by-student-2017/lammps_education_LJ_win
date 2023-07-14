@@ -1,0 +1,25 @@
+structure xylosolv.psf
+coordinates xylosolv.pdb
+
+paraTypeCharmm on
+parameters           par_all36_carb.prm
+exclude              scaled1-4
+1-4scaling           1.0
+temperature          0
+switching off
+cutoff 12
+pairlistdist 14
+wrapWater on
+cellBasisVector1    70 0 0
+cellBasisVector2    0 70 0
+cellBasisVector3    0 0 70
+cellOrigin          0 0 0
+
+PME on
+PMEInterpOrder 6
+PMEGridSpacing 1.2
+outputname minimize
+outputtiming         100
+outputenergies 100
+binaryoutput no
+minimize 100

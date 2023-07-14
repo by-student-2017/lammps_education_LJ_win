@@ -1,0 +1,45 @@
+*  Benchmark dynamics for DHFR in a cubic box of
+*  solvent using PBC w/ PME.  Total system contains 23,558 atoms,
+*  21,069 atoms associated with water molecules and 2589 protein atoms.
+*
+
+open unit 1 read form name "../../toppar/top_all36_prot.rtf"
+read rtf card unit 1
+close unit 1
+open unit 1 read form name "../../toppar/par_all36_prot.prm"
+read param card flex unit 1
+close unit 1
+stream "../../toppar/toppar_water_ions.str"
+
+read psf card name 5dfr_solv.psf
+open unit 1 read form name "minimized.pdb"
+read coor pdb unit 1 resi
+close unit 1
+
+! Dimension of a box
+set size 62.23
+Calc 7 = @size 
+set  theta = 90.0
+Crystal define cubic @7 @7 @7 @theta @theta @theta    
+crystal build cutoff 11 noper 0
+
+image byseg xcen 0.0 ycen 0.0 zcen 0.0 select segid 5dfr end
+image byres xcen 0.0 ycen 0.0 zcen 0.0 select segid wat end
+calc nwat = ?nsel / 3
+faster on
+
+shake fast bonh tol 1.0e-8 para 
+
+!prnlev 5 node 0
+open write unit 14 unform name run.dcd
+dynamics bycb leap start timestep 0.001 nstep 1000 nprint 100  iprfrq 100 -
+     firstt 298 finalt 298 -
+     iasors 1 iasvel 1 iscvel 0 iuncrd 14 -
+     inbfrq -1 imgfrq -1 ilbfrq 0 -
+     cdiel switch vatom vswitch -
+     eps 1.0 cutnb 11 cutim 11 ctofnb 9 ctonnb 7.5 -
+     Ewald kappa 0.320 pmEwald order 4 fftx 64 ffty 64 fftz 64 ntrfq 200 - !PME
+     hoover reft 298 tmass 250 tbath 298     ! Constant temperature
+
+stop
+

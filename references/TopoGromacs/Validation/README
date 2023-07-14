@@ -1,0 +1,8 @@
+Inside each directory are the essential scripts that generate and run the test cases described here, including parameters. The instructions for each will be discussed in the order they appear in the paper. You will need Gromacs (version 5.0 or greater), NAMD (version 2.6 or greater), and VMD (version 1.9.2 or greater)
+
+WaterHexamer: run watertest.sh in the main directory to generate the output for the prism-> prism book transformation. Note that this works best in VMD 1.9.2, where the Gromacs topology generated for water was not rigid by default.
+AminoAcids: run generation.py in the genhelpers directory for amino acid monomer results
+Nucleic: run generation.py in the genhelpers directory for nucleic acid monomer results
+Sugars: run generation.py in the genhelpers directory for sugar monomer results
+LipidIon: run generation.py in the genhelpers directory for lipid monomer interaction with ion results
+Peptides: run generation.py in the genhelpers directory. Note, this will make all possible tripeptides (8000 of them!), so be aware of potentially long runtimes. generationcharmm.py will generate the comparison data for CHARMM, and requires a local charmm binary.

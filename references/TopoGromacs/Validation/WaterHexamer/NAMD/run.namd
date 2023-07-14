@@ -1,0 +1,32 @@
+#NMA in vaccuum.
+
+coordinates ../INPUT/waterhexamer.pdb
+structure ../INPUT/waterhexamer.psf
+outputname waterhex
+
+paraTypeCharmm on
+parameters      ../INPUT/par_water_ions.str
+temperature     0
+# integrator params
+timestep        1.0
+exclude         scaled1-4
+1-4scaling      1.0
+# CHARMM and AMber use rigid water and SHAKE H-bonds.
+rigidBonds      none
+switching off
+cutoff          90.0
+pairlistdist    110.0
+
+outputTiming         1000
+outputEnergies 1000
+restartfreq         1000
+dcdfreq             1000
+xstFreq             1000
+
+# Constant Temperature Control
+langevin            on    ;# do langevin dynamics
+langevinDamping     1     ;# damping coefficient (gamma) of 5/ps
+langevinTemp        15
+langevinHydrogen    off  
+reinitvels 0
+run 1000000

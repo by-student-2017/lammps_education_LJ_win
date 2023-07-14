@@ -1,0 +1,29 @@
+; Parameters describing what to do, when to stop and what to save
+integrator	= md		; Algorithm
+nsteps		= 10000	  	; 
+tinit = 0
+dt = 0.001 ; 1fs timesteps
+
+nstxout = 1000
+nstlog = 1000
+nstenergy = 1000
+
+cutoff-scheme   = group
+nstlist		    = 0
+ns-type = simple
+vdwtype = Cut-off
+continuation=yes
+
+pbc = no
+rlist = 0
+coulombtype = Cut-off
+vdw-modifier = None
+coulomb-modifier = None
+constraints = none
+
+
+
+rcoulomb	    = 0		; Short-range electrostatic cut-off
+rvdw		    = 0		; Short-range Van der Waals cut-off
+
+

@@ -1,0 +1,39 @@
+
+cellBasisVector1     108.8612 0.0 0.0
+cellBasisVector2     0.0 108.8612 0.0
+cellBasisVector3     0.0 0.0 77.758
+cellOrigin           0.0 0.0 0.0
+
+coordinates          apoa1_36.pdb
+temperature          300
+seed                 74269
+
+switching            on
+switchdist           10
+cutoff               12
+pairlistdist         13.5
+margin               0
+stepspercycle        20
+
+PME                  on
+PMEGridSizeX         108
+PMEGridSizeY         108
+PMEGridSizeZ         80
+
+structure            apoa1_36.psf
+paraTypeCharmm on
+parameters     ../../toppar/par_all36_lipid.prm
+parameters     ../../toppar/par_all36_prot.prm
+parameters     ../../toppar/par_water_ions.prm
+exclude              scaled1-4
+1-4scaling           1.0
+
+timestep             1.0
+fullElectFrequency   4
+
+numsteps             500
+#outputtiming         20
+
+outputname           minimize
+
+minimize 1000

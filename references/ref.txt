@@ -53,3 +53,7 @@
 - S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
   https://doi.org/10.1007/s10973-020-10134-x
   EMD_water
+  
+- J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
+  https://doi.org/10.1021/acs.jcim.6b00103
+  TopoGromacs

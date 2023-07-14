@@ -1,0 +1,46 @@
+# protocol params
+numsteps        1000 
+
+# initial config
+coordinates     ../CHARMM/minimized.pdb
+temperature     300
+seed            314159
+
+# integrator params
+timestep        1.0
+
+# force field params
+structure       ../CHARMM/5dfr_solv.xplor.psf
+
+paraTypeCharmm on
+parameters      ../../toppar/par_all36_prot.prm
+parameters      ../../toppar/par_all36_carb.prm
+exclude         scaled1-4
+1-4scaling      1.0
+rigidBonds      all
+switching       on
+switchdist      7.5
+cutoff          9.0
+pairlistdist    11.0
+stepspercycle   10
+
+# output params
+outputname      5dhfr
+binaryoutput    yes
+outputTiming         100
+outputEnergies 100
+
+# periodic cell
+cellBasisVector1   62.23 0 0
+cellBasisVector2   0 62.23 0
+cellBasisVector3   0 0 62.23
+cellOrigin         0 0 0
+
+
+# full electrostatics
+PME             on
+PMEGridSizeX    64
+PMEGridSizeY    64
+PMEGridSizeZ    64
+mergeCrossterms no
+run 1000

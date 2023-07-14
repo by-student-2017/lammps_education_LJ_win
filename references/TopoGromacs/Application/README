@@ -1,0 +1,6 @@
+This contains the files needed to reproduce the specific applications performance in NAMD and Gromacs for a number of different systems, and relate their performance to one another. Note while the inputs are all given, NAMD in particular may need tuning to work well with your hardware. Try editing the NAMDARGS variable in the run.sh files to match your available hardware. In any directory, run.sh will generate the benchmark data analyzed in the text. For your own sanity, a multicore machine is recommended.
+
+ApoA1: This is a standard NAMD benchmark
+DHFR: This is a standard CHARMM/AMBER benchmark, and requies a local CHARMM installation.
+Membrane: An example of how this can be used with CHARMM-GUI
+Xyloglucan: An example of how this can be used with CarbBuilder
