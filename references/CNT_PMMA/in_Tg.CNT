@@ -1,0 +1,147 @@
+#====================================
+# Input script for polyethylene simulation
+# Equilibrate PP unit cell from 600K to 200K annealing for 1.5 ns
+# Edited by Chanwook Park , SNU.
+#====================================
+
+#==================
+# Basic set up
+#==================
+units		real
+atom_style	full
+boundary        p p p
+
+#==================
+# Define potential
+#==================
+pair_style       lj/cut/coul/long 9.5 9.5
+bond_style     class2
+angle_style     class2
+dihedral_style  class2
+improper_style  class2
+kspace_style	ewald 0.0001
+dielectric      1.0
+
+#====================================
+# Import structure
+#====================================
+read_data	PMMA_100_1%.data
+
+min_style cg
+minimize 1.0e-4 0.5 2000 2000
+
+velocity        all create 600 612345 dist gaussian # loop geom
+
+#====================================
+# Data calculation
+#====================================
+compute         Ctemp all temp                     
+compute         Cpress all pressure Ctemp           
+variable        sigmaxxGPa equal -c_Cpress[1]*0.0001            
+variable        sigmayyGPa equal -c_Cpress[2]*0.0001            
+variable        sigmazzGPa equal -c_Cpress[3]*0.0001
+variable        Lxx equal lx
+variable        Lyy equal ly
+variable        Lzz equal lz
+variable	Temp equal temp
+variable	Volume equal vol
+variable	Density equal density
+variable	SpVol equal 1/density
+
+# ----- Simulation conditions
+variable MAX_temp equal 620
+variable temp_decre equal 20
+variable MAXcount equal "ceil((v_MAX_temp-200)/v_temp_decre)"
+variable dt equal 1.0 # in terms of fs
+variable equiltime equal 200000 # in terms of fs
+
+variable equil_totstep equal "round(v_equiltime / v_dt)"
+variable avg_totstep equal "round(0.5*v_equil_totstep)"
+
+
+#===================================
+# Pre-equil1
+#===================================
+timestep	0.1
+fix             Fpre1 all nvt temp 600.0 600.0 20.0 drag 2.0
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+run             10000
+unfix           Fpre1
+#===================================
+# Pre-equil2
+#===================================
+timestep	0.5
+fix             Fpre2 all nvt temp 600.0 600.0 20.0 drag 2.0
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+run             10000
+unfix           Fpre2
+#===================================
+# Pre-equil3
+#===================================
+timestep	1.0
+fix             Fpre3 all nvt temp 600.0 600.0 20.0 drag 2.0
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+run             10000
+unfix           Fpre3
+#===================================
+# Pre-equil4
+#===================================
+timestep	1.0
+fix             Fpre4 all npt temp 600.0 600.0 20.0 iso 1.0 1.0 20.0 drag 2.0
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+run             100000
+unfix           Fpre4
+
+# Use dump.tensile.atom file for Ovito visualization
+dump         1 all custom ${equil_totstep} dump.tensile.atom id type xs ys zs fx fy fz
+
+reset_timestep 0
+
+timestep ${dt}
+# ----- Start loop
+label looplabel
+variable loopcounter loop ${MAXcount}
+
+variable Tobj equal "v_MAX_temp-v_loopcounter*v_temp_decre"
+
+velocity all create ${Tobj} 12345 mom yes dist gaussian
+
+fix             1 all npt temp ${Tobj} ${Tobj} 20.0 iso 1.0 1.0 20.0 drag 2.0
+fix             2 all ave/time 1 ${avg_totstep} ${equil_totstep} v_Lxx v_Lyy v_Lzz v_Temp v_SpVol 
+
+variable t_step equal v_equil_totstep*v_loopcounter
+
+restart ${equil_totstep} Tg.restart
+run ${equil_totstep} 
+
+variable avgLxx_tmp equal "f_2[1]" # output of fix 2 is the average value of lxtrace 
+variable avgLxx equal ${avgLxx_tmp} 
+variable avgLyy_tmp equal "f_2[2]" 
+variable avgLyy equal ${avgLyy_tmp} 
+variable avgLzz_tmp equal "f_2[3]" 
+variable avgLzz equal ${avgLzz_tmp} 
+variable avgTemp_tmp equal "f_2[4]" 
+variable avgTemp equal ${avgTemp_tmp} 
+variable avgSpVol_tmp equal "f_2[5]" 
+variable avgSpVol equal ${avgSpVol_tmp} 
+
+
+unfix 1
+unfix 2 
+shell echo ${Tobj} ${avgLxx} ${avgLyy} ${avgLzz} ${avgTemp} ${avgSpVol}>> out_Tg.data
+
+next loopcounter
+jump in_Tg.CNT looplabel
+
+
+#thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa #lx ly lz vol density
+#thermo          20000
+#dump            Datom_NPT1 all custom 100000 annealing.lammpstrj id type xu yu zu

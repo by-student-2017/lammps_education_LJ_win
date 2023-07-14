@@ -1,0 +1,127 @@
+#====================================
+# Input script for tensile test in xx direction
+# Tension, mech propt NPT 300K
+# Edited by Chanwook Park , SNU. test!! 
+#====================================
+
+#====================================
+# Import restart file
+#====================================
+read_restart    annealing.restart.700000
+velocity        all create 300 345678 dist gaussian 
+
+#==================
+# Define potential
+#==================
+pair_style       lj/cut/coul/long 9.5 9.5
+kspace_style	ewald 0.0001
+
+#====================================
+# Data calculation
+#====================================
+#compute fg all fragment/atom
+compute cc1 all chunk/atom molecule
+compute myChunk all gyration/chunk cc1
+
+compute         Ctemp all temp                     
+compute         Cpress all pressure Ctemp        
+
+compute	peatom all pe/atom  
+compute	volall all voronoi/atom
+
+compute	stressall all stress/atom NULL   
+variable	pall atom (c_stressall[1]/c_volall[1]+c_stressall[2]/c_volall[1]+c_stressall[3]/c_volall[1])/30000
+
+compute	stressallpair all stress/atom NULL pair  
+variable	pallpair atom (c_stressallpair[1]/c_volall[1]+c_stressallpair[2]/c_volall[1]+c_stressallpair[3]/c_volall[1])/30000
+
+compute	stressallbond all stress/atom NULL bond
+variable	pallbond atom (c_stressallbond[1]/c_volall[1]+c_stressallbond[2]/c_volall[1]+c_stressallbond[3]/c_volall[1])/30000
+
+compute	stressallangle all stress/atom NULL angle  
+variable	pallangle atom (c_stressallangle[1]/c_volall[1]+c_stressallangle[2]/c_volall[1]+c_stressallangle[3]/c_volall[1])/30000
+
+compute	stressalldihedral all stress/atom NULL dihedral   
+variable	palldihedral atom (c_stressalldihedral[1]/c_volall[1]+c_stressalldihedral[2]/c_volall[1]+c_stressalldihedral[3]/c_volall[1])/30000
+
+compute	stressallimproper all stress/atom NULL improper   
+variable	pallimproper atom (c_stressallimproper[1]/c_volall[1]+c_stressallimproper[2]/c_volall[1]+c_stressallimproper[3]/c_volall[1])/30000
+ 
+variable        sigmaxxGPa equal -c_Cpress[1]*0.0001            
+variable        sigmayyGPa equal -c_Cpress[2]*0.0001            
+variable        sigmazzGPa equal -c_Cpress[3]*0.0001 
+variable        Lxx equal lx
+variable        Lyy equal ly
+variable        Lzz equal lz
+variable	Temp equal temp
+variable	Volume equal vol
+variable	Density equal density
+
+# ----- Simulation conditions
+variable	Rate equal 10
+
+variable	equil_ref equal 5000
+variable	equil_totstep equal "round(v_equil_ref/v_Rate)"
+variable	avg_totstep equal "round(v_equil_totstep/2)"
+
+variable	strainrate_ref equal 0.000002
+variable	strainrate equal "v_strainrate_ref*v_Rate"
+
+variable	fixtime_ref equal 20000
+variable	fixtime equal "round(v_fixtime_ref/v_Rate)"
+
+variable	dumptime_ref equal 100000
+variable	dumptime equal "ceil(v_dumptime_ref/v_Rate)"
+
+variable	runtime_ref equal 1000000
+variable	runtime equal "ceil(v_runtime_ref/v_Rate)"
+
+#===================================
+# Short equil
+#===================================
+timestep	1.0
+fix             Fshort all nvt temp 300.0 300.0 20.0 drag 2.0
+
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          ${fixtime}
+
+run             10000
+unfix           Fshort
+#===================================
+# Pre-equil
+#===================================
+fix             Fpre all npt temp 300.0 300.0 20.0 aniso 1.0 1.0 20.0 drag 2.0
+
+run             100000
+unfix           Fpre
+
+variable	Lx0 equal ${Lxx}
+variable	strain equal (lx-v_Lx0)/v_Lx0
+
+
+#====================================
+# Ensemble simulation
+#====================================
+fix             Flength all ave/time 1 ${avg_totstep} ${equil_totstep} v_Lxx v_Lyy v_Lzz v_strain v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa v_Density file stress_tensionxx.txt
+
+fix		Fnpt all npt temp 300.0 300.0 20.0 y 1.0 1.0 20.0 z 1.0 1.0 20.0 drag 2.0 
+
+fix             Ftension all deform ${fixtime} x erate ${strainrate} remap x
+
+fix 		Rg all ave/time 1 ${fixtime} ${fixtime} c_myChunk file Rg.txt mode vector
+
+# Output set up
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz v_strain vol density
+thermo          ${fixtime}
+
+dump         1 all custom ${fixtime} dump.tensilexx.atom id type xs ys zs fx fy fz c_peatom v_pall v_pallpair v_pallbond v_pallangle v_palldihedral v_pallimproper c_cc1
+            
+#====================================
+# Run time and restart
+#====================================
+
+restart         ${dumptime} tensionxx.restart
+run		${runtime}
+
+

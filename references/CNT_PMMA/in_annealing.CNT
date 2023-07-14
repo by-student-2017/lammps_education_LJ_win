@@ -1,0 +1,102 @@
+#====================================
+# Input script for polyethylene simulation
+# Equilibrate PP unit cell from 600K to 300K annealing for 1.5 ns
+# Edited by Chanwook Park , SNU.
+#====================================
+
+#==================
+# Basic set up
+#==================
+units		real
+atom_style	full
+boundary        p p p
+
+#==================
+# Define potential
+#==================
+pair_style       lj/cut/coul/long 9.5 9.5
+bond_style     class2
+angle_style     class2
+dihedral_style  class2
+improper_style class2
+kspace_style	ewald 0.0001
+dielectric      1.0
+
+#====================================
+# Import structure
+#====================================
+read_data	PMMA_100_1%.data
+
+min_style cg
+minimize 1.0e-4 0.5 2000 2000
+
+velocity        all create 600 123456 dist gaussian # loop geom
+
+#====================================
+# Data calculation
+#====================================
+compute         Ctemp all temp                     
+compute         Cpress all pressure Ctemp           
+variable        sigmaxxGPa equal -c_Cpress[1]*0.0001            
+variable        sigmayyGPa equal -c_Cpress[2]*0.0001            
+variable        sigmazzGPa equal -c_Cpress[3]*0.0001
+variable        Lxx equal lx
+variable        Lyy equal ly
+variable        Lzz equal lz
+variable	Temp equal temp
+variable	Volume equal vol
+variable	Density equal density
+variable	SpVol equal 1/density
+
+#===================================
+# Short equil
+#===================================
+
+timestep	0.1
+fix             Fshort all nvt temp 600.0 600.0 20.0 drag 2.0
+
+# Output set up
+
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+
+run             10000
+unfix           Fshort
+
+reset_timestep 0
+
+#====================================
+# NVT1
+#====================================
+
+timestep	0.3
+fix		Fnvt1 all nvt temp 600.0 300.0 20.0 drag 2.0
+fix             Flength all ave/time 1 10000 20000 v_Lxx v_Lyy v_Lzz v_Temp v_SpVol v_Volume v_Density v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa file output_annealing1.txt          
+
+# Output set up
+
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          2000
+
+# Use dump.tensile.atom file for Ovito visualization
+dump         1 all custom 100000 dump.tensile.atom id type xs ys zs fx fy fz
+
+restart         100000 annealing.restart
+run             200000
+unfix		Fnvt1
+
+#====================================
+# NPT2
+#====================================
+
+timestep	1.0
+fix             Fnpt2 all npt temp 300.0 300.0 20.0 aniso 1.0 1.0 20.0 drag 2.0
+fix             Flength all ave/time 1 18000 20000 v_Lxx v_Lyy v_Lzz v_Temp v_SpVol v_Volume v_Density v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa file output_annealing2.txt 
+
+# Output set up
+
+thermo_style	custom step temp pe ke v_sigmaxxGPa v_sigmayyGPa v_sigmazzGPa lx ly lz vol density
+thermo          20000
+
+restart         100000 annealing.restart
+run		500000

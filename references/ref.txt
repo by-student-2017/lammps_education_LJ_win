@@ -37,3 +37,11 @@
 - J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
   https://doi.org/10.1063/1.4812362
   free-energy
+  
+- G. M. Tow et al., J. Chem. Phys. 149 (2018) 244502.
+  https://doi.org/10.1063/1.5054758
+  ESM
+  
+- J. Jung et al., Eur. Polym. 114 (2019) 223-233.
+  https://doi.org/10.1016/j.eurpolymj.2019.02.042
+  CNT_PMMA

@@ -1,0 +1,48 @@
+#====================================
+# computing radius of gyration
+# Compute Rg by fragment
+# Edited by JJW , SNU.
+#====================================
+
+#==================
+# Basic set up
+#==================
+units		real
+atom_style	full
+boundary        p p p
+
+#==================
+# Define potential
+#==================
+pair_style       lj/cut/coul/long 9.5 9.5
+bond_style     class2
+angle_style     class2
+dihedral_style  class2
+improper_style class2
+kspace_style	ewald 0.0001
+dielectric      1.0
+
+#====================================
+# Import structure
+#====================================
+read_data      PMMA_100_1%.data
+
+
+velocity        all create 300 104983 dist gaussian # loop geom
+
+#====================================
+# Data calculation
+#====================================
+
+compute fg all fragment/atom
+compute cc1 all chunk/atom c_fg
+compute myChunk all gyration/chunk cc1
+
+
+fix 1 all ave/time 100 1 100 c_myChunk file tmp.out mode vector
+fix 2 all ave/chunk 100 1 100 cc1 density/mass file mass.out
+
+run 110
+
+unfix 1
+unfix 2
