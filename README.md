@@ -347,6 +347,11 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jpcc.1c05139
 
 
+[IFL73] K. Knausgard, Master Thesis (2012).
+  https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/237117
+  water-graphene
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -467,4 +472,9 @@ The Kremer-Grest model is used in macromolecules.
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
 # Epoxy resins: https://nics.utk.edu/wp-content/uploads/sites/275/2021/08/19-Schoff-final-presentation.pdf
+------------------------------------------------------------------------------
+# CP2k: https://doi.org/10.1021/acs.jpcc.0c00190
+------------------------------------------------------------------------------
+# Interatomic Potentials Repository Project
+  https://www.ctcms.nist.gov/potentials/Download/2020Workshop/Hale-Interatomic-Potentials-Repository-Project.pdf
 ------------------------------------------------------------------------------
