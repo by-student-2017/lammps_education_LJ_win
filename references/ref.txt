@@ -77,3 +77,11 @@
 - M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
   https://doi.org/10.1021/jp103862v
   ionic_liquid-CO2
+  
+- S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 2667-2677.
+  https://doi.org/10.1021/acs.jctc.8b00170
+  FSE
+  
+- M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
+  https://doi.org/10.1039/C8SC04971H
+  cocrystal

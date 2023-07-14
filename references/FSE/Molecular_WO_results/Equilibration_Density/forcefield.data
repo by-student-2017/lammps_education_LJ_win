@@ -1,0 +1,70 @@
+#################### FORCE FIELDS ####################
+pair_style lj/cut/coul/long 10.0
+pair_modify mix arithmetic tail yes  # w/ ATC + L-B mixing rule
+kspace_style pppm 1e-6
+bond_style harmonic
+angle_style harmonic
+dihedral_style trappe 
+improper_style none
+special_bonds lj 0.0 0.0 0.0 coul 0.0 0.0 0.0 dihedral no
+
+# Pair Coeffs
+#
+# 1  C2E
+# 2  C3
+# 3  C3E
+# 4  H
+# 5  HE
+# 6  O
+# 7  OE
+pair_coeff 1 1 0.09140 3.95
+pair_coeff 2 2 0.19475 3.75
+pair_coeff 3 3 0.19475 3.75
+pair_coeff 4 4 0.0 0.0
+pair_coeff 5 5 0.0 0.0
+pair_coeff 6 6 0.18481 3.02
+pair_coeff 7 7 0.18481 3.02
+
+# Bond Coeffs
+#
+# 1  C2E-C3E
+# 2  C2E-OE
+# 3  C3-O
+# 4  H-O
+# 5  HE-OE
+bond_coeff 1 310.0 1.540 	#OPLS-AA
+bond_coeff 2 1000.0 1.430	#shake
+bond_coeff 3 1000.0 1.430	#shake
+bond_coeff 4 1000.0 0.945	#shake
+bond_coeff 5 1000.0 0.945	#shake
+
+# Angle Coeffs
+#
+# 1  C2E-OE-HE
+# 2  C3-O-H
+# 3  C3E-C2E-OE
+angle_coeff 1 55.0  108.5 
+angle_coeff 2 55.0  108.5 
+angle_coeff 3 50.0  109.5 
+
+# Dihedral Coeffs
+#
+# 1  C3E-C2E-OE-HE
+dihedral_coeff 1  0.00 +0.4170 -0.0580 +0.3735
+
+# Charges of the atoms
+#
+# 1  C2E
+# 2  C3
+# 3  C3E
+# 4  H
+# 5  HE
+# 6  O
+# 7  OE
+set type 1 charge +0.265	# TraPPE
+set type 2 charge +0.265	# TraPPE
+set type 3 charge  0.000	# TraPPE
+set type 4 charge +0.435	# TraPPE
+set type 5 charge +0.435	# TraPPE
+set type 6 charge -0.700	# TraPPE
+set type 7 charge -0.700	# TraPPE

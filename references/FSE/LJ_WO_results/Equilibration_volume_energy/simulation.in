@@ -1,0 +1,158 @@
+## Title:   Finite-size Effects of Binary Mutual Diffusion Coefficients from Molecular Dynamics
+## Authors: Jamali, S. H., Wolff, L., Becker, T. M., Bardow, A., Vlugt, T. J. H., Moultos, O. A.
+## Journal: Journal of Chemical Theory and Computation
+## Purpose: Computing volumes and energies for the corresponding pressure and temperature
+## Date:    13-04-2018 
+
+boundary p p p
+units lj
+atom_style molecular 
+
+#################### VARIABLES ####################
+variable COEF equal (1)                             # A multiplier for the number of particles
+variable mol1 equal (250*${COEF})                   # number of particle 1
+variable mol2 equal (500*${COEF}-${mol1})           # number of particle 2
+
+variable s11 equal 1.0                              # sigma 11
+variable s22 equal 1.2                              # sigma 22
+variable s12 equal (${s11}+${s22})/2.0              # sigma 12 (arithmetic mixing)
+variable mas1 equal 1.0                             # mass of particle 1 
+variable mas2 equal (${mas1}*(${s22}/${s11})^3)     # mass of particle 2
+variable e11 equal 1.0                              # epsilon 11
+variable e22 equal 0.8                              # epsilon 22
+variable e12 equal sqrt(${e11}*${e22})*(1.0-(-0.3)) # epsilon 12 (modified Lorentz-Berthelot)
+variable rcut equal 4.0                             # cutoff radius
+variable skin equal 0.5                             # verlet list parameters
+variable checkbin equal 2                           # verlet list parameters
+
+variable temp equal 0.65                            # reduced external temperature (T*)
+variable pext equal 0.05                            # reduced external pressure (P*)
+variable box equal 10.0*(${COEF}^(1.0/3.0))         # initial box size ( box > 2*cutoff)
+variable dt equal 0.001                             # timestep (t*)
+variable Ne equal 100                               # sampling every
+variable Nr equal 1000                              # repeating sampling
+variable Nf equal 100000                            # frequency of sampling
+variable nininpt equal 500000                       # initialization in NPT (2 damping rates)
+variable nsimnpt equal 4000000                      # sampling volume in NPT
+variable nininvt equal 500000                       # initializing in NVT (2 damping rates)
+variable nsamnvt equal 4000000                      # sampling energy in NVT 
+variable NBnpt equal ${nsimnpt}/5                   # block avering sampling rate for volume
+variable NBnvt equal ${nsamnvt}/5                   # block avering sampling rate for energy
+
+variable random_V equal 1234                        # the random seed to initialize velocities
+variable random_m1 equal 123                        # the random seed to create LJ species 1
+variable random_m2 equal 235                        # the random seed to create LJ species 2
+
+thermo ${Nf}
+
+#################### FORCE FIELDS ####################
+region region1 block 0 ${box} 0 ${box} 0 ${box}
+create_box 2 region1   
+mass 1 ${mas1}        
+mass 2 ${mas2}        
+create_atoms 1 random ${mol1} ${random_m1} NULL 
+create_atoms 2 random ${mol2} ${random_m2} NULL 
+pair_style lj/cut ${rcut}                            # cutoff radius (sigma) 
+pair_modify mix arithmetic shift yes                 # shifted wo/ analytic tail correction
+pair_coeff 1 1 ${e11} ${s11}        # pair 1-1: epsilon , sigma 
+pair_coeff 1 2 ${e12} ${s12}        # pair 1-2: epsilon , sigma 
+pair_coeff 2 2 ${e22} ${s22}        # pair 2-2: epsilon , sigma 
+
+#################### SETTINGS ####################
+group 1 type 1
+group 2 type 2            
+variable numgroup1 equal count(1)
+variable numgroup2 equal count(2)
+
+neighbor ${skin} bin
+neigh_modify every ${checkbin} delay 0 check yes
+
+timestep ${dt}
+reset_timestep 0
+run_style verlet
+
+dump whole_minimization all xyz 10000 minimization.xyz
+min_style cg 
+minimize 1.0e-6 1.0e-6 10000 100000
+undump whole_minimization
+reset_timestep 0
+
+#################### 1) Equilibrating in NPT ensemble ####################
+
+velocity all create ${temp} ${random_V} 
+
+fix integrate all npt temp ${temp} ${temp} 0.1 iso ${pext} ${pext} 1.0
+
+timestep ${dt}
+run ${nininpt}
+
+unfix integrate
+fix integrate all npt temp ${temp} ${temp} 1.0 iso ${pext} ${pext} 10.0
+
+run ${nininpt}
+reset_timestep 0
+
+#################### 2) Producing in NPT ensemble ####################
+
+# Average volume
+variable Volu equal vol
+fix VoluAve all ave/time 1 ${nsimnpt} ${nsimnpt} v_Volu file volume.dat
+
+# Average density
+variable Dens equal (v_numgroup1+v_numgroup2)/vol
+fix DensAve all ave/time 1 ${NBnpt} ${NBnpt} v_Dens file density.dat
+
+run ${nsimnpt}
+reset_timestep 0
+
+#################### 3) Initializing in NVT ensemble ####################
+
+# scaling the box to the average simualtion length
+variable sidesize equal (f_VoluAve^(1.0/3.0))
+variable xlow equal xlo
+variable ylow equal ylo
+variable zlow equal zlo
+variable xhig equal (xlo+${sidesize})
+variable yhig equal (ylo+${sidesize})
+variable zhig equal (zlo+${sidesize})
+change_box all x final ${xlow} ${xhig} y final ${ylow} ${yhig} z final ${zlow} ${zhig}
+unfix VoluAve
+unfix DensAve
+
+unfix integrate
+fix integrate all nvt temp ${temp} ${temp} 0.1
+run ${nininvt}
+
+unfix integrate
+fix integrate all nvt temp ${temp} ${temp} 1.0
+
+run ${nininvt}
+reset_timestep 0
+
+#################### 4) Producing in NVT ensemble #####################
+
+# Average temperature
+compute T all temp
+fix TempAve all ave/time ${Ne} ${Nr} ${Nf} c_T file temperature.dat
+
+# Average pressure
+variable P equal press
+fix PressAve all ave/time ${Ne} ${Nr} ${Nf} v_P file pressure.dat
+
+# Average potential energy
+variable PE equal pe
+fix PEAve all ave/time ${Ne} ${Nr} ${Nf} v_PE file PotenE.dat
+
+# Average total energy
+variable TE equal etotal
+fix TEave all ave/time 1 ${nsamnvt} ${nsamnvt} v_TE file TotalE.dat
+fix TEins all ave/time 1 ${NBnvt} ${NBnvt} v_TE file TotalEblock.dat
+
+thermo_style custom step temp f_TempAve press f_PressAve pe ke etotal
+thermo_modify flush yes
+
+run ${nsamnvt}
+
+
+quit
+

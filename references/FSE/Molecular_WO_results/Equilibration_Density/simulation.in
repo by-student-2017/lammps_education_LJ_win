@@ -1,0 +1,89 @@
+## Title:   Finite-size Effects of Binary Mutual Diffusion Coefficients from Molecular Dynamics
+## Authors: Jamali, S. H., Wolff, L., Becker, T. M., Bardow, A., Vlugt, T. J. H., Moultos, O. A.
+## Journal: Journal of Chemical Theory and Computation
+## Purpose: Computing volumes and densities for the corresponding pressure and temperature
+## Date:    13-04-2018 
+
+boundary p p p
+units real
+atom_style full
+
+#################### VARIABLES ####################
+variable Temp equal 298						# Temperature in K
+variable Pres equal 1.0						# Pressure in atm.
+
+variable MoleMass equal 78.11				# Molar mass (kg/kmol) of 1 methanol+ 1 ethanol
+variable MoleAtom equal 7                   # Number of (pseudo)atoms in 1 methanol+ 1 ethanol
+variable RandomSeed equal 12345             # The random seed for velocity
+variable tstep equal 1.0                    # timestep in fs
+variable nininpt equal 1000000              # initializing in NPT
+variable nsimnpt equal 10000000             # sampling in NVT
+variable Nblock equal ${nsimnpt}/5          # Averaging with 5 local averages
+variable Ne equal 100                       # sampling every
+variable Nr equal 1000                      # repeating sampling
+variable Nf equal 100000                    # frequency of sampling
+
+variable nAvog equal 6.0221415e26           # Avogadro's number
+variable A3_in_m3 equal 1e-30               # Angstrom^3 in m^3
+variable nAtoms equal atoms                 # Total number of (pseudo)atoms
+variable nMolecules equal v_nAtoms/${MoleAtom}       # Number of atoms per 1 methanol+ 1 ethanol
+variable MoleculeMass equal (${MoleMass}/${nAvog})   # /(kg/molecule)
+
+#################### ATOM DEFINITION and FORCEFIELD ####################
+read_data ./data.system                     # read the positions
+include forcefield.data                     # read the force field
+
+#################### SETTINGS ####################
+group 1 type 6     # methanol oxygen
+group 2 type 7     # ethanol oxygen 
+
+neighbor 2.0 bin
+neigh_modify every 2 delay 0 check yes
+
+reset_timestep 0
+run_style verlet
+
+dump whole_minimization all xyz 100 minimization.xyz
+min_style cg
+minimize 1.0e-8 1.0e-8 1000 10000
+undump whole_minimization
+reset_timestep 0
+
+###################### 1) Equilibrating in NPT ensemble ######################
+
+fix constrain all shake 1.0e-6 1000 0 b 2 3 4 5
+fix integrate all npt temp ${Temp} ${Temp} 100.0 iso ${Pres} ${Pres} 1000.0
+
+velocity all create ${Temp} ${RandomSeed}  
+
+thermo ${Nf}
+
+# Minimize the whole system correctly according to the force field and velocities
+timestep 0.1
+run 10000 
+timestep 0.2
+run 10000 
+timestep 0.5
+run 10000 
+timestep 0.8
+run 10000 
+reset_timestep 0
+
+timestep ${tstep}
+run ${nininpt}
+reset_timestep 0
+
+###################### 2) Run the system with all averages ######################
+
+# Average volume
+variable Volu equal vol
+fix VoluAve all ave/time 1 ${nsimnpt} ${nsimnpt} v_Volu file volume.dat
+
+# Average density
+variable Dens equal v_nMolecules*${MoleculeMass}/(vol*${A3_in_m3})
+fix DensAve all ave/time 1 ${Nblock} ${Nblock} v_Dens file density.dat
+
+run ${nsimnpt}
+
+quit
+

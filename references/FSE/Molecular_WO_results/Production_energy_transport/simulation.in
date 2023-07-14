@@ -1,0 +1,155 @@
+## Title:   Finite-size Effects of Binary Mutual Diffusion Coefficients from Molecular Dynamics
+## Authors: Jamali, S. H., Wolff, L., Becker, T. M., Bardow, A., Vlugt, T. J. H., Moultos, O. A.
+## Journal: Journal of Chemical Theory and Computation
+## Purpose: Computing energies and transport properties for the corresponding pressure and temperature
+## Date:    13-04-2018 
+
+boundary p p p
+units real
+atom_style full
+
+#################### VARIABLES ####################
+variable Temp equal 298                     # Temperature in K
+variable Pres equal 100.0                   # Pressure in atm. (fast compression)
+variable volum equal 41403.2                # The volume size for NVT ensemble
+
+variable RandomSeed equal 12340             # The random seed for velocity
+variable tstep equal 1.0                    # timestep in fs
+variable nininpt equal  1000000             # initializing in NPT
+variable nininvt equal  1000000             # initializing in NVT
+variable nsamnvt equal  8000000             # sampling in NVT
+variable nrun equal   200000000             # production in NVE
+variable Ne equal 100                       # sampling every
+variable Nr equal 1000                      # repeating sampling
+variable Nf equal 100000                    # frequency of samplin
+variable Nvis equal 5                       # sampling stress tensor elements (Viscosity)
+variable Ndif equal 100000                  # sampling the position of atoms (Diffusion/RDF)
+
+
+#################### ATOM DEFINITION and FORCEFIELD ####################
+read_data ./data.system                     # read the positions
+include forcefield.data                     # read the force field
+
+#################### SETTINGS ####################
+group 1 type 6     # methanol oxygen 
+group 2 type 7     # ethanol oxygen  
+
+neighbor 2.0 bin
+neigh_modify every 2 delay 0 check yes
+
+reset_timestep 0
+run_style verlet
+
+dump whole_minimization all xyz 100 minimization.xyz
+min_style cg
+minimize 1.0e-8 1.0e-8 1000 10000
+undump whole_minimization
+reset_timestep 0
+
+#################### 1) Equilibrating in NPT ensemble ####################
+
+fix constrain all shake 1.0e-6 1000 0 b 2 3 4 5
+fix integrate all npt temp ${Temp} ${Temp} 100.0 iso ${Pres} ${Pres} 1000.0
+
+velocity all create ${Temp} ${RandomSeed}  
+
+thermo ${Nf}
+
+# Minimize the whole system correctly according to the force field and velocities
+timestep 0.1
+run 10000 
+timestep 0.2
+run 10000 
+timestep 0.5
+run 10000 
+timestep 0.8
+run 10000 
+reset_timestep 0
+
+timestep ${tstep}
+run ${nininpt}
+reset_timestep 0
+
+#################### 2) Initializing in NVT ensemble ####################
+
+variable sidesize equal (${volum}^(1.0/3.0))        # use the previously simulated volume
+variable xlow equal xlo
+variable ylow equal ylo
+variable zlow equal zlo
+variable xhig equal (xlo+${sidesize})
+variable yhig equal (ylo+${sidesize})
+variable zhig equal (zlo+${sidesize})
+change_box all x final ${xlow} ${xhig} y final ${ylow} ${yhig} z final ${zlow} ${zhig}
+
+unfix integrate
+fix integrate all nvt temp ${Temp} ${Temp} 100.0
+
+run ${nininvt}
+reset_timestep 0
+
+#################### 3) Equilibrating in NVT ensemble #####################
+
+variable T1 equal temp
+variable TE1 equal etotal
+variable KE1 equal ke
+variable PE1 equal pe
+fix Tave1 all ave/time ${nsamnvt} 1 ${nsamnvt} v_T1
+fix TEave1 all ave/time 1 ${nsamnvt} ${nsamnvt} v_TE1
+fix KEave1 all ave/time ${nsamnvt} 1 ${nsamnvt} v_KE1
+fix PEave1 all ave/time ${nsamnvt} 1 ${nsamnvt} v_PE1
+
+run ${nsamnvt}
+reset_timestep 0
+
+#################### 4) Simulating in NVE ensmeble ######################
+
+# Scaling the temperature
+variable TempNew equal (f_Tave1*(f_TEave1-f_PEave1)/(f_KEave1))
+velocity all scale ${TempNew}
+
+unfix Tave1
+unfix TEave1
+unfix KEave1
+unfix PEave1
+variable T1 delete
+variable TE1 delete
+variable KE1 delete
+variable PE1 delete
+variable TempNew delete
+
+unfix integrate
+fix integrate all nve
+
+# Average temperature
+compute T all temp
+fix TempAve all ave/time ${Ne} ${Nr} ${Nf} c_T file temperature.dat
+
+# Average pressure
+variable P equal press
+fix PressAve all ave/time ${Ne} ${Nr} ${Nf} v_P file pressure.dat
+
+# Average total energy
+variable TE equal etotal
+fix TEAve all ave/time ${Ne} ${Nr} ${Nf} v_TE file TotalE.dat
+
+# Average potential energy
+variable PE equal pe
+fix PEAve all ave/time ${Ne} ${Nr} ${Nf} v_PE file PotenE.dat
+
+# Stress tensor elements (Viscosity)
+variable Visc1 equal pxy
+variable Visc2 equal pxz
+variable Visc3 equal pyz
+fix ViscComp all ave/time 1 1 ${Nvis} v_Visc1 v_Visc2 v_Visc3 file stresstnesor.dat
+
+# Position of atoms (Diffusion/RDF)
+dump trj all xyz ${Ndif} positions.xyz 
+dump_modify trj element C2 CM CE HM HE OM OE
+
+thermo_style custom step temp f_TempAve press f_PressAve pe ke etotal
+thermo_modify flush yes
+
+run ${nrun}
+
+quit
+

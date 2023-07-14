@@ -1,0 +1,6 @@
+## Title:   Finite-size Effects of Binary Mutual Diffusion Coefficients from Molecular Dynamics
+## Authors: Jamali, S. H., Wolff, L., Becker, T. M., Bardow, A., Vlugt, T. J. H., Moultos, O. A.
+## Journal: Journal of Chemical Theory and Computation
+## Date:    13-04-2018 
+
+The current directory contains the lammps input files for the two simulation systems considered in this study: Lennard-Jones (LJ) and Molecular systems. For each set, the transport properties are computed in micro-canonical (NVE) ensembles. The corresponding energy and volume to the specified temperature and pressure are computed initially through equilibration simulations. To this end, each set consist of two simulation subsets for computing the volumes and energies and then computing transport properties.
