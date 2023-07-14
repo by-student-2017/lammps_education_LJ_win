@@ -391,6 +391,10 @@ The Kremer-Grest model is used in macromolecules.
   https://www.repository.cam.ac.uk/items/78713a30-8b8c-4d9c-8a84-eb0185778900
   https://doi.org/10.17863/CAM.44747
 ------------------------------------------------------------------------------
+# Research data supporting "Classical quantum friction at water-carbon interfaces"
+  https://www.repository.cam.ac.uk/items/3a91176e-428c-4163-9852-dcfcd6c40627
+  https://doi.org/10.17863/CAM.89536
+------------------------------------------------------------------------------
 # BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
   https://doi.org/10.1021/acs.jcim.7b00695
 ------------------------------------------------------------------------------

@@ -1,0 +1,15 @@
+structure_cif_files:
+cif files of all rotamers and functionalized derivatives generated using the MOF functionalizer and rotation code
+
+gcmc_simulation_setup:
+intput files for GCMC simulations using RASPA
+
+lammps_simulation_setup: 
+in.deposit_H - example initial simulation to insert desired number of guest molecules into MOF
+in.diffusion - example simulation input to sample 30 ns of trajectory, using a restart file ouput from in.deposit_H
+calc_msd.py - a script to read dump.lammpstrj trajectory output to calculate the MSD
+
+lammps_datafiles: 
+lammps datafiles generated using Lammps_interface to convert CIF file structures
+
+

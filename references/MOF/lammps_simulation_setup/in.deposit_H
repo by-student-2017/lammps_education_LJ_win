@@ -1,0 +1,64 @@
+# variables
+variable        nmolecules equal 272
+
+variable        T  equal  298
+variable        dt  equal  0.3
+variable        nsteps  equal 100000
+variable        dump_freq equal 1000
+variable        deposit_freq equal 25
+variable        restart_freq equal 1000
+variable        thermo_freq equal 1000
+
+units           real
+atom_style      full
+boundary        p p p
+neighbor        2.0 bin
+neigh_modify    every 1 delay 1 check no
+box tilt        large
+
+# read data file
+read_data       data.modified_H_0
+
+# define groups
+group           mof type 1 2 3 4 5 6
+group           ch4 type 7
+
+pair_style      lj/cut 12.8
+pair_modify     tail no mix arithmetic
+
+# lj pair coefficients (uff mof + guest molecules)
+pair_coeff 1 1 0.069000        2.783168 # Zr3+4 Zr3+4
+pair_coeff 2 2 0.044000        2.571134 # H_ H_
+pair_coeff 3 3 0.105000        3.430851 # C_R C_R
+pair_coeff 4 4 0.060000        3.118146 # O_3 O_3
+pair_coeff 5 5 0.060000        3.118146 # O_R O_R
+pair_coeff 6 6 0.060000        3.118146 # O_2 O_2
+pair_coeff 7 7 0.2941062303    3.73 # CH4-CH4
+
+#velocity        ch4 create ${T} 2389274 rot yes dist gaussian
+velocity        all zero linear
+velocity        all zero angular
+
+fix             1 ch4 nvt temp ${T} ${T} $(100.0*dt)
+fix             3 mof setforce 0 0 0
+
+# deposit methane
+region          reg prism 0.000000  44.018010 0.000000  38.120715 0.000000  35.940555 22.009005  22.009005  12.706905
+fix             dep ch4 deposit ${nmolecules} 7 ${deposit_freq} 49348 id next near 2.0 units box region reg
+
+# compute temperature for guest species only
+compute        temp_ch4 ch4 temp
+
+# output
+thermo_style    custom step c_temp_ch4 press pe ke etotal atoms
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+# run
+reset_timestep  0
+timestep        ${dt}
+
+run             ${nsteps} upto
+
+write_restart   restart_run
+

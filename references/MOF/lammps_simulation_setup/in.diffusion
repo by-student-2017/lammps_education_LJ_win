@@ -1,0 +1,47 @@
+# variables
+variable        T  equal  298
+variable        dt  equal  1.0
+variable        nsteps  equal 30000000
+variable        dump_freq equal 1000
+variable        restart_freq equal 1000
+variable        thermo_freq equal 1000
+
+units           real
+atom_style      full
+boundary        p p p
+neighbor        2.0 bin
+neigh_modify    every 1 delay 1 check no
+box tilt        large
+
+# read restart file
+read_restart    restart_run
+
+velocity        ch4 create ${T} 89782934 rot yes dist gaussian
+velocity        all zero linear
+velocity        all zero angular
+
+# move methane, fix framework
+fix             1 ch4 nvt temp ${T} ${T} $(100.0*dt)
+fix             3 mof setforce 0 0 0
+
+# compute temperature for guest species only
+compute        temp_ch4 ch4 temp
+
+# output
+thermo_style    custom step c_temp_ch4 press pe ke etotal atoms
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+dump            1 all custom ${dump_freq} dump.lammpstrj id mol type q xu yu zu
+dump_modify     1 append yes sort id format line "%d %d %d %8.4f %20.15f %20.15f %20.15f"
+
+# run
+reset_timestep  0
+timestep        ${dt}
+
+restart         ${restart_freq} restart_a restart_b
+
+run             ${nsteps} upto
+
+write_restart   restart_run
+
