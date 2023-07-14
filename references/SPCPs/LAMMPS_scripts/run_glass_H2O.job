@@ -1,0 +1,42 @@
+#!/bin/bash
+#$ -M jcarpen3@nd.edu
+#$ -m be
+#$ -q hpc@@colon
+#$ -pe smp 32
+
+module load lammps
+module load python
+
+n_core=32
+
+array=(
+ 1000
+ 900)
+
+<<skip
+mpirun -np ${n_core} lmp_mpi -in NPT_switch_pot.in >NPT_switch_pot.out
+sleep 30
+echo "Finished ramp from soft core to hard core potential"
+skip
+mpirun -np ${n_core} lmp_mpi -in NPT_hard.in >NPT_hard.out
+sleep 30
+echo "Finished equilibration at 1000K"
+
+mpirun -np ${n_core} lmp_mpi -in NPT_T-ramp.in >NPT_T-ramp.out
+sleep 30
+echo "Finished creating data files 100K-1000K"
+
+cp NPT_equilibrated_100K.lmps NPT_eq_100T.lmps
+
+for index in ${!array[*]}
+do
+newT=${array[$index]}
+cp NPT_eqm_dyn_900K.in NPT_eqm_dyn_${newT}K.in
+sed -i "s/900/${newT}/g" NPT_eqm_dyn_${newT}K.in
+
+python fix_dat_molecules.py 20 100 444 32 NPT_eq_${newT}T.lmps
+
+mpirun -np ${n_core} lmp_mpi -in NPT_eqm_dyn_${newT}K.in >NPT_eqm_dyn_${newT}K.out
+sleep 30
+done
+

@@ -17,3 +17,11 @@
 - A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
   https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
   beta-HMX
+
+- S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
+  https://doi.org/10.1021/acs.jcim.8b00939
+  OCTP
+  
+- J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
+  https://doi.org/10.1063/5.0131179
+  SPCPs

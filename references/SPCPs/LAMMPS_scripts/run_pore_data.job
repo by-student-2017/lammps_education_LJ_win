@@ -1,0 +1,11 @@
+#!/bin/bash
+#$ -M jcarpen3@nd.edu
+#$ -m be
+#$ -q hpc@@colon
+#$ -pe smp 16
+
+module load lammps
+
+mpirun -np 16 lmp_mpi -in NPT_pore_data.in >NPT_pore_data.out
+#mpirun -np 16 lmp_mpi -in NPT_pore_data_midT.in >NPT_pore_data_midT.out
+#mpirun -np 16 lmp_mpi -in NPT_pore_data_lowT.in >NPT_pore_data_lowT.out

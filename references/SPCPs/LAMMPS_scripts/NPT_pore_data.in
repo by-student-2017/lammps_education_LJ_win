@@ -1,0 +1,54 @@
+# Molecular dynamics NPT script
+
+#variable 	thermo_file string 'thermo.log'
+#variable	header string 'step vol temp press density etotal pe ke evdwl ecoul ebond eangle edihed eimp'
+#print 		${header} file ${thermo_file}
+
+# General
+units           real
+atom_style      full
+newton          on
+boundary        p p p
+
+# Style
+#pair_style     lj/cut/coul/long 12.500
+pair_style      lj/cut 12.500
+bond_style      harmonic
+angle_style     hybrid cosine/periodic fourier
+dihedral_style  harmonic
+improper_style  fourier
+pair_modify     tail yes mix arithmetic
+special_bonds   lj/coul 0.0 0.0 1.0
+#kspace_style    ewald 1.0e-4
+
+# Atom Definition
+read_data       NPT_glass_dynamics_1000K.lmps
+include 	ZnMOP-bix_potential.mod
+
+# Settings
+dielectric       1.0
+neighbor         2.0 bin
+neigh_modify	delay 0 every 1 check yes
+#neigh_modify     delay 0 every 1 one 12000 page 120000 check yes
+timestep         1.0
+run_style        verlet
+
+# Output
+thermo_style     custom step vol temp press density etotal pe ke evdwl ecoul ebond eangle edihed eimp
+thermo           1000
+
+variable	a loop 20
+label		loop
+
+fix		1 all npt temp 1000 1000 100.0 iso 1 1 500.0
+run 		500000
+unfix		1
+
+variable	file_var string ${a}
+write_data	NPT_eq_rep${file_var}_1000K.lmps
+next		a
+jump SELF loop
+
+# Restart file
+
+#0 DONE
