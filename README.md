@@ -263,6 +263,14 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jctc.0c00833
 
 
+[IFL52] Summer Research Project Report - 2014
+  https://www.researchgate.net/profile/Abhilash-Sahoo-2/publication/279200724_Molecular_Dynamics_Simulations_In_Polymers/links/558f861a08aed6ec4bf52e70/Molecular-Dynamics-Simulations-In-Polymers.pdf
+
+
+[IFL53] Y. Zhang et al., J. Chem. Eng. Data 63 (2018) 3488-3502.
+  https://doi.org/10.1021/acs.jced.8b00382
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -358,6 +366,10 @@ The Kremer-Grest model is used in macromolecules.
 # Gaussian Approximation Potential for Hexagonal Boron Nitride (hBN-GAP)
   https://www.repository.cam.ac.uk/items/3301a6bd-f276-4616-babd-1d0b9279707c
   https://doi.org/10.17863/CAM.66112
+------------------------------------------------------------------------------
+# Finite field formalism for bulk electrolyte solutions (data set)
+  https://www.repository.cam.ac.uk/items/78713a30-8b8c-4d9c-8a84-eb0185778900
+  https://doi.org/10.17863/CAM.44747
 ------------------------------------------------------------------------------
 # BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
   https://doi.org/10.1021/acs.jcim.7b00695
