@@ -97,3 +97,7 @@
 - S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
   CaSO4-xH2O
+  
+- B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
+  https://doi.org/10.1039/C8CP04561E
+  water_sw
