@@ -1,0 +1,196 @@
+#calculating thermal conductivity
+
+#######################################################################
+#######################################################################
+
+units real
+
+variable T equal       500     # temperature
+variable Q equal     94275     # random number seed
+variable dt equal      1.0     # timestep in femtoseconds
+variable s equal       500     # screen output frequency
+variable trop equal      2     # 1 = isotropic, 2 = anisotropic, 3 = triclinic
+
+variable Ep equal   500000     # npt equilibriation steps
+variable Ev equal    50000     # nvt equilibriation steps
+
+variable NT equal        2     # 1 = NVE, 2 = NVT, 3 = NPT
+
+variable N equal  10000000     # number of steps
+variable d equal        10     # calculation frequency
+
+variable rep equal       1     # 1 = replicate cell
+variable repx equal      1     # replication factor for x
+variable repy equal      1     # replication factor for y
+variable repz equal      1     # replication factor for z
+
+variable xyz equal       1     # 1 = print xyz file
+
+#######################################################################
+#######################################################################
+#system settings
+
+atom_style      full
+pair_style      buck/coul/long 8.5
+
+processors * * * grid numa
+read_data       data.lmp
+if "${rep} == 1" then "replicate ${repx} ${repy} ${repz}"
+#balance         dynamic xyz 20 1.0
+
+#kcal/mol for unit style "real"
+pair_coeff    *    *         0.000000  1.000000      0.000000
+pair_coeff  1  4 336037.74895 0.2450150 1886.42134
+pair_coeff  2  4 100797.52712 0.2786030 1390.55318
+pair_coeff  3  4 546917.75272 0.1855800 334.80040
+pair_coeff  4  4 42556.44086 0.3436450 4442.62802
+
+kspace_style    pppm 1.0e-5
+
+#######################################################################
+#######################################################################
+#general settings
+timestep        ${dt}
+thermo          $s
+thermo_style    custom step temp etotal press vol lx ly lz xy xz yz
+thermo_modify flush no
+run_style       verlet
+
+#######################################################################
+#######################################################################
+#npt equi skipping
+
+if "${Ep} == 0" then "jump input.lmp NVT"
+
+#######################################################################
+#######################################################################
+#npt equi
+
+variable myLx equal lx
+variable myLy equal ly
+variable myLz equal lz
+variable myxy equal xy
+variable myxz equal xz
+variable myyz equal yz
+variable repeat equal v_Ep/v_d
+
+velocity all create $T $Q mom yes rot yes dist gaussian
+
+fix             A all momentum 100 linear 1 1 1
+
+if "${trop} == 1" then "fix B all npt temp $T $T 100.0 iso 0.0 0.0 1000.0"
+if "${trop} == 2" then "fix B all npt temp $T $T 100.0 aniso 0.0 0.0 1000.0"
+if "${trop} == 3" then "fix B all npt temp $T $T 100.0 tri 0.0 0.0 1000.0"
+
+fix             C all ave/time $d ${repeat} ${Ep} v_myLx v_myLy v_myLz v_myxy v_myxz v_myyz mode scalar ave one
+
+run ${Ep}
+
+variable newX equal f_C[1]
+variable newY equal f_C[2]
+variable newZ equal f_C[3]
+variable newxy equal f_C[4]
+variable newxz equal f_C[5]
+variable newyz equal f_C[6]
+
+if "${trop} == 1" then "change_box all x final 0.0 ${newX} y final 0.0 ${newY} z final 0.0 ${newZ} remap units box"
+if "${trop} == 2" then "change_box all x final 0.0 ${newX} y final 0.0 ${newY} z final 0.0 ${newZ} remap units box"
+if "${trop} == 3" then "change_box all x final 0.0 ${newX} y final 0.0 ${newY} z final 0.0 ${newZ} xy final ${newxy} xz final ${newxz} yz final ${newyz} remap units box"
+
+unfix A
+unfix B
+unfix C
+
+write_data equi_vol.lmp
+
+#######################################################################
+#######################################################################
+#nvt equi skipping
+
+label NVT
+if "${Ev} == 0" then "jump input.lmp RUN"
+
+#######################################################################
+#######################################################################
+#nvt equi
+
+velocity all create $T $Q mom yes rot yes dist gaussian
+
+fix             A all momentum 100 linear 1 1 1
+fix             B all nvt temp $T $T 100.0
+
+run ${Ev}
+
+unfix A
+unfix B
+
+#######################################################################
+#######################################################################
+#choose data collection type
+
+label RUN
+if "$N == 0" then "jump input.lmp END"
+
+if "${NT} == 1" then "fix B all nve"
+if "${NT} == 2" then "fix B all nvt temp $T $T 100.0"
+if "${NT} == 3 && ${trop} == 1" then "fix B all npt temp $T $T 100.0 iso 0.0 0.0 1000.0"
+if "${NT} == 3 && ${trop} == 2" then "fix B all npt temp $T $T 100.0 aniso 0.0 0.0 1000.0"
+if "${NT} == 3 && ${trop} == 3" then "fix B all npt temp $T $T 100.0 tri 0.0 0.0 1000.0"
+
+#######################################################################
+#######################################################################
+#output variables
+
+variable V equal vol
+
+shell echo $T >> variables.txt
+shell echo $V >> variables.txt
+shell echo ${dt} >> variables.txt
+shell echo $d >> variables.txt
+
+#######################################################################
+#######################################################################
+#flux output
+
+reset_timestep 0
+
+compute myKE all ke/atom 
+compute myPE all pe/atom
+compute myStress all stress/atom virial
+compute flux all heat/flux myKE myPE myStress
+
+thermo_style    custom step temp press pe ke etotal
+thermo_modify flush no                       #flush output
+
+#######################################################################
+#######################################################################
+#running output
+
+variable timestep equal step
+variable Xflux equal c_flux[1]
+variable Yflux equal c_flux[2]
+variable Zflux equal c_flux[3]
+
+fix C all print $d "${timestep} ${Xflux} ${Yflux} ${Zflux}" append flux.txt screen no
+
+if "${xyz} == 1" then &
+"dump            1 all xyz $s structure.xyz" &
+"dump_modify     1 element Sr La Ti O"
+
+#######################################################################
+#######################################################################
+#data collection
+
+run $N
+
+#######################################################################
+#######################################################################
+#new data generation
+
+label END
+
+write_data new_data.lmp
+
+#######################################################################
+#######################################################################
+

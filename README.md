@@ -197,8 +197,8 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.langmuir.0c00915
 
 
-[IFL35] F. Azough et al., https://doi.org/10.15125/BATH-00463.
-  Sr1-xLa2x/3TiO3 
+[IFL35] F. Azough et al., https://doi.org/10.15125/BATH-00463
+  La1-3NbO3
 
 
 [IFL36] H. Liu et al., Chem. Phys. Chem. 13 (2012) 1701-1707.
