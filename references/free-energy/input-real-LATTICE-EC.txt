@@ -1,0 +1,30 @@
+dimension       3
+units           lj
+atom_style      full
+
+read_data      config-EC.dat
+
+group all type 1 
+
+neighbor        0.3 bin
+neigh_modify    every 1 check yes
+
+#      lenard-jones truncated at rc     cutoff 
+pair_style  lj/cut  2.7
+pair_coeff      1 1   1.0  1.0
+
+pair_modify     shift yes
+
+restart         10   old_config_2.dat
+
+# chosen ensemble
+fix             5 all nve
+
+#v-rescaling
+fix		7 all temp/rescale 200 2 2  0.1 1.0 
+
+thermo          10
+thermo_style custom  step temp pe 
+
+timestep        0.00
+run             1

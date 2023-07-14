@@ -1,0 +1,113 @@
+#  This is the control script for LAMMPS
+
+echo			both
+log		4.1_Initialize.out
+
+#-------------------------------------------------------------------------------
+# Stage 4.1: Initialize LAMMPS run for 3-d periodic
+#-------------------------------------------------------------------------------
+
+units			real
+boundary		p p p
+atom_style		full
+
+pair_style		lj/class2/coul/long 9.5
+kspace_style		pppm 0.00001
+pair_modify             mix sixthpower
+pair_modify		tail yes
+bond_style		class2
+angle_style		class2
+dihedral_style		class2
+improper_style		class2
+special_bonds		lj/coul 0.0 0.0 1.0
+
+box                     tilt large
+read_data		DME_LiTFSI.updated_structure
+
+include			DME_LiTFSI.parameters
+
+neighbor		2.0 bin
+neigh_modify		delay 0 every 1 check yes
+
+variable		R		equal 0.00198722
+variable		sysvol		equal vol
+variable		sysmass		equal mass(all)/6.0221367e+23
+variable		sysdensity	equal v_sysmass/v_sysvol/1.0e-24
+variable		coulomb		equal ecoul+elong
+variable		etotal		equal etotal
+variable		pe		equal pe
+variable		ke		equal ke
+variable		evdwl		equal evdwl
+variable		epair		equal epair
+variable		ebond		equal ebond
+variable		eangle		equal eangle
+variable		edihed		equal edihed
+variable		eimp		equal eimp
+variable		lx		equal lx
+variable		ly		equal ly
+variable		lz		equal lz
+variable		Nthermo		equal 0
+variable		cella		equal lx
+variable		cellb		equal sqrt(ly*ly+xy*xy)
+variable		cellc		equal sqrt(lz*lz+xz*xz+yz*yz)
+variable		cellalpha	equal acos((xy*xz+ly*yz)/(v_cellb*v_cellc))
+variable		cellbeta	equal acos(xz/v_cellc)
+variable		cellgamma	equal acos(xy/v_cellb)
+variable		p		equal press
+variable		pxx		equal pxx
+variable		pyy		equal pyy
+variable		pzz		equal pzz
+variable		pyz		equal pyz
+variable		pxz		equal pxz
+variable		pxy		equal pxy
+variable		sxx		equal -pxx
+variable		syy		equal -pyy
+variable		szz		equal -pzz
+variable		syz		equal -pyz
+variable		sxz		equal -pxz
+variable		sxy		equal -pxy
+variable		fmax		equal fmax
+variable	        fnorm		equal fnorm
+variable		time equal step*dt+0.000001
+variable		surfacetension equal 0.5*v_lz*(0.5*(v_sxx+v_syy)-v_szz)
+
+thermo_style		custom step v_time press vol v_sysdensity temp ebond eangle edihed eimp evdwl ecoul etail elong pe ke
+thermo_modify		flush yes
+
+
+#
+# Set up the fixed and movable groups
+#
+
+group		movable union all
+group		fixed subtract all movable
+log		4.2_NVT.out
+#-------------------------------------------------------------------------------
+# Stage 4.2: NVT integration for 100 ns with a timestep of 0.5 fs
+#             Temperature 300 K
+#-------------------------------------------------------------------------------
+
+reset_timestep		0
+thermo_style		custom step v_time press vol v_sysdensity temp ebond eangle edihed eimp evdwl ecoul etail elong pe ke
+thermo			${Nthermo}
+fix			1 movable nvt temp 300 300 50 drag 1.0
+fix			2 movable ave/time 1 20000000 20000000 v_time c_thermo_temp c_thermo_press v_sysvol v_sysdensity v_etotal v_pe v_ke v_evdwl v_coulomb v_sxx v_syy v_szz v_syz v_sxz v_sxy file 4.2_averages.txt
+fix			3 movable ave/time 20000  1     20000 v_time  c_thermo_temp c_thermo_press v_sysvol v_sysdensity v_etotal v_pe v_ke v_evdwl v_coulomb v_sxx v_syy v_szz v_syz v_sxz v_sxy file 4.2_instantaneous.txt
+restart			200000000 4.2.restart
+dump			trj all custom 200000 4.2.Trajectory.xyz id mol type q xs ys zs
+fix			trjE all ave/time 200000 1 200000 v_etotal v_pe v_ke file 4.2.energies.txt
+
+timestep		0.5
+run			200000000
+undump			trj
+unfix			trjE
+
+restart			0
+dump			sci all custom 200000000 4.2.xyz id mol type q xs ys zs
+run			0
+undump			sci
+
+unfix			1
+unfix			2
+unfix			3
+

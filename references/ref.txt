@@ -25,3 +25,15 @@
 - J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
   https://doi.org/10.1063/5.0131179
   SPCPs
+  
+- E. Crabb et al., J. Chem. Theory Comput. 16 (2020) 7255-7266.
+  https://doi.org/10.1021/acs.jctc.0c00833
+  pcff
+  
+- Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
+  https://doi.org/10.1021/acsanm.0c03336
+  EMD, NEMD
+  
+- J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
+  https://doi.org/10.1063/1.4812362
+  free-energy

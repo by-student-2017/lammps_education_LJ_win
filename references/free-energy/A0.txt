@@ -1,0 +1,147 @@
+c*********************************************************************
+c*********************************************************************
+c******** fortran code to calculate the term A0     *******************
+c********   for the moment compile with gfortran   *******************
+c*********************************************************************
+c*********************************************************************
+c
+        double precision x(3,3)
+
+        iseed=37465
+        xpi=acos(-1.d0)
+
+        ! x represents a vector with the atomic coordinates of the three non-collinear points
+        ! of the molecule to which the three springs are bound
+        ! XHAS TO BE CHANGED DEPENDING ON THE CHOSEN MOLECULE    
+        ! As en example, we give the code for the calculation of 
+        ! A0 for OPLS methanol
+
+        !  BEGIN: PARAMETERS TO BE CHANGED ACCORDING TO THE CONSIDERED MOLECULE
+        angle=(108.5*xpi/180.d0)/2.d0
+        x(1,1)=0.   
+        x(1,2)=0.
+        x(1,3)=0.
+        x(2,1)=1.43d0*cos(angle)
+        x(2,2)=1.43d0*sin(angle)
+        x(2,3)=0.
+        x(3,1)=0.9450*cos(angle)
+        x(3,2)=-0.9450*sin(angle)
+        x(3,3)=0.d0
+        !  ASSIGN THE VALUE OF THE SPRING CONSTANT xlambda
+        xlambda=6666.670
+        !  ASSIGN THE DENSITY rho
+        rho=0.01878
+        !  ASSIGN THE NUMBER OF PARTICLES xn
+        xn=300.
+        !  END: PARAMETERS TO BE CHANGED ACCORDING TO THE CONSIDERED MOLECULE
+
+
+        ! The number of MC steps in nsteps*nsteps2
+        nsteps=200000000
+        nsteps2=400 
+
+        ! Choose an appropriate value for the maximum value of the position
+        !  that will be sampled from the origin 
+        !   IMPORTANT: check that the integrand  dexp(-ener1) and dexp(-ener2)
+        !              vanish for values of xcom,ycom,zcom larger than box 
+        !              and for angles ctheta whose cosine is smaller than 1-delta_ctheta
+        !              The whole range of theta can be sampled by choosing delta_ctheta=2
+        box=0.05d0
+        delta_ctheta=0.1d0
+
+        ! CHECK BOX CTHETA: uncomment the following line to check that box and ctheta have an appropriate value
+        !open(66,file='check.dat')
+
+        XI1=0.d00
+        XI2=0.d00
+        dmax=0.d0
+        cmin=1.d0
+        call srand(iseed)
+        do i=1,nsteps2
+          do j=1,nsteps
+           !generate random position 
+           xcom=box*(rand(0)-0.5d0)  
+           ycom=box*(rand(0)-0.5d0)
+           zcom=box*(rand(0)-0.5d0)
+           ! generate random orientation
+           ctheta=1.d0-rand(0)*delta_ctheta
+           phi=2.*xpi*rand(0)
+           chi=2.*xpi*rand(0)
+           stheta=sqrt(1.d0-ctheta**2.d0)
+           cphi=cos(phi)
+           sphi=sin(phi)
+           cchi=cos(chi)
+           schi=sin(chi)
+           ! generate the rotation matrix
+           R11=cphi*ctheta*cchi-sphi*schi
+           R12=-cphi*ctheta*schi-sphi*cchi
+           R13=cphi*stheta
+           R21=sphi*ctheta*cchi+cphi*schi
+           R22=-sphi*ctheta*schi+cphi*cchi
+           R23=sphi*stheta
+           R31=-stheta*cchi
+           R32=-stheta*schi
+           R33=ctheta
+
+           ! rotate and translate the molecule
+           ener1=0.d0
+           ener2=0.d0
+           do k=1,3
+             xn1=R11*x(k,1)+R12*x(k,2)+R13*x(k,3)
+             xn2=R21*x(k,1)+R22*x(k,2)+R23*x(k,3)
+             xn3=R31*x(k,1)+R32*x(k,2)+R33*x(k,3)
+             ener1= ener1+xlambda*(xn1-x(k,1))**2.d0
+             ener1= ener1+xlambda*(xn2-x(k,2))**2.d0
+             ener1= ener1+xlambda*(xn3-x(k,3))**2.d0
+
+             xn1=xcom+xn1
+             xn2=ycom+xn2
+             xn3=zcom+xn3
+             ener2= ener2+xlambda*(xn1-x(k,1))**2.d0
+             ener2= ener2+xlambda*(xn2-x(k,2))**2.d0
+             ener2= ener2+xlambda*(xn3-x(k,3))**2.d0
+           enddo
+
+          if(ener1.lt.10.d0) XI1=XI1+exp(-ener1)
+          if(ener2.lt.10.d0) XI2=XI2+exp(-ener2)
+          if(exp(-ener1).gt.1d-16.or.exp(-ener2).gt.1d-16) then
+                if(abs(xcom).gt.dmax) dmax=abs(xcom)
+                if(abs(ycom).gt.dmax) dmax=abs(ycom)
+                if(abs(zcom).gt.dmax) dmax=abs(zcom)
+                if(ctheta.lt.cmin) cmin=ctheta
+          endif
+             
+        enddo
+        enddo
+ 101    format(4f15.9)
+        print*, ''
+        print*, 'Maximum distance that contributes to the integral',dmax
+        print*, 'This distance must be appreciably lower than d=',box/2.d0
+        if(abs(box/2.d0-dmax).lt.1.d-3) then
+             print*, 'WARNING: You might need to increase box'
+        endif
+        print*, 'Maximum value of theta that contributes (rad)',
+     +             acos(cmin)
+        print*, 'This angle must be appreciably lower than theta(rad)=',
+     +                  acos(1.d0-delta_ctheta)
+        if(cmin-(1.d0-delta_ctheta).lt.1d-03) then
+             print*, 'WARNING: You might need to increase delta_ctheta',
+        endif
+        print*, ''
+        print*, ''
+
+        vol=(delta_ctheta/2.d0)
+        XI1=vol*XI1/dble(nsteps)/dble(nsteps2)
+        vol=(delta_ctheta/2.d0)*(box**3.d0)
+        XI2=vol*XI2/dble(nsteps)/dble(nsteps2)
+        XI1=-log(XI1)
+        XI2=-log(XI2)
+        print*, 'log(I1)',-XI1
+        print*, 'log(I2)',-XI2
+
+        A0=(XI1/xn) + ((xn-1.)*XI2/xn) + (log(rho)/xn)
+
+        print*, 'A0/ NkT = ', A0
+
+	stop
+	end
