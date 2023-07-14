@@ -101,3 +101,7 @@
 - B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
   https://doi.org/10.1039/C8CP04561E
   water_sw
+  
+- N. V. S. Avula et al., J. Phys. Chem. Lett. 9 (2018) 3511-3516.
+  https://doi.org/10.1021/acs.jpclett.8b01481
+  HBD

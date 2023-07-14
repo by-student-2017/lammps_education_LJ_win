@@ -331,6 +331,22 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1063/5.0029490
 
 
+[IFL69] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
+  https://doi.org/10.1063/5.0095130
+
+
+[IFL70] B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
+  https://doi.org/10.1039/C8CP04561E
+
+
+[IFL71] N. V. S. Avula et al., J. Phys. Chem. Lett. 9 (2018) 3511-3516.
+  https://doi.org/10.1021/acs.jpclett.8b01481
+
+
+[IFL72] P. Zhao et al., J. Phys. Chem. C 125 (2021) 22747-22765.
+  https://doi.org/10.1021/acs.jpcc.1c05139
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -435,11 +451,20 @@ The Kremer-Grest model is used in macromolecules.
   https://www.repository.cam.ac.uk/items/3a91176e-428c-4163-9852-dcfcd6c40627
   https://doi.org/10.17863/CAM.89536
 ------------------------------------------------------------------------------
+# Dataset for Catalyst-Mediated Enhancement of Carbon Nanotube Textiles by Laser Irradiation: Nanoparticle Sweating and Bundle Alignment
+  https://www.repository.cam.ac.uk/items/350a8d7a-6c6c-4f77-90e9-509191f67393
+  https://doi.org/10.17863/CAM.65746
+------------------------------------------------------------------------------
 # Simulation Toolkit for Renewable Energy Advanced Materials Modeling
   https://www.osti.gov/biblio/1259315
+------------------------------------------------------------------------------
+# Automated Algorithms for Quantum-Level Accuracy in Atomistic Simulations: LDRD Final Report.
+  https://www.osti.gov/biblio/1158668
 ------------------------------------------------------------------------------
 # BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
   https://doi.org/10.1021/acs.jcim.7b00695
 ------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
+------------------------------------------------------------------------------
+# Epoxy resins: https://nics.utk.edu/wp-content/uploads/sites/275/2021/08/19-Schoff-final-presentation.pdf
 ------------------------------------------------------------------------------

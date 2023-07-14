@@ -1,0 +1,113 @@
+# CP2K template input file for generating cube file of BIL_mixture
+# ECUTOFF : 280 Ry || EPS_SCF : 1E-6 
+# 812 atoms -- box length 20.4967
+
+&GLOBAL 
+        PROJECT_NAME    cube_gen
+        RUN_TYPE        ENERGY_FORCE
+        PRINT_LEVEL     MEDIUM
+&END GLOBAL
+
+&FORCE_EVAL
+        METHOD  QUICKSTEP
+
+        &DFT
+                BASIS_SET_FILE_NAME    <path>/GTH_BASIS_SETS
+                POTENTIAL_FILE_NAME    <path>/run-cp2k/POTENTIAL
+		WFN_RESTART_FILE_NAME	<path2>/bmim-cl-bf4-7-21-RESTART.wfn
+                &MGRID
+                        NGRIDS          5
+                        CUTOFF          280
+                &END MGRID
+
+                &QS
+                        METHOD          GPW
+                        EPS_DEFAULT     1.0E-10
+                &END QS
+
+                &SCF
+                        MAX_SCF         50
+                        EPS_SCF         1.0E-6
+                        SCF_GUESS       RESTART
+                        &OT
+                                MINIMIZER       CG
+                                PRECONDITIONER  FULL_ALL
+                                ENERGY_GAP      0.001
+                        &END OT
+                        &OUTER_SCF
+                                MAX_SCF         100
+                                EPS_SCF         1.0E-6
+                        &END OUTER_SCF
+                &END SCF
+
+		&PRINT
+			&E_DENSITY_CUBE
+				ADD_LAST	SYMBOLIC
+				FILENAME	./valence_density
+				LOG_PRINT_KEY	.TRUE.
+				STRIDE		1 1 1
+			&END E_DENSITY_CUBE
+		&END PRINT
+
+                &XC
+                        &XC_FUNCTIONAL  PBE
+                        &END XC_FUNCTIONAL
+
+                        &VDW_POTENTIAL
+                                POTENTIAL_TYPE                  PAIR_POTENTIAL
+                                &PAIR_POTENTIAL
+                                        TYPE                    DFTD2
+                                        REFERENCE_FUNCTIONAL    PBE
+                                &END PAIR_POTENTIAL
+                        &END VDW_POTENTIAL
+                &END XC
+
+        &END DFT
+
+        &SUBSYS
+                &CELL
+                        ABC     20.4967  20.4967  20.4967 
+                &END CELL
+                
+                &COORD
+                        @INCLUDE        cube_gen.xyz
+                &END COORD
+                
+                &KIND H 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q1
+                &END KIND
+                
+                &KIND B 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q3
+                &END KIND
+                
+                &KIND C 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q4
+                &END KIND
+                
+                &KIND N 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q5
+                &END KIND
+                
+                &KIND F 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q7
+                &END KIND
+                
+                &KIND Cl 
+                        BASIS_SET       TZV2P-GTH
+                        POTENTIAL       GTH-PBE-q7
+                &END KIND
+                
+        &END SUBSYS
+	
+	&PRINT
+		&FORCES ON
+		&END FORCES
+	&END PRINT
+
+&END FORCE_EVAL
