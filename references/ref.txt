@@ -105,3 +105,23 @@
 - N. V. S. Avula et al., J. Phys. Chem. Lett. 9 (2018) 3511-3516.
   https://doi.org/10.1021/acs.jpclett.8b01481
   HBD
+  
+- E. Shi et al., Nature 580 (2020) 614-620.
+  https://doi.org/10.1038/s41586-020-2219-7
+  MOESM2_ESM
+  
+- T. Ohkubo et al., Chem. Rxiv. (2023).
+  10.26434/chemrxiv-2023-lfz9p
+  Ho-complex_R3
+  
+- F. Azough et al., (2017).
+  https://doi.org/10.15125/BATH-00463
+  La1-3NbO3
+  
+- J. Yuan et al., J. Phys. Chem. B 125 (2021) 10589-10596.
+  https://doi.org/10.1021/acs.jpcb.1c04451
+  brush
+  
+- F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
+  https://doi.org/10.1039/D1CP04592J
+  ILs

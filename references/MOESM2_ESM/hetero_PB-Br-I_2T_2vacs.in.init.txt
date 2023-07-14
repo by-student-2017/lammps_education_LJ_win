@@ -1,0 +1,109 @@
+# LAMMPS input file for perovskite
+
+# VARIABLES
+variable        data_name       index   hetero_PB-Br-I_2T_2vacs.data
+variable        restart_name    index   extend.end.restart
+variable        extend_name     index   extend.end.data
+variable        settings_name   index   hetero_PB-Br-I_2T_2vacs.in.settings
+variable        nSteps_equil    index   1000000
+variable        avg_freq        index   1000
+variable        coords_freq     index   1000
+variable        thermo_freq     index   1000
+variable        dump4avg        index   1
+variable        Temp            index   297.0
+variable        vseed           index   30713
+variable        pressure        index   1.0
+variable        run             index   0
+
+# Change the name of the log output #
+log ${run}.npt.log
+
+#===========================================================
+# GENERAL PROCEDURES
+#===========================================================
+units		real   
+dimension	3      
+newton		off 	
+boundary	p p p	
+atom_style	full	
+
+#===========================================================
+# DEFINE PAIR, BOND, AND ANGLE STYLES
+#===========================================================
+special_bonds   amber
+pair_style      hybrid buck/coul/long 15.0 15.0 lj/cut/coul/long 15.0 15.0
+pair_modify     shift yes mix arithmetic    
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+kspace_style    pppm 0.0001
+
+#===========================================================
+# SETUP SIMULATIONS
+#===========================================================
+
+# READ IN COEFFICIENTS/COORDINATES/TOPOLOGY
+if "${run} == 0" then &
+    "read_data ${data_name}" &
+else &
+    "read_restart ${restart_name}"
+include ${settings_name}
+
+# SET RUN PARAMETERS
+timestep	1.0
+run_style	verlet
+neigh_modify every 1 delay 10 check yes one 10000
+
+# SET OUTPUTS
+thermo_style    custom step temp vol density etotal pe ebond eangle edihed ecoul elong evdwl enthalpy press
+thermo_modify   format float %14.6f
+thermo ${thermo_freq}
+
+# DECLARE RELEVANT OUTPUT VARIABLES
+variable        my_step equal   step
+variable        my_temp equal   temp
+variable        my_rho  equal   density
+variable        my_pe   equal   pe
+variable        my_ebon equal   ebond
+variable        my_eang equal   eangle
+variable        my_edih equal   edihed
+variable        my_evdw equal   evdwl
+variable        my_eel  equal   (ecoul+elong)
+variable        my_ent  equal   enthalpy
+variable        my_P    equal   press
+variable        my_vol  equal   vol
+
+fix averages all ave/time ${dump4avg} $(v_avg_freq/v_dump4avg) ${avg_freq} v_my_temp v_my_rho v_my_vol v_my_pe v_my_edih v_my_evdw v_my_eel v_my_ent v_my_P file ${run}.thermo.avg
+
+# INITIALIZE VELOCITIES AND CREATE THE CONSTRAINED RELAXATION FIX
+if "${run} == 0" then &
+"velocity        all create ${Temp} ${vseed} mom yes rot yes     # DRAW VELOCITIES" &
+"fix relax all nve/limit 0.01" &
+"run             10000" &
+"unfix relax" 
+
+#===========================================================
+# RUN EXTENSION
+#===========================================================
+
+# UPDATE RUN PARAMETERS AND CREATE FIX
+fix mom all momentum 1000 linear 1 1 1 angular 
+fix equil all npt temp ${Temp} ${Temp} 100.0 x ${pressure} ${pressure} 1000.0 z ${pressure} ${pressure} 1000.0 
+
+# CREATE COORDINATE DUMPS FOR EQUILIBRIUM
+dump equil all custom ${coords_freq} ${run}.sys.lammpstrj id type x y z 
+dump_modify equil sort  id
+
+# RUN EQUIL
+run		${nSteps_equil}
+unfix equil
+undump equil
+
+# WRITE RESTART FILES, CLEANUP, AND EXIT
+write_restart   extend.end.restart
+write_data      extend.end.data pair ii
+unfix		averages
+
+# UPDATE RUN NUMBER
+variable sub equal (v_run+1)
+shell sed -i /variable.*run.*index/s/${run}/${sub}/g npt.in.init

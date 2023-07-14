@@ -197,7 +197,8 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.langmuir.0c00915
 
 
-[IFL35] F. Azough et al., https://doi.org/10.15125/BATH-00463
+[IFL35] F. Azough et al., (2017).
+  https://doi.org/10.15125/BATH-00463
   La1-3NbO3
 
 
@@ -352,6 +353,31 @@ The Kremer-Grest model is used in macromolecules.
   water-graphene
 
 
+[IFL74] R. Perriot et al., J. Appl. Phys. 130 (2021) 145106.
+  https://doi.org/10.1063/5.0063163
+
+
+[IFL75] P. Zhao et al., PEP 45 (2020) 196-222.
+  https://doi.org/10.1002/prep.201900382
+
+
+[IFL76] S. Townsend et al., Bachelor Thesis (2018).
+  https://dspace.mit.edu/handle/1721.1/119936
+
+
+[IFL77] A. S. Bowen et al., J. Chem. Theory Comput. 14 (2018) 6495-6504.
+  https://doi.org/10.1021/acs.jctc.8b00742
+
+
+[IFL78] A. Renganathan et al., (2021).
+  https://etd.ohiolink.edu/apexprod/rws_olink/r/1501/10?clear=10&p10_accession_num=osu161922120604859
+  NaCl-UCl3
+
+
+[IFL79] F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
+  https://doi.org/10.1039/D1CP04592J
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -466,6 +492,9 @@ The Kremer-Grest model is used in macromolecules.
 # Automated Algorithms for Quantum-Level Accuracy in Atomistic Simulations: LDRD Final Report.
   https://www.osti.gov/biblio/1158668
 ------------------------------------------------------------------------------
+# Advancing Understanding of Fission Gas Behavior in Nuclear Fuel through Leadership Class Computing
+  https://www.osti.gov/biblio/1523789
+------------------------------------------------------------------------------
 # BFEE: A User-Friendly Graphical Interface Facilitating Absolute Binding Free-Energy Calculations
   https://doi.org/10.1021/acs.jcim.7b00695
 ------------------------------------------------------------------------------
@@ -477,4 +506,10 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # Interatomic Potentials Repository Project
   https://www.ctcms.nist.gov/potentials/Download/2020Workshop/Hale-Interatomic-Potentials-Repository-Project.pdf
+------------------------------------------------------------------------------
+# PLUMED による平均力ダイナミクス（LogMFD/TAMD/AFED）の実行 (Japanese)
+  https://doi.org/10.11436/mssj.22.269
+------------------------------------------------------------------------------
+# 無焼成固化のための摩砕プロセスをモデル化したシリカ界面の分子動力学解析
+  https://doi.org/10.2472/jsms.71.167
 ------------------------------------------------------------------------------

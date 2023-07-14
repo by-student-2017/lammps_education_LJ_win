@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#PBS -l walltime=48:00:00
+#PBS -l select=8:ncpus=24:mem=100gb:avx=TRUE
+##PBS -q pqph
+#PBS -N PRODUCE_CLPOL
+
+## load bunch of modules
+module load mpi/intel-2019
+module load intel-suite/2019.4
+module load gcc/8.2.0
+module load fftw
+module load libpng16/1.6.8
+
+cd $PBS_O_WORKDIR
+
+mpiexec /rdsgpfs/general/user/fdp18/home/ttdamp2/lammps/build/lmp -in step_4_producefirst.inp
+
