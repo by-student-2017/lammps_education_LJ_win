@@ -26,6 +26,8 @@ variable repz equal      1     # replication factor for z
 
 variable xyz equal       1     # 1 = print xyz file
 
+variable cfg equal       1     # 1 = print cfg file
+
 #######################################################################
 #######################################################################
 #system settings
@@ -176,6 +178,10 @@ fix C all print $d "${timestep} ${Xflux} ${Yflux} ${Zflux}" append flux.txt scre
 if "${xyz} == 1" then &
 "dump            1 all xyz $s structure.xyz" &
 "dump_modify     1 element Sr La Ti O"
+
+if "${cfg} == 1" then &
+"dump            d1 all cfg $s cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz" &
+"dump_modify     d1 element Sr La Ti O"
 
 #######################################################################
 #######################################################################
