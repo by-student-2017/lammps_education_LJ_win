@@ -46,6 +46,10 @@
   https://doi.org/10.1021/acs.jctc.8b00909
   10_Aqueous_Solutions_of_Carbohydrates_OPLS
 
+[11] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
+  https://doi.org/10.1063/5.0095130
+  11_CaSO4-xH2O
+
 - J. Jung et al., Eur. Polym. 114 (2019) 223-233.
   https://doi.org/10.1016/j.eurpolymj.2019.02.042
   CNT_PMMA (need PMMA_100_1%.data)
@@ -109,10 +113,6 @@
 - E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
   https://doi.org/10.1107/S1600576715013242
   xtds
-  
-- S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
-  https://doi.org/10.1063/5.0095130
-  CaSO4-xH2O
   
 - B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
   https://doi.org/10.1039/C8CP04561E
