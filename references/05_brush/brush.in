@@ -1,0 +1,150 @@
+#PE brushes grafted on dielectric interface 
+log log_brush
+processors * * 1
+
+variable mismatch    equal 0       #dielectric mismatch
+variable parallel_E  equal 0
+variable epsilon     equal 1.00000 #dielectric 
+variable temperature equal 1.0
+variable cutoff      equal 15
+
+units lj
+
+dielectric ${epsilon}
+
+atom_style full
+atom_modify map array
+
+boundary p p f
+read_data Brush0.01beadC_1.dat
+
+velocity all zero linear       
+
+bond_style harmonic
+bond_coeff 1 200 1.122462 # K R0 
+
+special_bonds lj/coul 1.0 1.0 1.0
+
+region 1 block INF INF INF INF 0 0.51 units box
+group freeze region 1
+group chain type 1
+group ions type 2 3
+group mobile subtract all freeze
+
+dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify     d1 element C Cl O
+# Atom names are given for convenience.
+
+#----- creating reflecting walls for equilibriation ------
+fix zwalls all wall/reflect zlo 0.5 zhi 74.5 units box
+fix energy mobile nve
+
+thermo 4000 
+thermo_style custom step temp ke pe etotal 
+
+neighbor 3 bin #change from wei's 1 bin 
+
+pair_style soft 1.1 #soft potential for relaxation
+pair_coeff * * 0.0
+
+variable prefactor equal ramp(0,50)
+
+fix 1 all adapt 1 pair soft a * * v_prefactor #vary A during the runs
+fix	lgv1 all langevin ${temperature} ${temperature} 100.0 81
+fix endgr_unit freeze setforce 0.0 0.0 0.0 #freezing the polymer ends
+
+timestep 0.002
+
+run 20000
+
+unfix 1
+unfix lgv1
+
+fix wallhic chain wall/lj126 zhi EDGE 1 0.5 0.561231 units box
+fix wallloc chain wall/lj126 zlo 0 1 0.5 0.561231 units box
+fix wallhii ions wall/lj126 zhi EDGE 1 0.5 0.561231 units box
+fix wallloi ions wall/lj126 zlo 0 1 0.5 0.561231 units box
+
+#----- relaxation,no electrostatic interactions ------
+neighbor 1 bin     
+pair_style lj/cut 1.122462
+pair_coeff 1 1 1.0 1.0 2.5
+pair_coeff 1 2 1.0 1.0 1.122462
+pair_coeff 1 3 1.0 1.0 1.122462
+pair_coeff 2 2 1.0 1.0 1.122462
+pair_coeff 2 3 1.0 1.0 1.122462
+pair_coeff 3 3 1.0 1.0 1.122462
+pair_modify shift yes                      
+
+fix lgv1 mobile langevin ${temperature} ${temperature} 100.0 8136
+fix endgr freeze setforce 0.0 0.0 0.0
+
+timestep 0.002
+run 20000
+
+timestep 0.004
+run 20000
+
+timestep	0.01
+run 20000
+
+unfix lgv1
+unfix zwalls
+
+#----- turn on electrostatic interactions ------
+neighbor 1.5 bin #change from wei's 1 bin 
+pair_style lj/cut/coul/long 1.122462 ${cutoff}
+pair_coeff 1 1 1.0 1.0 2.5
+pair_coeff 1 2 1.0 1.0 1.122462
+pair_coeff 1 3 1.0 1.0 1.122462
+pair_coeff 2 2 1.0 1.0 1.122462
+pair_coeff 2 3 1.0 1.0 1.122462
+pair_coeff 3 3 1.0 1.0 1.122462
+
+group fieldgr subtract all freeze
+
+pair_modify shift yes                       
+
+kspace_style pppm 0.00001
+kspace_modify slab 3
+
+compute dtemp all temp 
+compute_modify dtemp dynamic yes 
+
+fix lgv2 mobile langevin ${temperature} ${temperature} 1.0 8706
+fix_modify lgv2 temp dtemp
+
+thermo 500
+
+neigh_modify delay 5 page 500000 one 5000 #defaults: page 100000 one 2000
+
+thermo_style custom step c_dtemp ke pe etotal ecoul elong evdwl ebond eangle
+
+fix endgr2 freeze setforce 0.0 0.0 0.0
+
+timestep 0.001
+run 20000
+
+timestep 0.002
+run 20000
+
+timestep 0.005
+run 20000
+
+#----- turn on charge regulation ------
+fix chareg all charge/regulation 2 3 acid_type 1 pH 7.0 pKa 1.0 pKb 14 pIp 5.0 pIm 5.0 lunit_nm 0.72 temp 1.0 nevery 500 nmc 100 seed 2345 rxd 0 tempfixid lgv2
+
+thermo_style custom step temp ke pe etotal ecoul elong evdwl ebond eangle f_chareg[3] f_chareg[4] f_chareg[7] f_chareg[8]
+
+fix  favq    all ave/time  20 2500 50000 f_chareg[3] f_chareg[4] f_chareg[7] f_chareg[8] file avq.dat # average charge on acids acids
+
+timestep 0.01
+
+run 1000000
+
+dump 0 all custom 1000 dump_equi.dat id type x y z
+dump_modify 0 sort id 
+
+run 10000000
+
+write_data data.brush.equi

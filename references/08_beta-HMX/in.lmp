@@ -1,0 +1,236 @@
+#Supplmentary material for "Thermal conductivity of β-HMX from equilibrium molecular dynamics simulations"
+##by Andrey Pereverzev and Tommy Sewell
+##Department of Chemistry, University of Missouri
+#
+##Input deck for running LAMMPS (October 29, 2020 version) NVE heat-current simulation for 4x4x4 supercell of β-HMX
+##This input deck reads the accompanying data.hmx.4x4x4 data file 
+#
+#
+
+newton          on
+boundary        p p p
+units           real
+
+atom_style      full
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  hybrid harmonic multi/harmonic
+improper_style  harmonic
+#pair_style      buck/coul/long/coul/long  15.0 15.0
+pair_style      hybrid/overlay buck/coul/long 11.0 lj/cut 11.0 
+
+read_data         data.hmx.4x4x4
+
+neighbor        2.0 bin
+neigh_modify    delay 0 every 1 check yes one 10000 page 100000
+
+kspace_style    pppm 1.0e-6
+kspace_modify	order 6
+#   modified SMITH-BHARADWAJ potential, numerical values from:
+#   #   D.Berdov et al., J. Comput. Aided Mater. Des. 8, 77-85 (2001).
+
+   bond_coeff              1  560.0000    1.2300   # MODIFIED #    # O-N
+   bond_coeff              2  495.8500    1.3600   #               # N-N
+   bond_coeff              3  336.0500    1.4400   #               # N-C
+   bond_coeff              4  340.0500    1.0900   # MODIFIED #    # C-H
+
+   angle_coeff             1   62.5000  120.9170                                 # O-N-O
+   angle_coeff             2   62.5000  107.4525                                 # O-N-N
+   angle_coeff             3   65.0000   95.8157                                 # N-N-C
+   angle_coeff             4   35.0000  105.5961                                 # C-N-C
+   angle_coeff             5   43.2000  107.0056                                 # N-C-H
+   angle_coeff             6   38.5000  108.5067                                 # H-C-H
+   angle_coeff             7   35.0000  110.5178                                 # N-C-N
+
+   dihedral_coeff          1  multi/harmonic  8.450  0.000 -5.290  0.000 -3.160  # O-N-N-C
+   dihedral_coeff          2  harmonic       -0.080 -1      3                    # H-C-N-C
+   dihedral_coeff          3  multi/harmonic  0.095 -1.485  1.610 -0.220  0.000  # C-N-C-N
+
+   improper_coeff          1    4.0000    0.0000                                   # C-N-C-*N
+   improper_coeff          2   44.6500    0.0000                                   # O-N-O-*N
+
+   pair_coeff		1 1 buck/coul/long	2649.70		0.26737968	27.34544584	# H..H
+   pair_coeff		1 1 lj/cut	0.0000125	3.20855615			# H..H
+   pair_coeff           1 2 buck/coul/long 	12695.88  	0.26595745  	116.9071639	# H..N1
+   pair_coeff		1 2 lj/cut	0.0000125	3.191489362			# H..N1
+   pair_coeff           1 3 buck/coul/long 	12695.88  	0.26595745  	116.9071639     # H..N2
+   pair_coeff           1 3 lj/cut      0.0000125       3.191489362                     # H..N2
+   pair_coeff           1 4 buck/coul/long 	14175.97  	0.25634453  	104.4176355     # H..O  # ORIGINAL, Smith Bharadwaj
+   pair_coeff		1 4 lj/cut	0.0000125	3.076134325			# H..O
+#   pair_coeff		   1 4  14500.00  0.27000000  104.46               # H..O    # MODIFIED, Nir Goldman #
+   pair_coeff           1 5 buck/coul/long  	4320.00  	0.29282577  	138.1058732     # H..C
+   pair_coeff		1 5 lj/cut	0.0000125	3.513909224			# H..C
+   pair_coeff           2 2 buck/coul/long 	60833.90  	0.26455026  	499.9488192     # N1..N1
+   pair_coeff		2 2 lj/cut	0.0000125	3.174603175			# N1..N1
+   pair_coeff           2 3 buck/coul/long 	60833.90  	0.26455026  	499.9488192     # N1..N2
+   pair_coeff           2 3 lj/cut      0.0000125       3.174603175                     # N1..N1
+   pair_coeff           2 4 buck/coul/long 	67925.95  	0.25503698  	446.5589156     # N1..O
+   pair_coeff		2 4 lj/cut	0.0000125	3.060443764			# N1..O
+   pair_coeff           2 5 buck/coul/long 	30183.57  	0.29112082  	565.939114	# N1..C
+   pair_coeff		2 5 lj/cut	0.0000125	3.493449782			# N1..C
+   pair_coeff           3 3 buck/coul/long 	60833.90  	0.26455026  	499.9488192     # N2..N2
+   pair_coeff		3 3 lj/cut	0.0000125	3.174603175			# N2..N2
+   pair_coeff           3 4 buck/coul/long 	67925.95  	0.25503698  	446.5589156     # N2..O
+   pair_coeff		3 4 lj/cut	0.0000125	3.060443764			# N2..O
+   pair_coeff           3 5 buck/coul/long 	30183.57  	0.29112082  	565.939114      # N2..C
+   pair_coeff		3 5 lj/cut	0.0000125	3.493449782			# N2..C
+   pair_coeff           4 4 buck/coul/long 	75844.80  	0.24612355  	398.8668123     # O..O
+   pair_coeff		4 4 lj/cut	0.0000125	2.953482648			# O..O
+   pair_coeff           4 5 buck/coul/long 	33702.40  	0.27964206  	505.5286042     # O..C
+   pair_coeff		4 5 lj/cut	0.0000125	3.355704698			# O..C
+   pair_coeff           5 5 buck/coul/long 	14976.00  	0.32362460  	640.6284832     # C..C
+   pair_coeff		5 5 lj/cut	0.0000125	3.883495146			# C..C
+   
+special_bonds   lj/coul 0.0 0.0 1.0 dihedral yes
+
+group gr1 id 1:3584:56 5:3584:56
+group gr2 id 2:3584:56 6:3584:56
+group gr3 id 3:3584:56 7:3584:56
+group gr4 id 4:3584:56 8:3584:56
+group gr5 id 9:3584:56 15:3584:56
+group gr6 id 10:3584:56 16:3584:56
+group gr7 id 11:3584:56 17:3584:56
+group gr8 id 12:3584:56 18:3584:56
+group gr9 id 13:3584:56 19:3584:56
+group gr10 id 14:3584:56 20:3584:56
+group gr11 id 21:3584:56 25:3584:56
+group gr12 id 22:3584:56 26:3584:56
+group gr13 id 23:3584:56 27:3584:56
+group gr14 id 24:3584:56 28:3584:56
+group gr15 id 29:3584:56 33:3584:56
+group gr16 id 30:3584:56 34:3584:56
+group gr17 id 31:3584:56 35:3584:56
+group gr18 id 32:3584:56 36:3584:56
+group gr19 id 37:3584:56 43:3584:56
+group gr20 id 38:3584:56 44:3584:56
+group gr21 id 39:3584:56 45:3584:56
+group gr22 id 40:3584:56 46:3584:56
+group gr23 id 41:3584:56 47:3584:56
+group gr24 id 42:3584:56 48:3584:56
+group gr25 id 49:3584:56 53:3584:56
+group gr26 id 50:3584:56 54:3584:56
+group gr27 id 51:3584:56 55:3584:56
+group gr28 id 52:3584:56 56:3584:56
+
+
+
+#velocity all create 300.0 3139319 mom yes rot yes dist gaussian
+
+timestep 0.1
+
+fix 3 all nve
+
+
+compute poen all pe/atom
+compute kien all ke/atom
+
+compute stre0 all stress/atom NULL virial
+compute streI all stress/atom NULL pair bond kspace 
+compute streII all centroid/stress/atom NULL angle dihedral improper
+
+compute hflux0 all heat/flux kien poen stre0
+compute hfluxI all heat/flux kien poen streI
+compute hfluxII all heat/flux kien poen streII
+
+compute 1 gr1 reduce sum vx 
+compute 2 gr1 reduce sum vy
+compute 3 gr1 reduce sum vz 
+compute 4 gr2 reduce sum vx 
+compute 5 gr2 reduce sum vy
+compute 6 gr2 reduce sum vz 
+compute 7 gr3 reduce sum vx 
+compute 8 gr3 reduce sum vy
+compute 9 gr3 reduce sum vz 
+compute 10 gr4 reduce sum vx 
+compute 11 gr4 reduce sum vy
+compute 12 gr4 reduce sum vz 
+compute 13 gr5 reduce sum vx 
+compute 14 gr5 reduce sum vy
+compute 15 gr5 reduce sum vz 
+compute 16 gr6 reduce sum vx 
+compute 17 gr6 reduce sum vy
+compute 18 gr6 reduce sum vz 
+compute 19 gr7 reduce sum vx 
+compute 20 gr7 reduce sum vy
+compute 21 gr7 reduce sum vz 
+compute 22 gr8 reduce sum vx 
+compute 23 gr8 reduce sum vy
+compute 24 gr8 reduce sum vz 
+compute 25 gr9 reduce sum vx 
+compute 26 gr9 reduce sum vy
+compute 27 gr9 reduce sum vz 
+compute 28 gr10 reduce sum vx 
+compute 29 gr10 reduce sum vy
+compute 30 gr10 reduce sum vz 
+compute 31 gr11 reduce sum vx 
+compute 32 gr11 reduce sum vy
+compute 33 gr11 reduce sum vz 
+compute 34 gr12 reduce sum vx 
+compute 35 gr12 reduce sum vy
+compute 36 gr12 reduce sum vz 
+compute 37 gr13 reduce sum vx 
+compute 38 gr13 reduce sum vy
+compute 39 gr13 reduce sum vz 
+compute 40 gr14 reduce sum vx 
+compute 41 gr14 reduce sum vy
+compute 42 gr14 reduce sum vz 
+compute 43 gr15 reduce sum vx 
+compute 44 gr15 reduce sum vy
+compute 45 gr15 reduce sum vz 
+compute 46 gr16 reduce sum vx 
+compute 47 gr16 reduce sum vy
+compute 48 gr16 reduce sum vz 
+compute 49 gr17 reduce sum vx 
+compute 50 gr17 reduce sum vy
+compute 51 gr17 reduce sum vz 
+compute 52 gr18 reduce sum vx 
+compute 53 gr18 reduce sum vy
+compute 54 gr18 reduce sum vz 
+compute 55 gr19 reduce sum vx 
+compute 56 gr19 reduce sum vy
+compute 57 gr19 reduce sum vz 
+compute 58 gr20 reduce sum vx 
+compute 59 gr20 reduce sum vy
+compute 60 gr20 reduce sum vz 
+compute 61 gr21 reduce sum vx 
+compute 62 gr21 reduce sum vy
+compute 63 gr21 reduce sum vz 
+compute 64 gr22 reduce sum vx 
+compute 65 gr22 reduce sum vy
+compute 66 gr22 reduce sum vz 
+compute 67 gr23 reduce sum vx 
+compute 68 gr23 reduce sum vy
+compute 69 gr23 reduce sum vz 
+compute 70 gr24 reduce sum vx 
+compute 71 gr24 reduce sum vy
+compute 72 gr24 reduce sum vz 
+compute 73 gr25 reduce sum vx 
+compute 74 gr25 reduce sum vy
+compute 75 gr25 reduce sum vz 
+compute 76 gr26 reduce sum vx 
+compute 77 gr26 reduce sum vy
+compute 78 gr26 reduce sum vz 
+compute 79 gr27 reduce sum vx 
+compute 80 gr27 reduce sum vy
+compute 81 gr27 reduce sum vz 
+compute 82 gr28 reduce sum vx 
+compute 83 gr28 reduce sum vy
+compute 84 gr28 reduce sum vz 
+
+thermo          10
+thermo_style    custom temp  c_hfluxI[1] c_hfluxI[2] c_hfluxI[3] c_hfluxII[1] c_hfluxII[2] c_hfluxII[3] c_hfluxII[4] c_hfluxII[5] c_hfluxII[6] &
+ c_hflux0[1] c_hflux0[2] c_hflux0[3] & 
+ c_1 c_2 c_3 c_4 c_5 c_6 c_7 c_8 c_9 c_10 c_11 c_12 c_13 c_14 c_15 & 
+ c_16 c_17 c_18 c_19 c_20 c_21 c_22 c_23 c_24 c_25 c_26 c_27 c_28 & 
+ c_29 c_30 c_31 c_32 c_33 c_34 c_35 c_36 c_37 c_38 c_39 c_40 c_41 c_42 c_43 c_44 c_45 &
+ c_46 c_47 c_48 c_49 c_50 c_51 c_52 c_53 c_54 c_55 c_56 c_57 c_58 c_59 c_60 & 
+ c_61 c_62 c_63 c_64 c_65 c_66 c_67 c_68 c_69 c_70 c_71 c_72 c_73  c_74 c_75 c_76 c_77 c_78 c_79 c_80 c_81 c_82 c_83 c_84
+#dump            traj all custom 10000000 dump.hmx.nve id  xu yu zu vx vy vz
+#dump_modify     traj format line "%10d %16.8e %16.8e %16.8e %16.8e %16.8e %16.8e" sort id
+dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify     d1 element H N N O C
+restart         10000000 restart.*
+run             40000000
+#run 0
+write_restart restart.nve
+write_data data.nve
