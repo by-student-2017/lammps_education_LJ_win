@@ -1,0 +1,89 @@
+
+# test_cell2
+
+units          real
+atom_style     full
+# boundary       s s s
+boundary       p p p
+
+# pair_style     lj/charmm/coul/charmm 8.0 12.0
+# pair_style     lj/cut/coul/cut 8.0 12.0
+
+pair_style     lj/charmm/coul/long 8.0 12.0
+# pair_style     lj/cut/coul/long 8.0 12.0
+# kspace_style   ewald/disp 0.0001
+#kspace_style   pppm 0.0001 # Must redefine kspace_style after changing to triclinic box
+
+dielectric     1.0
+special_bonds  lj 0.000000 0.000000 1.000000 coul 0.000000 0.000000 1.000000
+bond_style     harmonic
+angle_style    harmonic
+dihedral_style charmm
+improper_style harmonic
+# neighbor       2.0 nsq
+
+read_data      test_cell2.data
+# read_data      aspirin_1x1x1_opt.data 
+replicate 6 6 6
+
+kspace_style   pppm 0.0001 # move to here command "kspace_style" for Error (triclinic box).
+
+# perform optimisation
+# note that you do not nessesarily need to perform a dump during the minimisation step
+# so it is possibly to minimise the system and then perform MD. 
+# read_data      test_cell2.data
+group          mobile union all
+# dump           1 all atom 100 test_cell2.dump
+# dump_modify    1 scale yes image yes
+# # dump           2 all custom 100 test_cell2.frcdump fx fy fz
+thermo_style   custom etotal
+thermo_modify  line multi
+thermo         100
+thermo_modify  flush yes
+min_style      cg
+minimize       0.0001 0.000001 500 5000
+
+
+# write_restart  test_cell2.rst
+
+# Note that in LAMMPS to calcualte the energy of the system without any iteration. i.e. single point 
+# run 0
+
+# read_data      test_cell2.data
+# read_dump      test_cell2.dump 1 x y z ix iy iz replace yes  
+
+# If you performed minimisiation reset the timestep to zero
+# and perform equilibration run 
+
+reset_timestep 0
+
+timestep       1
+fix            1 mobile nve
+# fix            1 mobile nvt temp 298.15 298.15 10.0
+# fix            1 mobile temp/berendsen 298.15 298.15 10.0
+# fix            1 mobile npt temp 298.15 298.15 10.0 aniso 1.000000 1.000000 350.0
+velocity       mobile create 298.15 1415810067 mom yes rot yes dist gaussian
+# dump           1 all atom 5 test_cell2.dump
+# dump           1 all atom 100 test_cell2_equil.lammpstrj
+dump            d1 all cfg 5 cfg/run.nvt.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify     d1 element C C C O O O H H
+# if you set 1 'scale no' it turns off the unit cell translations 
+# dump_modify    1 scale yes image yes
+# dump           2 all custom 5 test_cell2.veldump vx vy vz
+thermo_style   custom etotal ke pe ebond eangle edihed eimp evdwl ecoul elong temp
+thermo_modify  line multi
+thermo         100
+thermo_modify  flush yes
+# restart        1000 test_cell2_1.rst test_cell2_2.rst
+run            1000
+# write_restart  test_cell2.rst
+undump d1
+
+# do the production run 
+reset_timestep 0
+dump           2 all atom 10 test_cell2_prod.lammpstrj
+dump_modify    2 scale yes image yes
+dump          d2 all cfg 10 cfg/run.production.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d2 element C C C O O O H H
+run            1000
+

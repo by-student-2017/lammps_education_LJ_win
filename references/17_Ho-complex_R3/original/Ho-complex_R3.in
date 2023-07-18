@@ -1,0 +1,24 @@
+variable          T string 300
+variable          base string Ho-complex_R3
+log ${base}.log
+units real
+atom_style full
+pair_style lj/class2/coul/long 12.0
+kspace_style  ewald 1e-5
+bond_style class2
+angle_style class2
+dihedral_style class2
+improper_style class2
+special_bonds lj/coul 0.0 0.0 1.0
+box tilt large
+read_data ${base}.data
+replicate  1 1 4
+
+
+velocity          all create $T 777
+thermo            1000
+thermo_style      custom step temp etotal press cella cellb cellc density
+timestep          1.0
+fix               1 all npt temp $T $T $(100*dt) tri 1 1 $(1000*dt)
+fix               f all recenter 0.5 0.5 0.5 units fraction
+run               100000

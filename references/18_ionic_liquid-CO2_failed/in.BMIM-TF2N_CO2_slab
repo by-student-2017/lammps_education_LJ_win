@@ -1,0 +1,115 @@
+
+############################################################################################################
+# "Molecular dynamics simulations of CO2 at an ionic liquid interface: adsorption, ordering                #
+#  and interfacial crossing"                                                                               #
+# Created by Marcos E. Perez-Blanco (email: mperezbl@nd.edu) and Edward J. Maginn (email: ed@nd.edu)       #
+# Department of Chemical & Biomolecular Engineering - University of Notre Dame                             #
+# 182 Fitzpatrick hall                                                                                     #
+# Notre Dame, IN        46556                                                                              #
+#----------------------------------------------------------------------------------------------------------#
+# Input script which simulates the molecular configuration in "data.Mrg_BMIM-TF2N_192-CO2_slab-n2-400K".   #
+#-Reads in configuration of IL_CO2 slab from data.* file                                                   #
+#-Simulates slab configuration at 400K, with slab held in the center of the box using "fix recenter"       #
+# and "fix momentum"                                                                                       #
+#-Outputs entire configuration trajectories and CO2 only trajactories to dump files                        #
+############################################################################################################ 
+
+log		log.BMIM-TF2N_CO2_slab
+
+
+units		real
+atom_style	full
+
+#processors	2 4 2
+
+pair_style	lj/charmm/coul/long 10.0 12.0 12.0 # used to have 16 17 17
+bond_style      harmonic #used to be charmm
+angle_style     harmonic
+dihedral_style  charmm
+improper_style  harmonic
+kspace_style	pppm 0.0001
+
+special_bonds	lj 0.0 0.0 0.5 coul 0.0 0.0 0.5 dihedral no
+
+boundary	p p p
+
+read_data	data.Mrg_BMIM-TF2N_192-CO2_slab-n2-400K
+
+neighbor	2.0 bin
+neigh_modify	delay 5
+
+timestep	1.0
+
+thermo_style	custom step vol temp press ke pe evdwl ecoul epair ebond eangle edihed eimp etotal
+thermo		100
+
+dump		1 all custom 1000 BMIM-TF2N_CO2_slab-1.cs1 id type x y z
+#dump		2 all xyz 1000 BMIM-TF2N_CO2_slab.xyz
+
+dump          d1 all cfg 100 cfg/run.slab-1.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d1 element N C C C C C H H H N S O C F O C
+
+group		SLAB type 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+			#anything that comprises the slab of IL
+group		CO2  type 15 16 #anything that comprises the CO2
+
+
+fix		1 all nvt 400.0 400.0 10
+fix		2 SLAB recenter NULL NULL 80.5 shift all units box
+fix		3 SLAB momentum 1 linear 0 0 1 #Hold the slab in place
+
+run		1000000
+
+undump		1
+undump		d1
+
+write_restart	restart1-1.BMIM-TF2N_CO2_slab 
+
+dump		1 all custom 1000 BMIM-TF2N_CO2_slab-2.cs1 id type x y z
+
+dump          d1 all cfg 100 cfg/run.slab-2-1.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d1 element N C C C C C H H H N S O C F O C
+
+run		500000
+
+dump		2 CO2 custom 10 CO2_slab-2.cs1 id type x y z
+			#This dumps only the CO2 at high frequency
+
+dump          d2 all cfg 100 cfg/run.slab-2-2.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d2 element N C C C C C H H H N S O C F O C
+
+run		500000
+
+undump 		1
+undump		2
+undump		d1
+undump		d2
+
+write_restart	restart1-2.BMIM-TF2N_CO2_slab
+
+dump		1 CO2 custom 200 CO2_slab-3.cs1 id type x y z
+			#This dumps only the CO2 at high frequency
+			
+dump          d1 all cfg 100 cfg/run.slab-3-1.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d1 element N C C C C C H H H N S O C F O C
+
+run		4000000
+
+dump		2 all custom 1000 BMIM-TF2N_CO2_slab-3.cs1 id type x y z
+
+dump          d2 all cfg 100 cfg/run.slab-3-2.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d2 element N C C C C C H H H N S O C F O C
+
+run		1000000
+
+undump		1
+undump		2
+undump		d1
+undump		d2
+
+unfix		1
+unfix		2
+unfix		3
+
+write_restart	restart1-3.BMIM-TF2N_CO2_slab
+

@@ -66,6 +66,22 @@
   https://doi.org/10.1021/acs.jcim.8b00939
   15_OCTP (Soft porous coordination polymers)
 
+[16] E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
+  https://doi.org/10.1107/S1600576715013242
+  16_xtds
+  
+[17] T. Ohkubo et al., Chem. Rxiv. (2023).
+  10.26434/chemrxiv-2023-lfz9p
+  17_Ho-complex_R3
+  
+[18] M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
+  https://doi.org/10.1021/jp103862v
+  18_ionic_liquid-CO2 (failed)
+  
+- J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
+  https://doi.org/10.1063/5.0131179
+  SPCPs
+
 - J. Jung et al., Eur. Polym. 114 (2019) 223-233.
   https://doi.org/10.1016/j.eurpolymj.2019.02.042
   CNT_PMMA (need PMMA_100_1%.data)
@@ -81,10 +97,6 @@
 - M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
   paper_si
-  
-- J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
-  https://doi.org/10.1063/5.0131179
-  SPCPs
   
 - Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
   https://doi.org/10.1021/acsanm.0c03336
@@ -102,10 +114,6 @@
   https://doi.org/10.1021/acs.jcim.6b00103
   TopoGromacs
   
-- M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
-  https://doi.org/10.1021/jp103862v
-  ionic_liquid-CO2
-  
 - S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 2667-2677.
   https://doi.org/10.1021/acs.jctc.8b00170
   FSE
@@ -114,10 +122,6 @@
   https://doi.org/10.1039/C8SC04971H
   cocrystal
   
-- E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
-  https://doi.org/10.1107/S1600576715013242
-  xtds
-  
 - B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
   https://doi.org/10.1039/C8CP04561E
   water_sw
@@ -125,10 +129,6 @@
 - E. Shi et al., Nature 580 (2020) 614-620.
   https://doi.org/10.1038/s41586-020-2219-7
   hetero_PB-Br-I_2T_2vacs
-  
-- T. Ohkubo et al., Chem. Rxiv. (2023).
-  10.26434/chemrxiv-2023-lfz9p
-  Ho-complex_R3
   
 - F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
   https://doi.org/10.1039/D1CP04592J
