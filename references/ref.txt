@@ -117,6 +117,9 @@
 - F. Azough et al., (2017).
   https://doi.org/10.15125/BATH-00463
   La1-3NbO3
+  ------------------------------------
+  D. Kepaptsoglou et al., Inorg. Chem. 57 (2018) 45-55.
+  https://doi.org/10.1021/acs.inorgchem.7b01584
   
 - J. Yuan et al., J. Phys. Chem. B 125 (2021) 10589-10596.
   https://doi.org/10.1021/acs.jpcb.1c04451
