@@ -76,7 +76,7 @@
   
 [18] M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
   https://doi.org/10.1021/jp103862v
-  18_ionic_liquid-CO2 (failed)
+  18_ionic_liquid-CO2
   
 [19] E. Shi et al., Nature 580 (2020) 614-620.
   https://doi.org/10.1038/s41586-020-2219-7
@@ -85,6 +85,10 @@
 [20] M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
   https://doi.org/10.1039/C8SC04971H
   20_cocrystal
+  
+[21] Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
+  https://doi.org/10.1021/acsanm.0c03336
+  21_EMD_CGCMM, NEMD
   
 - J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
   https://doi.org/10.1063/5.0131179
@@ -113,10 +117,6 @@
 - M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
   paper_si
-  
-- Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
-  https://doi.org/10.1021/acsanm.0c03336
-  EMD_CGCMM, NEMD
   
 - S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
   https://doi.org/10.1007/s10973-020-10134-x

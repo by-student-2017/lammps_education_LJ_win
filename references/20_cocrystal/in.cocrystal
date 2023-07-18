@@ -13,7 +13,6 @@ neighbor	2.0 bin
 neigh_modify 	delay 0 every 1 one 2000 page 100000
 
 pair_style	lj/cut/coul/long 12.0 12.0
-kspace_style	pppm 1.0e-5
 
 special_bonds 	lj/coul 0.0 0.0 0.5
 
@@ -22,6 +21,8 @@ angle_style     harmonic
 dihedral_style  opls 
 
 read_data	./data.cocrystal
+
+kspace_style	pppm 1.0e-5
 
 pair_style 	hybrid/overlay lj/cut/coul/long 12.0 12.0 hbond/dreiding/lj 4 2.0 6.00 180.00
 pair_coeff 	5 24 hbond/dreiding/lj 30 j 12.00 2.32 4 9.0 12.00 90.00
