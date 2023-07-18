@@ -54,7 +54,7 @@ thermo_style    custom step c_temp_ch4 press pe ke etotal atoms
 thermo          ${thermo_freq}
 thermo_modify   flush yes
 
-# output cfg file (The name "Ar" is used instead of "CH4".)
+# output cfg file
 dump            d1 all cfg ${dump_freq} cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
 dump_modify     d1 element Zr H C O3 OR O2 CH4
 

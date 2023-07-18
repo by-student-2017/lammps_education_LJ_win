@@ -11,7 +11,18 @@
 
 [3] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
   https://doi.org/10.1039/D2ME00237J
-  03_MOF
+  03_MOF (UiO-66)
+
+[4] K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
+  https://doi.org/10.1021/acs.macromol.8b02750
+  04_DPD
+  We present a practical coarse-grain (CG) force field for 
+  dissipative particle dynamics (DPD) simulations of 
+  cis-1,4-polybutadiene (cPB). 
+
+[5] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
+  https://doi.org/10.1063/5.0029490
+  05_C60_BN
 
 - J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
   https://doi.org/10.1063/1.4758700
@@ -24,10 +35,6 @@
 - M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
   paper_si
-
-- K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
-  https://doi.org/10.1021/acs.macromol.8b02750
-  DPD
 
 - A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
   https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
@@ -96,10 +103,6 @@
 - E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
   https://doi.org/10.1107/S1600576715013242
   xtds
-  
-- M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
-  https://doi.org/10.1063/5.0029490
-  C60_BN
   
 - S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
