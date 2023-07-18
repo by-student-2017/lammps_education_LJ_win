@@ -1,13 +1,17 @@
-- F. Azough et al., (2017).
+[1] F. Azough et al., (2017).
   https://doi.org/10.15125/BATH-00463
-  La1-3NbO3
+  01_La1-3NbO3
   ------------------------------------
   D. Kepaptsoglou et al., Inorg. Chem. 57 (2018) 45-55.
   https://doi.org/10.1021/acs.inorgchem.7b01584
 
-- S. Ariga et al., Phys. Chem. Chem. Phys., 24 (2022) 2567-2581.
+[2] S. Ariga et al., Phys. Chem. Chem. Phys., 24 (2022) 2567-2581.
   https://doi.org/10.1039/D1CP05393K
-  Li2S-P2S5
+  02_Li2S-P2S5
+
+[3] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
+  https://doi.org/10.1039/D2ME00237J
+  03_MOF
 
 - [IFL38] J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
   https://doi.org/10.1063/1.4758700
@@ -68,10 +72,6 @@
 - J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
   https://doi.org/10.1021/acs.jcim.6b00103
   TopoGromacs
-  
-- S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
-  https://doi.org/10.1039/D2ME00237J
-  MOF
   
 - S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
   https://doi.org/10.1021/acs.jctc.8b00909
