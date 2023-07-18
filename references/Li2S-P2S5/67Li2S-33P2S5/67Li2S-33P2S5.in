@@ -197,8 +197,10 @@ group             Li type 8
 timestep          1
 thermo            100
 thermo_style      custom step temp etotal press vol density cella cellb cellc cellalpha cellbeta cellgamma
-dump              1 all custom 1000 300K.lammpstrj id type element x y z
-dump_modify       1 element P S P S S P S Li sort id
+#dump              1 all custom 1000 300K.lammpstrj id type element x y z
+#dump_modify       1 element P S P S S P S Li sort id
+dump            d1 all cfg 1000 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify     d1 element P S P S S P S Li
 fix               1 all npt temp 500 300 100 iso 1 1 1000
 run               200000  # cooling
 fix               1 all npt temp 300 300 100 iso 1 1 1000
