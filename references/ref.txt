@@ -23,6 +23,10 @@
 [5] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
   https://doi.org/10.1063/5.0029490
   05_C60_BN
+  
+[6] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
+  https://doi.org/10.1021/acs.jpcb.2c08843
+  06_pi-Conjugated_Polymers
 
 - J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
   https://doi.org/10.1063/1.4758700
@@ -83,10 +87,6 @@
 - S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
   https://doi.org/10.1021/acs.jctc.8b00909
   Aqueous_Solutions_of_Carbohydrates_OPLS
-  
-- A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
-  https://doi.org/10.1021/acs.jpcb.2c08843
-  pi-Conjugated_Polymers
   
 - M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
   https://doi.org/10.1021/jp103862v
