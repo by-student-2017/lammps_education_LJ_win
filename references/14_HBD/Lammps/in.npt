@@ -1,0 +1,48 @@
+# lammps input file for running NPT of bmim-cl-bf4 for 10ns at 300K
+units           real
+dimension       3
+atom_style      full
+
+#read_restart   restA
+read_data       data.lammps
+include         parm.bmim-cl-bf4
+
+neighbor        2.0 bin
+neigh_modify    check yes delay 0 every 1
+
+thermo_style    multi
+thermo          20
+thermo_modify	flush yes
+
+dump            1 all custom 100 dump.min id mol type xu yu zu
+dump_modify     1 flush yes append yes
+
+dump           d1 all cfg 100 cfg/run.min.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify    d1 element N C C C C C C H H H H C B F
+
+minimize	1.0e-8	1.0e-8	1000000	1000000
+write_restart	rest.min
+undump		1
+undump		d1
+
+timestep        1.0
+run_style       verlet
+
+velocity        all create 300.0 353356 mom yes rot yes dist gaussian
+
+fix             2 all shake 0.0001 30 4000 b 4 6 7 9
+fix             1 all npt temp 300.0 300.0 1000.0 iso 0.0 0.0 1000.0
+
+thermo          100
+thermo_modify   flush yes
+
+# 1000 frames for 10ns
+dump            2 all custom 10000 dump.npt id mol type xu yu zu
+dump_modify     2 flush yes append yes
+
+dump           d2 all cfg 100 cfg/run.npt.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify    d2 element N C C C C C C H H H H C B F
+
+restart         1000 restA restB
+run             10000000 upto
+write_restart   rest.npt

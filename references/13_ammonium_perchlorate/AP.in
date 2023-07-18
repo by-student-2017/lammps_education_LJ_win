@@ -1,0 +1,43 @@
+units real
+dimension 3
+boundary p p p
+atom_style full
+
+read_data APScaled-6-9-7.data
+
+timestep 1.0
+
+pair_style lj/class2/coul/long 15.0 12.0	
+kspace_style pppm 1.0e-5
+
+pair_coeff 1 1 0.5018000000 4.5675
+pair_coeff 2 2 0.0090000000 1.1577
+pair_coeff 3 3 0.0406000000 4.2741
+pair_coeff 4 4 0.0954000000 3.8635
+
+pair_modify mix sixthpower
+
+bond_style class2
+
+bond_coeff 1 1.4523 419.3650 -838.7299 978.5182
+bond_coeff 2 0.9900 478.4717 -956.9433 1116.4339
+
+angle_style class2
+
+angle_coeff 1 112.3721 33.6147 -7.5598 -7.2604 
+angle_coeff 1 bb 18.1431 0.9900 0.9900
+angle_coeff 1 ba 14.7128 14.7128 0.9900 0.9900
+angle_coeff 2 112.2363 108.1226 -24.1496 -23.3346
+angle_coeff 2 bb 27.8482 1.4523 1.4523
+angle_coeff 2 ba -2.7917 -2.7917 1.4523 1.4523
+
+velocity all create 298.0 293288 dist gaussian mom yes rot yes
+
+dump 1 all xyz 1000 *.xyz
+
+dump        d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify d1 element Cl H N O
+
+fix 1 all npt temp 298.0 298.0 100.0 aniso 1.0 1.0 1000.0
+
+run 3000000

@@ -1,0 +1,105 @@
+#lammps input file
+print
+print
+==================================================================
+print "Beginning of lammps input file"
+print
+==================================================================
+print
+
+echo both
+units real
+timer loop
+processors * * *
+atom_style full
+
+boundary p p p
+#package gpu 1
+#pair_style lj/cut/coul/long/gpu 12.0
+pair_style lj/cut/coul/long 9.0
+kspace_style pppm 1e-5
+bond_style harmonic
+angle_style harmonic
+dihedral_style opls
+special_bonds lj/coul 0.0 0.0 0.5
+pair_modify tail yes mix arithmetic
+variable molname string peowt50_pdmswt50_liclo4_15to1
+
+variable numsteps index 10000000
+variable nanosec index 60ns
+variable Tstep index 2.0
+variable itemp index 350.0
+variable ftemp index 350.0
+variable pressure index 1.0
+variable restfreq index 500
+variable dcdfreq index 500
+variable ensemble index min_equil
+variable ensemble1 index heat
+variable ensemble2 index npt
+#read_data ./data.${molname}
+#read_data /gpfs/projects/arl/tug88733/tnn/peoliclo4/400K_BUCKINGHAM/data.peowt50_pdmswt50_liclo4_15to1_npt_40ns_for_BAADEN2000
+read_restart ./peowt50_pdmswt50_liclo4_15to1_npt_40ns.rst2
+pair_style lj/cut/coul/long 9.0
+pair_modify tail yes mix arithmetic
+include ./param.lammps_BAADEN2000
+
+neighbor 2.0 bin
+neigh_modify delay 1 every 1 check yes
+#velocity all create ${itemp} 11111111 mom yes rot yes dist gaussian
+
+variable nevery index 1
+variable nrepeat index 1000000
+variable nfreq index 1000000
+
+group peo type 1 2 3
+group liclo4 type 7 5 8
+group peoliclo4 type 1 2 3 7 5 8
+group pdms type 4 6 9 10
+group pdmsliclo4 type 4 6 9 10 7 5 8
+
+#delete_atoms group pdms
+
+set type 5 charge 0.58000 #BAADEN2000
+set type 8 charge -0.3950 #BAADEN2000
+
+print
+print
+==================================================================
+print "${ensemble2} simulation for ${nanosec} production: ${molname} system"
+print
+==================================================================
+print 
+
+reset_timestep 0
+timestep ${Tstep}
+fix fixshake all shake 0.0001 20 0 b 3 4
+fix fix${ensemble2} all npt temp ${ftemp} ${ftemp} 100.0 iso ${pressure} ${pressure} 1000.0
+fix fixmomentum all momentum 1000 linear 1 1 1
+dump dumptrj all dcd ${dcdfreq} ${molname}_${ensemble2}_${nanosec}.dcd
+dump_modify dumptrj unwrap yes
+thermo 500
+variable avga equal lx
+variable avgb equal ly
+variable avgc equal lz
+variable avgdensity equal density
+fix fixavgdensity all ave/time ${nevery} ${nrepeat} ${nfreq} v_avga v_avgb v_avgc v_avgdensity file avg_a_b_c_density_${ensemble2}.dat
+thermo_style custom time temp pe etotal press lx ly lz density ebond eangle edihed
+restart 1000 ${molname}_${ensemble2}_${nanosec}.rst1
+${molname}_${ensemble2}_${nanosec}.rst2
+restart 500000 ${molname}_${ensemble2}_${nanosec}.rst*
+run ${numsteps} #5 ns
+write_data data.${molname}_${ensemble2}_${nanosec}
+log log.${molname}_${ensemble2}_${nanosec}
+unfix fix${ensemble2}
+unfix fixmomentum
+unfix fixshake
+undump dumptrj
+unfix fixavgdensity
+
+print
+print
+==================================================================
+print "DONE"
+print
+==================================================================
+print

@@ -1,0 +1,93 @@
+ # LAMMPS paramter file  bmim-cl-bmim-bf4 
+
+pair_style     lj/cut/coul/long 12.0
+pair_modify    tail yes
+bond_style     harmonic
+angle_style    harmonic
+dihedral_style multi/harmonic
+improper_style cvff
+kspace_style   pppm 0.00001
+special_bonds  lj 0.0 0.0 0.5 coul 0.0 0.0 0.0
+
+mass     1   14.007     #N
+mass     2   12.011     #CR
+mass     3   12.011     #CW
+mass     4   12.011     #C1
+mass     5   12.011     #C2
+mass     6   12.011     #CS
+mass     7   12.011     #CT
+mass     8    1.008     #HB
+mass     9    1.008     #HA
+mass    10    1.008     #H1
+mass    11    1.008     #HC
+mass    12   35.453     #Cl
+mass    13   10.811     #B
+mass    14   18.998     #F
+
+bond_coeff     1    477.055449331    1.315     #N-CR
+bond_coeff     2    427.103250478    1.378     #N-CW
+bond_coeff     3    336.998087954    1.466     #N-C1
+bond_coeff     4    680.000000000    1.080     #CR-HA
+bond_coeff     5    520.076481836    1.341     #CW-CW
+bond_coeff     6    680.000000000    1.080     #CW-HB
+bond_coeff     7    680.000000000    1.090     #C1-H1
+bond_coeff     8    267.925430210    1.529     #C*-C*
+bond_coeff     9    680.000000000    1.090     #C*-HC
+bond_coeff    10    386.592000000    1.394     #B-F
+
+angle_coeff     1     69.933078394   109.8     #N-CR-N
+angle_coeff     2     34.966539197   125.1     #N-CR-HA
+angle_coeff     3     69.933078394   107.1     #N-CW-CW
+angle_coeff     4     34.966539197   122.0     #N-CW-HB
+angle_coeff     5    100.000000000   112.7     #N-C1-C2 C1-C2-CS C2-CS-CT
+angle_coeff     6     37.428298279   110.7     #N-C1-H1 C1-C2-HC C2-C1-H1 C2-CS-HC CS-C2-HC CS-CT-HC CT-CS-HC
+angle_coeff     7     69.933078394   108.0     #CR-N-CW
+angle_coeff     8     69.933078394   126.4     #CR-N-C1
+angle_coeff     9     69.933078394   125.6     #CW-N-C1
+angle_coeff    10     34.966539197   130.9     #CW-CW-HB
+angle_coeff    11     33.006692161   107.8     #H*-C*-H*
+angle_coeff    12    160.014000000   109.5     #F-B-F
+
+dihedral_coeff     1     3.51576    -0.22917    -4.72038    -0.02824    -0.01044     #N-CR-N-CW
+dihedral_coeff     2     3.29140    -0.21509    -4.70208    -0.01501    -0.00426     #N-CR-N-C1
+dihedral_coeff     3    12.05170     0.27397   -10.66410     0.03749     0.01453     #N-CW-CW-N
+dihedral_coeff     4    12.61270     0.32004   -10.66000     0.95066     0.86580     #N-CW-CW-HB
+dihedral_coeff     5    -1.18838    -0.62908    -0.80187    -0.59105    -0.00558     #N-C1-C2-CS
+dihedral_coeff     6     0.54308    -0.05237     0.01963     0.18002     0.00026     #N-C1-C2-HC
+dihedral_coeff     7     3.82912     0.16696    -2.94916     0.02043     0.00752     #CR-N-CW-CW
+dihedral_coeff     8     1.70381    -0.08504    -2.91594     0.17840     0.11897     #CR-N-CW-HB
+dihedral_coeff     9    -0.68481    -0.63756    -0.00169    -0.00044    -0.00011     #CR-N-C1-C2
+dihedral_coeff    10    -0.76739    -0.05523     0.02113     0.03587     0.02096     #CW-N-C1-H1
+dihedral_coeff    11     3.11640    -0.09783    -4.54743     0.20929     0.13711     #CW-N-CR-HA
+dihedral_coeff    12    -0.84383    -0.26414     0.01432     0.28159     0.02037     #CW-N-C1-H1
+dihedral_coeff    13     4.15304     0.17744    -2.95859     0.01163     0.00320     #CW-CW-N-C1
+dihedral_coeff    14     0.63622    -1.14805    -1.46120     0.37907    -0.00010     #CW-N-C1-C2
+dihedral_coeff    15     2.78091    -0.18527    -4.66425     0.01236     0.00828     #C1-N-CR-HA
+dihedral_coeff    16     1.14025    -0.18478    -3.01681     0.00713     0.00543     #C1-N-CW-HB
+dihedral_coeff    17     2.69685     0.45149     0.15700     0.55798     0.00000     #C1-C2-CS-CT
+dihedral_coeff    18    -0.43179    -0.54898     0.00000     0.73198     0.00000     #C*-C*-C*-H*
+dihedral_coeff    19    13.19080     0.17816   -10.73030     0.00293     0.00052     #HB-CW-CW-HB
+dihedral_coeff    20     0.38134    -0.44509     0.00695     0.63806     0.00047     #H*-C*-C*-H*
+
+improper_coeff     1     1.000239005   -1     2    #N-C1-CR-CW
+improper_coeff     2     1.000239005   -1     2    #CR-HA-N-N
+improper_coeff     3     1.099426386   -1     2    #N-C1-CR-CW
+improper_coeff     4     1.099426386   -1     2    #CW-HB-N-CW
+improper_coeff     5     1.099426386   -1     2    #CW-HB-N-CW
+
+pair_coeff     1    1       0.170000000    3.25    #N-N
+pair_coeff     2    2       0.070000000    3.55    #CR-CR
+pair_coeff     3    3       0.070000000    3.55    #CW-CW
+pair_coeff     4    4       0.065999044    3.50    #C1-C1
+pair_coeff     5    5       0.065999044    3.50    #C2-C2
+pair_coeff     6    6       0.065999044    3.50    #CS-CS
+pair_coeff     7    7       0.065999044    3.50    #CT-CT
+pair_coeff     8    8       0.030000000    2.00    #HB-HB
+pair_coeff     9    9       0.010000000    1.70    #HA-HA
+pair_coeff    10   10       0.030000000    2.50    #H1-H1
+pair_coeff    11   11       0.030000000    2.50    #HC-HC
+pair_coeff    12   12       0.299837476    3.30    #Cl-Cl
+pair_coeff    13   13       0.060000000    3.68    #B-B
+pair_coeff    14   14       0.020000000    2.80    #F-F
+                                                   
+pair_modify mix arithmetic
