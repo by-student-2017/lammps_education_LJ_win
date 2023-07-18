@@ -1,0 +1,37 @@
+dimension       3
+units           lj
+atom_style      full
+
+read_data      config-EC.dat
+
+group all type 1 
+
+neighbor        0.3 bin
+neigh_modify    every 1 check yes
+
+#      lenard-jones truncated at rc   
+pair_style  lj/cut  2.7
+pair_coeff      1 1   1.0  1.0
+
+# shifted potential
+pair_modify     shift yes
+
+# velocities extracted from maxwell boltzmann at T*=2
+velocity        all create 2 455511
+
+restart         100000 old_config_1.dat  old_config_2.dat
+
+# chosen ensemble
+fix             5 all nve
+
+#v-rescaling
+fix		7 all temp/rescale 200 2 2  0.1 1.0 
+
+fix 		8 all	spring/self XXX
+fix_modify	8    energy yes
+
+thermo          10
+thermo_style custom  step f_8 
+
+timestep        0.001
+run             2000000
