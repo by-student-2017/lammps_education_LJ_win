@@ -24,17 +24,27 @@
   https://doi.org/10.1021/acs.jpcb.1c04451
   05_brush (coarse-grained molecular dynamics simulations)
 
-[6] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
+[6] C. C. Walker et al., J. Chem. Phys. 152 (2020) 044903.
+  https://doi.org/10.1063/1.5126213
+  06_PVB (ransferable coarse-grained force fields for complex polymer systems) (failed)
+  WARNING: 5 of 1001 force values in table are inconsistent with -dE/dr.
+  WARNING:  Should only be flagged at inflection points (src/MOLECULE/bond_table.cpp:380)
+
+[7] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
   https://doi.org/10.1063/5.0029490
-  06_C60_BN
+  07_C60_BN
   
-[7] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
+[8] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
   https://doi.org/10.1021/acs.jpcb.2c08843
-  07_pi-Conjugated_Polymers
+  08_pi-Conjugated_Polymers
   
-[8] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
+[9] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
   https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
-  08_beta-HMX
+  09_beta-HMX
+
+[10] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
+  https://doi.org/10.1021/acs.jctc.8b00909
+  10_Aqueous_Solutions_of_Carbohydrates_OPLS
 
 - J. Jung et al., Eur. Polym. 114 (2019) 223-233.
   https://doi.org/10.1016/j.eurpolymj.2019.02.042
@@ -76,10 +86,6 @@
   https://doi.org/10.1063/1.5054758
   ESM
   
-- C. C. Walker et al., J. Chem. Phys. 152 (2020) 044903.
-  https://doi.org/10.1063/1.5126213
-  PVB
-  
 - S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
   https://doi.org/10.1007/s10973-020-10134-x
   EMD_water
@@ -87,10 +93,6 @@
 - J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
   https://doi.org/10.1021/acs.jcim.6b00103
   TopoGromacs
-  
-- S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
-  https://doi.org/10.1021/acs.jctc.8b00909
-  Aqueous_Solutions_of_Carbohydrates_OPLS
   
 - M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
   https://doi.org/10.1021/jp103862v

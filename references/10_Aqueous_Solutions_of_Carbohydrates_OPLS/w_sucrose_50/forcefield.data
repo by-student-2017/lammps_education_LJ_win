@@ -1,0 +1,381 @@
+## Title:   Optimizing Non-bonded Interactions of the OPLS Force Field for Aqueous Solutions of Carbohydrates: How to Capture Both Thermodynamics and Dynamics
+## Authors: Jamali, S. H., van Weste, T., Moultos, O. A., and Vlugt, T. J. H.
+## Journal: Journal of Chemical Theory and Computation
+## Date:    26-10-2018 
+## Purpose: Computing the density of a sucrose-water mixture with a mass fraction of 50%
+
+#################### FORCE FIELD ####################
+pair_style lj/cut/coul/long  9.0
+pair_modify mix geometric tail yes # w/ ATC + geometric mixing rule
+kspace_style pppm 1e-6
+bond_style harmonic
+angle_style harmonic
+dihedral_style opls 
+improper_style none
+special_bonds lj 0.0 0.0 0.5 coul 0.0 0.0 0.5 dihedral no
+
+# Pair Coeffs      (Scaled: 0.80)
+#
+# 1  CA
+# 2  CD
+# 3  CE
+# 4  CF
+# 5  CG
+# 6  H
+# 7  HA
+# 8  HD
+# 9  HE
+# 10  HG
+# 11  Hw
+# 12  O
+# 13  OA
+# 14  OD
+# 15  OE
+# 16  Ow
+pair_coeff	1	1	0.0528	3.5
+pair_coeff	2	2	0.0528	3.5
+pair_coeff	3	3	0.0528	3.5
+pair_coeff	4	4	0.0528	3.5
+pair_coeff	5	5	0.0528	3.5
+pair_coeff	6	6	0.024	2.5
+pair_coeff	7	7	0.001 0.4
+pair_coeff	8	8	0.001 0.4
+pair_coeff	9	9	0.024	2.5
+pair_coeff	10	10	0.024	2.5
+pair_coeff	11	11	0.001	0.4              # SPC/Fw (Wu 2006)
+pair_coeff	12	12	0.112	2.9
+pair_coeff	13	13	0.136	3.12
+pair_coeff	14	14	0.136	3.07
+pair_coeff	15	15	0.112	2.9
+pair_coeff	16	16	0.155425	3.165492     # SPC/Fw (Wu 2006)
+
+# Bond Coeffs
+#
+# 1  CA-CE
+# 2  CA-CF
+# 3  CA-H
+# 4  CA-OA
+# 5  CD-CD
+# 6  CD-CE
+# 7  CD-CF
+# 8  CD-CG
+# 9  CD-H
+# 10  CD-OD
+# 11  CE-HE
+# 12  CE-OE
+# 13  CF-O
+# 14  CF-OE
+# 15  CG-HG
+# 16  CG-O
+# 17  CG-OE
+# 18  HA-OA
+# 19  HD-OD
+# 20  Hw-Ow
+bond_coeff 1 268.0 1.529 
+bond_coeff 2 268.0 1.529
+bond_coeff 3 340.0 1.090
+bond_coeff 4 320.0 1.410
+bond_coeff 5 268.0 1.529
+bond_coeff 6 268.0 1.529
+bond_coeff 7 268.0 1.529
+bond_coeff 8 268.0 1.529
+bond_coeff 9 340.0 1.090
+bond_coeff 10 320.0 1.410
+bond_coeff 11 340.0 1.090
+bond_coeff 12 320.0 1.410
+bond_coeff 13 320.0 1.380
+bond_coeff 14 320.0 1.380
+bond_coeff 15 340.0 1.090
+bond_coeff 16 320.0 1.380
+bond_coeff 17 320.0 1.380
+bond_coeff 18 553.0 0.945
+bond_coeff 19 553.0 0.945
+bond_coeff 20 529.581 1.012     # SPC/Fw (Wu 2006)
+
+# Angle Coeffs
+#
+# 1  CA-CE-CD
+angle_coeff 1 58.35 112.70
+# 2  CA-CE-HE
+angle_coeff 2 37.50 110.70
+# 3  CA-CE-OE
+angle_coeff 3 50.00 109.50
+# 4  CA-CF-CD
+angle_coeff 4 58.35 112.70
+# 5  CA-CF-O
+angle_coeff 5 50.00 109.50
+# 6  CA-CF-OE
+angle_coeff 6 50.00 109.50
+# 7  CA-OA-HA
+angle_coeff 7 55.00 108.50
+# 8  CD-CD-CD
+angle_coeff 8 58.35 112.70
+# 9  CD-CD-CE
+angle_coeff 9 58.35 112.70
+# 10  CD-CD-CF
+angle_coeff 10 58.35 112.70
+# 11  CD-CD-CG
+angle_coeff 11 58.35 112.70
+# 12  CD-CD-H
+angle_coeff 12 37.50 110.70
+# 13  CD-CD-OD
+angle_coeff 13 50.00 109.50
+# 14  CD-CE-HE
+angle_coeff 14 37.50 110.70
+# 15  CD-CE-OE
+angle_coeff 15 50.00 109.50
+# 16  CD-CF-O
+angle_coeff 16 50.00 109.50
+# 17  CD-CF-OE
+angle_coeff 17 50.00 109.50
+# 18  CD-CG-HG
+angle_coeff 18 37.50 110.70
+# 19  CD-CG-O
+angle_coeff 19 50.00 109.50
+# 20  CD-CG-OE
+angle_coeff 20 50.00 109.50
+# 21  CD-OD-HD
+angle_coeff 21 55.00 108.50
+# 22  CE-CA-H
+angle_coeff 22 37.50 110.70
+# 23  CE-CA-OA
+angle_coeff 23 50.00 109.50
+# 24  CE-CD-H
+angle_coeff 24 37.50 110.70
+# 25  CE-CD-OD
+angle_coeff 25 50.00 109.50
+# 26  CE-OE-CF
+angle_coeff 26 60.00 109.50
+# 27  CE-OE-CG
+angle_coeff 27 60.00 109.50
+# 28  CF-CA-H
+angle_coeff 28 37.50 110.70
+# 29  CF-CA-OA
+angle_coeff 29 50.00 109.50
+# 30  CF-CD-H
+angle_coeff 30 37.50 110.70
+# 31  CF-CD-OD
+angle_coeff 31 50.00 109.50
+# 32  CF-O-CG
+angle_coeff 32 60.00 109.50
+# 33  CG-CD-H
+angle_coeff 33 37.50 110.70
+# 34  CG-CD-OD
+angle_coeff 34 50.00 109.50
+# 35  H-CA-H
+angle_coeff 35 33.00 107.80
+# 36  H-CA-OA
+angle_coeff 36 35.00 109.50
+# 37  H-CD-OD
+angle_coeff 37 35.00 109.50
+# 38  HE-CE-OE
+angle_coeff 38 35.00 109.50
+# 39  HG-CG-O
+angle_coeff 39 35.00 109.50
+# 40  HG-CG-OE
+angle_coeff 40 35.00 109.50
+# 41  Hw-Ow-Hw
+angle_coeff 41 37.95 113.24     # SPC/Fw (Wu 2006)
+# 42  O-CF-OE
+angle_coeff 42 92.60 111.55
+# 43  O-CG-OE
+angle_coeff 43 92.60 111.55
+
+
+# Dihedral Coeffs
+#
+# 1  CA-CE-OE-CF
+dihedral_coeff 1   0.650  -0.250   0.670   0.000
+# 2  CA-CE-OE-CG
+dihedral_coeff 2   0.650  -0.250   0.670   0.000
+# 3  CA-CF-O-CG
+dihedral_coeff 3   0.650  -0.250   0.670   0.000
+# 4  CA-CF-OE-CE
+dihedral_coeff 4   0.650  -0.250   0.670   0.000
+# 5  CD-CD-CD-CE
+dihedral_coeff 5   1.740  -0.157   0.279   0.000
+# 6  CD-CD-CD-CG
+dihedral_coeff 6   1.740  -0.157   0.279   0.000
+# 7  CD-CD-CD-H
+dihedral_coeff 7   0.000   0.000   0.366   0.000
+# 8  CD-CD-CD-OD
+dihedral_coeff 8  -1.336   0.000   0.000   0.000
+# 9  CD-CD-CE-CA
+dihedral_coeff 9   1.740  -0.157   0.279   0.000
+# 10  CD-CD-CE-HE
+dihedral_coeff 10   0.000   0.000   0.366   0.000
+# 11  CD-CD-CE-OE
+dihedral_coeff 11  -1.336   0.000   0.000   0.000
+# 12  CD-CD-CF-CA
+dihedral_coeff 12   1.740  -0.157   0.279   0.000
+# 13  CD-CD-CF-O
+dihedral_coeff 13  -1.336   0.000   0.000   0.000
+# 14  CD-CD-CF-OE
+dihedral_coeff 14  -1.336   0.000   0.000   0.000
+# 15  CD-CD-CG-HG
+dihedral_coeff 15   0.000   0.000   0.366   0.000
+# 16  CD-CD-CG-O
+dihedral_coeff 16  -1.336   0.000   0.000   0.000
+# 17  CD-CD-CG-OE
+dihedral_coeff 17  -1.336   0.000   0.000   0.000
+# 18  CD-CD-OD-HD
+dihedral_coeff 18   2.674  -2.883   1.026   0.000
+# 19  CD-CE-OE-CF
+dihedral_coeff 19   0.650  -0.250   0.670   0.000
+# 20  CD-CE-OE-CG
+dihedral_coeff 20   0.650  -0.250   0.670   0.000
+# 21  CD-CF-O-CG
+dihedral_coeff 21   0.650  -0.250   0.670   0.000
+# 22  CD-CF-OE-CE
+dihedral_coeff 22   0.650  -0.250   0.670   0.000
+# 23  CD-CG-O-CF
+dihedral_coeff 23   0.650  -0.250   0.670   0.000
+# 24  CD-CG-OE-CE
+dihedral_coeff 24   0.650  -0.250   0.670   0.000
+# 25  CE-CA-OA-HA
+dihedral_coeff 25   2.674  -2.883   1.026   0.000
+# 26  CE-CD-CD-CF
+dihedral_coeff 26   1.740  -0.157   0.279   0.000
+# 27  CE-CD-CD-H
+dihedral_coeff 27   0.000   0.000   0.366   0.000
+# 28  CE-CD-CD-OD
+dihedral_coeff 28  -1.336   0.000   0.000   0.000
+# 29  CE-CD-OD-HD
+dihedral_coeff 29   2.674  -2.883   1.026   0.000
+# 30  CF-CA-OA-HA
+dihedral_coeff 30   2.674  -2.883   1.026   0.000
+# 31  CF-CD-CD-H
+dihedral_coeff 31   0.000   0.000   0.366   0.000
+# 32  CF-CD-CD-OD
+dihedral_coeff 32  -1.336   0.000   0.000   0.000
+# 33  CF-CD-OD-HD
+dihedral_coeff 33   2.674  -2.883   1.026   0.000
+# 34  CG-CD-CD-H
+dihedral_coeff 34   0.000   0.000   0.366   0.000
+# 35  CG-CD-CD-OD
+dihedral_coeff 35  -1.336   0.000   0.000   0.000
+# 36  CG-CD-OD-HD
+dihedral_coeff 36   2.674  -2.883   1.026   0.000
+# 37  H-CA-CE-CD
+dihedral_coeff 37   0.000   0.000   0.366   0.000
+# 38  H-CA-CE-HE
+dihedral_coeff 38   0.000   0.000   0.318   0.000
+# 39  H-CA-CE-OE
+dihedral_coeff 39   0.000   0.000   0.468   0.000
+# 40  H-CA-CF-CD
+dihedral_coeff 40   0.000   0.000   0.366   0.000
+# 41  H-CA-CF-O
+dihedral_coeff 41   0.000   0.000   0.468   0.000
+# 42  H-CA-CF-OE
+dihedral_coeff 42   0.000   0.000   0.468   0.000
+# 43  H-CA-OA-HA
+dihedral_coeff 43   0.000   0.000   0.450   0.000
+# 44  H-CD-CD-H
+dihedral_coeff 44   0.000   0.000   0.318   0.000
+# 45  H-CD-CD-OD
+dihedral_coeff 45   0.000   0.000   0.468   0.000
+# 46  H-CD-CE-CA
+dihedral_coeff 46   0.000   0.000   0.366   0.000
+# 47  H-CD-CE-HE
+dihedral_coeff 47   0.000   0.000   0.318   0.000
+# 48  H-CD-CE-OE
+dihedral_coeff 48   0.000   0.000   0.468   0.000
+# 49  H-CD-CF-CA
+dihedral_coeff 49   0.000   0.000   0.366   0.000
+# 50  H-CD-CF-O
+dihedral_coeff 50   0.000   0.000   0.468   0.000
+# 51  H-CD-CF-OE
+dihedral_coeff 51   0.000   0.000   0.468   0.000
+# 52  H-CD-CG-HG
+dihedral_coeff 52   0.000   0.000   0.318   0.000
+# 53  H-CD-CG-O
+dihedral_coeff 53   0.000   0.000   0.468   0.000
+# 54  H-CD-CG-OE
+dihedral_coeff 54   0.000   0.000   0.468   0.000
+# 55  H-CD-OD-HD
+dihedral_coeff 55   0.000   0.000   0.450   0.000
+# 56  HE-CE-OE-CF
+dihedral_coeff 56   0.000   0.000   0.760   0.000
+# 57  HE-CE-OE-CG
+dihedral_coeff 57   0.000   0.000   0.760   0.000
+# 58  HG-CG-O-CF
+dihedral_coeff 58   0.000   0.000   0.760   0.000
+# 59  HG-CG-OE-CE
+dihedral_coeff 59   0.000   0.000   0.760   0.000
+# 60  O-CF-OE-CE
+dihedral_coeff 60  -0.375  -1.358   0.004   0.000
+# 61  O-CG-OE-CE
+dihedral_coeff 61  -0.375  -1.358   0.004   0.000
+# 62  OA-CA-CE-CD
+dihedral_coeff 62  -1.336   0.000   0.000   0.000
+# 63  OA-CA-CE-HE
+dihedral_coeff 63   0.000   0.000   0.468   0.000
+# 64  OA-CA-CE-OE
+dihedral_coeff 64   4.319   0.000   0.000   0.000
+# 65  OA-CA-CF-CD
+dihedral_coeff 65  -1.336   0.000   0.000   0.000
+# 66  OA-CA-CF-O
+dihedral_coeff 66   4.319   0.000   0.000   0.000
+# 67  OA-CA-CF-OE
+dihedral_coeff 67   4.319   0.000   0.000   0.000
+# 68  OD-CD-CD-OD
+dihedral_coeff 68   9.066   0.000   0.000   0.000
+# 69  OD-CD-CE-CA
+dihedral_coeff 69  -1.336   0.000   0.000   0.000
+# 70  OD-CD-CE-HE
+dihedral_coeff 70   0.000   0.000   0.468   0.000
+# 71  OD-CD-CE-OE
+dihedral_coeff 71   4.319   0.000   0.000   0.000
+# 72  OD-CD-CF-CA
+dihedral_coeff 72  -1.336   0.000   0.000   0.000
+# 73  OD-CD-CF-O
+dihedral_coeff 73   4.319   0.000   0.000   0.000
+# 74  OD-CD-CF-OE
+dihedral_coeff 74   4.319   0.000   0.000   0.000
+# 75  OD-CD-CG-HG
+dihedral_coeff 75   0.000   0.000   0.468   0.000
+# 76  OD-CD-CG-O
+dihedral_coeff 76   4.319   0.000   0.000   0.000
+# 77  OD-CD-CG-OE
+dihedral_coeff 77   4.319   0.000   0.000   0.000
+# 78  OE-CF-O-CG
+dihedral_coeff 78  -0.375  -1.358   0.004   0.000
+# 79  OE-CG-O-CF
+dihedral_coeff 79  -0.375  -1.358   0.004   0.000
+
+
+# Charges of the atoms      (Scaled: 0.95)
+#
+# 1  CA
+# 2  CD
+# 3  CE
+# 4  CF
+# 5  CG
+# 6  H
+# 7  HA
+# 8  HD
+# 9  HE
+# 10  HG
+# 11  Hw
+# 12  O
+# 13  OA
+# 14  OD
+# 15  OE
+# 16  Ow
+set type 1 charge +0.13775
+set type 2 charge +0.19475
+set type 3 charge +0.1615
+set type 4 charge +0.38     # Charge neutrality
+set type 5 charge +0.285
+set type 6 charge +0.057
+set type 7 charge +0.3971
+set type 8 charge +0.41325
+set type 9 charge +0.0285
+set type 10 charge +0.095
+set type 11 charge +0.410     # SPC/Fw (Wu 2006)
+set type 12 charge -0.380
+set type 13 charge -0.64885
+set type 14 charge -0.665
+set type 15 charge -0.38
+set type 16 charge -0.820     # SPC/Fw (Wu 2006)
+
