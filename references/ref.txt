@@ -78,9 +78,21 @@
   https://doi.org/10.1021/jp103862v
   18_ionic_liquid-CO2 (failed)
   
+[19] E. Shi et al., Nature 580 (2020) 614-620.
+  https://doi.org/10.1038/s41586-020-2219-7
+  19_hetero_PB-Br-I_2T_2vacs
+  
+[20] M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
+  https://doi.org/10.1039/C8SC04971H
+  20_cocrystal
+  
 - J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
   https://doi.org/10.1063/5.0131179
   SPCPs
+
+- S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
+  https://doi.org/10.1039/C9RA08003A
+  LiClO4 (need structure file)
 
 - J. Jung et al., Eur. Polym. 114 (2019) 223-233.
   https://doi.org/10.1016/j.eurpolymj.2019.02.042
@@ -89,6 +101,10 @@
 - J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
   https://doi.org/10.1063/1.4758700
   NaCl
+
+- F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
+  https://doi.org/10.1039/D1CP04592J
+  ILs (ionic liquids)
 
 - C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
   https://doi.org/10.1021/acsearthspacechem.2c00159
@@ -102,13 +118,17 @@
   https://doi.org/10.1021/acsanm.0c03336
   EMD_CGCMM, NEMD
   
-- J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
-  https://doi.org/10.1063/1.4812362
-  free-energy
-  
 - S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
   https://doi.org/10.1007/s10973-020-10134-x
   EMD_water (equilibrium molecular dynamic)
+  
+- B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
+  https://doi.org/10.1039/C8CP04561E
+  water_sw
+  
+- J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
+  https://doi.org/10.1063/1.4812362
+  free-energy
   
 - J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
   https://doi.org/10.1021/acs.jcim.6b00103
@@ -118,26 +138,6 @@
   https://doi.org/10.1021/acs.jctc.8b00170
   FSE
   
-- M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
-  https://doi.org/10.1039/C8SC04971H
-  cocrystal
-  
-- B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
-  https://doi.org/10.1039/C8CP04561E
-  water_sw
-  
-- E. Shi et al., Nature 580 (2020) 614-620.
-  https://doi.org/10.1038/s41586-020-2219-7
-  hetero_PB-Br-I_2T_2vacs
-  
-- F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
-  https://doi.org/10.1039/D1CP04592J
-  ILs
-  
 - M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
   CDFT
-  
-- S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
-  https://doi.org/10.1039/C9RA08003A
-  LiClO4 (need structure file)

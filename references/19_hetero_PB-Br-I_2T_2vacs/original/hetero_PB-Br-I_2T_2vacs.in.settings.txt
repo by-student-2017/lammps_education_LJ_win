@@ -1,0 +1,294 @@
+     # Non-bonded interactions (pair-wise)
+     pair_coeff           1          1          lj/cut/coul/long      0.282400             3.532413                    
+     pair_coeff           1          2          lj/cut/coul/long      0.274000             3.594776                    
+     pair_coeff           1          3          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           1          4          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           1          5          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           1          6          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           1          7          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           1          8          lj/cut/coul/long      0.262248             3.663376                    
+     pair_coeff           1          9          lj/cut/coul/long      0.304772             3.801910                    
+     pair_coeff           1          10         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          11         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          12         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          13         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          14         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          15         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          16         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           1          17         lj/cut/coul/long      0.137499             3.427733                    
+     pair_coeff           1          18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           1          19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           2          2          lj/cut/coul/long      0.282400             3.532413                    
+     pair_coeff           2          3          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           2          4          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           2          5          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           2          6          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           2          7          lj/cut/coul/long      0.109800             3.082955                    
+     pair_coeff           2          8          lj/cut/coul/long      0.262248             3.663376                    
+     pair_coeff           2          9          lj/cut/coul/long      0.304772             3.801910                    
+     pair_coeff           2          10         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          11         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          12         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          13         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          14         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          15         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          16         lj/cut/coul/long      0.169617             3.512814                    
+     pair_coeff           2          17         lj/cut/coul/long      0.137499             3.427733                    
+     pair_coeff           2          18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           2          19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           3          3          lj/cut/coul/long      0.016100             2.536389                    
+     pair_coeff           3          4          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           3          5          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           3          6          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           3          7          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           3          8          lj/cut/coul/long      2.185300             2.767857                    
+     pair_coeff           3          9          lj/cut/coul/long      2.447536             3.100000                    
+     pair_coeff           3          10         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          11         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          12         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          13         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          14         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          15         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          16         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           3          17         lj/cut/coul/long      0.055100             2.915912                    
+     pair_coeff           3          18         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           3          19         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           4          4          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           4          5          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           4          6          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           4          7          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           4          8          lj/cut/coul/long      2.185300             2.767857                    
+     pair_coeff           4          9          lj/cut/coul/long      2.447536             3.100000                    
+     pair_coeff           4          10         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          11         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          12         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          13         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          14         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          15         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          16         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           4          17         lj/cut/coul/long      0.055100             2.915912                    
+     pair_coeff           4          18         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           4          19         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           5          5          lj/cut/coul/long      0.016100             2.625479                    
+     pair_coeff           5          6          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           5          7          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           5          8          lj/cut/coul/long      2.185300             2.767857                    
+     pair_coeff           5          9          lj/cut/coul/long      2.447536             3.100000                    
+     pair_coeff           5          10         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          11         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          12         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          13         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          14         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          15         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          16         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           5          17         lj/cut/coul/long      0.055100             2.915912                    
+     pair_coeff           5          18         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           5          19         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           6          6          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           6          7          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           6          8          lj/cut/coul/long      2.185300             2.767857                    
+     pair_coeff           6          9          lj/cut/coul/long      2.447536             3.100000                    
+     pair_coeff           6          10         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          11         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          12         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          13         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          14         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          15         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          16         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           6          17         lj/cut/coul/long      0.055100             2.915912                    
+     pair_coeff           6          18         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           6          19         lj/cut/coul/long      0.596960             2.709990                    
+     pair_coeff           7          7          lj/cut/coul/long      0.044000             2.571134                    
+     pair_coeff           7          8          lj/cut/coul/long      2.185300             2.455357                    
+     pair_coeff           7          9          lj/cut/coul/long      2.447536             2.750000                    
+     pair_coeff           7          10         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          11         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          12         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          13         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          14         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          15         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          16         lj/cut/coul/long      0.067971             3.000992                    
+     pair_coeff           7          17         lj/cut/coul/long      0.055100             2.915912                    
+     pair_coeff           7          18         lj/cut/coul/long      0.596960             2.264540                    
+     pair_coeff           7          19         lj/cut/coul/long      0.596960             2.264540                    
+     pair_coeff           8          8          buck/coul/long        24274.905590         0.452861             654.412715                  
+     pair_coeff           8          9          buck/coul/long        23522.460380         0.467539             675.681129                  
+     pair_coeff           8          10         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          11         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          12         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          13         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          14         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          15         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          16         lj/cut/coul/long      0.162342             3.581413                    
+     pair_coeff           8          17         lj/cut/coul/long      0.131602             3.496332                    
+     pair_coeff           8          18         buck/coul/long        110223.381656        0.302100             0.000000                    
+     pair_coeff           8          19         buck/coul/long        1306897.123245       0.292060             0.000000                    
+     pair_coeff           9          9          buck/coul/long        22793.338580         0.482217             696.949542                  
+     pair_coeff           9          10         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          11         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          12         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          13         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          14         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          15         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          16         lj/cut/coul/long      0.188666             3.719948                    
+     pair_coeff           9          17         lj/cut/coul/long      0.152941             3.634867                    
+     pair_coeff           9          18         buck/coul/long        1306897.123245       0.302732             0.000000                    
+     pair_coeff           9          19         buck/coul/long        103496.133010        0.321737             0.000000                    
+     pair_coeff           10         10         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         11         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         12         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         13         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         14         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         15         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           10         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           10         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           10         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           11         11         lj/cut/coul/long      0.098800             3.315212                    
+     pair_coeff           11         12         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           11         13         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           11         14         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           11         15         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           11         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           11         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           11         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           11         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           12         12         lj/cut/coul/long      0.098800             3.315212                    
+     pair_coeff           12         13         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           12         14         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           12         15         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           12         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           12         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           12         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           12         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           13         13         lj/cut/coul/long      0.098800             3.315212                    
+     pair_coeff           13         14         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           13         15         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           13         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           13         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           13         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           13         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           14         14         lj/cut/coul/long      0.098800             3.315212                    
+     pair_coeff           14         15         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           14         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           14         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           14         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           14         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           15         15         lj/cut/coul/long      0.107800             3.397710                    
+     pair_coeff           15         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           15         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           15         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           15         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           16         16         lj/cut/coul/long      0.105000             3.430851                    
+     pair_coeff           16         17         lj/cut/coul/long      0.085118             3.345770                    
+     pair_coeff           16         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           16         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           17         17         lj/cut/coul/long      0.069000             3.260689                    
+     pair_coeff           17         18         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           17         19         buck/coul/long        32690390.937995      0.150947             0.000000                    
+     pair_coeff           18         18         buck/coul/long        74933300.560633      0.123247             0.000000                    
+     pair_coeff           18         19         buck/coul/long        72610605.498794      0.127252             0.000000                    
+     pair_coeff           19         19         buck/coul/long        70359906.629702      0.131258             0.000000                    
+
+     # Stretching interactions
+     bond_coeff           1           231.980000           1.756000            
+     bond_coeff           2           231.980000           1.756000            
+     bond_coeff           3           231.980000           1.756000            
+     bond_coeff           4           231.980000           1.756000            
+     bond_coeff           5           403.880000           1.082000            
+     bond_coeff           6           375.920000           1.097000            
+     bond_coeff           7           400.060000           1.084000            
+     bond_coeff           8           400.060000           1.084000            
+     bond_coeff           9           386.490000           1.091000            
+     bond_coeff           10          482.870000           1.030000            
+     bond_coeff           11          340.180000           1.428000            
+     bond_coeff           12          416.130000           1.373000            
+     bond_coeff           13          340.180000           1.428000            
+     bond_coeff           14          416.130000           1.373000            
+     bond_coeff           15          340.180000           1.428000            
+     bond_coeff           16          416.130000           1.373000            
+     bond_coeff           17          262.640000           1.502000            
+     bond_coeff           18          232.520000           1.538000            
+     bond_coeff           19          222.580000           1.511000            
+
+     # Bending interactions
+     angle_coeff          1           63.877000            120.210000          
+     angle_coeff          2           66.887000            111.550000          
+     angle_coeff          3           42.456000            119.970000          
+     angle_coeff          4           66.887000            111.550000          
+     angle_coeff          5           63.877000            120.210000          
+     angle_coeff          6           66.887000            111.550000          
+     angle_coeff          7           66.887000            111.550000          
+     angle_coeff          8           62.656000            121.530000          
+     angle_coeff          9           47.759000            128.480000          
+     angle_coeff          10          38.960000            107.580000          
+     angle_coeff          11          47.671000            110.490000          
+     angle_coeff          12          46.816000            109.800000          
+     angle_coeff          13          47.634000            121.070000          
+     angle_coeff          14          49.040000            121.760000          
+     angle_coeff          15          47.634000            121.070000          
+     angle_coeff          16          49.040000            121.760000          
+     angle_coeff          17          47.634000            121.070000          
+     angle_coeff          18          49.040000            121.760000          
+     angle_coeff          19          38.782000            109.750000          
+     angle_coeff          20          46.677000            110.560000          
+     angle_coeff          21          60.076000            108.010000          
+     angle_coeff          22          40.020000            108.300000          
+     angle_coeff          23          46.193000            110.110000          
+     angle_coeff          24          70.348000            114.190000          
+     angle_coeff          25          78.031000            90.240000           
+     angle_coeff          26          78.031000            90.240000           
+     angle_coeff          27          70.348000            114.190000          
+     angle_coeff          28          70.348000            114.190000          
+     angle_coeff          29          70.348000            114.190000          
+     angle_coeff          30          70.348000            114.190000          
+     angle_coeff          31          66.802000            119.450000          
+     angle_coeff          32          65.515000            111.930000          
+     angle_coeff          33          80.976000            114.210000          
+
+     # Dihedral interactions
+     dihedral_coeff       1          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       2          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       3          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       4          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       5          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       6          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       7          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       8          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       9          0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       10         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       11         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       12         0.000000             0.000000             0.000000             0.000000            
+     dihedral_coeff       13         0.000000             0.000000             0.000000             0.000000            
+     dihedral_coeff       14         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       15         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       16         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       17         0.000000             0.000000             0.000000             0.000000            
+     dihedral_coeff       18         0.000000             0.000000             0.311111             0.000000            
+     dihedral_coeff       19         0.000000             0.000000             0.311111             0.000000            
+     dihedral_coeff       20         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       21         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       22         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       23         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       24         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       25         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       26         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       27         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       28         0.000000             0.000000             0.311111             0.000000            
+     dihedral_coeff       29         0.000000             0.000000             0.218000             0.000000            
+     dihedral_coeff       30         0.000000             0.000000             0.311111             0.000000            
+     dihedral_coeff       31         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       32         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       33         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       34         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       35         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       36         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       37         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       38         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       39         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       40         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       41         0.000000             0.800000             0.000000             0.000000            
+     dihedral_coeff       42         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       43         0.000000             8.000000             0.000000             0.000000            
+     dihedral_coeff       44         0.000000             0.000000             0.314000             0.000000            
+     dihedral_coeff       45         0.000000             0.000000             0.311111             0.000000            
