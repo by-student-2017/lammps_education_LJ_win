@@ -398,6 +398,15 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/ie9007216
 
 
+[IFL84] L. Li et al., J. Chem. Phys. 149 (2018) 054102.
+  https://doi.org/10.1063/1.5040366
+
+
+[IFL85] B. Yang, (2020)
+  "Mechanical properties of graphene-borophene heterostructures grain boundaries"
+  https://www.researchgate.net/profile/Bo-Yang-183/publication/345384762_Mechanical_properties_of_graphene-borophene_heterostructures_grain_boundaries_Molecular_dynamic_modeling/links/5fa53c47a6fdcc062418b314/Mechanical-properties-of-graphene-borophene-heterostructures-grain-boundaries-Molecular-dynamic-modeling.pdf
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -453,49 +462,232 @@ The Kremer-Grest model is used in macromolecules.
 [S5] R. DeVane et al., J. Phys. Chem. B 114 (2010) 16364–16372.
   https://doi.org/10.1021/jp1070264
 ------------------------------------------------------------------------------
-# Parameters
+# Parameters (buck  Buckingham potential)
 
 
-[P1] K. H. Myint, Thesis
-  https://dspace.mit.edu/handle/1721.1/145130
+[P1] Y.-J. Hu et al., npj Comput. Mater. 6 (2020) 25.
+  https://doi.org/10.1038/s41524-020-0291-z
+  Predicting densities and elastic moduli of SiO2-based glasses by machine learning
+  Table 1 Effective ionic charge and Buckingham potential parameters used for MD simulations
 
 
-[P2] S. Dahl et al., Chem. Mater. 34 (2022) 7788-7798.
-  https://doi.org/10.1021/acs.chemmater.2c01246
-  Table 1. Interatomic Pair Potential Parameters for LCO and Dopant–Oxygen Interactions in the Buckingham Coulomb Potential
+[P2] H. Araghi et al., J. Solid State Chem. 258 (2018) 640-646.
+  https://doi.org/10.1016/j.jssc.2017.11.038
+  Ba0.9A0.1TiO3-δ (A: Li+, Na+, Ca2+), and BaTi0.9B0.1O3-δ (B: V3+, Cr3+, Si4+) crystals
+  Table 3. Buckingham potential parameters 
 
 
-[P3] O. A. Restrepo et al., Solid State Commun. 354 (2022) 114914.
-  https://doi.org/10.1016/j.ssc.2022.114914
-  Table 1. Buckingham spinel parameters for ZnFe2O4 spinel systems
+[P3] Z. Zhou, Masters Thesis (2021)
+  DOI: https://doi.org/10.26190/unsworks/22417
+  https://unsworks.unsw.edu.au/bitstreams/cae11e0d-4892-48b8-866f-68c915988966/download
+  Table. 3.1.1.1 Parameters of the Buckingham potentials for SrTiO3
 
 
-[P4] Y.-T. Lee et al., ACS Appl. Mater. Interfaces, 13 (2021) 570-579.
-  https://doi.org/10.1021/acsami.0c18368
-  Mn3O4 for Lithium-Ion Battery
-  Table 1. Morse Potential and Buckingham Potential Parameters
+[P4] P. Goj et al., Materials 14 (2021) 4326.
+  https://doi.org/10.3390/ma14154326
+  SrO, Sr2P2O7, Sr(PO3)2, SrFe3(PO4)3O, SrFe3(PO4)3, and SrFe2(P2O7)2 
+  Table 1. Values of the Buckingham potential parameters of the i-j pair.
+  
+
+[P5] J. Won et al., J. Mater. Chem. A, 1 (2023) 9235-9245.
+  DOI: 10.1039/C3TA11046J 
+  Table 1 Parameters for the spline between the ZBL and the Buckingham potential used in 
+  the collision cascade simulations. The units of ra and rb are Å while those of fn are Ån−1. 
+  In the case of Ti–O, because the potential becomes negative within the splined region, 
+  the spline is fit to an offset version of the potential and then reshifted back to the original energies
 
 
-[P5] Z. Lu et al., Phys. Chem. Chem. Phys., 17 (2015) 32547-32555.
+[P6] S. Ghorbanali et al., Solid State Commun. 252 (2017) 16-21.
+  https://doi.org/10.1016/j.ssc.2017.01.004
+  Table 1. Parameters of shell model and Buckingham potential for BaTiO3 NWs.
+
+
+[P7] S. Yue et al., Phys. Chem. Chem. Phys., 24 (2022) 21440-21451.
+  DOI: 10.1039/D2CP02989H 
+  BaZrO3
+  Table 1 Potential parameters of Buckingham
+
+
+[P8] S. R. G. Balestra et al., J. Mater. Chem. A,  8 (2020) 11824-11836.
+  DOI: 10.1039/D0TA03200J 
+  Table 1 Fractional point charges considered in the genetic algorithm and 
+  resulting force field potential parameters for CsPb(BrxI1−x)3 perovskites
+
+
+[P9] S. S. I. Almishal et al., RSC Adv., 10 (2020) 44503-44511.
+  10.1039/D0RA08434D
+  Table 1 Coulomb–Buckingham potential model parameters of CsPbI3
+
+
+[P10] Z. Lu et al., Phys. Chem. Chem. Phys., 17 (2015) 32547-32555.
   10.1039/C5CP05722A 
   Li3OCl anti-perovskite superionic conductors
   Table 1 Buckingham potential parameters
 
 
-[P6] M. J. Clarke et al., ACS Appl. Energy Mater. 4 (2021) 5094-5100.
+[P11] K. Sau et al., Chem. Mater. 33 (2021) 2357-2369.
+  https://doi.org/10.1021/acs.chemmater.0c04473
+  Li2B12H12 and LiCB11H12
+  Table 1. Interionic Potential Pair Parameters Employed in the Present Studya
+
+
+[P12] H. Kim et al., Doctoral Thesis (2016)
+  https://scholarworks.unist.ac.kr/handle/201301/18294 -> 000003.pdf
+  O-X (X=Li+, Co3+, Ni3+, Al3+, O2-)
+  Table 3.2.4. Interaction parameters of short-range Buckingham potential and charge of each ion.
+
+
+[P13] X. Lu et al., J. Phys. Chem. B 125 (2021) 12365-12377.
+  https://doi.org/10.1021/acs.jpcb.1c07134
+  0-X (X=Si2.4+, Al1.8+, B1.8+, Zr2.4+, Na0.6+, Ca1.2+, V2.4+, V3.0+, O1.2-)
+  Table 2. Atomic Charges and Buckingham Potential Parameters
+
+
+[P14] F. A. G. Daza et al., ACS Appl. Mater. Interfaces 11 (2019) 753-765.
+  https://doi.org/10.1021/acsami.8b17217
+  Table S1: Buckingham parameters for Ga- and Al-substituted LLZO prior to fine tuning. 
+  The values were taken from Jalem et al. 1 for Ga-substituted LLZO, and from Pedone et al. 6 for the Al-O potential.
+
+
+[P15] Y. Ji et al., Nucl. Instrum. Methods. Phys. Res. B 393 (2017) 54-58.
+  https://doi.org/10.1016/j.nimb.2016.09.031
+  LaPO4
+  Table 1. The Buckingham potential parameters used in the simulations
+  
+  
+[P16] K. Dai et al., Ionics volume 27 (2021) 1477-1490.
+  https://doi.org/10.1007/s11581-021-03940-2
+  LiFePO4
+  Table 1 Interatomic potentials used for the simulation
+
+
+[P17] K. Sau et al., J. Phys. Chem. C 119 (2015) 1651-1658.
+  https://doi.org/10.1021/jp5094349
+  monazite-type LaPO4 ceramics
+  Table 1. Interionic Potential Pair Parameters Employed in the Present Study.
+
+
+[P18] J. W. Che et al., Chem. Phys. Lett. 697 (2018) 48-52.
+  https://doi.org/10.1016/j.cplett.2018.02.060
+  La2(Zr0.7Ce0.3)2O7
+  Table 1. The parameters for Coulomb-Buckingham potential in this study.
+
+
+[P19] Y. Ji et al., 2018.
+  https://publications.rwth-aachen.de/record/749291/files/749291.pdf
+  Table 3.1: The Buckingham potential parameters used in the simulations of LnPO4 monazite (m) and xenotime (x). 
+
+
+[P20] Y.-T. Lee et al., ACS Appl. Mater. Interfaces, 13 (2021) 570-579.
+  https://doi.org/10.1021/acsami.0c18368
+  Mn3O4 for Lithium-Ion Battery
+  Table 1. Morse Potential and Buckingham Potential Parameters
+
+
+[P21] A. Lanjan et al., ACS Appl. Mater. Interfaces 13 (2021) 42220-42229.
+  https://doi.org/10.1021/acsami.1c12322
+  Table A3. Force Field Parameters for the Primary Li2O Crystal Structure for the Buck/Coul/Long Force Field
+  
+  
+[P22] H. Lu, Thesis or dissertation
+  https://spiral.imperial.ac.uk/handle/10044/1/9499
+  Table 3.1: Potential parameter sets for Li2O
+
+
+[P23] S. Dahl et al., Chem. Mater. 34 (2022) 7788-7798.
+  https://doi.org/10.1021/acs.chemmater.2c01246
+  Table 1. Interatomic Pair Potential Parameters for LCO and Dopant–Oxygen Interactions in the Buckingham Coulomb Potential
+  
+  
+[P24] K. Sau et al., Mater. Adv., 4 (2023) 2269-2280.
+  DOI: 10.1039/D2MA00936F 
+  Table 1 Inter-ionic potential parameters employed in this study
+
+
+[P25] Y. Luo et al., Results Phys. 14 (2019) 102490.
+  https://doi.org/10.1016/j.rinp.2019.102490
+  Table 1. Interatomic potentials used for Li3V2(PO4)3 material (a) two body, (b) three body.
+
+
+[P26] O. A. Restrepo et al., Solid State Commun. 354 (2022) 114914.
+  https://doi.org/10.1016/j.ssc.2022.114914
+  Table 1. Buckingham spinel parameters for ZnFe2O4 spinel systems
+
+
+[P27] K. Sau et al., Phys. Rev. Materials 6 (2022) 04540.
+  https://doi.org/10.1103/PhysRevMaterials.6.045406
+  Na2LiFeTeO6
+  TABLE I. Interionic potential parameters employed in this study.
+
+[P28] K. Sau et al., J. Phys. Chem. C 119 (2015) 18030-18037.
+  https://doi.org/10.1021/acs.jpcc.5b04087
+  Na2Ni2TeO6
+  Table 1. Interionic Potential Pair Parameters Employed in Present Study
+
+
+[P29] J. F. Troncoso et al., J. Phys.: Condens. Matter 32 (2020) 045701.
+  DOI 10.1088/1361-648X/ab4aa8
+  PbTe
+  Table 1. Potential parameters. Partial charges are...
+
+
+[P30] M. J. Clarke et al., ACS Appl. Energy Mater. 4 (2021) 5094-5100.
   https://doi.org/10.1021/acsaem.1c00656
   Li-Ion Conduction in the Li3OCl Antiperovskite Solid Electrolyte
   Table S1: Buckingham potentials parameters used to model doped Li3OCl
 
 
-[P7] S. Stegmaier et al., Nanomaterials 12 (2022) 2912
+[P31] S. Stegmaier et al., Nanomaterials 12 (2022) 2912
   https://doi.org/10.3390/nano12172912
   Table S1. Mg2+ and Buckingham ρMg-ion parameters from local optimization of Mg3(PO4)2 volume.
 
 
-[P8] S. S. I. Almishal et al., RSC Adv., 10 (2020) 44503-44511.
-  10.1039/D0RA08434D
-  Table 1 Coulomb–Buckingham potential model parameters of CsPbI3
+[P32] A. Shkatulov et al., ACS Omega 7 (2022) 16371-16379.
+  https://doi.org/10.1021/acsomega.2c00095
+  Table 1. Buckingham Parameters for Interactions in MgO
+  
+  
+[P33] P. Hirel et al., Phys Chem Minerals 48, 46 (2021).
+  https://doi.org/10.1007/s00269-021-01170-6
+  forsterite Mg2SiO4 from 0 to 12 GPa
+  (see Supplementary Information)
+  Table 1: Potential energy functions and parameters for the semi-empirical potentials compared in the present study. 
+  
+[P34] J. Wang et al., AIP Advances 9 (2019) 015123.
+  https://doi.org/10.1063/1.5078639
+  TABLE I. Three sets of the Buckingham potential parameters of Cr2O3.
+  
+  
+[P35] Y. H. Lee et al., J. Mater. Chem. C, 11 (2023) 7595-7602.
+  DOI: 10.1039/D3TC00753G
+  Table 2 Buckingham potential parameters for the IGZO
+
+
+[P36] Z. Liu et al., Chem. Phys. Lett. 760 (2020) 137901.
+  https://doi.org/10.1016/j.cplett.2020.137901
+  FeO3
+  Table 1. Parameters in
+
+
+[P37] M. J. Ghourichaei et al., Energy Equip. Sys. 8 (2020) 45-54.
+  https://www.energyequipsys.com/article_39010_a2a01635ebb5f09583c3092008801460.pdf
+  Fe-O
+
+
+[P38] S. Dong et al., Phys. Chem. Chem. Phys., 24 (2022) 12837-12848.
+  DOI: 10.1039/D1CP05749A
+  Table 1 Interatomic potential parameters for beta-Ga2O3 in this work
+
+
+[P39] J. Jose et al., Journal of Applied Physics 123 (2018) 245306.
+  https://doi.org/10.1063/1.5020776
+  TABLE I. Potential parameters for silica
+
+
+[P40] K. H. Myint, Thesis
+  https://dspace.mit.edu/handle/1721.1/145130
+  Table 3.1: Summary of force field parameters used in the simulations.
+
 
 ------------------------------------------------------------------------------
 # Series
