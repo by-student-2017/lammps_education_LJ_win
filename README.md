@@ -508,6 +508,9 @@ The Kremer-Grest model is used in macromolecules.
 ------------------------------------------------------------------------------
 # GCMC (Lecture): https://www.osti.gov/servlets/purl/1120653
 ------------------------------------------------------------------------------
+# CavMD: Cavity Molecular Dynamics Simulations
+  https://github.com/TaoELi/cavity-md-ipi
+------------------------------------------------------------------------------
 # Epoxy resins: https://nics.utk.edu/wp-content/uploads/sites/275/2021/08/19-Schoff-final-presentation.pdf
 ------------------------------------------------------------------------------
 # CP2k: https://doi.org/10.1021/acs.jpcc.0c00190
