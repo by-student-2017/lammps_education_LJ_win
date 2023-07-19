@@ -1,0 +1,164 @@
+#restart from the only initiation binary 
+dimension 	3
+units		real
+atom_style	full
+
+#this is for naph ion and water
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  cvff 
+
+#read_data	data_restart_init_2_for
+#read_data	config-C10H8spc-fcc.dat
+read_restart  	old_config_1.dat
+#replicate       1 1 1
+
+group 		all type 1 2 3 4 5 6
+group		water type 1 2 
+group		naph type 3 4 5 6 
+group           O type 1
+group           H type 2
+group 		C type 3 
+group		He  type 4 
+group		S type 5	#fusion carbon
+group		Na type 6 
+#group		Na type 7	#center of the fusion as cavity
+
+neighbor        2.0 bin 
+neigh_modify	delay 0 every 1 check yes one 4000 #exclude molecule all 	
+
+set             group O charge 0.00 #-0.82
+set             group H charge 0.00 #0.41
+set             group S charge 0.000
+#set 		group Si charge -0.115 
+set             group C charge -0.05
+set             group He charge 0.05
+set             group Na charge 0.000
+
+pair_style      hybrid/overlay lj/cut/coul/long 12.0 12.0 born 12.0
+#pure spc/e
+pair_coeff      1 1 lj/cut/coul/long 0.15535 3.1660
+pair_coeff      1 2 lj/cut/coul/long 0.00000 0.0000
+pair_coeff      2 2 lj/cut/coul/long 0.00000 0.0000
+
+#spc O & H with the solute S
+pair_coeff      1 3 lj/cut/coul/long 0.10428 3.35800
+pair_coeff      2 3 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      3 3 lj/cut/coul/long 0.07000 3.55000
+pair_coeff      1 6 born 300 1 0.25 0 0
+pair_coeff      6 6 born 300 1 0.25 0 0
+#c10h8water O & H with the solute Os (sigma is average)
+pair_coeff      1 4 lj/cut/coul/long 0.06827 2.79300
+pair_coeff      2 4 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      3 4 lj/cut/coul/long 0.04583 2.98500
+pair_coeff      4 4 lj/cut/coul/long 0.03000 2.42000
+
+pair_coeff      1 5 lj/cut/coul/long 0.10428 3.35800
+pair_coeff      2 5 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      3 5 lj/cut/coul/long 0.07000 3.55000
+pair_coeff      4 5 lj/cut/coul/long 0.04583 2.98500
+pair_coeff      5 5 lj/cut/coul/long 0.07000 3.55000
+
+pair_coeff      1 6 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      2 6 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      3 6 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      4 6 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      5 6 lj/cut/coul/long 0.00000 0.00000
+pair_coeff      6 6 lj/cut/coul/long 0.00000 0.00000
+
+#pair_coeff      1 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      2 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      3 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      4 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      5 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      6 7 lj/cut/coul/long 0.00000 0.00000
+#pair_coeff      7 7 lj/cut/coul/long 0.00000 0.00000
+
+kspace_style	pppm 1.0e-5
+kspace_modify  gewald 0.2598910000
+
+pair_modify	shift no
+pair_modify 	tail yes
+
+#bond_style	harmonic
+#angle_style	harmonic
+#dihedral_style	opls 
+#improper_style	none
+
+#this used for water	
+bond_coeff	1 1000.00 1.0	 
+angle_coeff	1 100.00 109.47
+
+#this is for the intra SO4 bond 
+bond_coeff      2 469 1.40 
+bond_coeff      3 367 1.08
+bond_coeff      4 469 0.70 
+angle_coeff     2 35 120
+angle_coeff     3 63 120
+dihedral_coeff  1 0.000 7.25 0.000 0.000
+dihedral_coeff  2 0.000 7.25 0.000 0.000
+dihedral_coeff  3 0.000 7.25 0.000 0.000
+improper_coeff  1 2.5 -1 2
+#improper_coeff  2 2.2 -1 2
+
+special_bonds   lj/coul 0.0 0.0 0.5 angle no dihedral no extra no 
+
+#velocity        all create 298 4271 dist gaussian mom yes rot yes 
+#minimize       1.0e-4 1.0e-6 100 1000
+
+#delete_bonds    naph multi remove
+#delete_bonds    all stats
+delete_atoms    group water
+
+fix             1 all shake 0.00001 60 0 b 1 a 1 
+fix             2 all npt temp 298.0 298.0 25 iso 1.0 1.0 250 dilate all 
+#fix             3 all momentum 1 linear 1 1 1 angular
+#fix		4 naph rigid/nvt molecule temp 298.0 298.0 25 
+fix             5 Na drag 0.0 0.0 0.0 5.0 1.0
+#restart         1000 old_config_1.dat old_config_2.dat 
+
+compute 	6 water pe/atom
+compute		water water reduce sum c_6
+compute         8 naph pe/atom
+compute         naph naph reduce sum c_8
+compute		msd all msd com no
+compute         msd2 all msd com yes
+compute         msd3 water msd com no
+compute         msd4 water msd com yes
+#compute         33 Na pe/atom
+#compute         Na Na reduce sum c_33
+compute        	ljcoul all pair lj/cut/coul/long
+#compute 	spc all pair lj/cut/coul/long
+compute         born all pair born
+compute 	14 all com
+
+compute         15 all rdf 100 1 1
+fix             16 all ave/time 100 1 100 c_15 file O_O_intra.rdf mode vector ave running overwrite start 5000
+compute         17 all rdf 100 1 2 
+fix             18 all ave/time 100 1 100 c_17 file O_H_intra.rdf mode vector ave running overwrite start 5000
+compute         19 all rdf 100 2 2
+fix             20 all ave/time 100 1 100 c_19 file H_H_intra.rdf mode vector ave running overwrite start 5000
+compute         21 all rdf 100 6 1 
+fix             22 all ave/time 100 1 100 c_21 file Na_O_intra.rdf mode vector ave running overwrite start 5000
+#compute         23 all rdf 100 4 1
+#fix             24 all ave/time 100 1 100 c_23 file Hn_O_intra.rdf mode vector ave running overwrite start 5000
+#compute         25 all rdf 100 5 1
+#fix             26 all ave/time 100 1 100 c_25 file Na_O_intra.rdf mode vector ave running overwrite start 5000
+#compute         27 all rdf 100 5 1
+#fix             28 all ave/time 100 1 100 c_27 file C_O_intra.rdf mode vector ave running overwrite start 5000
+#compute         29 all rdf 100 5 1
+#fix             30 all ave/time 100 1 100 c_29 file Na_O_intra.rdf mode vector ave running overwrite start 5000
+
+thermo		1000
+thermo_style    custom step temp pe density evdwl etail ecoul elong c_ljcoul c_born c_water c_naph press vol c_14[1] c_14[2] c_14[3] c_msd[4] c_msd2[4] c_msd3[4] c_msd4[4] lx ly lz emol ebond eangle edihed cella cellb cellc
+
+#dump		id all xyz 1000 dump_intra.xyz 
+#dump_modify	id element O H C He S Na
+
+#dump		id2 all custom 1000 manual.xyz element xu yu zu
+#dump_modify	id2 element O H S Na C He
+
+#write_data      data_restart_intra
+timestep	0.0001
+run		0

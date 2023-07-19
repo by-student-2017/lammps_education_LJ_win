@@ -1,0 +1,115 @@
+LAMMPS (15 May 2015)
+Reading data file ...
+  orthogonal box = (-15.0471 -15.0471 -15.0471) to (15.0471 15.0471 15.0471)
+  2 by 3 by 4 MPI processor grid
+  reading atoms ...
+  2611 atoms
+  reading velocities ...
+  2611 velocities
+  scanning bonds ...
+  3 = max bonds/atom
+  scanning angles ...
+  3 = max angles/atom
+  scanning dihedrals ...
+  8 = max dihedrals/atom
+  scanning impropers ...
+  1 = max impropers/atom
+  reading bonds ...
+  1749 bonds
+  reading angles ...
+  894 angles
+  reading dihedrals ...
+  44 dihedrals
+  reading impropers ...
+  10 impropers
+Finding 1-2 1-3 1-4 neighbors ...
+ Special bond factors lj:   0          0          0         
+ Special bond factors coul: 0          0          0         
+  4 = max # of 1-2 neighbors
+  8 = max # of 1-3 neighbors
+  20 = max # of 1-4 neighbors
+  16 = max # of special neighbors
+2611 atoms in group all
+2592 atoms in group water
+19 atoms in group naph
+864 atoms in group O
+1728 atoms in group H
+8 atoms in group C
+8 atoms in group He
+2 atoms in group S
+1 atoms in group Na
+Setting atom values ...
+  864 settings made for charge
+Setting atom values ...
+  1728 settings made for charge
+Setting atom values ...
+  2 settings made for charge
+Setting atom values ...
+  8 settings made for charge
+Setting atom values ...
+  8 settings made for charge
+Setting atom values ...
+  1 settings made for charge
+Finding 1-2 1-3 1-4 neighbors ...
+ Special bond factors lj:   0          0          0.5       
+ Special bond factors coul: 0          0          0.5       
+  4 = max # of 1-2 neighbors
+  8 = max # of 1-3 neighbors
+  20 = max # of 1-4 neighbors
+  16 = max # of special neighbors
+Finding SHAKE clusters ...
+  0 = # of size 2 clusters
+  0 = # of size 3 clusters
+  0 = # of size 4 clusters
+  864 = # of frozen angles
+PPPM initialization ...
+  G vector (1/distance) = 0.259975
+  grid = 24 24 24
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.00166107
+  estimated relative force accuracy = 5.00226e-06
+  using double precision FFTs
+  3d grid and FFT values/proc = 3705 576
+Neighbor list info ...
+  6 neighbor list requests
+  update every 1 steps, delay 0 steps, check yes
+  master list distance cutoff = 14
+Setting up run ...
+Memory usage per processor = 14.9738 Mbytes
+Step Temp PotEng Density E_vdwl E_tail E_coul E_long ljcoul born water naph Press Volume 14[1] 14[2] 14[3] msd[4] msd2[4] msd3[4] msd4[4] Lx Ly Lz E_mol E_bond E_angle E_dihed Cella Cellb Cellc 
+       0    305.24281   -8453.5465   0.95687113    1545.3004   -21.137763    32411.578   -42417.492    33927.333    50.683197   -8506.1425    73.733765    715.94202     27254.87    1.9350001   -2.4438996   -2.3229107 2.7215852e-30 1.9384648e-30 2.7415351e-30 2.6977095e-30    30.094101    30.094101    30.094101    7.0672633    2.3758787    3.1534863    1.3633219    30.094101    30.094101    30.094101 
+  500000    291.94965   -8529.5234   0.93908268    1522.1338   -20.744808    32335.275   -42413.426    33862.294    15.859246    -8550.776    41.997413   -32.566014    27771.141    2.3350458    3.5847977   -5.1769103    606.33166     561.2451     610.6205    564.82271    30.282931    30.282931    30.282931    26.494363    12.145697    6.5447678    7.1968878    30.282931    30.282931    30.282931 
+ 1000000    304.64833   -8536.0343   0.95529225    1437.2964   -21.102885    32419.122    -42411.78    33851.748    25.772818   -8552.5527     37.62128   -461.68355    27299.916    16.432425    14.437431    -6.580724    1642.4156    1127.7806     1654.434    1132.1455    30.110671    30.110671    30.110671    19.327339    10.061068    2.3730338    6.0943448    30.110671    30.110671    30.110671 
+ 1500000    298.96558   -8552.6623   0.95741586     1436.902   -21.149797    32412.645   -42417.851    33850.154    20.543318   -8564.5967    33.084204   -249.67814    27239.363    2.5331035    24.330354   -1.2890875    2459.6197    1738.3117    2477.5714     1745.882    30.088392    30.088392    30.088392    15.641225    7.6541744     5.864476    1.8703713    30.088392    30.088392    30.088392 
+ 2000000    288.81156   -8623.6275   0.94208344    1517.1718   -20.811096    32258.048   -42413.626    33777.802    18.229523   -8632.7044    29.887914   -65.167519    27682.684    19.417772    18.169201   -9.0693008    3119.8919    2339.8089    3142.6783    2351.4087    30.250744    30.250744    30.250744    14.777756    6.7349681    3.5009921    3.8147379    30.250744    30.250744    30.250744 
+Loop time of 4242.6 on 24 procs for 2000000 steps with 2611 atoms
+
+Pair  time (%) = 2289.91 (53.9743)
+Bond  time (%) = 2.29379 (0.0540655)
+Kspce time (%) = 1129.13 (26.6141)
+Neigh time (%) = 90.3594 (2.12981)
+Comm  time (%) = 199.717 (4.70742)
+Outpt time (%) = 1.01464 (0.0239156)
+Other time (%) = 530.173 (12.4964)
+
+Nlocal:    108.792 ave 125 max 89 min
+Histogram: 3 0 3 0 1 5 4 3 4 1
+Nghost:    5400.88 ave 5560 max 5211 min
+Histogram: 2 1 1 1 4 6 2 3 1 3
+Neighs:    59080.8 ave 71079 max 45164 min
+Histogram: 2 1 3 1 1 7 2 3 3 1
+
+Total # of neighbors = 1417940
+Ave neighs/atom = 543.064
+Ave special neighs/atom = 2.06281
+Neighbor list builds = 49247
+Dangerous builds = 0
+System init for write_data ...
+PPPM initialization ...
+  G vector (1/distance) = 0.259665
+  grid = 24 24 24
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.00168693
+  estimated relative force accuracy = 5.08013e-06
+  using double precision FFTs
+  3d grid and FFT values/proc = 3705 576

@@ -145,3 +145,7 @@
 [8O7] J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
   https://doi.org/10.1021/acs.jcim.6b00103
   8O7_TopoGromacs
+
+[8O8] L. Li et al., J. Chem. Phys. 146 (2017) 214110.
+  https://doi.org/10.1063/1.4983754
+  8O8_LAMMPS_protocol_naphthalene

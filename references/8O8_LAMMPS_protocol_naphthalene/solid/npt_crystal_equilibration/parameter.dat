@@ -1,0 +1,4 @@
+1	298	50	1	500	469
+
+#num T Tdamp pressure Pdamp link 
+#read "submit.sh" for the meaning of these paramters

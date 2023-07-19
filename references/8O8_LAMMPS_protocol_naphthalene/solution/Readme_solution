@@ -1,0 +1,72 @@
+########### INSTRUCTIOSNS TO COMPUTE THE EXCESS SOLVATION FREE ENERGY OF NAPHTHALENE ############## 
+
+##################################################################################################
+(0) Potential form for the cavity function 
+
+#For the isotropic cavity potential, we use the pairwise additive u_cavity = 300exp(-r+lambda) (see LAMMPS' Born potential E_born = Aexp[(sigma-r)/rho]-C/r^6+D/r^8)
+#u_cavity = 300exp(-r+lambda) = E_born = Aexp[(sigma-r)/rho]-C/r^6+D/r^8
+#The cavity potential acts between one atom of the solute and one atom of each solvent molecule
+#When there is only the cavity (without solute interactions), the cavity potential acts between the cavity and the same atom of each solvent molecule
+#We use "real units" in LAMMPS: energies are in kcal/mol and distances are in Å                                                                                                                    
+#We use A = 300 kcal/mol; C = D = 0; rho = 1.0 --> fixed for this solute-solvent system 
+#we label "lambda" in u_cavity = 300exp(-r+lambda) (= E_born_lammps = Aexp[(sigma-r)/rho]-C/r^6+D/r^8) to vary the cavity size 
+##################################################################################################
+(1) Apply the cavity method 
+
+(a)-(d)
+
+cd ./cavity_method
+Δμ_excess is the excess chemical potential of the solute that we wish to compute 
+Δμ_excess = ΔG_grow + ΔG_insert + ΔG_shrink
+ΔG_insert = ΔG_insert_electrostatic + ΔG_insert_vdwl (vdwl --> van der Waals interaction Lennard-Jones interactions based on OPLS-AA and SPC))
+
+cd ./grow_cavity --> directory where we compute ΔG_grow
+cd ./insert_vdwl --> directory where we compute ΔG_insert_vdwl
+cd ./insert_charge --> directory where we compute ΔG_insert_electrostatic (on a vdwl solute)
+cd ./shrink_cavity --> directory where we compute ΔG_shrink
+#####################################################################
+(a) Compute ΔG_grow
+
+cd ./grow_cavity 
+"submit_growing_cavity.sh" --> submit script
+"lambda3.dat" --> a list of parameters (of changing cavity sizes) read by "submit_growing_cavity.sh"
+"energies_grow.sh" --> script read by "submit_growing_cavity.sh" to edit input file according to "lambda3.dat"
+"IFile_grow" --> directory with all the input files
+
+read "submit_growing_cavity.sh" first or detailed instructions
+
+"director_growing_example" --> example simulation results (read "Data_Analyse.sh first)
+#####################################################################
+(b) Compute ΔG_insert_electrostatic
+
+cd ./insert_charge
+"submit_insert_charge.sh" --> submit script 
+"lambda2_charge.dat" -->  a list of parameters (of changing solute-solvent charge interaction) read by "submit_insert_charge.sh"
+"energies_insert_charge.sh" --> script read by "submit_insert_charge.sh" to edit input files according to "lambda2_charge.dat"
+"IFile_insert_charge" --> directory with all the input files
+read "submit_insert_charge.sh" for detailed instructions
+
+"director_insert_charge_example" --> example simulation results for ΔG_insert_charge for lambda = 0.25 (read "Data_Analyse.sh first)
+#####################################################################
+(c) Compute ΔG_insert_vdwl
+
+cd ./insert_vdwl
+"submit_insert_vdwl.sh" --> submit script 
+"lambda2_vdwl.dat" -->  a list of parameters (of changing solute-solvent vdwl interaction) read by "submit_insert_vdwl.sh"
+"energies_insert_vdwl.sh" --> script read by "submit_insert_vdwl.sh" to edit input files according to "lambda2_vdwl.dat"
+"IFile_insert_vdwl" --> directory with all the input files
+read "submit_insert_vdwl.sh" for detailed instructions
+
+"director_insert_vdwl_example" --> example simulation results for ΔG_insert_vdwl for lambda = 0.25 (read "Data_Analyse.sh first)
+#####################################################################
+(d) Compute ΔG_shrink
+
+cd ./shrink_cavity
+"submit_shrinking_cavity.sh" --> submit script 
+"lambda3.dat" --> a list of parameters (of changing cavity sizes) read by submit_shrinking_cavity.sh
+"energies_shrink.sh" --> script read by "submit_shrinking_cavity.sh" to	edit input files according to "lambda3.dat"
+"IFile_shrink" --> directory with all the input files
+read "submit_shrinking_cavity.sh" for detailed instructions
+
+"director_shrinking_example" --> example simulation results (read "Data_Analyse.sh first)
+############################################################################################################

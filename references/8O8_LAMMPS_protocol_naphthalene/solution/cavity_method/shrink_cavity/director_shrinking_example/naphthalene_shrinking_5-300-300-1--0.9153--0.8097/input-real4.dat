@@ -1,0 +1,131 @@
+#data sampling
+dimension 	3
+units		real	
+atom_style	full
+
+#intramolecular
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  cvff 
+
+#read_data	data_restart_init_1
+read_data	config-C10H8spc-fcc.dat
+#read_restart  	old_config_1.dat
+
+group 		all type 1 2 3 4 5 6
+ogroup		water type 1 2 	   
+group		naph type 3 4 5 6  #all the atom types in the naphthalen solute
+group           O type 1
+group           H type 2
+group 		C type 3 
+group		He  type 4 
+group		S type 5	   #fusion carbon
+group		Na type 6 	   #virtual atom between the fusion carbons as the cavity centre
+group           real type 3 4 5	   #all the atoms in the naphthalene apart from the virtual atom
+
+neighbor        2.0 bin 
+neigh_modify	delay 0 every 1 check yes one 4000 #exclude molecule all 	
+
+set             group O charge -0.82
+set             group H charge 0.41
+set             group S charge 0.000
+set 		group C charge -0.115
+set		group He charge 0.115
+set 		group Na charge 0.000
+
+pair_style      hybrid/overlay lj/cut/coul/long 12.0 12.0 born 12.0
+#spc water
+pair_coeff      1 1 lj/cut/coul/long 0.0000 0.0000 # 0.15535 3.1660
+pair_coeff      1 2 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.0000
+pair_coeff      2 2 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.0000
+
+#spc water with solute and solute-solute
+pair_coeff      1 3 lj/cut/coul/long 0.0000 0.0000 # 0.10428 3.358
+pair_coeff      2 3 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000 	
+pair_coeff      3 3 lj/cut/coul/long 0.0000 0.0000 # 0.07000 3.55000
+pair_coeff      1 6 born 300 1 -0.8097 0 0
+pair_coeff      6 6 born 300 1 -0.8097 0 0
+
+pair_coeff      1 4 lj/cut/coul/long 0.0000 0.0000 # 0.06827 2.793
+pair_coeff      2 4 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      3 4 lj/cut/coul/long 0.0000 0.0000 # 0.04583 2.98500
+pair_coeff      4 4 lj/cut/coul/long 0.0000 0.0000 # 0.03000 2.42000
+
+pair_coeff      1 5 lj/cut/coul/long 0.0000 0.0000 # 0.10428 3.358
+pair_coeff      2 5 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      3 5 lj/cut/coul/long 0.0000 0.0000 # 0.07000 3.55000 
+pair_coeff      4 5 lj/cut/coul/long 0.0000 0.0000 # 0.04583 2.98500
+pair_coeff      5 5 lj/cut/coul/long 0.0000 0.0000 # 0.07000 3.55000 
+
+pair_coeff      1 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      2 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      3 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      4 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      5 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+pair_coeff      6 6 lj/cut/coul/long 0.0000 0.0000 # 0.00000 0.00000
+
+kspace_style	pppm 1.0e-5
+kspace_modify  gewald 0.2601270000
+
+pair_modify	shift no
+pair_modify 	tail yes
+
+#water
+bond_coeff	1 1000.00 1.0	 
+angle_coeff	1 100.00 109.47
+
+#naphthalene solute 
+bond_coeff      2 469 1.40 
+bond_coeff      3 367 1.08
+bond_coeff      4 469 0.70	#bonding between the virual atom and aromatic fusion carbons  
+angle_coeff     2 35 120
+angle_coeff     3 63 120
+dihedral_coeff  1 0.000 7.25 0.000 0.000
+dihedral_coeff  2 0.000 7.25 0.000 0.000
+dihedral_coeff  3 0.000 7.25 0.000 0.000
+improper_coeff  1 2.5 -1 2
+
+special_bonds   lj/coul 0.0 0.0 0.5 angle no dihedral no extra no 
+
+#velocity        all create 298 4271 dist gaussian mom yes rot yes 
+
+#delete_bonds    naph multi remove special 	   ##delete all naphthalene atoms to compute delta_G_grow 
+#delete_bonds    all stats  	  		   ##delete all naphthalene atoms to compute delta_G_grow 
+#delete_atoms    group real			   ##delete all naphthalene atoms to compute delta_G_grow 
+
+fix             1 all shake 0.00001 60 0 b 1 a 1 
+fix             2 all npt temp 298.0 298.0 50 iso 1.0 1.0 500 dilate all 
+fix             5 Na drag 0.0 0.0 0.0 5.0 1.0
+restart         5000 old_config_1.dat old_config_2.dat 
+
+compute         6 water pe/atom
+compute         water water reduce sum c_6
+compute         8 naph pe/atom
+compute         naph naph reduce sum c_8
+compute		msd all msd com no
+compute         msd2 all msd com yes
+compute         msd3 water msd com no
+compute         msd4 water msd com yes
+compute        	ljcoul all pair lj/cut/coul/long
+compute         born all pair born
+compute 	14 all com
+
+#compute         15 all rdf 100 1 1
+#fix             16 all ave/time 100 1 100 c_15 file O_O_real.rdf mode vector ave running overwrite start 5000
+#compute         17 all rdf 100 1 2 
+#fix             18 all ave/time 100 1 100 c_17 file O_H_real.rdf mode vector ave running overwrite start 5000
+#compute         19 all rdf 100 2 2
+#fix             20 all ave/time 100 1 100 c_19 file H_H_real.rdf mode vector ave running overwrite start 5000
+#compute         21 all rdf 100 6 1 
+#fix             22 all ave/time 100 1 100 c_21 file Na_O_real.rdf mode vector ave running overwrite start 5000
+
+thermo		5000
+thermo_style    custom step temp pe density evdwl etail ecoul elong c_ljcoul c_born c_water c_naph press vol c_14[1] c_14[2] c_14[3] c_msd[4] c_msd2[4] c_msd3[4] c_msd4[4] lx ly lz emol ebond eangle edihed cella cellb cellc
+
+#dump		id all xyz 5000 dump_real.xyz 
+#dump_modify	id element O H C He S Na
+
+#data_restart_real
+timestep	0.5
+run		0
