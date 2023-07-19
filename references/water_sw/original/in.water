@@ -1,0 +1,70 @@
+units          real   # units of energy kcal/mol, distance angstrom and time if femtosecond
+atom_style     full   # do not change
+boundary       p p p  # periodic boundary conditions in x y z 
+
+pair_style     sw     # type of interaction potential  
+
+read_data      data.xyz  # contains the positions and masses and other information
+#read_restart  whatevername # would restart the simulation from the restart file of a previous one
+#replicate 1 1 2
+
+variable nr equal RADIUS
+variable nn equal (4/3)*3.14*${nr}*${nr}*${nr}/31.
+
+variable dx equal lx/2.
+variable dy equal ly/2.
+variable dz equal lz/2.
+
+region nucleus sphere ${dx} ${dy} ${dz} ${nr}
+region bulk sphere ${dx} ${dy} ${dz} ${nr} side out
+group ice region nucleus
+group water region bulk
+
+print "ice nucleus radius ${nr} A centered at ${dx} ${dy} ${dz}"
+print "has about ${nn} atoms"
+
+newton         on               # do not change
+pair_coeff     *  *  mW.sw Si   # reading the parameters of the potential 
+
+neighbor       2.0 bin          # neighbor list skin width
+neigh_modify   every 2 delay 4 check yes # frequency to update neighor list
+
+timestep       5     # time step for the integration of the equations of motion, in femtoseconds 
+
+thermo_style   custom step temp pe etotal press vol enthalpy   # energy and thermo properties printed to output
+#thermo_modify  flush yes  # flush the buffer and write the output in real time
+thermo         100  # how often (in steps) will write the properties of thermo_style to the output
+restart         1000000  restart   # write a binary restart file every XXX steps
+#dump            1 all custom 10000  water.lammpstrj id type x y z # dump configuration into a trajectory file
+
+# melt the ice first
+velocity        water create 440 2148459 rot yes mom yes dist gaussian # assign initial velocities to the particles
+fix             1 water npt temp 370.0 340.0 100.0 iso 1.0 1.0 1000.0
+run             30000
+unfix           1
+
+# equilibrate
+fix 		2 ice nvt temp 240.0 240.0 100.0
+run             100
+unfix           2
+
+fix             2 all nvt temp 240.0 240.0 100.0
+fix             3 all plumed   plumedfile  plumed.dat     outfile p.log
+run             1000
+unfix           2
+fix             4 all npt temp 240.0 240.0 100.0 iso 1.0 1.0 1000.0
+run             100000
+
+write_restart   restart.seeding
+
+reset_timestep  0 
+# production
+unfix           3
+fix             5 all plumed   plumedfile  post-plumed.dat     outfile p.log
+
+run             100000000      # runs this number of steps of simulation
+unfix           5        # undo the fix, need to do this if it will be followed by another run
+unfix           4
+#undump          1        # undo the dump of the trajectory
+
+write_restart   restart.end  # write a binary restart file at the end of the simulation
