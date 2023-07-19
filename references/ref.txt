@@ -21,17 +21,17 @@
   https://doi.org/10.1039/D2ME00237J
   3M1_MOF (UiO-66)
   
-[3M2] J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
-  https://doi.org/10.1063/5.0131179
-  3M2_SPCPs
-  
-[3M3] S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
+[3M2] S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
   https://doi.org/10.1021/acs.jcim.8b00939
-  3M3_OCTP (Soft porous coordination polymers)
+  3M2_OCTP (Soft porous coordination polymers)
+  
+[3M3] J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
+  https://doi.org/10.1063/5.0131179
+  3M3_SPCPs (soft porous coordination polymers) (Linux)
   
 [3M4] M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
   https://doi.org/10.1063/5.0137226
-  3M4_CDFT
+  3M4_CDFT (Classical density functional theory) (Jupyter-notebook)
 
 [4C1] K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
   https://doi.org/10.1021/acs.macromol.8b02750
