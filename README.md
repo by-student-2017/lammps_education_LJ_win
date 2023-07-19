@@ -37,6 +37,10 @@ The Kremer-Grest model is used in macromolecules.
 * https://github.com/t-murash/USER-PPA
 
 
+## Installation (MSMPI)
+1. https://rpm.lammps.org/windows/admin/64bit/index.html
+2. LAMMPS-64bit-22Dec2022-MSMPI-admin.exe (https://rpm.lammps.org/windows/admin/64bit/LAMMPS-64bit-22Dec2022-MSMPI-admin.exe)
+3. Microsoft MPI v10.1.2 (https://www.microsoft.com/en-us/download/details.aspx?id=100593)
 ------------------------------------------------------------------------------
 # References
 
