@@ -394,6 +394,10 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jced.2c00294
 
 
+[IFL83] S. Jayaraman et al., Ind. Eng. Chem. Res. 49 (2010) 559-571.
+  https://doi.org/10.1021/ie9007216
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.
@@ -448,6 +452,56 @@ The Kremer-Grest model is used in macromolecules.
 
 [S5] R. DeVane et al., J. Phys. Chem. B 114 (2010) 16364–16372.
   https://doi.org/10.1021/jp1070264
+------------------------------------------------------------------------------
+# Parameters
+
+
+[P1] K. H. Myint, Thesis
+  https://dspace.mit.edu/handle/1721.1/145130
+
+
+[P2] S. Dahl et al., Chem. Mater. 34 (2022) 7788-7798.
+  https://doi.org/10.1021/acs.chemmater.2c01246
+  Table 1. Interatomic Pair Potential Parameters for LCO and Dopant–Oxygen Interactions in the Buckingham Coulomb Potential
+
+
+[P3] O. A. Restrepo et al., Solid State Commun. 354 (2022) 114914.
+  https://doi.org/10.1016/j.ssc.2022.114914
+  Table 1. Buckingham spinel parameters for ZnFe2O4 spinel systems
+
+
+[P4] Y.-T. Lee et al., ACS Appl. Mater. Interfaces, 13 (2021) 570-579.
+  https://doi.org/10.1021/acsami.0c18368
+  Mn3O4 for Lithium-Ion Battery
+  Table 1. Morse Potential and Buckingham Potential Parameters
+
+
+[P5] Z. Lu et al., Phys. Chem. Chem. Phys., 17 (2015) 32547-32555.
+  10.1039/C5CP05722A 
+  Li3OCl anti-perovskite superionic conductors
+  Table 1 Buckingham potential parameters
+
+
+[P6] M. J. Clarke et al., ACS Appl. Energy Mater. 4 (2021) 5094-5100.
+  https://doi.org/10.1021/acsaem.1c00656
+  Li-Ion Conduction in the Li3OCl Antiperovskite Solid Electrolyte
+  Table S1: Buckingham potentials parameters used to model doped Li3OCl
+
+
+[P7] S. Stegmaier et al., Nanomaterials 12 (2022) 2912
+  https://doi.org/10.3390/nano12172912
+  Table S1. Mg2+ and Buckingham ρMg-ion parameters from local optimization of Mg3(PO4)2 volume.
+
+
+[P8] S. S. I. Almishal et al., RSC Adv., 10 (2020) 44503-44511.
+  10.1039/D0RA08434D
+  Table 1 Coulomb–Buckingham potential model parameters of CsPbI3
+
+------------------------------------------------------------------------------
+# Series
+  H. Tafrishi et al., RSC Adv., 12 (2022) 14776-14807.
+  10.1039/D2RA02183H
+  Table 1 Molecular dynamics simulation studies of phase change materials (PCMs)
 ------------------------------------------------------------------------------
 # Input File Creation for the Molecular Dynamics Program LAMMPS.
   https://www.osti.gov/biblio/1230587

@@ -20,6 +20,10 @@
 [2L3] S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
   https://doi.org/10.1039/C9RA08003A
   2L3_LiClO4 (need structure file) 
+  
+[2L2] S. Jayaraman et al., Ind. Eng. Chem. Res. 49 (2010) 559-571.
+  https://doi.org/10.1021/ie9007216
+  2L2_LiNO3_NaNO3_KNO3 (structure data file were failed)
 
 [3M1] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
   https://doi.org/10.1039/D2ME00237J
