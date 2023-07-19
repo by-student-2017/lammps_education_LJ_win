@@ -538,6 +538,36 @@ The Kremer-Grest model is used in macromolecules.
   Table 1 Coulomb–Buckingham potential model parameters of CsPbI3
 
 
+[P9X1] U. Anjum et al., Ionics 26 (2020) 1307-1314.
+  https://doi.org/10.1007/s11581-019-03318-5
+  PrBaCo2O5+delta
+  Table 1 Buckingham potential parameters used for the MD simulations
+  
+  
+[P9X2] C. Chen et al., Phys. Chem. Chem. Phys., 17 (2015) 7831-7837.
+  DOI: 10.1039/C4CP05847J
+  A-site ordered perovskite PrBaCo2O5.5
+  Table 1 Potential parameters for the Buckingham potential
+
+
+[P9X3] H. Zhang et al., 	J. Mater. Chem. A, 7 (2019) 25274-25278.
+  https://doi.org/10.1039/C9TA08980B
+  (see Supporting Information)
+  BiFeO3, CaTiO3, M-O2-
+
+
+[P9X4] M. B. Fridriksson et al., J. Phys. Chem. C 124 (2020) 22096-22104.
+  https://doi.org/10.1021/acs.jpcc.0c05225
+  (see Supplementary information for publication)
+  Ruddlesden-Popper perovskites
+
+
+[P9X5] N. Kitamura et al., Front. Mater. 9 (2022) 954729.
+  https://doi.org/10.3389/fmats.2022.954729
+  La2NiO4+delta
+  TABLE 1. Buckingham potential parameters (Minervini et al., 2000; Atkinson et al., 2003; Chroneos et al., 2010; Kitamura et al., 2020).
+
+
 [P10] Z. Lu et al., Phys. Chem. Chem. Phys., 17 (2015) 32547-32555.
   10.1039/C5CP05722A 
   Li3OCl anti-perovskite superionic conductors
@@ -742,6 +772,56 @@ The Kremer-Grest model is used in macromolecules.
 [P46] F. Yuan et al., . Phys. Chem. C 119 (2015) 13153-13159.
   https://doi.org/10.1021/acs.jpcc.5b01317
   Ce-O
+
+
+[P47] F. Grasselli, J. Chem. Phys. 156 (2022) 134705.
+  https://doi.org/10.1063/5.0087382
+  Pb-F, Ca-F
+  TABLE I. Parameters employed in the potential of Eq. (1). 
+
+
+[P48] S. Mogurampelly et al., Macromolecules 48 (2015) 2773-2786.
+  https://doi.org/10.1021/ma502578s
+  PEO-LiBF4-Al2O3 system
+  (see Supporting Info)
+
+
+[P49] A. Dive et al., J. Phys. Chem. B 122 (2018) 7597-7608.
+  https://doi.org/10.1021/acs.jpcb.8b04353
+  (see SUPPORTING INFORMATION)
+  Molecular Dynamics Modeling of the Structure and Na+ Ion Transport in Na2S + SiS2 Glassy Electrolytes
+  Table S1. Pair-wise Buckingham potential parameters for x Na2S + (1-x) SiS2 glass are given.
+
+
+[P50] K. Sau et al., Research Square (2022).
+  https://doi.org/10.21203/rs.3.rs-1881421/v1
+  (see Supplementary Files)
+  LiCB11H12
+  TABLE SI. Inter-ionic potential parameters employed in this study.
+  
+  
+[P51] Y. Shen et al., Sci. Rep. 5 (2015) 10698.
+  doi: 10.1038/srep10698 (2015).
+  Li4SiO4
+  Table 1 Potential parameters used in the MD calculations.
+
+
+[P52] F. Lodesani, "Computer simulation of nucleation and crystallization of silicate glasses"
+  https://iris.unimore.it/retrieve/2a79a7e5-81fa-4260-8b5a-7662ad213bfc/Tesi%20definitiva%20Federica%20Lodesani.pdf
+
+
+[P53] S. Kim et al., Langmuir 35 (2019) 2527-2537.
+  https://doi.org/10.1021/acs.langmuir.8b03666
+  (see Supporting Info)
+
+
+[P54] J. Kalahe et al., J. Phys. Chem. B 126 (2022) 5326-5342.
+  https://doi.org/10.1021/acs.jpcb.2c02292
+  Al2O3/Na2O ratios ((35 – x)Na2O–xAl2O3–65SiO2, x = 0, 5, 10, 15, 17.5, 20) 
+
+
+[XX] No check
+  https://www.tandfonline.com/doi/abs/10.1080/08927022.2022.2086982
 
 
 ------------------------------------------------------------------------------
