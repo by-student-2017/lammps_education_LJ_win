@@ -11,7 +11,7 @@
   
 [2L2] E. Crabb et al., J. Chem. Theory Comput. 16 (2020) 7255-7266.
   https://doi.org/10.1021/acs.jctc.0c00833
-  2L2_pcff
+  2L2_LiTFX
 
 [2L3] S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
   https://doi.org/10.1039/C9RA08003A
