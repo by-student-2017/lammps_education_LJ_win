@@ -11,7 +11,7 @@
   
 [2L2] A. F.-Lanord et al., Chem. Mater. 32 (2020) 121-126.
   https://doi.org/10.1021/acs.chemmater.9b02645
-  2L2_PEO (poly(ethylene oxide)), PEO, CAR, and SUL electrolytes
+  2L2_PEO_CAR_SUL (poly(ethylene oxide)), PEO, CAR, and SUL electrolytes
   
 [2L2] E. Crabb et al., J. Chem. Theory Comput. 16 (2020) 7255-7266.
   https://doi.org/10.1021/acs.jctc.0c00833
