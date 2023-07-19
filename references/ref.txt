@@ -112,7 +112,7 @@
   
 [7I3] J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
   https://doi.org/10.1063/1.4758700
-  7I3_NaCl
+  7I3_NaCl (Linux)
   
 [8O1] E. Shi et al., Nature 580 (2020) 614-620.
   https://doi.org/10.1038/s41586-020-2219-7
