@@ -62,25 +62,29 @@
   https://doi.org/10.1063/5.0029490
   5C2_C60_on_BN
   
-[5C3] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
-  https://doi.org/10.1021/acs.jpcb.2c08843
-  5C3_pi-Conjugated_Polymers
+[5C3] H. Zhu et al., J. Am. Chem. Soc., 141 (2019) 6013-6021.
+  https://doi.org/10.1021/jacs.9b01033
+  5C3_Dot-Gold (Linux)
   
-[5C4] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
+[5C4] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
+  https://doi.org/10.1021/acs.jpcb.2c08843
+  5C4_pi-Conjugated_Polymers
+  
+[5C5] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
   https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
   5C4_beta-HMX
 
-[5C5] J. Jung et al., Eur. Polym. 114 (2019) 223-233.
+[5C6] J. Jung et al., Eur. Polym. 114 (2019) 223-233.
   https://doi.org/10.1016/j.eurpolymj.2019.02.042
-  5C5_CNT_PMMA (need PMMA_100_1%.data)
+  5C6_CNT_PMMA (need PMMA_100_1%.data)
   
-[5C6] C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
+[5C7] C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
   https://doi.org/10.1021/acsearthspacechem.2c00159
-  5C6_RO2
+  5C7_RO2
 
-[5C7] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
+[5C8] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
   https://doi.org/10.1021/acs.jctc.8b00909
-  5C7_Aqueous_Solutions_of_Carbohydrates_OPLS
+  5C8_Aqueous_Solutions_of_Carbohydrates_OPLS
 
 [6S1] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
