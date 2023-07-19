@@ -1,0 +1,71 @@
+units                real
+dimension            3
+boundary             p p p
+atom_style           full
+bond_style           harmonic
+angle_style          harmonic
+timestep             1.0
+neighbor             1.0 bin
+neigh_modify every 1 delay 0 check yes
+pair_style lj/cut/tip4p/long  1 2 1 1 0.1546 12 8.5
+pair_modify tail yes shift yes
+kspace_style pppm/tip4p 1e-4
+
+read_data       npt.data               #relaxation file
+
+variable x      equal      0.4645      # x coord. of COM
+variable y      equal      0.314       # y coord. of COM
+variable z      equal      0.4809      # z coord. of COM
+variable KB     equal      0.0019872              
+ 
+region   in  sphere   $x $y $z  20    side in
+region   out sphere   $x $y $z  26    side out
+
+group    in      region   in
+group    out     region  out
+group    water   type 1 2
+group    gas     type 3
+
+group   gin      intersect gas  in
+group   gout     intersect gas  out
+
+variable  Nwt    equal count(water)/3
+variable  Ng     equal count(gas)/2
+
+compute shell    all chunk/atom bin/sphere $x $y $z 0 75 50 units box discard yes
+
+compute 1 all    entropy/atom 0.25 5.0 
+compute 2 all    ke/atom
+compute 3 all    pe/atom
+compute 4 all    stress/atom NULL
+compute 5 all    temp/com
+
+compute 7 gas   msd com yes
+compute 8 gin   msd com yes
+compute 9 gout  msd com yes
+
+compute  pwt    water  reduce sum c_4[1] c_4[2] c_4[3]
+compute  pgs    gas    reduce sum c_4[1] c_4[2] c_4[3]
+compute  Swt    water  reduce sum c_1 
+compute  Sgs    gas    reduce sum c_1 
+compute  kinwt  water  reduce sum c_2
+compute  kings  gas    reduce sum c_2 
+compute  potwt  water  reduce sum c_3 
+compute  potgs  gas    reduce sum c_3 
+
+variable  Pwt     equal   -(c_pwt[1]+c_pwt[2]+c_pwt[3])/3
+variable  Pgs     equal   -(c_pgs[1]+c_pgs[2]+c_pgs[3])/3
+
+#--------------------------simualtion start---------------------------#
+
+fix 1 water shake 0.0001 20 0 b 1 a 1 t 1 2
+thermo  1000
+restart 1000
+thermo_style custom step temp  press lx v_Nwt v_Ng v_Pgs v_Pwt
+dump 1 all custom 1000 npt.xyz  id type x y z vx vy vz c_1 c_2 c_3 c_4[1] c_4[2] c_4[3]
+
+fix 2 all npt temp 298 298 100 iso 0 0 1000
+fix_modify 2 temp 5
+fix 3 gas recenter INIT INIT INIT units box
+
+run 1000000

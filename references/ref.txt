@@ -149,3 +149,7 @@
 [8O8] L. Li et al., J. Chem. Phys. 146 (2017) 214110.
   https://doi.org/10.1063/1.4983754
   8O8_LAMMPS_protocol_naphthalene
+  
+[8O9] Y. Li et al., Langmuir 39 (2023) 7684-7693.
+  https://doi.org/10.1021/acs.langmuir.3c00484
+  809_Gas_Nanobubble_in_Liquid (need npt.dat)
