@@ -1,143 +1,143 @@
-[1] F. Azough et al., (2017).
+[1P1] F. Azough et al., (2017).
   https://doi.org/10.15125/BATH-00463
-  01_La1-3NbO3
+  1P1_La1-3NbO3
   ------------------------------------
   D. Kepaptsoglou et al., Inorg. Chem. 57 (2018) 45-55.
   https://doi.org/10.1021/acs.inorgchem.7b01584
 
-[2] S. Ariga et al., Phys. Chem. Chem. Phys., 24 (2022) 2567-2581.
+[2L1] S. Ariga et al., Phys. Chem. Chem. Phys., 24 (2022) 2567-2581.
   https://doi.org/10.1039/D1CP05393K
-  02_Li2S-P2S5
+  2L1_Li2S-P2S5
   
-[3] E. Crabb et al., J. Chem. Theory Comput. 16 (2020) 7255-7266.
+[2L2] E. Crabb et al., J. Chem. Theory Comput. 16 (2020) 7255-7266.
   https://doi.org/10.1021/acs.jctc.0c00833
-  03_pcff
+  2L2_pcff
 
-[4] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
+[2L3] S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
+  https://doi.org/10.1039/C9RA08003A
+  2L3_LiClO4 (need structure file) 
+
+[3M1] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
   https://doi.org/10.1039/D2ME00237J
-  04_MOF (UiO-66)
+  3M1_MOF (UiO-66)
+  
+[3M2] J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
+  https://doi.org/10.1063/5.0131179
+  3M2_SPCPs
+  
+[3M3] S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
+  https://doi.org/10.1021/acs.jcim.8b00939
+  3M3_OCTP (Soft porous coordination polymers)
+  
+[3M4] M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
+  https://doi.org/10.1063/5.0137226
+  3M4_CDFT
 
-[5] K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
+[4C1] K. Kempfer et al., Macromolecules 52 (2019) 2736-2747.
   https://doi.org/10.1021/acs.macromol.8b02750
-  05_DPD
+  4C1_DPD
   We present a practical coarse-grain (CG) force field for 
   dissipative particle dynamics (DPD) simulations of 
   cis-1,4-polybutadiene (cPB). 
 
-[6] J. Yuan et al., J. Phys. Chem. B 125 (2021) 10589-10596.
+[4C2] J. Yuan et al., J. Phys. Chem. B 125 (2021) 10589-10596.
   https://doi.org/10.1021/acs.jpcb.1c04451
-  06_brush (coarse-grained molecular dynamics simulations)
+  4C2_brush (coarse-grained molecular dynamics simulations)
 
-[7] C. C. Walker et al., J. Chem. Phys. 152 (2020) 044903.
+[4C3] C. C. Walker et al., J. Chem. Phys. 152 (2020) 044903.
   https://doi.org/10.1063/1.5126213
-  07_PVB (ransferable coarse-grained force fields for complex polymer systems) (failed)
+  4C3_PVB (ransferable coarse-grained force fields for complex polymer systems) (failed)
   WARNING: 5 of 1001 force values in table are inconsistent with -dE/dr.
   WARNING:  Should only be flagged at inflection points (src/MOLECULE/bond_table.cpp:380)
 
-[8] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
+[4C4] Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
+  https://doi.org/10.1021/acsanm.0c03336
+  4C4_EMD_CGCMM
+  
+[5C1] Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
+  https://doi.org/10.1021/acsanm.0c03336
+  5C1_NEMD (Graphene Nanoslits for C4H6/C4H10 Separation)
+
+[5C2] M. Vaezi et al., J. Chem. Phys. 153 (2020) 234702.
   https://doi.org/10.1063/5.0029490
-  08_C60_BN
+  5C2_C60_on_BN
   
-[9] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
+[5C3] A. T. Kleinschmidt et al., J. Phys. Chem. B 127 (2023) 2092-2102.
   https://doi.org/10.1021/acs.jpcb.2c08843
-  09_pi-Conjugated_Polymers
+  5C3_pi-Conjugated_Polymers
   
-[10] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
+[5C4] A. Pereverzev et al., Int. J. Heat Mass Transf. 188 (2022) 122647.
   https://doi.org/10.1016/j.ijheatmasstransfer.2022.122647
-  10_beta-HMX
+  5C4_beta-HMX
 
-[11] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
+[5C5] J. Jung et al., Eur. Polym. 114 (2019) 223-233.
+  https://doi.org/10.1016/j.eurpolymj.2019.02.042
+  5C5_CNT_PMMA (need PMMA_100_1%.data)
+  
+[5C6] C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
+  https://doi.org/10.1021/acsearthspacechem.2c00159
+  5C6_RO2
+
+[5C7] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 6690-6700.
   https://doi.org/10.1021/acs.jctc.8b00909
-  11_Aqueous_Solutions_of_Carbohydrates_OPLS
+  5C7_Aqueous_Solutions_of_Carbohydrates_OPLS
 
-[12] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
+[6S1] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
-  12_CaSO4-xH2O
+  6S1_CaSO4-xH2O
 
-[13] G. M. Tow et al., J. Chem. Phys. 149 (2018) 244502.
+[6S2] G. M. Tow et al., J. Chem. Phys. 149 (2018) 244502.
   https://doi.org/10.1063/1.5054758
   13_ammonium_perchlorate
 
-[14] N. V. S. Avula et al., J. Phys. Chem. Lett. 9 (2018) 3511-3516.
+[6S3] N. V. S. Avula et al., J. Phys. Chem. Lett. 9 (2018) 3511-3516.
   https://doi.org/10.1021/acs.jpclett.8b01481
-  14_HBD (Hydrogen Bond Dynamics)
-  
-[15] S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
-  https://doi.org/10.1021/acs.jcim.8b00939
-  15_OCTP (Soft porous coordination polymers)
+  6S3_HBD (Hydrogen Bond Dynamics)
 
-[16] E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
+[6S4] E. J. Chan, J. Appl. Cryst. 48 (2015) 1420-1428.
   https://doi.org/10.1107/S1600576715013242
-  16_xtds
+  6S4_xtds (X-ray thermal diffuse scattering from molecular crystals)
   
-[17] T. Ohkubo et al., Chem. Rxiv. (2023).
+[6S5] T. Ohkubo et al., Chem. Rxiv. (2023).
   10.26434/chemrxiv-2023-lfz9p
-  17_Ho-complex_R3
+  6S5_Ho-complex_R3
   
-[18] M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
+[7I1] M. E. P.-Blanco et al., J. Phys. Chem. B 114 (2010) 11827-11837.
   https://doi.org/10.1021/jp103862v
-  18_ionic_liquid-CO2
+  7I1_ionic_liquid-CO2
   
-[19] E. Shi et al., Nature 580 (2020) 614-620.
-  https://doi.org/10.1038/s41586-020-2219-7
-  19_hetero_PB-Br-I_2T_2vacs
-  
-[20] M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
-  https://doi.org/10.1039/C8SC04971H
-  20_cocrystal
-  
-[21] Y. Xu et al., ACS Appl. Nano Mater. 4 (2021) 1994-2001.
-  https://doi.org/10.1021/acsanm.0c03336
-  21_EMD_CGCMM, NEMD
-  
-[22] S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
-  https://doi.org/10.1007/s10973-020-10134-x
-  22_EMD_water (equilibrium molecular dynamic)
-  
-- B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
-  https://doi.org/10.1039/C8CP04561E
-  water_sw
-  
-- J. E. Carpenter et al., J. Chem. Phys. 158 (2023) 074901.
-  https://doi.org/10.1063/5.0131179
-  SPCPs
-
-- S. Patra et al., RSC Adv., 9 (2019) 38646-38657.
-  https://doi.org/10.1039/C9RA08003A
-  LiClO4 (need structure file)
-
-- J. Jung et al., Eur. Polym. 114 (2019) 223-233.
-  https://doi.org/10.1016/j.eurpolymj.2019.02.042
-  CNT_PMMA (need PMMA_100_1%.data)
-
-- J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
-  https://doi.org/10.1063/1.4758700
-  NaCl
-
-- F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
+[7I2] F. Philippi et al., Phys. Chem. Chem. Phys., 24 (2022) 3144-3162.
   https://doi.org/10.1039/D1CP04592J
-  ILs (ionic liquids)
-
-- C. D. Daub et al., CS Earth Space Chem. 6 (2022) 2446-2452.
-  https://doi.org/10.1021/acsearthspacechem.2c00159
-  RO2
-
-- M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
-  https://doi.org/10.1063/5.0137226
-  paper_si
+  7I2_ILs (ionic liquids)
   
-- J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
-  https://doi.org/10.1063/1.4812362
-  free-energy
+[7I3] J. L. Aragones et al., J. Chem. Phys. 137 (2012) 146101.
+  https://doi.org/10.1063/1.4758700
+  7I3_NaCl
   
-- J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
-  https://doi.org/10.1021/acs.jcim.6b00103
-  TopoGromacs
+[8O1] E. Shi et al., Nature 580 (2020) 614-620.
+  https://doi.org/10.1038/s41586-020-2219-7
+  8O1_hetero_PB-Br-I_2T_2vacs
   
-- S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 2667-2677.
+[8O2] M. Freguson et al., Chem. Sci., 10 (2019) 2924-2929.
+  https://doi.org/10.1039/C8SC04971H
+  8O2_cocrystal
+  
+[8O3] S. R. Krishnan et al., J. Therm. Anal. Calorim. 146, 1525–1537 (2021). 
+  https://doi.org/10.1007/s10973-020-10134-x
+  8O3_EMD_water (equilibrium molecular dynamic)
+  
+[8O4] B. Cheng et al., Phys. Chem. Chem. Phys., 20 (2018) 28732-28740.
+  https://doi.org/10.1039/C8CP04561E
+  8O4_water_sw
+  
+[8O5] S. H. Jamali et al., J. Chem. Theory Comput. 14 (2018) 2667-2677.
   https://doi.org/10.1021/acs.jctc.8b00170
-  FSE
+  8O5_FSE
   
-- M. Hammer et al., J. Chem. Phys. 158 (2023) 104107.
-  https://doi.org/10.1063/5.0137226
-  CDFT
+[8O6] J. L. Aragones et al., J. Chem. Phys. 139 (2013) 034104.
+  https://doi.org/10.1063/1.4812362
+  8O6_free-energy (for Linux)
+  
+[8O7] J. V. Vermaas et al., J. Chem. Inf. Model. 56 (2016) 1112-1116.
+  https://doi.org/10.1021/acs.jcim.6b00103
+  8O7_TopoGromacs

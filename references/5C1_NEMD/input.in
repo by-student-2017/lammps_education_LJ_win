@@ -1,0 +1,71 @@
+
+units real
+boundary p p p
+atom_style full
+
+pair_style lj/cut/coul/long 10.0
+bond_style harmonic
+angle_style harmonic
+dihedral_style harmonic
+improper_style cvff
+
+read_data 3.4.data
+
+kspace_style ewald 1.0e-4
+
+#settings
+neighbor 2.0 bin
+neigh_modify delay 2 check yes
+
+#group
+group he id 1:322 
+group allc4 molecule  2:301
+group graphene subtract all allc4 he
+region vacuo block INF INF INF INF 116.0 INF 
+group c4h6 molecule 2:151
+group c4h10 molecule 152:301
+
+fix 1 graphene  setforce 0.0 0.0 0.0
+fix 11 he       setforce 0.0 0.0 0.0
+
+#structure optimization
+minimize 1.0e-4 1.0e-6 1000 10000
+
+compute  mobile allc4  temp
+
+velocity allc4  create  298.0 45218
+
+fix 3 all nvt temp 298.0 298.0 100.0
+
+#variable
+variable Nc4h10 equal count(c4h10,vacuo)/14.0
+variable Nc4h6 equal count(c4h6,vacuo)/10.0
+variable st equal step/1000000
+
+#statistics
+fix number allc4 print 10000 "${st} ns  c4h6 c4h10 = ${Nc4h6} ${Nc4h10}" file number.tem
+
+#number density calculation
+compute dense allc4 chunk/atom bin/1d z lower 2 
+
+fix C4H10number c4h10 ave/chunk 100 10 100000 dense density/number ave one file c4h10density.tem
+fix C4H6number c4h6 ave/chunk 100 10 100000 dense density/number ave one file c4h6density.tem
+
+timestep  1
+
+thermo   10000
+
+dump mydump all  xyz 10000 10ps.xyz
+dump_modify  mydump element He Cp C H C3 C2
+#------------------------------------------
+dump          d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify   d1 element He Cp C H C3 C2
+#------------------------------------------
+
+thermo_style custom step temp press etotal 
+
+echo both
+
+restart 5000000  *.restart
+
+run 10000000
