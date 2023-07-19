@@ -1,0 +1,7 @@
+L. Li et al., J. Chem. Phys. 146 (2017) 214110.
+  https://doi.org/10.1063/1.4983754
+  
+  LAMMPS_protocol_naphthalene
+  https://pubs.aip.org/jcp/article-supplement/973269/zip/214110_1_supplements/
+  
+  Please download directly because the amount of data is large.
