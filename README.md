@@ -487,6 +487,19 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.3390/ma14154326
   SrO, Sr2P2O7, Sr(PO3)2, SrFe3(PO4)3O, SrFe3(PO4)3, and SrFe2(P2O7)2 
   Table 1. Values of the Buckingham potential parameters of the i-j pair.
+
+
+[P4X1] L. Dong et al., RSC Adv., 6 (2016) 41410-41419.
+  DOI: 10.1039/C6RA04779C
+  A2B2O7 (A3+ = Lu3+, Yb3+, Er3+, Y3+, Gd3+, Eu3+, Sm3+, Nd3+, Ce3+, La3+; B4+ = Ti4+, Ru4+, Mo4+, Sn4+, Zr4+, Pb4+, Ce4+)
+  Table 1 Buckingham pair potential parameters and the spline function parameters to connect 
+  the Buckingham potential to the short-range ZBL potential
+
+
+[P4X1] K. Kitamura et al., Chem. Lett. 49 (2020) 1071-1074.
+  https://doi.org/10.1246/cl.200344
+  (La, Sr)2NiO4+delta
+  Table 1. Buckingham potential parameters.
   
 
 [P5] J. Won et al., J. Mater. Chem. A, 1 (2023) 9235-9245.
@@ -504,6 +517,12 @@ The Kremer-Grest model is used in macromolecules.
 
 [P7] S. Yue et al., Phys. Chem. Chem. Phys., 24 (2022) 21440-21451.
   DOI: 10.1039/D2CP02989H 
+  BaZrO3
+  Table 1 Potential parameters of Buckingham
+
+
+[P7X] S. Yue et al., Appl. Phys. A 128 (2022) 875.
+  https://doi.org/10.1007/s00339-022-06023-9
   BaZrO3
   Table 1 Potential parameters of Buckingham
 
@@ -541,6 +560,11 @@ The Kremer-Grest model is used in macromolecules.
   https://doi.org/10.1021/acs.jpcb.1c07134
   0-X (X=Si2.4+, Al1.8+, B1.8+, Zr2.4+, Na0.6+, Ca1.2+, V2.4+, V3.0+, O1.2-)
   Table 2. Atomic Charges and Buckingham Potential Parameters
+
+
+[P13X1] P.-H. Kuo et al., . Phys. Chem. B 2022, 126 (2022) 2060-2072.
+  https://doi.org/10.1021/acs.jpcb.1c10928
+  O-X (X=Si2.4+, B1.8+, Na0.6+, Al1.8+, Ca1.2+, Zr2.4+, K0.6+, O1.2-)
 
 
 [P14] F. A. G. Daza et al., ACS Appl. Mater. Interfaces 11 (2019) 753-765.
@@ -614,79 +638,110 @@ The Kremer-Grest model is used in macromolecules.
   Table 1. Buckingham spinel parameters for ZnFe2O4 spinel systems
 
 
-[P27] K. Sau et al., Phys. Rev. Materials 6 (2022) 04540.
-  https://doi.org/10.1103/PhysRevMaterials.6.045406
-  Na2LiFeTeO6
-  TABLE I. Interionic potential parameters employed in this study.
-
-[P28] K. Sau et al., J. Phys. Chem. C 119 (2015) 18030-18037.
+[P27] K. Sau et al., J. Phys. Chem. C 119 (2015) 18030-18037.
   https://doi.org/10.1021/acs.jpcc.5b04087
   Na2Ni2TeO6
   Table 1. Interionic Potential Pair Parameters Employed in Present Study
 
 
-[P29] J. F. Troncoso et al., J. Phys.: Condens. Matter 32 (2020) 045701.
+[P28] T. Masese et al., Nat Commun 12, 4660 (2021) 4660.
+  https://doi.org/10.1038/s41467-021-24694-5
+  (see Supplementary Information)
+  NaKNi2TeO6
+  Supplementary Table 5. Inter atomic pair potential parameters in equation 1
+   (refer to main manuscript) employed in the present study.
+
+
+[P30] K. Sau et al., Phys. Rev. Materials 6 (2022) 04540.
+  https://doi.org/10.1103/PhysRevMaterials.6.045406
+  Na2LiFeTeO6
+  TABLE I. Interionic potential parameters employed in this study.
+
+
+[P31] J. F. Troncoso et al., J. Phys.: Condens. Matter 32 (2020) 045701.
   DOI 10.1088/1361-648X/ab4aa8
   PbTe
   Table 1. Potential parameters. Partial charges are...
 
 
-[P30] M. J. Clarke et al., ACS Appl. Energy Mater. 4 (2021) 5094-5100.
+[P32] M. J. Clarke et al., ACS Appl. Energy Mater. 4 (2021) 5094-5100.
   https://doi.org/10.1021/acsaem.1c00656
   Li-Ion Conduction in the Li3OCl Antiperovskite Solid Electrolyte
   Table S1: Buckingham potentials parameters used to model doped Li3OCl
 
 
-[P31] S. Stegmaier et al., Nanomaterials 12 (2022) 2912
+[P33] S. Stegmaier et al., Nanomaterials 12 (2022) 2912
   https://doi.org/10.3390/nano12172912
   Table S1. Mg2+ and Buckingham ρMg-ion parameters from local optimization of Mg3(PO4)2 volume.
 
 
-[P32] A. Shkatulov et al., ACS Omega 7 (2022) 16371-16379.
+[P34] A. Shkatulov et al., ACS Omega 7 (2022) 16371-16379.
   https://doi.org/10.1021/acsomega.2c00095
   Table 1. Buckingham Parameters for Interactions in MgO
   
   
-[P33] P. Hirel et al., Phys Chem Minerals 48, 46 (2021).
+[P35] P. Hirel et al., Phys Chem Minerals 48, 46 (2021).
   https://doi.org/10.1007/s00269-021-01170-6
   forsterite Mg2SiO4 from 0 to 12 GPa
   (see Supplementary Information)
   Table 1: Potential energy functions and parameters for the semi-empirical potentials compared in the present study. 
   
-[P34] J. Wang et al., AIP Advances 9 (2019) 015123.
+[P36] J. Wang et al., AIP Advances 9 (2019) 015123.
   https://doi.org/10.1063/1.5078639
   TABLE I. Three sets of the Buckingham potential parameters of Cr2O3.
   
   
-[P35] Y. H. Lee et al., J. Mater. Chem. C, 11 (2023) 7595-7602.
+[P37] Y. H. Lee et al., J. Mater. Chem. C, 11 (2023) 7595-7602.
   DOI: 10.1039/D3TC00753G
   Table 2 Buckingham potential parameters for the IGZO
 
 
-[P36] Z. Liu et al., Chem. Phys. Lett. 760 (2020) 137901.
+[P38] Z. Liu et al., Chem. Phys. Lett. 760 (2020) 137901.
   https://doi.org/10.1016/j.cplett.2020.137901
   FeO3
   Table 1. Parameters in
 
 
-[P37] M. J. Ghourichaei et al., Energy Equip. Sys. 8 (2020) 45-54.
+[P39] M. J. Ghourichaei et al., Energy Equip. Sys. 8 (2020) 45-54.
   https://www.energyequipsys.com/article_39010_a2a01635ebb5f09583c3092008801460.pdf
   Fe-O
 
 
-[P38] S. Dong et al., Phys. Chem. Chem. Phys., 24 (2022) 12837-12848.
+[P40] S. Dong et al., Phys. Chem. Chem. Phys., 24 (2022) 12837-12848.
   DOI: 10.1039/D1CP05749A
   Table 1 Interatomic potential parameters for beta-Ga2O3 in this work
 
 
-[P39] J. Jose et al., Journal of Applied Physics 123 (2018) 245306.
+[P41] J. Jose et al., Journal of Applied Physics 123 (2018) 245306.
   https://doi.org/10.1063/1.5020776
   TABLE I. Potential parameters for silica
 
 
-[P40] K. H. Myint, Thesis
+[P42] K. H. Myint, Thesis
   https://dspace.mit.edu/handle/1721.1/145130
   Table 3.1: Summary of force field parameters used in the simulations.
+
+
+[P43] C. T.-Takoundjou et al., J. Phys.: Condens. Matter 32 (2020) 505702.
+  DOI 10.1088/1361-648X/abace3
+  Table 2. Pu3+ interaction parameters obtained in this work as an extension of the original CRG potential.
+
+
+[P44] M. Zhu et al., Metall Mater Trans B 52 (2021) 3045-3063.
+  https://doi.org/10.1007/s11663-021-02232-4
+  La2O3, CaO-SiO2
+  Table I Atomic Charges and Interatomic Parameters of the Teter Potential
+
+
+[P45] N. Rajabiyoun et al., Appl. Phys. A 125 (2019) 296.
+  https://doi.org/10.1007/s00339-019-2602-0
+  TiO2
+  Table 1 Buckingham potential parameters
+
+
+[P46] F. Yuan et al., . Phys. Chem. C 119 (2015) 13153-13159.
+  https://doi.org/10.1021/acs.jpcc.5b01317
+  Ce-O
 
 
 ------------------------------------------------------------------------------
