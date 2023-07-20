@@ -1,0 +1,72 @@
+units real
+
+boundary p p p
+atom_style full
+
+pair_style lj/cut/coul/long 10.0
+bond_style harmonic
+angle_style harmonic
+dihedral_style harmonic
+improper_style cvff
+
+#input
+read_data 13.6.data
+
+kspace_style ewald 1.0e-4
+
+#settings
+neighbor 2.0 bin
+neigh_modify delay 2 check yes
+
+#group definition
+group  butene molecule  1:400 402:801
+group graphene molecule 401
+region vacuo block INF INF INF INF 84.5719 111.872
+group c4h10 molecule 1:200 402:601
+group c4h6 molecule 201:400 602:801
+
+fix 1 graphene  setforce 0.0 0.0 0.0
+
+#structure optimization
+minimize 1.0e-4 1.0e-6 1000 10000
+
+compute  mobile butene  temp
+velocity butene  create  298.0 45218
+fix 3 all  nvt temp 298.0 298.0 100.0
+
+#variable
+variable Nc4h10 equal count(c4h10,vacuo)/14.0
+variable Nc4h6 equal count(c4h6,vacuo)/10.0
+variable st equal step/1000000
+
+#statistics
+fix number butene print 100000 "${st} ns  c4h6 c4h10 = ${Nc4h6} ${Nc4h10}" file number.tem
+
+timestep  1
+
+thermo   10000
+thermo_style custom step temp press etotal 
+
+dump mydump all xyz 10000 10ps.xyz
+
+# ----- calculate temperature per particle (Additional: 4/Jul/2023) --------------------------------
+variable kB  equal 1.3806504e-23 # Boltzman constant [J/K]
+variable e2J equal 6.94782e-21   # change [kcal/mol] to [J]
+compute ke all ke/atom           # The kinetic energy [kcal/mol] of each atom
+variable tempatom atom c_ke*${e2J}*(2/3)/${kB} # ke = (1/2)*m*v^2 = (3/2)*kB*T, T = ke*(2/3)/kB
+#
+# Reference
+# [1] M. Li et al., Nanomaterials 2019, 9(3), 347; https://doi.org/10.3390/nano9030347
+# URL: https://www.mdpi.com/2079-4991/9/3/347
+# Supplementary Materials: https://www.mdpi.com/2079-4991/9/3/347/s1.
+# ----- --------------------------------------------------------------------------------------------
+fix ave_tempatom all ave/atom 1 1000 1000 v_tempatom # Average calculation for temperature of each atom
+
+dump          d1 all cfg 1000 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz f_ave_tempatom
+dump_modify   d1 element C C H C C
+
+echo both
+
+restart 1000000  *.restart
+
+run 3000000
