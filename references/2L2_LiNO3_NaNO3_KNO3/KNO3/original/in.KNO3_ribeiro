@@ -15,7 +15,7 @@ dihedral_style none
 
 pair_modify tail yes shift no
 
-read_data data.KNO3_ribeiro
+read_data data.KNO3_ribiero
 
 kspace_style pppm 0.0001
 
@@ -45,9 +45,4 @@ thermo_modify flush yes
 thermo 100
 
 dump 1 all atom 100 KNO3_vis.dump
-#--------------------------------
-dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
-dump_modify     d1 element K N O
-#--------------------------------
-
 run 100000

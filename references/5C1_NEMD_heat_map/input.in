@@ -70,7 +70,7 @@ variable tempatom atom c_ke*${e2J}*(2/3)/${kB} # ke = (1/2)*m*v^2 = (3/2)*kB*T, 
 # ----- --------------------------------------------------------------------------------------------
 fix ave_tempatom all ave/atom 1 1000 1000 v_tempatom # Average calculation for temperature of each atom
 #------------------------------------------
-dump          d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz f_ave_tempatom
+dump          d1 all cfg 1000 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz f_ave_tempatom
 dump_modify   d1 element He Cp C H C3 C2
 #------------------------------------------
 

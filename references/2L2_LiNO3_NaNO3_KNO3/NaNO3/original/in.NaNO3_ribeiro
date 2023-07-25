@@ -41,11 +41,6 @@ restart 100 NaNO3_restart_equil_1 NaNO3_restart_equil_2
 thermo_style custom step etotal evdwl ecoul ebond eangle edihed eimp elong etail c_1_temp c_1_press lx ly lz vol press
 thermo_modify flush yes
 thermo 100
-
 dump 1 all atom 1000 NaNO3_crystal_vis_equil.dump
-#--------------------------------
-dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
-dump_modify     d1 element Na N O
-#--------------------------------
 
 run 100000
