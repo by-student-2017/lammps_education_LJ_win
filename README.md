@@ -407,6 +407,14 @@ The Kremer-Grest model is used in macromolecules.
   https://www.researchgate.net/profile/Bo-Yang-183/publication/345384762_Mechanical_properties_of_graphene-borophene_heterostructures_grain_boundaries_Molecular_dynamic_modeling/links/5fa53c47a6fdcc062418b314/Mechanical-properties-of-graphene-borophene-heterostructures-grain-boundaries-Molecular-dynamic-modeling.pdf
 
 
+[IFL86] R. E. I.-Holder et al., J. Chem. Theory Comput. 2013, 9, 12, 5412-5420.
+  https://doi.org/10.1021/ct4004614
+
+
+[IFL87] A. Patrik )2016).
+  https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A690284&dswid=8963
+
+
 ## Other
 
 [IFM1] P. Malakar et al., ACS Appl. Nano Mater. 5 (2022) 16489-16499.

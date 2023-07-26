@@ -165,5 +165,11 @@
 [8O10] W. Peter;https://doi.org/10.17863/CAM.118
   8O10_wirnsberger2016 (https://www.repository.cam.ac.uk/handle/1810/256177)
   
-[811] L. Li et al., J. Chem. Phys. 149 (2018) 054102.
+[8O11] L. Li et al., J. Chem. Phys. 149 (2018) 054102.
   https://doi.org/10.1063/1.5040366
+
+[8O12] J. Fried, Master Thesis (2007).
+  https://vtechworks.lib.vt.edu/handle/10919/34661
+  
+[8O13] Xu, Muyi Ant (2014).
+  https://research.library.mun.ca/6390/
