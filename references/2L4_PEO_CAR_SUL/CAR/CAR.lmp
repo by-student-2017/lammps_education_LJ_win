@@ -1,0 +1,52 @@
+units			real
+boundary		p p p
+atom_style		full
+
+pair_style		lj/class2/coul/long 12.0
+kspace_style		pppm 0.00001
+pair_modify             mix sixthpower
+pair_modify		tail yes
+bond_style		class2
+angle_style		class2
+dihedral_style		class2
+improper_style		class2
+special_bonds		lj/coul 0.0 0.0 1.0
+
+read_data 		CAR.structure
+
+include			CAR.parameters
+
+neighbor		2.0 bin
+neigh_modify		delay 0 every 1 check yes
+
+variable		sysvol		equal vol
+variable		sysmass		equal mass(all)/6.0221367e+23
+variable		sysdensity	equal v_sysmass/v_sysvol/1.0e-24
+variable		time		equal step*dt+0.000001
+variable		cella		equal lx
+variable		etotal		equal etotal
+variable		pe		equal pe
+variable		ke		equal ke
+
+thermo_style		custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo_modify		flush yes
+
+timestep 		0.5
+
+run 			0
+
+#------------------------------------------------------------------------------------------------------
+
+#------------------
+dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id q vx vy vx fx fy fz
+dump_modify     d1 element C C C C C C F H H Li N O O O O O S
+#------------------
+
+fix 1 all npt temp 297.00 297.00 100.0 aniso 1.0 1.0 500.0 # Allow anisotropic fluctuations in x, y, z.
+
+thermo_style custom step etotal evdwl ecoul ebond eangle eimp edihed elong etail c_1_temp c_1_press lx ly lz vol press atoms
+thermo_modify flush yes
+thermo 100
+
+run 10000
+#------------------------------------------------------------------------------------------------------

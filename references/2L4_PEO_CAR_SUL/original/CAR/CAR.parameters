@@ -1,0 +1,355 @@
+bond_coeff 	         1 1.35 403.03 0 0	# c	f
+bond_coeff 	         2 1.795 257.33 0 0	# c_	s'_
+bond_coeff 	         3 1.4308 743.76 0 0	# o=	s'
+bond_coeff 	         4 1.5944 205.78 0 0	# n2-_	s'_
+bond_coeff 	         5 1.4457 326.73 -608.53 689.03	# c	oz
+bond_coeff 	         6 1.3398 391.33 -788.57 1212.4	# cz	oz
+bond_coeff 	         7 1.1953 854.29 -1922.3 2301.7	# cz	oo
+bond_coeff 	         8 1.101 345 -691.89 844.6	# c	h
+bond_coeff 	         9 1.53 299.67 -501.77 679.81	# c	c
+bond_coeff 	        10 1.42 400.4 -835.2 1313	# c	o
+bond_coeff 	        11 1.4457 326.73 -608.53 689.03	# c	oz
+bond_coeff 	        12 1.101 345 -691.89 844.6	# c	h
+bond_coeff 	        13 1.4457 326.73 -608.53 689.03	# c	oz
+bond_coeff 	        14 1.101 345 -691.89 844.6	# c	h
+bond_coeff 	        15 1.42 400.4 -835.2 1313	# c	o
+bond_coeff 	        16 1.53 299.67 -501.77 679.81	# c	c
+bond_coeff 	        17 1.42 400.4 -835.2 1313	# c	o
+bond_coeff 	        18 1.101 345 -691.89 844.6	# c	h
+bond_coeff 	        19 0.965 532.51 -1282.9 2004.8	# h*	o
+angle_coeff 	         1 109.1 71.97 0 0	# f	c	f
+angle_coeff 	         2 109.5 60 0 0	# *	c_	*
+angle_coeff 	         3 109.5 50 0 0	# *	s_	*
+angle_coeff 	         4 109.5 50 0 0	# *	s_	*
+angle_coeff 	         5 119.33 135 0 0	# o-	s'	o-
+angle_coeff 	         6 109.5 50 0 0	# *	s_	*
+angle_coeff 	         7 120 50 0 0	# *	n_	*
+angle_coeff 	         8 107.69 70.48 -10.35 0	# h	c	oz
+angle_coeff 	         9 105.41 63.391 -13.451 0	# c	c	oz
+angle_coeff 	        10 107.66 39.641 -12.921 -2.4318	# h	c	h
+angle_coeff 	        11 110.77 41.453 -10.604 5.129	# c	c	h
+angle_coeff 	        12 113.62 57.927 -17.131 60	# c	oz	cz
+angle_coeff 	        13 120.05 97.378 -26.562 0	# oo	cz	oz
+angle_coeff 	        14 109.49 137.91 -39.876 59.077	# oz	cz	oz
+angle_coeff 	        15 113.62 57.927 -17.131 60	# c	oz	cz
+angle_coeff 	        16 111.27 54.538 -8.3642 -13.084	# c	c	o
+angle_coeff 	        17 108.73 58.545 -10.809 -12.401	# h	c	o
+angle_coeff 	        18 104.5 35.745 -10.007 -6.2729	# c	o	c
+angle_coeff 	        19 107.69 70.48 -10.35 0	# h	c	oz
+angle_coeff 	        20 107.66 39.641 -12.921 -2.4318	# h	c	h
+angle_coeff 	        21 113.62 57.927 -17.131 60	# c	oz	cz
+angle_coeff 	        22 107.69 70.48 -10.35 0	# h	c	oz
+angle_coeff 	        23 109.5 60 0 0	# *	c_	*
+angle_coeff 	        24 107.66 39.641 -12.921 -2.4318	# h	c	h
+angle_coeff 	        25 108.73 58.545 -10.809 -12.401	# h	c	o
+angle_coeff 	        26 105.41 63.391 -13.451 0	# c	c	oz
+angle_coeff 	        27 110.77 41.453 -10.604 5.129	# c	c	h
+angle_coeff 	        28 111.27 54.538 -8.3642 -13.084	# c	c	o
+angle_coeff 	        29 110.77 41.453 -10.604 5.129	# c	c	h
+angle_coeff 	        30 108.73 58.545 -10.809 -12.401	# h	c	o
+angle_coeff 	        31 107.66 39.641 -12.921 -2.4318	# h	c	h
+angle_coeff 	        32 105.8 52.706 -12.109 -9.8681	# c	o	h*
+dihedral_coeff 	         1 0 0 0 0 0.1367 0	# *	c_	s_	*
+dihedral_coeff 	         2 0 0 0 0 0.1367 0	# *	c_	s_	*
+dihedral_coeff 	         3 0 0 0.5 0 0 0	# *	n_	s_	*
+dihedral_coeff 	         4 0 0 0.5 0 0 0	# *	n_	s_	*
+dihedral_coeff 	         5 0 0 0 0 -0.1932 0	# h	c	oz	cz
+dihedral_coeff 	         6 0 0 0 0 -0.1932 0	# c	c	oz	cz
+dihedral_coeff 	         7 0 0 0 0 0.158 0	# *	c_	c_	*
+dihedral_coeff 	         8 -3.6896 0 0 0 0 0	# h	c	c	oz
+dihedral_coeff 	         9 -0.1435 0 0.253 0 -0.0905 0	# h	c	c	o
+dihedral_coeff 	        10 -0.1432 0 0.0617 0 -0.1083 0	# h	c	c	h
+dihedral_coeff 	        11 -4.2342 0 1.8099 0 0 0	# oo	cz	oz	c
+dihedral_coeff 	        12 -4.0149 0 1.8643 0 0 0	# oz	cz	oz	c
+dihedral_coeff 	        13 -4.0149 0 1.8643 0 0 0	# oz	cz	oz	c
+dihedral_coeff 	        14 -4.2342 0 1.8099 0 0 0	# oo	cz	oz	c
+dihedral_coeff 	        15 0 0 0 0 -0.1932 0	# h	c	oz	cz
+dihedral_coeff 	        16 -0.5203 0 -0.3028 0 -0.345 0	# c	c	o	c
+dihedral_coeff 	        17 0.5302 0 0 0 -0.3966 0	# h	c	o	c
+dihedral_coeff 	        18 0 0 0 0 0.13 0	# *	c_	o_	*
+dihedral_coeff 	        19 0.5302 0 0 0 -0.3966 0	# h	c	o	c
+dihedral_coeff 	        20 -4.0149 0 1.8643 0 0 0	# oz	cz	oz	c
+dihedral_coeff 	        21 -4.2342 0 1.8099 0 0 0	# oo	cz	oz	c
+dihedral_coeff 	        22 0 0 0 0 -0.1932 0	# h	c	oz	cz
+dihedral_coeff 	        23 0 0 0 0 0.13 0	# *	c_	o'_	*
+dihedral_coeff 	        24 0 0 0 0 -0.1932 0	# c	c	oz	cz
+dihedral_coeff 	        25 0 0 0 0 0.158 0	# *	c_	c_	*
+dihedral_coeff 	        26 -3.6896 0 0 0 0 0	# oz	c	c	h
+dihedral_coeff 	        27 -0.1435 0 0.253 0 -0.0905 0	# h	c	c	o
+dihedral_coeff 	        28 -0.1432 0 0.0617 0 -0.1083 0	# h	c	c	h
+dihedral_coeff 	        29 -0.6732 0 -0.4778 0 -0.167 0	# c	c	o	h*
+dihedral_coeff 	        30 0.1863 0 -0.4338 0 -0.2121 0	# h	c	o	h*
+improper_coeff 	         1 0.0 0.0	# ff	c0x	ff	ff
+improper_coeff 	         2 0.0 0.0	# ff	c0x	ff	s'
+improper_coeff 	         3 0 0	# *	s_	*	*
+improper_coeff 	         4 0 0	# *	s_	*	*
+improper_coeff 	         5 0 0	# *	s_	*	*
+improper_coeff 	         6 0.0 0.0	# hc	c2oe	hc	oz
+improper_coeff 	         7 0.0 0.0	# c2oe	c2oe	hc	oz
+improper_coeff 	         8 0.0 0.0	# c2oe	c2oe	hc	hc
+improper_coeff 	         9 51.637 0	# oo	cz	oz	oz
+improper_coeff 	        10 0.0 0.0	# c2oe	c2oe	hc	oc
+improper_coeff 	        11 0.0 0.0	# hc	c2oe	hc	oc
+improper_coeff 	        12 0.0 0.0	# hc	c3oe	hc	oz
+improper_coeff 	        13 0.0 0.0	# hc	c3oe	hc	hc
+improper_coeff 	        14 0.0 0.0	# hc	coh	hc	oz
+improper_coeff 	        15 0.0 0.0	# hc	coh	oc	oz
+improper_coeff 	        16 0.0 0.0	# hc	coh	hc	oc
+improper_coeff 	        17 0.0 0.0	# c4o	c2oe	hc	oz
+improper_coeff 	        18 0.0 0.0	# c4o	c2oe	hc	hc
+improper_coeff 	        19 0.0 0.0	# c2oe	c4o	hc	oh
+improper_coeff 	        20 0.0 0.0	# c2oe	c4o	hc	hc
+improper_coeff 	        21 0.0 0.0	# hc	c4o	hc	oh
+angle_coeff 	         1 bb 0.0 1.35 1.35	# f	c	f
+angle_coeff 	         2 bb 0.0 1.35 1.795	# *	c_	*
+angle_coeff 	         3 bb 0.0 1.795 1.4308	# *	s_	*
+angle_coeff 	         4 bb 0.0 1.795 1.5944	# *	s_	*
+angle_coeff 	         5 bb 0.0 1.4308 1.4308	# o-	s'	o-
+angle_coeff 	         6 bb 0.0 1.5944 1.4308	# *	s_	*
+angle_coeff 	         7 bb 0.0 1.5944 1.5944	# *	n_	*
+angle_coeff 	         8 bb 5.6454 1.101 1.4457	# h	c	oz
+angle_coeff 	         9 bb 23.265 1.53 1.4457	# c	c	oz
+angle_coeff 	        10 bb 5.3316 1.101 1.101	# h	c	h
+angle_coeff 	        11 bb 3.3872 1.53 1.101	# c	c	h
+angle_coeff 	        12 bb 42.094 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        13 bb 122.5 1.1953 1.3398	# oo	cz	oz
+angle_coeff 	        14 bb 83.71 1.3398 1.3398	# oz	cz	oz
+angle_coeff 	        15 bb 42.094 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        16 bb 11.432 1.53 1.42	# c	c	o
+angle_coeff 	        17 bb 23.198 1.101 1.42	# h	c	o
+angle_coeff 	        18 bb -7.1131 1.42 1.42	# c	o	c
+angle_coeff 	        19 bb 5.6454 1.101 1.4457	# h	c	oz
+angle_coeff 	        20 bb 5.3316 1.101 1.101	# h	c	h
+angle_coeff 	        21 bb 42.094 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        22 bb 5.6454 1.101 1.4457	# h	c	oz
+angle_coeff 	        23 bb 0.0 1.42 1.4457	# *	c_	*
+angle_coeff 	        24 bb 5.3316 1.101 1.101	# h	c	h
+angle_coeff 	        25 bb 23.198 1.101 1.42	# h	c	o
+angle_coeff 	        26 bb 23.265 1.53 1.4457	# c	c	oz
+angle_coeff 	        27 bb 3.3872 1.53 1.101	# c	c	h
+angle_coeff 	        28 bb 11.432 1.53 1.42	# c	c	o
+angle_coeff 	        29 bb 3.3872 1.53 1.101	# c	c	h
+angle_coeff 	        30 bb 23.198 1.101 1.42	# h	c	o
+angle_coeff 	        31 bb 5.3316 1.101 1.101	# h	c	h
+angle_coeff 	        32 bb -9.6879 1.42 0.965	# c	o	h*
+angle_coeff 	         1 ba 0.0 0.0 1.35 1.35	# f	c	f
+angle_coeff 	         2 ba 0.0 0.0 1.35 1.795	# *	c_	*
+angle_coeff 	         3 ba 0.0 0.0 1.795 1.4308	# *	s_	*
+angle_coeff 	         4 ba 0.0 0.0 1.795 1.5944	# *	s_	*
+angle_coeff 	         5 ba 0.0 0.0 1.4308 1.4308	# o-	s'	o-
+angle_coeff 	         6 ba 0.0 0.0 1.5944 1.4308	# *	s_	*
+angle_coeff 	         7 ba 0.0 0.0 1.5944 1.5944	# *	n_	*
+angle_coeff 	         8 ba 8.6864 57.498 1.101 1.4457	# h	c	oz
+angle_coeff 	         9 ba 23.392 47.949 1.53 1.4457	# c	c	oz
+angle_coeff 	        10 ba 18.103 18.103 1.101 1.101	# h	c	h
+angle_coeff 	        11 ba 20.754 11.421 1.53 1.101	# c	c	h
+angle_coeff 	        12 ba 32.482 53.592 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        13 ba 73.601 81.853 1.1953 1.3398	# oo	cz	oz
+angle_coeff 	        14 ba 102.65 102.65 1.3398 1.3398	# oz	cz	oz
+angle_coeff 	        15 ba 32.482 53.592 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        16 ba 2.6868 20.403 1.53 1.42	# c	c	o
+angle_coeff 	        17 ba 4.6189 55.327 1.101 1.42	# h	c	o
+angle_coeff 	        18 ba -2.8112 -2.8112 1.42 1.42	# c	o	c
+angle_coeff 	        19 ba 8.6864 57.498 1.101 1.4457	# h	c	oz
+angle_coeff 	        20 ba 18.103 18.103 1.101 1.101	# h	c	h
+angle_coeff 	        21 ba 32.482 53.592 1.4457 1.3398	# c	oz	cz
+angle_coeff 	        22 ba 8.6864 57.498 1.101 1.4457	# h	c	oz
+angle_coeff 	        23 ba 0.0 0.0 1.42 1.4457	# *	c_	*
+angle_coeff 	        24 ba 18.103 18.103 1.101 1.101	# h	c	h
+angle_coeff 	        25 ba 4.6189 55.327 1.101 1.42	# h	c	o
+angle_coeff 	        26 ba 23.392 47.949 1.53 1.4457	# c	c	oz
+angle_coeff 	        27 ba 20.754 11.421 1.53 1.101	# c	c	h
+angle_coeff 	        28 ba 2.6868 20.403 1.53 1.42	# c	c	o
+angle_coeff 	        29 ba 20.754 11.421 1.53 1.101	# c	c	h
+angle_coeff 	        30 ba 4.6189 55.327 1.101 1.42	# h	c	o
+angle_coeff 	        31 ba 18.103 18.103 1.101 1.101	# h	c	h
+angle_coeff 	        32 ba 28.58 18.928 1.42 0.965	# c	o	h*
+dihedral_coeff 	         1 mbt 0.0 0.0 0.0 1.795	# *	c_	s_	*
+dihedral_coeff 	         2 mbt 0.0 0.0 0.0 1.795	# *	c_	s_	*
+dihedral_coeff 	         3 mbt 0.0 0.0 0.0 1.5944	# *	n_	s_	*
+dihedral_coeff 	         4 mbt 0.0 0.0 0.0 1.5944	# *	n_	s_	*
+dihedral_coeff 	         5 mbt 0.0 0.0 0.0 1.4457	# h	c	oz	cz
+dihedral_coeff 	         6 mbt 0.0 0.0 0.0 1.4457	# c	c	oz	cz
+dihedral_coeff 	         7 mbt 0.0 0.0 0.0 1.53	# *	c_	c_	*
+dihedral_coeff 	         8 mbt 0.0 0.0 0.0 1.53	# h	c	c	oz
+dihedral_coeff 	         9 mbt -16.797 -1.2296 -0.275 1.53	# h	c	c	o
+dihedral_coeff 	        10 mbt -14.261 -0.5322 -0.4864 1.53	# h	c	c	h
+dihedral_coeff 	        11 mbt 0 4.6748 0 1.3398	# oo	cz	oz	c
+dihedral_coeff 	        12 mbt 0 6.4736 0 1.3398	# oz	cz	oz	c
+dihedral_coeff 	        13 mbt 0 6.4736 0 1.3398	# oz	cz	oz	c
+dihedral_coeff 	        14 mbt 0 4.6748 0 1.3398	# oo	cz	oz	c
+dihedral_coeff 	        15 mbt 0.0 0.0 0.0 1.4457	# h	c	oz	cz
+dihedral_coeff 	        16 mbt -5.9288 -2.7007 -0.3175 1.42	# c	c	o	c
+dihedral_coeff 	        17 mbt -6.8007 -4.6546 -1.4101 1.42	# h	c	o	c
+dihedral_coeff 	        18 mbt 0.0 0.0 0.0 1.42	# *	c_	o_	*
+dihedral_coeff 	        19 mbt -6.8007 -4.6546 -1.4101 1.42	# h	c	o	c
+dihedral_coeff 	        20 mbt 0 6.4736 0 1.3398	# oz	cz	oz	c
+dihedral_coeff 	        21 mbt 0 4.6748 0 1.3398	# oo	cz	oz	c
+dihedral_coeff 	        22 mbt 0.0 0.0 0.0 1.4457	# h	c	oz	cz
+dihedral_coeff 	        23 mbt 0.0 0.0 0.0 1.4457	# *	c_	o'_	*
+dihedral_coeff 	        24 mbt 0.0 0.0 0.0 1.4457	# c	c	oz	cz
+dihedral_coeff 	        25 mbt 0.0 0.0 0.0 1.53	# *	c_	c_	*
+dihedral_coeff 	        26 mbt 0.0 0.0 0.0 1.53	# oz	c	c	h
+dihedral_coeff 	        27 mbt -16.797 -1.2296 -0.275 1.53	# h	c	c	o
+dihedral_coeff 	        28 mbt -14.261 -0.5322 -0.4864 1.53	# h	c	c	h
+dihedral_coeff 	        29 mbt 1.2472 0 0.7485 1.42	# c	c	o	h*
+dihedral_coeff 	        30 mbt 0 0.9241 -0.5889 1.42	# h	c	o	h*
+dihedral_coeff 	         1 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.35 1.4308	# *	c_	s_	*
+dihedral_coeff 	         2 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.35 1.5944	# *	c_	s_	*
+dihedral_coeff 	         3 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.5944 1.795	# *	n_	s_	*
+dihedral_coeff 	         4 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.5944 1.4308	# *	n_	s_	*
+dihedral_coeff 	         5 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	         6 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.53 1.3398	# c	c	oz	cz
+dihedral_coeff 	         7 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.42 1.4457	# *	c_	c_	*
+dihedral_coeff 	         8 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.101 1.4457	# h	c	c	oz
+dihedral_coeff 	         9 ebt 0.9681 0.9551 0.0436 0.5903 0.6669 0.8584 1.101 1.42	# h	c	c	o
+dihedral_coeff 	        10 ebt 0.213 0.312 0.0777 0.213 0.312 0.0777 1.101 1.101	# h	c	c	h
+dihedral_coeff 	        11 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        12 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        13 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        14 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        15 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	        16 ebt -0.2456 1.0517 -0.7795 0.4741 1.2635 0.5576 1.53 1.42	# c	c	o	c
+dihedral_coeff 	        17 ebt -0.6054 1.3339 0.9648 -0.162 0.1564 -1.1408 1.101 1.42	# h	c	o	c
+dihedral_coeff 	        18 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.4457 1.42	# *	c_	o_	*
+dihedral_coeff 	        19 ebt -0.6054 1.3339 0.9648 -0.162 0.1564 -1.1408 1.101 1.42	# h	c	o	c
+dihedral_coeff 	        20 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        21 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        22 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	        23 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.42 1.3398	# *	c_	o'_	*
+dihedral_coeff 	        24 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.53 1.3398	# c	c	oz	cz
+dihedral_coeff 	        25 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.4457 1.42	# *	c_	c_	*
+dihedral_coeff 	        26 ebt 0.0 0.0 0.0 0.0 0.0 0.0 1.4457 1.101	# oz	c	c	h
+dihedral_coeff 	        27 ebt 0.9681 0.9551 0.0436 0.5903 0.6669 0.8584 1.101 1.42	# h	c	c	o
+dihedral_coeff 	        28 ebt 0.213 0.312 0.0777 0.213 0.312 0.0777 1.101 1.101	# h	c	c	h
+dihedral_coeff 	        29 ebt -0.58 0.9004 0 0 0.5343 0.9025 1.53 0.965	# c	c	o	h*
+dihedral_coeff 	        30 ebt -1.7554 1.3145 0.2263 0.2493 0.6803 0 1.101 0.965	# h	c	o	h*
+dihedral_coeff 	         1 at 0.0 0.0 0.0 0.0 0.0 0.0 109.5 109.5	# *	c_	s_	*
+dihedral_coeff 	         2 at 0.0 0.0 0.0 0.0 0.0 0.0 109.5 109.5	# *	c_	s_	*
+dihedral_coeff 	         3 at 0.0 0.0 0.0 0.0 0.0 0.0 120 109.5	# *	n_	s_	*
+dihedral_coeff 	         4 at 0.0 0.0 0.0 0.0 0.0 0.0 120 109.5	# *	n_	s_	*
+dihedral_coeff 	         5 at 0.0 0.0 0.0 0.0 0.0 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	         6 at 0.0 0.0 0.0 0.0 0.0 0.0 105.41 113.62	# c	c	oz	cz
+dihedral_coeff 	         7 at 0.0 0.0 0.0 0.0 0.0 0.0 111.27 105.41	# *	c_	c_	*
+dihedral_coeff 	         8 at 0.0 0.0 0.0 0.0 0.0 0.0 110.77 105.41	# h	c	c	oz
+dihedral_coeff 	         9 at 2.3668 2.492 -1.0122 -0.1892 0.4918 0.7273 110.77 111.27	# h	c	c	o
+dihedral_coeff 	        10 at -0.8085 0.5569 -0.2466 -0.8085 0.5569 -0.2466 110.77 110.77	# h	c	c	h
+dihedral_coeff 	        11 at 0.0 0.0 0.0 0.0 0.0 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        12 at 0.0 0.0 0.0 0.0 0.0 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        13 at 0.0 0.0 0.0 0.0 0.0 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        14 at 0.0 0.0 0.0 0.0 0.0 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        15 at 0.0 0.0 0.0 0.0 0.0 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	        16 at -2.7466 1.4877 -0.8955 0.5676 0.945 0.0703 111.27 104.5	# c	c	o	c
+dihedral_coeff 	        17 at -1.8234 1.6393 0.5144 -0.7777 0.434 -0.6653 108.73 104.5	# h	c	o	c
+dihedral_coeff 	        18 at 0.0 0.0 0.0 0.0 0.0 0.0 109.5 104.5	# *	c_	o_	*
+dihedral_coeff 	        19 at -1.8234 1.6393 0.5144 -0.7777 0.434 -0.6653 108.73 104.5	# h	c	o	c
+dihedral_coeff 	        20 at 0.0 0.0 0.0 0.0 0.0 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        21 at 0.0 0.0 0.0 0.0 0.0 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        22 at 0.0 0.0 0.0 0.0 0.0 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	        23 at 0.0 0.0 0.0 0.0 0.0 0.0 109.5 113.62	# *	c_	o'_	*
+dihedral_coeff 	        24 at 0.0 0.0 0.0 0.0 0.0 0.0 105.41 113.62	# c	c	oz	cz
+dihedral_coeff 	        25 at 0.0 0.0 0.0 0.0 0.0 0.0 105.41 111.27	# *	c_	c_	*
+dihedral_coeff 	        26 at 0.0 0.0 0.0 0.0 0.0 0.0 105.41 110.77	# oz	c	c	h
+dihedral_coeff 	        27 at 2.3668 2.492 -1.0122 -0.1892 0.4918 0.7273 110.77 111.27	# h	c	c	o
+dihedral_coeff 	        28 at -0.8085 0.5569 -0.2466 -0.8085 0.5569 -0.2466 110.77 110.77	# h	c	c	h
+dihedral_coeff 	        29 at -3.5903 2.5225 0.4888 0.8726 -0.3577 0.3888 111.27 105.8	# c	c	o	h*
+dihedral_coeff 	        30 at -3.406 1.6396 0.0737 0 -0.281 -0.5944 108.73 105.8	# h	c	o	h*
+dihedral_coeff 	         1 aat 0.0 109.5 109.5	# *	c_	s_	*
+dihedral_coeff 	         2 aat 0.0 109.5 109.5	# *	c_	s_	*
+dihedral_coeff 	         3 aat 0.0 120 109.5	# *	n_	s_	*
+dihedral_coeff 	         4 aat 0.0 120 109.5	# *	n_	s_	*
+dihedral_coeff 	         5 aat 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	         6 aat 0.0 105.41 113.62	# c	c	oz	cz
+dihedral_coeff 	         7 aat 0.0 111.27 105.41	# *	c_	c_	*
+dihedral_coeff 	         8 aat 0.0 110.77 105.41	# h	c	c	oz
+dihedral_coeff 	         9 aat -20.201 110.77 111.27	# h	c	c	o
+dihedral_coeff 	        10 aat -12.564 110.77 110.77	# h	c	c	h
+dihedral_coeff 	        11 aat 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        12 aat 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        13 aat 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        14 aat 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        15 aat 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	        16 aat -19.006 111.27 104.5	# c	c	o	c
+dihedral_coeff 	        17 aat -16.444 108.73 104.5	# h	c	o	c
+dihedral_coeff 	        18 aat 0.0 109.5 104.5	# *	c_	o_	*
+dihedral_coeff 	        19 aat -16.444 108.73 104.5	# h	c	o	c
+dihedral_coeff 	        20 aat 0.0 109.49 113.62	# oz	cz	oz	c
+dihedral_coeff 	        21 aat 0.0 120.05 113.62	# oo	cz	oz	c
+dihedral_coeff 	        22 aat 0.0 107.69 113.62	# h	c	oz	cz
+dihedral_coeff 	        23 aat 0.0 109.5 113.62	# *	c_	o'_	*
+dihedral_coeff 	        24 aat 0.0 105.41 113.62	# c	c	oz	cz
+dihedral_coeff 	        25 aat 0.0 105.41 111.27	# *	c_	c_	*
+dihedral_coeff 	        26 aat 0.0 105.41 110.77	# oz	c	c	h
+dihedral_coeff 	        27 aat -20.201 110.77 111.27	# h	c	c	o
+dihedral_coeff 	        28 aat -12.564 110.77 110.77	# h	c	c	h
+dihedral_coeff 	        29 aat -12.104 111.27 105.8	# c	c	o	h*
+dihedral_coeff 	        30 aat -10.509 108.73 105.8	# h	c	o	h*
+dihedral_coeff 	         1 bb13 0.0 1.35 1.4308	# *	c_	s_	*
+dihedral_coeff 	         2 bb13 0.0 1.35 1.5944	# *	c_	s_	*
+dihedral_coeff 	         3 bb13 0.0 1.5944 1.795	# *	n_	s_	*
+dihedral_coeff 	         4 bb13 0.0 1.5944 1.4308	# *	n_	s_	*
+dihedral_coeff 	         5 bb13 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	         6 bb13 0.0 1.53 1.3398	# c	c	oz	cz
+dihedral_coeff 	         7 bb13 0.0 1.42 1.4457	# *	c_	c_	*
+dihedral_coeff 	         8 bb13 0.0 1.101 1.4457	# h	c	c	oz
+dihedral_coeff 	         9 bb13 0.0 1.101 1.42	# h	c	c	o
+dihedral_coeff 	        10 bb13 0.0 1.101 1.101	# h	c	c	h
+dihedral_coeff 	        11 bb13 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        12 bb13 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        13 bb13 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        14 bb13 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        15 bb13 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	        16 bb13 0.0 1.53 1.42	# c	c	o	c
+dihedral_coeff 	        17 bb13 0.0 1.101 1.42	# h	c	o	c
+dihedral_coeff 	        18 bb13 0.0 1.4457 1.42	# *	c_	o_	*
+dihedral_coeff 	        19 bb13 0.0 1.101 1.42	# h	c	o	c
+dihedral_coeff 	        20 bb13 0.0 1.3398 1.4457	# oz	cz	oz	c
+dihedral_coeff 	        21 bb13 0.0 1.1953 1.4457	# oo	cz	oz	c
+dihedral_coeff 	        22 bb13 0.0 1.101 1.3398	# h	c	oz	cz
+dihedral_coeff 	        23 bb13 0.0 1.42 1.3398	# *	c_	o'_	*
+dihedral_coeff 	        24 bb13 0.0 1.53 1.3398	# c	c	oz	cz
+dihedral_coeff 	        25 bb13 0.0 1.4457 1.42	# *	c_	c_	*
+dihedral_coeff 	        26 bb13 0.0 1.4457 1.101	# oz	c	c	h
+dihedral_coeff 	        27 bb13 0.0 1.101 1.42	# h	c	c	o
+dihedral_coeff 	        28 bb13 0.0 1.101 1.101	# h	c	c	h
+dihedral_coeff 	        29 bb13 0.0 1.53 0.965	# c	c	o	h*
+dihedral_coeff 	        30 bb13 0.0 1.101 0.965	# h	c	o	h*
+improper_coeff 	         1 aa 0.0 0.0 0.0 120.0 120.0 120.0	# ff	c0x	ff	ff
+improper_coeff 	         2 aa 0.0 0.0 0.0 120.0 120.0 120.0	# ff	c0x	ff	s'
+improper_coeff 	         3 aa 0.0 0.0 0.0 120.0 120.0 120.0	# *	s_	*	*
+improper_coeff 	         4 aa 0.0 0.0 0.0 120.0 120.0 120.0	# *	s_	*	*
+improper_coeff 	         5 aa 0.0 0.0 0.0 120.0 120.0 120.0	# *	s_	*	*
+improper_coeff 	         6 aa 0.0 0.0 0.0 120.0 120.0 120.0	# hc	c2oe	hc	oz
+improper_coeff 	         7 aa 0.0 0.0 0.0 120.0 120.0 120.0	# c2oe	c2oe	hc	oz
+improper_coeff 	         8 aa 0.2738 -0.4825 0.2738 110.77 110.77 107.66	# c	c	h	h
+improper_coeff 	         9 aa 0.0 0.0 0.0 120.0 120.0 120.0	# oo	cz	oz	oz
+improper_coeff 	        10 aa 3.9177 2.5926 0.1689 110.77 111.27 108.73	# c	c	h	o
+improper_coeff 	        11 aa 2.4259 2.4259 2.1283 107.66 108.73 108.73	# h	c	h	o
+improper_coeff 	        12 aa 0.0 0.0 0.0 120.0 120.0 120.0	# hc	c3oe	hc	oz
+improper_coeff 	        13 aa -0.3157 -0.3157 -0.3157 107.66 107.66 107.66	# h	c	h	h
+improper_coeff 	        14 aa 0.0 0.0 0.0 120.0 120.0 120.0	# hc	coh	hc	oz
+improper_coeff 	        15 aa 0.0 0.0 0.0 120.0 120.0 120.0	# hc	coh	oc	oz
+improper_coeff 	        16 aa 2.4259 2.4259 2.1283 107.66 108.73 108.73	# h	c	h	o
+improper_coeff 	        17 aa 0.0 0.0 0.0 120.0 120.0 120.0	# c4o	c2oe	hc	oz
+improper_coeff 	        18 aa 0.2738 -0.4825 0.2738 110.77 110.77 107.66	# c	c	h	h
+improper_coeff 	        19 aa 3.9177 2.5926 0.1689 110.77 111.27 108.73	# c	c	h	o
+improper_coeff 	        20 aa 0.2738 -0.4825 0.2738 110.77 110.77 107.66	# c	c	h	h
+improper_coeff 	        21 aa 2.4259 2.4259 2.1283 107.66 108.73 108.73	# h	c	h	o
+pair_coeff			    1     1 0.04 3.75	# c0x - 
+pair_coeff			    2     2 0.054 3.815	# c2oe - 
+pair_coeff			    3     3 0.0688 3.8727	# c3oe - 
+pair_coeff			    4     4 0.0748 3.87	# c4o - 
+pair_coeff			    5     5 0.0667 4.014	# c - 
+pair_coeff			    6     6 0.064 3.9	# cz - 
+pair_coeff			    7     7 0.0488 3.421	# ff - 
+pair_coeff			    8     8 0.023 2.878	# h - 
+pair_coeff			    9     9 0.008 1.087	# h* - 
+pair_coeff			   10    10 0.3727 1.635	# Li+ - 
+pair_coeff			   11    11 0.1643 3.89	# n2- - 
+pair_coeff			   12    12 0.2029 3.5432	# o= - 
+pair_coeff			   13    13 0.12 3.3	# oc - 
+pair_coeff			   14    14 0.096 3.58	# o - 
+pair_coeff			   15    15 0.086 3.3	# oo - 
+pair_coeff			   16    16 0.086 3.3	# oz - 
+pair_coeff			   17    17 0.25 4.027	# s' - 
+
