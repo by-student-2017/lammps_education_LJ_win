@@ -27,7 +27,7 @@
 
 [3M1] S. Yue et al., Mol. Syst. Des. Eng., 8 (2023) 527-537.
   https://doi.org/10.1039/D2ME00237J
-  3M1_MOF (UiO-66)
+  3M1_MOF (UiO-66) (-> lammps_simulation_setup)
   
 [3M2] S. H. Jamali et al., J. Chem. Inf. Model. 59 (2019) 1290-1294.
   https://doi.org/10.1021/acs.jcim.8b00939
