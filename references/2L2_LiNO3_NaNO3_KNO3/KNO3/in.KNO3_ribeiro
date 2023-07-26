@@ -34,13 +34,13 @@ neigh_modify delay 5 check yes
 
 replicate 3 2 5
 
-fix 1 all npt 293.00 293.00 100.0 aniso 1.0 1.0 1.0 1.0 1.0 1.0 500.0
+#fix 1 all npt 293.00 293.00 100.0 aniso 1.0 1.0 1.0 1.0 1.0 1.0 500.0
+fix 1 all npt temp 293.00 293.00 100.0 aniso 1.0 1.0 500.0
 
 write_restart restart.KNO3_supercell
 restart 100 KNO3_restart_equil_1 KNO3_restart_equil_2
 
-thermo_style custom step etotal evdwl ecoul ebond eangle edihed eimp
-elong etail c_1_temp c_1_press lx ly lz vol press atoms
+thermo_style custom step etotal evdwl ecoul ebond eangle edihed eimp elong etail c_1_temp c_1_press lx ly lz vol press atoms
 thermo_modify flush yes
 thermo 100
 
