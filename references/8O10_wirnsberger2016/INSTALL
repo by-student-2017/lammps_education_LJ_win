@@ -1,0 +1,67 @@
+###############################################################################
+#
+#
+#  This file is part of the supplementary (open access) data for the paper
+# 
+#  P. Wirnsberger, D. Fijan, A. Šarić, M. Neumann, C. Dellago and D. Frenkel, 
+#  "Non-equilibrium simulations of thermally induced electric fields in water", 
+#  J. Chem. Phys. (2016).
+#
+#  The paper is also available on arXiv: http://arxiv.org/pdf/1602.02734.pdf.
+#
+#
+#  Description: 
+#  ------------
+#
+#  This file contains instructions on how to download and compile LAMMPS 
+#  with the updated source files on a LINUX system. Please follow all steps in
+#  ascending order. 
+#
+#
+###############################################################################
+
+
+1.) Create a directory "code" in the root directory and change to 
+    that directory.
+ 
+    mkdir code
+    cd code
+
+2.) Download the file lammps-9Dec14.tar.gz from the LAMMPS homepage and 
+    extract it.
+
+    wget http://lammps.sandia.gov/tars/lammps-9Dec14.tar.gz
+    tar -xvf lammps-9Dec14.tar.gz
+
+3.) Change to the src directory.
+
+    cd lammps-9Dec14/src/
+
+4.) Install the package RIGID (SHAKE).
+
+    make yes-rigid
+
+5.) Update some of the old source files and add the new ones.
+
+    cp ../../../src/*.h ../../../src/*.cpp .
+
+6.) Update the makefile 
+  
+    cp ../../../src/Makefile.mpi MAKE
+
+7.) Compile LAMMPS (in parallel on four cores).
+
+    make -j4 mpi
+
+
+The current directory should now contain an executable lmp_mpi.
+You should now be able to run the supplied input scripts. 
+
+For example, if you want to run nemd/in.spce, first 
+change the directory and then execute LAMMPS with the input file.
+
+    cd ../../../nemd
+    mpirun -np 4 ../code/lammps-9Dec14/src/lmp_mpi -in in.spce
+
+(Your simulation should be running now.)
+
