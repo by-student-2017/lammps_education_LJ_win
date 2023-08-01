@@ -1,0 +1,118 @@
+#################### SETTING UP ####################
+units real
+boundary p p p
+atom_style full
+dimension 3
+newton on
+
+####################### FORCE FIELD ######################
+pair_style lj/class2/coul/long 10 15
+dielectric      1.0
+bond_style      class2
+angle_style     class2
+dihedral_style  class2
+improper_style  class2
+kspace_style pppm 0.0001
+
+#################### ATOM DEFINITION  ####################
+read_data  ./data.no.efield  
+ 
+#################### VARIABLES ####################
+variable Temp equal 330       # Temperature in K
+variable RandomSeed equal 123 # The random seed for velocity
+variable Nprnvt equal  25000000    # steps NVT ensemble production
+variable ThermoEvery equal 50000  # write thermo every ... steps
+variable Npage equal 150000   # neighbor_modify command
+variable N_one equal 5000     # neighbor_modify command
+variable Nf equal 5000       # Nfreq (fix ave/time and thermo)
+variable Ne equal  10         # Nevery (fix ave/time)
+variable Nr equal ${Nf}/${Ne} # Nrepeat (fix ave/time)
+variable OUT string Output        # Name of the output directory
+variable Box equal (vol)^(1/3)
+variable myefield_x equal 0.020
+variable myefield_y equal 0.0
+variable myefield_z equal 0.0
+
+####### neighbor lists
+neighbor        2.0 bin
+neigh_modify delay 0 every 1 check yes page ${Npage} one ${N_one}
+
+###### groups of chains
+group chain1 id 1:682
+group chain2 id 683:1364
+group chain3 id 1365:2046
+group chain4 id 2047:2728
+group chain5 id 2729:3410
+group chain6 id 3411:4092
+group chain7 id 4093:4774
+group chain8 id 4775:5456
+group chain9 id 5457:6138
+group chain10 id 6139:6820
+group chain11 id 6821:7502
+group chain12 id 7503:8184
+group chain13 id 8185:8866
+group chain14 id 8867:9548
+group chain15 id 9549:10230
+group chain16 id 10231:10912
+group chain17 id 10913:11594
+group chain18 id 11595:12276
+group chain19 id 12277:12958
+group chain20 id 12959:13640
+
+# groups of water and hydronium
+group water id 13641:16040
+group hydronium id 16041:16840
+
+#################### TIME STEP  ####################
+timestep       1.0  # femtoseconds
+reset_timestep 0 
+
+################### PRODUCTION RUNS ########################
+shell rmdir ${OUT}
+shell mkdir ${OUT}
+
+##Computing averages over time
+variable TotEn equal etotal     #total energy
+fix TEAve all ave/time	       ${Ne} ${Nr} ${Nf} v_TotEn  file ./${OUT}/TotalE.dat
+
+variable PotEn equal pe
+fix PEAve all ave/time	       ${Ne} ${Nr} ${Nf} v_PotEn file   ./${OUT}/PotenE.dat
+
+compute T all temp             #temperature
+fix TempAve all ave/time       ${Ne} ${Nr} ${Nf}  c_T  file ./${OUT}/temperature.dat
+
+compute P all pressure T
+fix PressAve all ave/time ${Ne} ${Nr} ${Nf}   c_P  file   ./${OUT}/pressure.dat
+
+variable V equal vol           #volume
+fix VAve all ave/time          ${Ne} ${Nr} ${Nf} v_V file ./${OUT}/volume.dat
+
+variable DENS equal density    #density
+fix DENSAve all ave/time       ${Ne} ${Nr} ${Nf} v_DENS file ./${OUT}/density.dat
+
+#box size
+fix BoxAve all ave/time	       ${Ne} ${Nr} ${Nf} v_Box file ./${OUT}/box.dat
+
+
+################ External electric field ####################
+fix externalEfield  all efield  ${myefield_x} ${myefield_y} ${myefield_z} 
+
+################# Average Velocities ##############################################################
+# Prints average velocites of all atom groups (1-8), for example every 100000 steps (can be adjusted accordingly)
+
+compute cc all chunk/atom type
+compute myChunk all vcm/chunk cc
+fix AveVel all ave/time 1 100000 100000  c_myChunk[*] file averagevel.dat mode vector
+
+#################### THERMO COMMAND  ####################
+thermo ${ThermoEvery}
+thermo_style custom step f_TempAve f_PressAve temp epair emol etotal press vol density pxx pyy pzz
+thermo_modify flush yes
+
+# Start simulation
+fix nvtProduction all nvt temp ${Temp} ${Temp} 50
+run ${Nprnvt} #ADJUST the steps for production run
+unfix nvtProduction
+
+write_data data.lambda.5
+                                                   

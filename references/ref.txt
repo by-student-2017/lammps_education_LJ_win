@@ -98,6 +98,10 @@
   https://doi.org/10.1039/D2SC03074H
   5C9_imide-based ionic liquids
 
+[5C10] A. Rahbari et al., J. Phys. Chem. C 2022, 126, 18, 8121-8133.
+  https://doi.org/10.1021/acs.jpcc.2c01226
+  5C10_ electro-osmotic_drag
+
 [6S1] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
   6S1_CaSO4-xH2O
