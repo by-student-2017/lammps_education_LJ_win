@@ -1,0 +1,20 @@
+ "traj_COC.lmp" ### trajectory filename
+ "./output/COC_molecular.inp" ### inputfile for module MOLECULAR
+ "./output/" ### path to trajectory
+ "./" ### path to other input files
+ "./output/" ### output folder
+
+ #GENERAL_SETTINGS
+ time_scaling 1000 ### factor to scale the timestep with to arrive at a useful time unit.
+ parallel_operation F ### turn off parallel operation
+ sequential_read T ### read step by step, because why not
+ show_settings ### show the values of important variables/parameters at this point
+
+ #CONVERT_FOR_JESSEMCDANIELCODE
+ wrap_trajectory T
+ dump_full_gro
+
+ quit
+
+ This is the general input file.
+ It controls the behaviour of the trajectory analyser.

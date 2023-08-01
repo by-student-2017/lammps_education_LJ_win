@@ -1,0 +1,10 @@
+ 2 ### Molecule type index (i.e. the molecule to observe)
+ reorientation ### the type of analysis
+ tmax 20000 ### maximum time shift of the time correlation function
+ sampling_interval 1 ### every so many timesteps will be used for the tcf
+ legendre 2 ### use legendre polynomial of order 2
+ charge_arm
+ quit
+ 
+ This is an input file for the calculation of a vector reorientational time correlation function.
+ To actually perform the implied calculations, it has to be referenced in 'general.inp'.

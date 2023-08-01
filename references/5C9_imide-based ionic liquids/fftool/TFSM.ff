@@ -1,0 +1,59 @@
+# anions.ff, version 2020/02/07
+# Molecular force field for ionic liquids
+# Agilio Padua, J.N. Canongia Lopes
+# contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
+#               C. Bernardes, K.Goloviznina
+# questions to: agilio.padua@ens-lyon.fr
+#
+# units: kJ/mol, A, deg
+# bond and angle force constants are in the form k/2 (x - x0)^2
+# use 'cons' to indicate constrained bonds and angles
+# in improper dihedrals the central atom is the third in the list
+#
+# use with fftool to build input files for LAMMPS (or DLPOLY)
+
+ATOMS
+#     typ  m/u     q/e    pot   pars
+# bis(trifluoromethylsulfonyl) methanide (TFSM)
+CBT   CF  12.011   0.35   lj    3.50   0.27614
+SMT   SB  32.066   0.79   lj    3.55   1.04600
+CMT   CM  12.011  -0.59   lj    3.55   0.29288
+HMT   HM   1.008   0.19   lj    2.42   0.12552
+OMT   OB  15.999  -0.48   lj    3.15   0.83736
+FBT   FB  18.998  -0.16   lj    3.118  0.25540
+
+BONDS
+# i j    pot    re/A    kr/kJmol-1
+# TFSI JPCB 108 (2004) 16893
+FB  CF   harm   1.323   3697.0
+CF  SB   harm   1.818   1970.0
+SB  OB   harm   1.437   5331.0
+CM  SB   harm   1.677   2752.4
+CM  HM   cons   1.077	3543.6
+
+ANGLES
+# i j   k    pot    th/deg  ka/kjmol-1
+# TFSI JPCB 108 (2004) 16893
+FB  CF  FB   harm   107.1   781.0
+FB  CF  SB   harm   111.7   694.0
+OB  SB  OB   harm   118.5   969.0
+CF  SB  OB   harm   102.6   870.0
+CM  SB  OB   harm   109.7   898.7
+CM  SB  CF   harm   105.9   629.1
+SB  CM  SB   harm   126.8   686.7
+SB  CM  HM   harm   117.3   408.2
+
+DIHEDRALS
+# i j   k   l    pot    v1        v2        v3        v4
+# TFSI JPCB 108 (2004) 16893
+OB  SB  CF  FB   opls   0.0000    0.0000    1.4510    0.0000
+CM  SB  CF  FB   opls   0.0000    0.0000    1.3220    0.0000
+OB  SB  CM  SB   opls   0.0000    0.0000   -0.0150    0.0000
+SB  CM  SB  CF   opls  23.4894  -32.3053    0.5502   -2.5171
+HM  CM  SB  CF   opls   0.0000    0.0000    0.0000    0.0000
+HM  CM  SB  OB   opls   0.0000    0.0000    0.0000    0.0000
+
+IMPROPER
+SB  SB  CM  HM   opls   251.5   -51.4   0.0000    0.0000
+
+

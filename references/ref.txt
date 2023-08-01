@@ -94,6 +94,10 @@
   https://doi.org/10.1021/acs.jctc.8b00909
   5C8_Aqueous_Solutions_of_Carbohydrates_OPLS
 
+[5C9] F. Philippi et al., Chem. Sci., 2022,13, 9176-9190.
+  https://doi.org/10.1039/D2SC03074H
+  5C9_imide-based ionic liquids
+
 [6S1] S. R. Yeandel et al., J. Chem. Phys. 157 (2022) 084117.
   https://doi.org/10.1063/5.0095130
   6S1_CaSO4-xH2O

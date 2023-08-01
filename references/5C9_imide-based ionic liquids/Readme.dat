@@ -1,0 +1,21 @@
+Supporting files include:
+
+prealpha:
+	- input files for prealpha
+	- an example output, "prealpha.log"
+	  (prealpha general_drude_long.inp general_long.inp general_COC.inp -d "./output/prealpha.out")
+
+abinitio:
+	- gaussian log files for stationary points
+	- gaussian log files for volume calculations
+	- MULTIWFN results
+	- energy scans at the MP2/cc-pVTZ//B3LYP-GD3BJ/6-311+G(d,p) level of theory
+
+fftool:
+	- forcefield file for the novel CHTf2 anion
+
+LAMMPS:
+	- representative examples for input files
+	- additional code to check for double timesteps / sort the trajectory
+	- example data files for the two ionic liquids, [C4C1Im][NTf2] and [C4C1Im][CHTf2]
+

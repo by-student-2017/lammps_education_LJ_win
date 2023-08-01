@@ -1,0 +1,34 @@
+ "traj_nodrudes_step_1-20001.lmp" ### trajectory filename
+ "molecular_xyz.inp" ### inputfile for module MOLECULAR
+ "./output/" ### path to trajectory
+ "./" ### path to other input files
+ "./output/" ### output folder
+ 
+ #GENERAL_SETTINGS
+ time_scaling 1000 ### factor to scale the timestep with to arrive at a useful time unit.
+ dump_example ### write xyz files for all the molecule types
+ parallel_operation T ### turn on parallel operation
+ sequential_read F ### load trajectory into RAM
+ show_settings ### show the values of important variables/parameters at this point
+ set_threads 48 ### set the number of threads to use to 48
+
+ #DIFFUSION
+ set_prefix MSD_
+ diffusion "exponent_2_diffusion_long.inp" ### mean squared displacement
+ set_prefix MQD_
+ diffusion "exponent_4_diffusion_long.inp" ### mean displacement to the power of 4
+ 
+ #REORIENTATION
+ set_prefix "anion_reorient2_" ### This prefix will be used subsequently.
+ correlation "anion_reorient2_long.inp" ### vector reorientation tcf
+ set_prefix "anion_reorient1_" ### This prefix will be used subsequently.
+ correlation "anion_reorient1_long.inp" ### vector reorientation tcf
+
+ #DIHEDRAL_AUTOCORRELATION
+ set_prefix anion_dihedral_long_ ### This prefix will be used subsequently.
+ dihedral "anion_dihedral_long.inp" ### invoke dihedral condition analysis
+
+ quit
+
+ This is the general input file.
+ It controls the behaviour of the trajectory analyser.

@@ -1,0 +1,38 @@
+ "BMIMTFSM_CLPOL_333K_1000fs_XYZ_sorted.lmp" ### trajectory filename
+ "./molecular_charge.inp" ### inputfile for module MOLECULAR
+ "./" ### path to trajectory
+ "./" ### path to other input files
+ "./output/" ### output folder
+
+ #GENERAL_SETTINGS
+ time_scaling 1000 ### stride of trajectory is 1000 fs.
+ parallel_operation T ### turn on parallel operation
+ set_threads_simple ### set the number of threads to use to env variable
+ sequential_read F ### load trajectory into RAM.
+ trajectory_type lmp ### which format the (input) trajectory has
+ show_drude ### show some drude settings
+ show_settings ### print the settings at this point
+ print_atomic_masses
+ print_atomic_charges
+ print_dipole_properties
+ 
+ #CHARGE_ARM_DISTRIBUTION
+ charge_arm_simple
+
+ #COLLAPSE_DRUDE_PARTICLES
+ remove_drudes_simple
+
+ #CHARGE_ARM_REORIENTATION
+ set_prefix "CAanion_reorient2_" ### This prefix will be used subsequently.
+ correlation "anion_reorient2_chargearm_long.inp" ### vector reorientation tcf
+ set_prefix "CAanion_reorient1_" ### This prefix will be used subsequently.
+ correlation "anion_reorient1_chargearm_long.inp" ### vector reorientation tcf
+
+ #CENTRE-OF-CHARGE_TRAJECTORY
+ set_prefix ""
+ convert_coc T
+
+ quit
+ 
+ This is the general input file.
+ It controls the behaviour of the trajectory analyser.

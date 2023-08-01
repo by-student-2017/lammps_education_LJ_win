@@ -1,0 +1,6 @@
+ 20001 ### number of timesteps in trajectory
+ 2 ### number of different types of molecules. Followed by list of molecules.
+ +1 25 512 ### There are 512 molecules per step with charge +1 and 25 atoms each.
+ -1 16 512 ### There are 512 molecules per step with charge -1 and 15 atoms each.
+
+

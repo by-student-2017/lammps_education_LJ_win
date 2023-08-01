@@ -1,0 +1,17 @@
+ msd 8 ### mean-squared displacement for given number of projections
+ 1 0 0 1 ### x projection for molecule type 1
+ 0 1 0 1 ### y projection for molecule type 1
+ 0 0 1 1 ### z projection for molecule type 1
+ 1 0 0 2 ### x projection for molecule type 2
+ 0 1 0 2 ### y projection for molecule type 2
+ 0 0 1 2 ### z projection for molecule type 2
+ 1 1 1 1 ### 3D diffusion for molecule type 1
+ 1 1 1 2 ### 3D diffusion for molecule type 2
+ tmax 20000 ### maximum time shift of the displacement function
+ tstep 1
+ print_verbose F ### do not print detailed drift.
+ exponent 2 ### custom exponent - computing <x**2>
+ quit
+
+ This is an input file for the calculation of mean-squared displacements.
+ To actually perform the implied calculations, it has to be referenced in 'general.inp'.

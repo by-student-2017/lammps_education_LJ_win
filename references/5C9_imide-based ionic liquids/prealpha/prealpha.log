@@ -1,0 +1,1079 @@
+  # UNIT 6 REDIRECTED TO './output/prealpha.log'
+  ** The following general input files will be used successively:
+  **  - 'general_drude_long.inp' (existing file)
+  **  - 'general_long.inp' (existing file)
+  **  - 'general_COC.inp' (existing file)
+  ** current general input file is 'general_drude_long.inp'
+
+    Copyright (C) 2022 Frederik Philippi (Tom Welton Group)
+    Please report any bugs.
+    Suggestions and questions are also welcome. Thanks.
+    Date of Release: 10_Feb_2022
+    Please consider citing our work.
+
+ Note: The program *only* switches to user input if no 'general.inp' is present
+
+ reading file 'general_drude_long.inp'
+ found a 'sequential_read' statement in line 10
+ found a 'trajectory_type' statement in line 11
+ elapsed time:  11.7 milliseconds
+
+ reading file './molecular_charge.inp'
+ Searching for 'default_masses' statement...found in line 5.
+ Trying to read 1 custom default masses...
+ Changing mass of drude particle from .000 to .4000
+ done.
+ Subtracting drude masses from N,O,C,S,P,Li,F
+ Searching for 'atomic_masses' statement...done (none found, end of file encountered).
+ Searching for 'default_charges' statement...done (none found, end of file encountered).
+ Searching for 'atomic_charges' statement...found in line 7.
+ Trying to read 66 custom atomic charges...done.
+ Searching for 'constraints' statement...done (none found, end of file encountered).
+ Searching for 'drudes' statement...done (none found, end of file encountered).
+ load complete trajectory into RAM. Very fast for some analyses, like diffusion.
+
+ reading file './BMIMTFSM_CLPOL_333K_1000fs_XYZ_sortedshort.lmp'
+ Trajectory seems to contain Cartesian coordinates.
+ General information read from the trajectory:
+   Molecule N2C8H15D10 (#1) is a cation with 35 atoms and mass = 139.222 Da.
+   Molecule F6C3S2O4HD15 (#2) is an anion with 31 atoms and mass = 279.157 Da.
+   Box dimensions:
+     x:    0.000  64.014
+     y:    0.000  64.014
+     z:    0.000  64.014
+   Box volume is 0.262E+06 cubic Angströms
+   Density is 1.356 g/mL
+   Detected 12800 drude particles
+ reading the trajectory...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ done.
+ Setting time scaling factor to 2000 based on ITEM: TIMESTEP
+ Assigning drudes from trajectory file.
+ Use keyword 'show_drude' to print detailed information.
+ (including the appropriate input section for the molecular input file)
+ elapsed time:  17.9 minutes
+
+ streaming input from general input file
+
+ Line 6: '#GENERAL_SETTINGS'
+ (is commented out)
+ elapsed time:   1.6 milliseconds
+
+ Line 7: 'time_scaling'
+ scaling timelines with 1000
+ elapsed time:  73.1 microseconds
+
+ Line 8: 'parallel_operation'
+ setting 'PARALLEL_OPERATION' to  T
+ elapsed time:  65.1 microseconds
+
+ Line 9: 'set_threads_simple'
+ number of threads set to 48
+ elapsed time:  46.5 microseconds
+
+ Line 10: 'sequential_read'
+ skip line (sequential_read)
+ elapsed time:  20.7 microseconds
+
+ Line 11: 'trajectory_type'
+ skip line (trajectory_type)
+ elapsed time:   8.6 microseconds
+
+ Line 12: 'show_drude'
+ Printing detailed drude information.
+ Printing detailed drude information.
+   Molecule type 1 has 10 drude particles.
+     Indices of non-polarisable atoms:
+       7 (H)
+       9 (H)
+       10 (H)
+       11 (H)
+       12 (H)
+       13 (H)
+       15 (H)
+       16 (H)
+       18 (H)
+       19 (H)
+       21 (H)
+       22 (H)
+       23 (H)
+       24 (H)
+       25 (H)
+     Indices of polarisable atoms (drude cores) and detailed information from first step:
+     (minimum and maximum core-drude distance, reduced mass, atom index of drude)
+       1 (N) 0.47E-02 0.81E-01 0.3886 26
+       2 (C) 0.33E-02 0.83E-01 0.3867 27
+       3 (N) 0.57E-03 0.67E-01 0.3886 28
+       4 (C) 0.19E-02 0.83E-01 0.3867 29
+       5 (C) 0.12E-02 0.83E-01 0.3867 30
+       6 (C) 0.66E-02 0.71E-01 0.3867 31
+       8 (C) 0.37E-02 0.46E-01 0.3867 32
+       14 (C) 0.17E-02 0.48E-01 0.3867 33
+       17 (C) 0.12E-02 0.43E-01 0.3867 34
+       20 (C) 0.20E-02 0.48E-01 0.3867 35
+     Indices of drude particles:
+       26 (D)
+       27 (D)
+       28 (D)
+       29 (D)
+       30 (D)
+       31 (D)
+       32 (D)
+       33 (D)
+       34 (D)
+       35 (D)
+   Molecule type 2 has 15 drude particles.
+     Indices of non-polarisable atoms:
+       16 (H)
+     Indices of polarisable atoms (drude cores) and detailed information from first step:
+     (minimum and maximum core-drude distance, reduced mass, atom index of drude)
+       1 (F) 0.23E-02 0.37E-01 0.3916 17
+       2 (C) 0.40E-02 0.35E-01 0.3867 18
+       3 (S) 0.18E-01 0.61E-01 0.3950 19
+       4 (C) 0.53E-02 0.50E-01 0.3867 20
+       5 (S) 0.21E-01 0.64E-01 0.3950 21
+       6 (C) 0.42E-02 0.34E-01 0.3867 22
+       7 (F) 0.17E-02 0.34E-01 0.3916 23
+       8 (O) 0.41E-02 0.62E-01 0.3900 24
+       9 (O) 0.37E-02 0.58E-01 0.3900 25
+       10 (O) 0.52E-02 0.58E-01 0.3900 26
+       11 (O) 0.84E-02 0.55E-01 0.3900 27
+       12 (F) 0.38E-02 0.40E-01 0.3916 28
+       13 (F) 0.29E-02 0.34E-01 0.3916 29
+       14 (F) 0.31E-02 0.35E-01 0.3916 30
+       15 (F) 0.30E-02 0.33E-01 0.3916 31
+     Indices of drude particles:
+       17 (D)
+       18 (D)
+       19 (D)
+       20 (D)
+       21 (D)
+       22 (D)
+       23 (D)
+       24 (D)
+       25 (D)
+       26 (D)
+       27 (D)
+       28 (D)
+       29 (D)
+       30 (D)
+       31 (D)
+ To manually request the above assignment, add the 
+ following 26 lines to your molecular input file:
+   drudes 25
+   1 1 26
+   1 2 27
+   1 3 28
+   1 4 29
+   1 5 30
+   1 6 31
+   1 8 32
+   1 14 33
+   1 17 34
+   1 20 35
+   2 1 17
+   2 2 18
+   2 3 19
+   2 4 20
+   2 5 21
+   2 6 22
+   2 7 23
+   2 8 24
+   2 9 25
+   2 10 26
+   2 11 27
+   2 12 28
+   2 13 29
+   2 14 30
+   2 15 31
+ elapsed time: 156.9 microseconds
+
+ Line 13: 'show_settings'
+ Printing current global settings.
+    VERBOSE_OUTPUT       yes
+    TIME_OUTPUT          yes
+    DEVELOPERS_VERSION   no
+    ERROR_OUTPUT         yes
+    READ_SEQUENTIAL      no
+    BOX_VOLUME_GIVEN     yes
+    WRAP_TRAJECTORY      no
+    DISCONNECTED         yes
+    EXTRA_VELOCITY       no
+    GLOBAL_ITERATIONS    3
+    TIME_SCALING_FACTOR  1000
+    HEADER_LINES_GINPUT  5
+    CURRENT_ERROR_CODE   -1
+    ERROR_COUNT          0
+    OUTPUT_PREFIX        ""
+    TRAJECTORY_TYPE      "lmp"
+    INFO_IN_TRAJECTORY   "POS"
+    PARALLEL_OPERATION   yes
+ OMP flag set!
+    NUMBER_OF_THREADS      1
+    NUMBER_OF_PROCS        256
+    MAX_NUMBER_OF_THREADS  48
+ Printing current molecular settings.
+    headerlines_to_skip        9
+    total_lines_to_skip        33801
+    file_position              -1
+    dihedrals_initialised      no
+    custom_constraints         no
+    custom_default_masses      yes
+    custom_atom_masses         no
+    custom_default_charges     no
+    custom_atom_charges        yes
+    drudes_assigned            yes
+    drude_details              yes
+    drudes_allocated           yes
+    use_firstatom_as_com       no
+    use_barycentre             no
+    total_number_of_atoms      33792
+    number_of_molecule_types   2
+    number_of_drude_particles  12800
+    number_of_steps            20001
+    drude_mass (Dalton)        0.400
+ invoke 'show_drude' to print detailed drude particle assignments.
+ Memory requirement for storage of entire trajectory in RAM:
+ 3*33792*20001*4Byte =   7.6GB (single precision)
+ current default (input) Filenames:
+    TRAJECTORY      "BMIMTFSM_CLPOL_333K_1000fs_XYZ_sortedshort.lmp"
+    GENERAL         "general_drude_long.inp"
+    MOLECULAR       "./molecular_charge.inp"
+    AUTOCORRELATION "autocorrelation.inp"
+    DIFFUSION       "diffusion.inp"
+    DISTRIBUTION    "distribution.inp"
+    DISTANCE        "distance.inp"
+ Paths:
+    TRAJECTORY "./"
+    INPUT      "./"
+    OUTPUT     "./output/"
+ currently assuming 1000 as time difference between steps
+ assuming Angström as distance unit and femtoseconds as time unit.
+ Using these constants:
+    boltzmann constant:  0.138064905E-22 J/K
+    avogadro constant:   0.602214076E+24 1/mol
+    elementary charge:   0.160217660E-18 C
+    archimedes constant: 0.314159274E+01
+    vacuum permittivity: 0.885418822E-11 F/m
+ elapsed time:   3.7 milliseconds
+
+ Line 14: 'print_atomic_masses'
+ The following lines can be used/altered to request custom atomic masses:
+   atomic_masses 66
+   1 1 13.607 (Element N)
+   1 2 11.611 (Element C)
+   1 3 13.607 (Element N)
+   1 4 11.611 (Element C)
+   1 5 11.611 (Element C)
+   1 6 11.611 (Element C)
+   1 7 1.008 (Element H)
+   1 8 11.611 (Element C)
+   1 9 1.008 (Element H)
+   1 10 1.008 (Element H)
+   1 11 1.008 (Element H)
+   1 12 1.008 (Element H)
+   1 13 1.008 (Element H)
+   1 14 11.611 (Element C)
+   1 15 1.008 (Element H)
+   1 16 1.008 (Element H)
+   1 17 11.611 (Element C)
+   1 18 1.008 (Element H)
+   1 19 1.008 (Element H)
+   1 20 11.611 (Element C)
+   1 21 1.008 (Element H)
+   1 22 1.008 (Element H)
+   1 23 1.008 (Element H)
+   1 24 1.008 (Element H)
+   1 25 1.008 (Element H)
+   1 26 .400 (Element D)
+   1 27 .400 (Element D)
+   1 28 .400 (Element D)
+   1 29 .400 (Element D)
+   1 30 .400 (Element D)
+   1 31 .400 (Element D)
+   1 32 .400 (Element D)
+   1 33 .400 (Element D)
+   1 34 .400 (Element D)
+   1 35 .400 (Element D)
+   2 1 18.598 (Element F)
+   2 2 11.611 (Element C)
+   2 3 31.666 (Element S)
+   2 4 11.611 (Element C)
+   2 5 31.666 (Element S)
+   2 6 11.611 (Element C)
+   2 7 18.598 (Element F)
+   2 8 15.599 (Element O)
+   2 9 15.599 (Element O)
+   2 10 15.599 (Element O)
+   2 11 15.599 (Element O)
+   2 12 18.598 (Element F)
+   2 13 18.598 (Element F)
+   2 14 18.598 (Element F)
+   2 15 18.598 (Element F)
+   2 16 1.008 (Element H)
+   2 17 .400 (Element D)
+   2 18 .400 (Element D)
+   2 19 .400 (Element D)
+   2 20 .400 (Element D)
+   2 21 .400 (Element D)
+   2 22 .400 (Element D)
+   2 23 .400 (Element D)
+   2 24 .400 (Element D)
+   2 25 .400 (Element D)
+   2 26 .400 (Element D)
+   2 27 .400 (Element D)
+   2 28 .400 (Element D)
+   2 29 .400 (Element D)
+   2 30 .400 (Element D)
+   2 31 .400 (Element D)
+ elapsed time: 126.7 microseconds
+
+ Line 15: 'print_atomic_charges'
+ The following lines can be used/altered to request custom atomic charges:
+   atomic_charges 66
+   1 1 2.0573 (Element N)
+   1 2 1.9760 (Element C)
+   1 3 2.0573 (Element N)
+   1 4 1.9560 (Element C)
+   1 5 1.9560 (Element C)
+   1 6 2.2749 (Element C)
+   1 7 .2100 (Element H)
+   1 8 2.0672 (Element C)
+   1 9 .2100 (Element H)
+   1 10 .2100 (Element H)
+   1 11 .1300 (Element H)
+   1 12 .1300 (Element H)
+   1 13 .1300 (Element H)
+   1 14 2.2472 (Element C)
+   1 15 .1300 (Element H)
+   1 16 .1300 (Element H)
+   1 17 2.1172 (Element C)
+   1 18 .0600 (Element H)
+   1 19 .0600 (Element H)
+   1 20 2.2649 (Element C)
+   1 21 .0600 (Element H)
+   1 22 .0600 (Element H)
+   1 23 .0600 (Element H)
+   1 24 .0600 (Element H)
+   1 25 .0600 (Element H)
+   1 26 -1.9073 (Element D)
+   1 27 -2.0860 (Element D)
+   1 28 -1.9073 (Element D)
+   1 29 -2.0860 (Element D)
+   1 30 -2.0860 (Element D)
+   1 31 -2.4449 (Element D)
+   1 32 -2.2372 (Element D)
+   1 33 -2.2372 (Element D)
+   1 34 -2.2372 (Element D)
+   1 35 -2.4449 (Element D)
+   2 1 1.2119 (Element F)
+   2 2 2.0992 (Element C)
+   2 3 2.9526 (Element S)
+   2 4 1.4960 (Element C)
+   2 5 2.9526 (Element S)
+   2 6 2.0992 (Element C)
+   2 7 1.2119 (Element F)
+   2 8 1.3761 (Element O)
+   2 9 1.3761 (Element O)
+   2 10 1.3761 (Element O)
+   2 11 1.3761 (Element O)
+   2 12 1.2119 (Element F)
+   2 13 1.2119 (Element F)
+   2 14 1.2119 (Element F)
+   2 15 1.2119 (Element F)
+   2 16 .1900 (Element H)
+   2 17 -1.3719 (Element D)
+   2 18 -1.7492 (Element D)
+   2 19 -2.1626 (Element D)
+   2 20 -2.0860 (Element D)
+   2 21 -2.1626 (Element D)
+   2 22 -1.7492 (Element D)
+   2 23 -1.3719 (Element D)
+   2 24 -1.8561 (Element D)
+   2 25 -1.8561 (Element D)
+   2 26 -1.8561 (Element D)
+   2 27 -1.8561 (Element D)
+   2 28 -1.3719 (Element D)
+   2 29 -1.3719 (Element D)
+   2 30 -1.3719 (Element D)
+   2 31 -1.3719 (Element D)
+ elapsed time: 126.5 microseconds
+
+ Line 16: 'print_dipole_statistics'
+ Dipole Moment / Charge Arm statistics from first step in trajectory:
+   charge arm (COC-COM) of Molecule N2C8H15D10 (#1):
+     average = 1.330E+00
+     st.dev. = 2.096E-01
+     minimum = 8.475E-01
+     maximum = 2.020E+00
+   charge arm (COC-COM) of Molecule F6C3S2O4HD15 (#2):
+     average = 6.673E-01
+     st.dev. = 5.042E-01
+     minimum = 5.406E-02
+     maximum = 1.620E+00
+ Please cite reference [1].
+ elapsed time:   2.5 milliseconds
+
+ Line 17: '#CHARGE_ARM_DISTRIBUTION'
+ (is commented out)
+ elapsed time:  13.2 microseconds
+
+ Line 18: 'charge_arm_simple'
+ Distribution module invoked - simple mode:
+ Charge Arm distribution. Requires charges to be initialised.
+ File 'prealpha_simple.inp' written.
+ reading file './prealpha_simple.inp'
+ calculating charge arm polar distribution functions.
+ reading user-specified references.
+   Charge Arm analysis - toggle maxdist_optimize for bins.
+   (Will optimise maximum values separately for every reference)
+   setting 'subtract_uniform' to F
+   setting 'sampling_interval' to 1
+   setting 'bin_count_a' to 100
+   setting 'bin_count_b' to 100
+ Done reading prealpha_simple.inp
+ Calculating distribution for reference vector 1 out of 2.
+   (Vector +0 +0 +1 vs. charge arm of N2C8H15D10)
+   setting 'maxdist' to 2.100 (based on maximum charge arm)
+   using z-direction as reference vector.
+   ### Parallel execution on 48 threads (distribution function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+   ### End of parallelised section, took 509.7 milliseconds
+   within bin 10239689, out of bounds 823.
+   ideal density: 2.578E-02 particles/Angström^3
+   (1.000 particles in the sphere)
+   writing trace (rdf) into file: ./output/reference_1_charge_arm_type_1_rdf
+   writing distribution data (pdf) into file: ./output/reference_1_charge_arm_type_1_pdf
+ Calculating distribution for reference vector 2 out of 2.
+   (Vector +0 +0 +1 vs. charge arm of F6C3S2O4HD15)
+   setting 'maxdist' to 1.700 (based on maximum charge arm)
+   using z-direction as reference vector.
+   ### Parallel execution on 48 threads (distribution function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+   ### End of parallelised section, took 445.8 milliseconds
+   within bin 10239001, out of bounds 1511.
+   ideal density: 4.858E-02 particles/Angström^3
+   (1.000 particles in the sphere)
+   writing trace (rdf) into file: ./output/reference_2_charge_arm_type_2_rdf
+   writing distribution data (pdf) into file: ./output/reference_2_charge_arm_type_2_pdf
+ See also reference [1].
+ elapsed time:   1.0 seconds
+
+ Line 19: '#COLLAPSE_DRUDE_PARTICLES'
+ (is commented out)
+ elapsed time:  41.2 microseconds
+
+ Line 20: 'remove_drudes_simple'
+ Writing trajectory with drude particles merged into cores - simple mode.
+ (For timesteps 1 to 20001)
+ Trajectory type will be 'lmp'
+ writing new trajectory to file './output/traj_nodrudes_step_1-20001.lmp'...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ done.
+ Writing new molecular input file in './output/molecular_nodrude.inp'... done
+ See also reference [1].
+ elapsed time:  13.5 minutes
+
+ Line 21: '#CHARGE_ARM_REORIENTATION'
+ (is commented out)
+ elapsed time:  45.7 microseconds
+
+ Line 22: 'set_prefix'
+ prefix set to 'CAanion_reorient2_'
+ elapsed time:  37.2 microseconds
+
+ Line 23: 'correlation'
+ (Auto)correlation module invoked.
+ reading file './anion_reorient2_chargearm_long.inp'
+ Performing autocorrelation analysis of vector reorientation.
+ See for example dx.doi.org/10.1016/B978-0-12-387032-2.00011-8
+ or, for ionic liquids, dx.doi.org/10.1016/j.cplett.2007.03.084
+ Molecule type index is 2
+ setting 'tmax' to 20000
+ setting 'sampling_interval' to 1
+ requesting legendre polynomial of order 2
+ Using dipole moment / charge arm vector for reorientation.
+ Done reading anion_reorient2_chargearm_long.inp
+ Vector for reorientation is the charge arm of F6C3S2O4HD15.
+ ( defined as (SUM(q*r)/SUM(q))-(SUM(m*r)/SUM(m)),
+   q=atom charge, r=atom position, m=atom mass )
+ Computing reorientational correlation function
+ ### Parallel execution on 48 threads (time correlation function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  46.9 minutes
+ writing TCF into file 'CAanion_reorient2_rotcorr'
+ last area value is 0.2E-01 percent of total integral.
+ elapsed time:  46.9 minutes
+
+ Line 24: 'set_prefix'
+ prefix set to 'CAanion_reorient1_'
+ elapsed time:  50.9 microseconds
+
+ Line 25: 'correlation'
+ (Auto)correlation module invoked.
+ reading file './anion_reorient1_chargearm_long.inp'
+ Performing autocorrelation analysis of vector reorientation.
+ See for example dx.doi.org/10.1016/B978-0-12-387032-2.00011-8
+ or, for ionic liquids, dx.doi.org/10.1016/j.cplett.2007.03.084
+ Molecule type index is 2
+ setting 'tmax' to 20000
+ setting 'sampling_interval' to 1
+ requesting legendre polynomial of order 1
+ Using dipole moment / charge arm vector for reorientation.
+ Done reading anion_reorient1_chargearm_long.inp
+ Vector for reorientation is the charge arm of F6C3S2O4HD15.
+ ( defined as (SUM(q*r)/SUM(q))-(SUM(m*r)/SUM(m)),
+   q=atom charge, r=atom position, m=atom mass )
+ Computing reorientational correlation function
+ ### Parallel execution on 48 threads (time correlation function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  48.0 minutes
+ writing TCF into file 'CAanion_reorient1_rotcorr'
+ last area value is 0.1E-01 percent of total integral.
+ elapsed time:  48.0 minutes
+
+ Line 26: '#CENTRE-OF-CHARGE_TRAJECTORY'
+ (is commented out)
+ elapsed time:  44.6 microseconds
+
+ Line 27: 'set_prefix'
+ prefix set to ''
+ elapsed time:  15.4 microseconds
+
+ Line 28: 'convert_coc'
+ Reduce Trajectory to centre of charge for each molecule type.
+ An adjusted molecular input file will be written, too.
+ Trajectory type will be 'lmp'
+ Writing new trajectory to file './output/traj_COC.lmp'...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ done.
+ Writing new molecular input file in './output/COC_molecular.inp'... done
+ elapsed time:   1.1 minutes
+
+ Line 29: 'quit'
+ exiting analysis.
+ TOTAL elapsed time:   2.1 hours
+
+  ** done with general input file 'general_drude_long.inp'
+  ** changing to next general input file
+
+  ** current general input file is 'general_long.inp'
+
+    Copyright (C) 2022 Frederik Philippi (Tom Welton Group)
+    Please report any bugs.
+    Suggestions and questions are also welcome. Thanks.
+    Date of Release: 10_Feb_2022
+    Please consider citing our work.
+
+ Note: The program *only* switches to user input if no 'general.inp' is present
+
+ reading file 'general_long.inp'
+ found a 'sequential_read' statement in line 10
+ Assuming lammps trajectory based on file extension.
+ elapsed time:  18.9 milliseconds
+
+ reading file 'molecular_xyz.inp'
+ Searching for 'default_masses' statement...done (none found, end of file encountered).
+ Searching for 'atomic_masses' statement...done (none found, end of file encountered).
+ Searching for 'default_charges' statement...done (none found, end of file encountered).
+ Searching for 'atomic_charges' statement...done (none found, end of file encountered).
+ Searching for 'constraints' statement...done (none found, end of file encountered).
+ Searching for 'drudes' statement...done (none found, end of file encountered).
+ load complete trajectory into RAM. Very fast for some analyses, like diffusion.
+
+ reading file './output/traj_nodrudes_step_1-20001.lmp'
+ Trajectory seems to contain Cartesian coordinates.
+ General information read from the trajectory:
+   Molecule N2C8H15 (#1) is a cation with 25 atoms and mass = 139.222 Da.
+   Molecule F6C3S2O4H (#2) is an anion with 16 atoms and mass = 279.157 Da.
+   Box dimensions:
+     x:    0.000  64.014
+     y:    0.000  64.014
+     z:    0.000  64.014
+   Box volume is 0.262E+06 cubic Angströms
+   Density is 1.356 g/mL
+ reading the trajectory...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ done.
+ Setting time scaling factor to 1000 based on ITEM: TIMESTEP
+ elapsed time:  13.4 minutes
+
+ streaming input from general input file
+
+ Line 6: '#GENERAL_SETTINGS'
+ (is commented out)
+ elapsed time: 209.9 microseconds
+
+ Line 7: 'time_scaling'
+ scaling timelines with 1000
+ elapsed time:  22.8 microseconds
+
+ Line 8: 'dump_example'
+ Example molecules written to output folder.
+ elapsed time:   4.1 milliseconds
+
+ Line 9: 'parallel_operation'
+ setting 'PARALLEL_OPERATION' to  T
+ elapsed time:  25.8 microseconds
+
+ Line 10: 'sequential_read'
+ skip line (sequential_read)
+ elapsed time:  12.4 microseconds
+
+ Line 11: 'show_settings'
+ Printing current global settings.
+    VERBOSE_OUTPUT       yes
+    TIME_OUTPUT          yes
+    DEVELOPERS_VERSION   no
+    ERROR_OUTPUT         yes
+    READ_SEQUENTIAL      no
+    BOX_VOLUME_GIVEN     yes
+    WRAP_TRAJECTORY      no
+    DISCONNECTED         yes
+    EXTRA_VELOCITY       no
+    GLOBAL_ITERATIONS    3
+    TIME_SCALING_FACTOR  1000
+    HEADER_LINES_GINPUT  5
+    CURRENT_ERROR_CODE   -1
+    ERROR_COUNT          0
+    OUTPUT_PREFIX        ""
+    TRAJECTORY_TYPE      "lmp"
+    INFO_IN_TRAJECTORY   "POS"
+    PARALLEL_OPERATION   yes
+ OMP flag set!
+    NUMBER_OF_THREADS      1
+    NUMBER_OF_PROCS        256
+    MAX_NUMBER_OF_THREADS  48
+ Printing current molecular settings.
+    headerlines_to_skip        9
+    total_lines_to_skip        21001
+    file_position              -1
+    dihedrals_initialised      no
+    custom_constraints         no
+    custom_default_masses      no
+    custom_atom_masses         no
+    custom_default_charges     no
+    custom_atom_charges        no
+    drudes_assigned            no
+    drude_details              yes
+    drudes_allocated           no
+    use_firstatom_as_com       no
+    use_barycentre             no
+    total_number_of_atoms      20992
+    number_of_molecule_types   2
+    number_of_drude_particles  0
+    number_of_steps            20001
+    drude_mass (Dalton)        0.000
+ Memory requirement for storage of entire trajectory in RAM:
+ 3*20992*20001*4Byte =   4.7GB (single precision)
+ current default (input) Filenames:
+    TRAJECTORY      "traj_nodrudes_step_1-20001.lmp"
+    GENERAL         "general_long.inp"
+    MOLECULAR       "molecular_xyz.inp"
+    AUTOCORRELATION "anion_reorient1_chargearm_long.inp"
+    DIFFUSION       "diffusion.inp"
+    DISTRIBUTION    "prealpha_simple.inp"
+    DISTANCE        "distance.inp"
+ Paths:
+    TRAJECTORY "./output/"
+    INPUT      "./"
+    OUTPUT     "./output/"
+ currently assuming 1000 as time difference between steps
+ assuming Angström as distance unit and femtoseconds as time unit.
+ Using these constants:
+    boltzmann constant:  0.138064905E-22 J/K
+    avogadro constant:   0.602214076E+24 1/mol
+    elementary charge:   0.160217660E-18 C
+    archimedes constant: 0.314159274E+01
+    vacuum permittivity: 0.885418822E-11 F/m
+ elapsed time:  81.6 microseconds
+
+ Line 12: 'set_threads'
+ number of threads set to 48
+ elapsed time:  19.8 microseconds
+
+ Line 13: '#DIFFUSION'
+ (is commented out)
+ elapsed time:  10.0 microseconds
+
+ Line 14: 'set_prefix'
+ prefix set to 'MSD_'
+ elapsed time:  14.1 microseconds
+
+ Line 15: 'diffusion'
+ Diffusion module invoked.
+ reading file './exponent_2_diffusion_long.inp'
+ calculating mean-squared displacements for self-diffusion.
+ reading user-specified projections.
+ setting 'tmax' to 20000
+ setting 'tstep' to 1
+ setting 'verbose_print' to  F
+ setting 'exponent' to 2
+ (Will report <|R|^2> - mean squared displacement)
+ Done reading exponent_2_diffusion_long.inp
+ These quantities will be calculated and reported:
+    'timeline': number of the timestep * time scaling factor
+    '<|R|**2>': mean squared displacement, not corrected
+    '<R>':      average drift of the center of mass, calculated as <R>=SQRT(<x>²+<y>²+<z>²)
+ the time scaling factor is 1000
+ averages taken: max = 20000, min = 1
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  22.3 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_1_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  21.8 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_2_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  21.3 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_3_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  13.7 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_4_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  14.4 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_5_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  14.3 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_6_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  21.2 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_7_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  14.2 minutes
+ writing diffusion data (msd) into file: ./output/MSD_projection_8_self_diffusion
+ Please cite reference [2].
+ See also reference [1].
+ elapsed time:   2.4 hours
+
+ Line 16: 'set_prefix'
+ prefix set to 'MQD_'
+ elapsed time:  60.5 microseconds
+
+ Line 17: 'diffusion'
+ Diffusion module invoked.
+ reading file './exponent_4_diffusion_long.inp'
+ calculating mean-squared displacements for self-diffusion.
+ reading user-specified projections.
+ setting 'tmax' to 20000
+ setting 'tstep' to 1
+ setting 'verbose_print' to  F
+ setting 'exponent' to 4
+ (Will report <|R|^4> - use with MSD for non-gaussian parameter alpha2)
+ Done reading exponent_4_diffusion_long.inp
+ These quantities will be calculated and reported:
+    'timeline': number of the timestep * time scaling factor
+    '<|R|**4>': mean fourth power displacement, not corrected
+    '<R>':      average drift of the center of mass, calculated as <R>=SQRT(<x>²+<y>²+<z>²)
+ the time scaling factor is 1000
+ averages taken: max = 20000, min = 1
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  20.5 minutes
+ writing diffusion data (msd) into file: ./output/MQD_projection_1_self_diffusion
+ ### Parallel execution on 48 threads (Diffusion / displacement)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took  14.0 minutes
+ writing diffusion data (msd) into file: ./output/MQD_projection_2_self_diffusion
+ See also reference [2].
+ See also reference [1].
+ elapsed time:  35.4 minutes
+
+ Line 18: '#REORIENTATION'
+ (is commented out)
+ elapsed time:  26.7 microseconds
+
+ Line 19: 'set_prefix'
+ prefix set to 'anion_reorient2_'
+ elapsed time:  32.4 microseconds
+
+ Line 20: 'correlation'
+ (Auto)correlation module invoked.
+ reading file './anion_reorient2_long.inp'
+ Performing autocorrelation analysis of vector reorientation.
+ See for example dx.doi.org/10.1016/B978-0-12-387032-2.00011-8
+ or, for ionic liquids, dx.doi.org/10.1016/j.cplett.2007.03.084
+ Molecule type index is 2
+ setting 'tmax' to 20000
+ setting 'sampling_interval' to 1
+ requesting legendre polynomial of order 2
+ 1 base atoms read from fragment record.
+ 1 tip atoms read from fragment record.
+ Done reading anion_reorient2_long.inp
+ base fragment consists of one S atom with index 5.
+ tip  fragment consists of one S atom with index 3.
+ Computing reorientational correlation function
+ ### Parallel execution on 48 threads (time correlation function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took   3.3 minutes
+ writing TCF into file 'anion_reorient2_rotcorr'
+ last area value is 0.2E-01 percent of total integral.
+ elapsed time:   3.3 minutes
+
+ Line 21: 'set_prefix'
+ prefix set to 'anion_reorient1_'
+ elapsed time:  69.1 microseconds
+
+ Line 22: 'correlation'
+ (Auto)correlation module invoked.
+ reading file './anion_reorient1_long.inp'
+ Performing autocorrelation analysis of vector reorientation.
+ See for example dx.doi.org/10.1016/B978-0-12-387032-2.00011-8
+ or, for ionic liquids, dx.doi.org/10.1016/j.cplett.2007.03.084
+ Molecule type index is 2
+ setting 'tmax' to 20000
+ setting 'sampling_interval' to 1
+ requesting legendre polynomial of order 1
+ 1 base atoms read from fragment record.
+ 1 tip atoms read from fragment record.
+ Done reading anion_reorient1_long.inp
+  #  NOTICE 78: fragment_list is already initialised.
+ --> Program will try to reinitialise.
+ base fragment consists of one S atom with index 5.
+ tip  fragment consists of one S atom with index 3.
+ Computing reorientational correlation function
+ ### Parallel execution on 48 threads (time correlation function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took   2.9 minutes
+ writing TCF into file 'anion_reorient1_rotcorr'
+ last area value is 0.6E-02 percent of total integral.
+ elapsed time:   2.9 minutes
+
+ Line 23: '#DIHEDRAL_AUTOCORRELATION'
+ (is commented out)
+ elapsed time:  91.9 microseconds
+
+ Line 24: 'set_prefix'
+ prefix set to 'anion_dihedral_long_'
+ elapsed time:  44.4 microseconds
+
+ Line 25: 'correlation'
+ (Auto)correlation module invoked.
+ reading file './anion_dihedral_long.inp'
+ Performing autocorrelation analysis of dihedral subspace.
+ Dihedrals / lower boundary / upper boundary:
+   2-3-4-5   0.0 150.0
+   3-4-5-6   0.0 150.0
+ setting 'tmax' to 20000
+ setting 'skip_autocorr' to  F
+ setting 'fold' to  T
+ setting 'dump_verbose' to  T
+ setting 'bin_count' to 100
+ Dihedrals for molecule number '1' of type '2' will be exported.
+ Done reading anion_dihedral_long.inp
+ 2D PES subset - reporting dependent subset as well.
+ Filling dihedral array...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ 6811672 out of 10240512 molecules were within the specified boundaries. <h>=66.52%
+ absolute value of <h>: 0.66517E+00, standard sample deviation: 0.21280E-01
+ (standard deviation calculated from the snapshot-wise ensemble averages)
+ writing independent PES subset population into file 'anion_dihedral_long_PES_subset_independent'
+ 2D PES - writing dependent PES subset population into file 'anion_dihedral_long_PES_subset_dependent'
+ writing local incidences ('shares') timestep-wise into file 'anion_dihedral_long_local_incidences'
+ ### Parallel execution on 48 threads (intermittent autocorrelation function)
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ ### End of parallelised section, took   9.7 seconds
+ writing autocorrelation function into file 'anion_dihedral_long_autocorrelation_function'
+ normalise autocorrelation function: dividing by 0.223
+ See also reference [2].
+ See also reference [1].
+ elapsed time:  17.8 seconds
+
+ Line 26: 'quit'
+ exiting analysis.
+ TOTAL elapsed time:   5.5 hours
+
+  ** done with general input file 'general_long.inp'
+  ** changing to next general input file
+
+  ** current general input file is 'general_COC.inp'
+
+    Copyright (C) 2022 Frederik Philippi (Tom Welton Group)
+    Please report any bugs.
+    Suggestions and questions are also welcome. Thanks.
+    Date of Release: 10_Feb_2022
+    Please consider citing our work.
+
+ Note: The program *only* switches to user input if no 'general.inp' is present
+
+ reading file 'general_COC.inp'
+ found a 'sequential_read' statement in line 9
+ Assuming lammps trajectory based on file extension.
+ found a 'wrap_trajectory' statement in line 12
+ elapsed time:  11.0 milliseconds
+
+ reading file './output/COC_molecular.inp'
+ All molecules have only 1 'atom' - turn on com boost.
+ (centre-of-mass position = position of this atom)
+ Searching for 'default_masses' statement...found in line 5.
+ Trying to read 2 custom default masses... done.
+ Searching for 'atomic_masses' statement...done (none found, end of file encountered).
+ Searching for 'default_charges' statement...done (none found, end of file encountered).
+ Searching for 'atomic_charges' statement...done (none found, end of file encountered).
+ Searching for 'constraints' statement...done (none found, end of file encountered).
+ Searching for 'drudes' statement...done (none found, end of file encountered).
+ trajectory file will be read sequentially (needs less RAM, but slow).
+
+ opening file './output/traj_COC.lmp'
+ Trajectory seems to contain Cartesian coordinates.
+ General information read from the trajectory:
+   Molecule a (#1) is a cation with 1 atoms and mass = 139.222 Da.
+   Molecule b (#2) is an anion with 1 atoms and mass = 279.157 Da.
+   Trajectory is in centre-of-mass layout. Check if above masses are correct!
+   Box dimensions:
+     x:    0.000  64.014
+     y:    0.000  64.014
+     z:    0.000  64.014
+   Box volume is 0.262E+06 cubic Angströms
+   Density is 1.356 g/mL
+ centres of mass of each specified molecule will be wrapped into box.
+ elapsed time:  80.0 milliseconds
+
+ streaming input from general input file
+
+ Line 6: '#GENERAL_SETTINGS'
+ (is commented out)
+ elapsed time:  94.0 microseconds
+
+ Line 7: 'time_scaling'
+ scaling timelines with 1000
+ elapsed time:  20.8 microseconds
+
+ Line 8: 'parallel_operation'
+ parallel operation is not available with sequential read.
+ setting 'PARALLEL_OPERATION' to  F
+ elapsed time:  13.3 microseconds
+
+ Line 9: 'sequential_read'
+ skip line (sequential_read)
+ elapsed time:  10.2 microseconds
+
+ Line 10: 'show_settings'
+ Printing current global settings.
+    VERBOSE_OUTPUT       yes
+    TIME_OUTPUT          yes
+    DEVELOPERS_VERSION   no
+    ERROR_OUTPUT         yes
+    READ_SEQUENTIAL      yes
+    BOX_VOLUME_GIVEN     yes
+    WRAP_TRAJECTORY      yes
+    DISCONNECTED         yes
+    EXTRA_VELOCITY       no
+    GLOBAL_ITERATIONS    3
+    TIME_SCALING_FACTOR  1000
+    HEADER_LINES_GINPUT  5
+    CURRENT_ERROR_CODE   -1
+    ERROR_COUNT          0
+    OUTPUT_PREFIX        ""
+    TRAJECTORY_TYPE      "lmp"
+    INFO_IN_TRAJECTORY   "POS"
+    PARALLEL_OPERATION   no
+ OMP flag set!
+    NUMBER_OF_THREADS      1
+    NUMBER_OF_PROCS        256
+    MAX_NUMBER_OF_THREADS  48
+ Printing current molecular settings.
+    headerlines_to_skip        9
+    total_lines_to_skip        1033
+    file_position              1
+    dihedrals_initialised      no
+    custom_constraints         no
+    custom_default_masses      yes
+    custom_atom_masses         no
+    custom_default_charges     no
+    custom_atom_charges        no
+    drudes_assigned            no
+    drude_details              yes
+    drudes_allocated           no
+    use_firstatom_as_com       yes
+    use_barycentre             no
+    total_number_of_atoms      1024
+    number_of_molecule_types   2
+    number_of_drude_particles  0
+    number_of_steps            20001
+    drude_mass (Dalton)        0.000
+ Memory requirement for storage of entire trajectory in RAM:
+ 3*1024*20001*4Byte = 234.4MB (single precision)
+ current default (input) Filenames:
+    TRAJECTORY      "traj_COC.lmp"
+    GENERAL         "general_COC.inp"
+    MOLECULAR       "./output/COC_molecular.inp"
+    AUTOCORRELATION "anion_dihedral_long.inp"
+    DIFFUSION       "exponent_4_diffusion_long.inp"
+    DISTRIBUTION    "prealpha_simple.inp"
+    DISTANCE        "distance.inp"
+ Paths:
+    TRAJECTORY "./output/"
+    INPUT      "./"
+    OUTPUT     "./output/"
+ currently assuming 1000 as time difference between steps
+ assuming Angström as distance unit and femtoseconds as time unit.
+ Using these constants:
+    boltzmann constant:  0.138064905E-22 J/K
+    avogadro constant:   0.602214076E+24 1/mol
+    elementary charge:   0.160217660E-18 C
+    archimedes constant: 0.314159274E+01
+    vacuum permittivity: 0.885418822E-11 F/m
+ elapsed time:  65.0 microseconds
+
+ Line 11: '#CONVERT_FOR_JESSEMCDANIELCODE'
+ (is commented out)
+ elapsed time:  10.5 microseconds
+
+ Line 12: 'wrap_trajectory'
+ skip line (wrap_trajectory)
+ elapsed time:  10.1 microseconds
+
+ Line 13: 'dump_full_gro'
+  #  NOTICE 145: GROMACS assumes nm, prealpha assumes Angström.
+ --> Coordinates will be divided by 10 for '.gro' output.
+ Writing trajectory in GROMACS format (.gro)...
+ 0% - - - - - 50% - - - - - 100%
+ ###############################
+ done.
+ elapsed time:   1.5 minutes
+
+ Line 14: 'quit'
+ exiting analysis.
+ closing file './output/COC_molecular.inp'
+ TOTAL elapsed time:   5.5 hours
+
+  ** done with general input file 'general_COC.inp'
+
+ No warnings or errors encountered.
+
+ References:
+   [1] Phys. Chem. Chem. Phys., 2022, 24, 3144–3162.
+       dx.doi.org/10.1039/D1CP04592J
+   [2] Phys. Chem. Chem. Phys., 2021, 23, 21042–21064.
+       dx.doi.org/10.1039/D1CP02889H
+
