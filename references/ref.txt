@@ -201,8 +201,13 @@
 - https://era.ed.ac.uk/handle/1842/35877 (LJ)
 - https://shareok.org/handle/11244/50751 (LJ)
 # ---------------------------------------------------------------------------------
+- J. M. Kubiak, thesis (2016).
+  https://dspace.mit.edu/handle/1721.1/140043
+  PGNPs (polymer grafted nanoparticles) (FENE, MATLAB or Octave)
+# ---------------------------------------------------------------------------------
 - https://open.library.ubc.ca/media/stream/pdf/24/1.0166726/4 (K-G model)
 - https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0166726 (K-G model)
+# ---------------------------------------------------------------------------------
 - https://etda.libraries.psu.edu/catalog/25081 (CG)
 - https://dspace.mit.edu/handle/1721.1/98127 (CG fit on MATLAB)
 # ---------------------------------------------------------------------------------

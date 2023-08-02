@@ -1,0 +1,123 @@
+#Effect of Bond Distribution in Crosslinkable PGNPs
+#Example LAMMPS Input Script
+
+###############################################################
+# Filename: in.jaxnp23 #
+# Based on work of Mark Tschopp, 2010 (Ref. 289) #
+# #
+# #
+###############################################################
+
+#Variables############################################################################
+variable fname index JA_XNP23.txt
+variable simname index JA_XNP23
+
+#Initialization#########################################################################
+units lj #unitless magic
+boundary p p p #cubic and periodic
+atom_style bond
+log log.${simname}.txt
+bond_style hybrid fene harmonic
+read_data ${fname} # extra/bond/per/atom 10 extra/special/per/atom 1000 #make extra room for 
+crosslinking bonds
+group core type 2 4
+group poly type 1 3
+
+#use FENE potential for bonds and a cutoff lj potential for non specific pairwise interactions
+#use stiff harmonic for core seed bonds
+neighbor 0.5 multi #default is 0.3 for lj
+neigh_modify delay 0 every 1 exclude molecule/intra core page 200000 one 5000 #default is update 
+#every 1 step
+special_bonds fene #ignores 2 atom pair wise interactions not from fene potential
+pair_style hybrid lj/cut 5.0 colloid 30.0 #can probably lower this now that time step is shorter
+pair_coeff 1 1 lj/cut 1.0 1.0 #matched sigma to fene sigma (polymer-polymer)
+pair_coeff 1 2 lj/cut 1.0 1.0 #polymer-seed
+pair_coeff 1 3 lj/cut 1.0 1.0 #polymer-xlinked polymer
+pair_coeff 1 4 colloid 75.4 1.0 0.0 10.0 10.0 #core particle-polymer
+pair_coeff 2 2 lj/cut 0.0 1.7841 #seed-seed ignored anyway by neigh_modify
+pair_coeff 2 3 lj/cut 1.0 1.0 #seed-crosslink
+pair_coeff 2 4 colloid 75.4 1.0 0.0 10.0 10.0 #seed-core particle
+pair_coeff 3 3 lj/cut 1.0 1.0 #xlinked-xlinked same as polymer-polymer
+pair_coeff 3 4 colloid 75.4 1.0 0.0 10.0 10.0 #core particle-xlinked polymer
+pair_coeff 4 4 colloid 39.5 1.0 10.0 10.0 20.0 #core center-particles
+
+dump 1 all cfg 500 dump.comp_*.cfg mass type xs ys zs fx fy fz type mol
+
+#Compress and Scramble Initial PGNP Configurations with NVE/Langevin(NVT)##################
+fix 2 all nve/limit 0.05
+fix 3 all langevin 0.0 5.0 $(100.0*dt) 2117 #implicit solvent provides damping prior to 
+#compaction
+fix 4 all press/berendsen iso 0.0 1.0 $(1000.0*dt) #compress boundaries
+
+#Setup Output###################################################################
+thermo_style custom step temp press
+thermo 5000
+timestep 0.005 #default for lj units in 0.005
+
+run 100000
+
+unfix 2
+unfix 3
+unfix 4
+
+#Equilibrate at high temp with fix NPT####################################################
+timestep 0.005
+fix 8 all npt temp 5.0 5.0 $(100.0*dt) iso 1.0 1.0 $(1000.0*dt) drag 2.0 nreset 1000 dilate all
+run 100000
+
+unfix 8
+
+#Cool and lower pressure with fix NPT####################################################
+fix 5 all npt temp 5.0 1.0 $(100.0*dt) iso 1.0 0.0 $(1000.0*dt) drag 2.0 nreset 1000 dilate all
+run 100000
+
+unfix 5
+
+#Equilibrate at cooled temp with fix NPT##################################################
+fix 7 all npt temp 1.0 1.0 $(100.0*dt) iso 0.0 0.0 $(1000.0*dt) drag 2.0 nreset 1000 dilate all
+thermo 5000
+thermo_style custom step pe lx ly lz press pxx pyy pzz
+run 100000
+
+#Crosslink###########################################################################
+fix 6 poly bond/create 1 1 1 1.4 1 prob 0.1 2117 iparam 3 3 jparam 3 3
+run 1 #run a single step to allow crosslinking after equilibration
+unfix 6
+
+#Further equilibrate at cooled temp with fix NPT############################################
+run 100000
+
+unfix 7
+
+#Deform##########################################################################
+run 0
+variable tmp equal "lx"
+variable L0 equal ${tmp}
+variable strain equal "(lx - v_L0)/v_L0"
+
+variable p1 equal "v_strain"
+variable p2 equal "-pxx"
+variable p3 equal "-pyy"
+variable p4 equal "-pzz"
+variable p5 equal "lx"
+variable p6 equal "ly"
+variable p7 equal "lz"
+variable p8 equal "temp"
+variable t2 equal "epair"
+variable t3 equal "ebond"
+
+fix 9 all npt temp 1.0 1.0 $(100.0*dt) y 0.0 0.0 $(1000.0*dt) z 0.0 0.0 $(1000.0*dt) drag 2.0
+fix 10 all deform 1 x erate $(1.0e-5/dt) units box remap x
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4} ${p5} ${p6} ${p7} ${p8}" file ${simname}.def1.txt screen no
+fix def2 all print 100 "${p1} ${t2} ${t3}" file ${simname}.def2.txt screen no
+thermo_style custom step temp pxx pyy pzz lx ly lz epair ebond
+thermo 1000
+run 300000
+
+unfix 9
+unfix 10
+unfix def1
+unfix def2
+
+################################################################################
+# print "Beep. Boop. Bzzz. Wrrrr."
