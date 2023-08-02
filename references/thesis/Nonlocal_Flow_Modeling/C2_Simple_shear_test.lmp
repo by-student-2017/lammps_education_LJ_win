@@ -1,0 +1,83 @@
+# Test HO-05
+
+processors  3 1 3
+units       si
+dimension   3
+newton      off
+boundary    p p f
+atom_style  sphere
+comm_modify mode single vel yes
+neighbor    0.0003 nsq
+#neighmodify every 1 check no page 100000 one 10000
+variable    d equal 0.0008
+variable    err equal 0.2
+variable    dl equal $d*(1-${err})
+variable    dh equal $d*(1+${err})
+variable    rho equal 2500
+
+lattice     sc $d
+read_restart 3Dsshear5.1-66000000.restart
+
+variable    kn equal 2*10^5*3.14/6*${rho}*$d*$d*9.8*10
+variable    kt equal ${kn}*2/7
+variable    gamman equal 1670*(9.8/$d)^0.5
+variable    gammat equal 50*(9.8/$d)^'0.5*0
+pairstyle   gran/hooke/history ${kn} ${kt} ${gamman} ${gammat} 0.4 1
+
+pair coeff  * *
+variable    tau equal 10^(-4)/(9.8/$d)^0.5*1
+timestep    ${tau}
+
+set         type 1 density ${rho}
+set         type 2 density ${rho}
+
+variable    Pload equal 102.2
+variable    width equal 20
+variable    length equal 8
+variable    gres equal (3.14/6*($d)^3*v_rho*v_kn)^0.5*100
+
+region top    block 0 20 0 8 43 100
+region bottom block 0 20 0 8 0 3
+region middle block 0 20 0 8 3 43
+
+fix         integrate middle nve/sphere
+
+fix         4 bottom setforce 0 0 0
+velocity    bottom set 0 0 0
+variable    vx equal 1.5*(6*${Pload}/(3.14*${rho}))^0.5
+variable    vz equal (-${Pload}*($d)^2*${width}*${length}+fcm(top,z))/${gres}
+variable    vy equal 0
+fix         pressure top move variable NULL NULL NULL v_vx v_vy v_vz units box
+compute     stress all stress/atom NULL pair
+run         1
+
+balance 1.05 shift z 10 1.05
+
+dump dO all image 20000 3Dsshear5-shear-*.jpg type &
+  diameter size 1280 720 center s 0.5 0.3 0.25 zoom 3.3 view 90 90
+#dump d4 all local 20000 out-3Dsshear5force-*.txt &
+# c_id1 c_id2 c_fx c_fy c_fz c_pi c_p2 c_p3
+dump d3 all custom 20000 out-3Dsshear5-*.txt id &
+  type x y z vx vy vz diameter cstress [1] cstress [2] c_stress [3] c_stress[4] c_stress[5] c_stress[6]
+dump_modify d3 format "%d od %.9E %.9E %.9E %g %g %g %.9E %g %g %g %g %g %g"
+restart 200000 3Dsshear5.1-*.restart
+run 19
+run 180
+run 1800
+run 18000
+run 20000
+run 20000
+run 20000
+run 20000
+run 20000
+run 20000
+run 20000
+run 20000
+run 20000
+
+label loopa
+variable a loop 300
+run 200000
+
+next a
+jump SELF loopa

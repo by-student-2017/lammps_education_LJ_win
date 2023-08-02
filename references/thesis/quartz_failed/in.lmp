@@ -1,0 +1,60 @@
+# ---------------------------------------------------------
+# silica/epoxy atomistic model
+# Prepared by: D. Lau
+# Revised: September 29th, 2011
+# Current Model: silica (4749 atoms)
+# SU8 (49 atoms)
+# TIP3P (45843 atoms)
+# ---------------------------------------------------------
+# Initialization
+processors 1 1 1
+units      real
+atom_style full
+boundary   p p p 
+# Force Fields and Interactions
+bond_style     harmonic
+angle_style    harmonic
+dihedral_style harmonic
+improper_style cvff
+pair_style     lj/cut/coul/cut 10.0 8.0 - Indicate input geometry file
+# Atom Definition
+read_data      quartz_alpha_1_0_0_SU8_1_chain.wb.d_20.data
+pair_modify    mix geometric
+# Neighbor Setting
+neighbor 2.0 bin
+neigh_modify delay 5
+timestep 1.0
+fix en0 all nve/limit 0.0005
+# ---------------------------------------------------------
+# silica and Epoxy Group/Boundary Conditions
+region 1 block 18.0 68.0 18.0 68.0 22.5 26.0 units box
+group hold_substrate region 1
+group SU8 id <> 4750 4798
+group water id > 4798
+group substrate subtract all hold-substrate SU8 water
+dump 1 all xtc 10000 all_10ns.xtc
+# ---------------------------------------------------------
+# step 1: optimization thermo.style custom step temp etotal epair press vol
+thermo 500
+min_style cg
+minimize 0.0 1.0e-8 10000 20000
+min_modify dmax 0.2
+velocity all create 300.00 376847
+velocity hold_substrate set 0.0 0.0 0.0 units box
+fix bcl hold_substrate setforce 0.0 0.0 0.0 run 50000
+unfix en0
+fix en1 all nve fix tempcontrol all temp/berendsen 300.0 300.0 100.0 run 50000
+minimize 0.0 1.0e-8 10000 20000
+run 50000
+minimize 0.0 1.0e-8 10000 20000
+run 50000
+minimize 0.0 1.0e-8 10000 20000
+run 50000
+
+# ---------------------------------------------------------
+# END OF BASIC SET-UP
+# ---------------------------------------------------------
+
+fix cv1 all plumed plumedfile myfile.cfg outfile metaout.dat
+run 10000000
+write_restart all_10ns.*

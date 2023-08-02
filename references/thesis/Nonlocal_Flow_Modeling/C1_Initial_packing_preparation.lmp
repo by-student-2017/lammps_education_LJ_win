@@ -1,0 +1,97 @@
+# The stable version used to perform the DEM simulations is: lammps-28Jun14. For
+# later stable versions, the syntax may need to be slightly adjusted.
+# The command to run the simulation looks like this:
+# mpirun -np 9 -H node3 lmpopenmpi -in filename . txt
+
+# C.1 Initial packing preparation
+# One may pour more particles into the system if needed. After pouring particles into
+# the system, an extra input file is necessary to settle the particles down.
+
+units       si
+dimension   3
+newton      off
+boundary    p p f
+atom_style  sphere
+comm_modify mode single vel yes
+neighbor    0.002 nsq
+#neighmodify every 1 check no page 100000 one 10000
+variable    d equal 0.0008
+variable    err equal 0.2
+variable    dl equal $d*(1-${err})
+variable    dh equal $d*(1+${err})
+variable    rho equal 2500
+variable    latt equal vd*1.25
+
+lattice sc $d
+region 1 block 0 20 0 8 0 100
+region fzone block 0 20 0 8 0.2 100
+region lower block 0 20 0 8 0 0.5
+region upper block 0 20 0 8 50 100
+create_box 10 1
+
+variable kn equal 2*10^5*3.14/6*${rho}*$d*$d*9.8
+variable kt equal ${kn}*2/7
+variable ganman equal 50*(9.8/$d)^0.5*100
+variable gammat equal 50*(9.8/$d)^0.5*0
+
+pair_style gran/hooke/history ${kn} ${kt} ${gamman} ${gammat} 0.4 1
+pair_coeff * *
+
+fix integrate all nve/sphere
+fix 1 all gravity 9.8 vector 0 0 -1
+fix 3 all wall/gran ${kn} ${kt} ${gamman} ${gammat} 0.4 1 zplane 0 100
+
+fix 2 all pour 1920 2 2016 region upper diam range ${dl} ${dh} #vol 0.6 50
+
+variable tau equal 10^(-4)/(9.8/$d)^0.5*0.1
+
+timestep ${tau}
+
+#dump m0 1 movie 1667 smalldampingslow. avi type diameter size 1280 720
+dump  d0 all image 200000 3Dspour-*.jpg type diameter size 1280 720 view 90 90
+run   1
+
+set   type 2 density ${rho}
+
+run   1999999
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart
+
+unfix 2
+fix   2 all pour 960 2 2016 region upper diam range ${dl} ${dh} #vol #0.6 50
+run   2000000
+write_restart 3Dspacking-*.restart

@@ -183,10 +183,22 @@
   https://research.library.mun.ca/6390/
 
 # ---------------------------------------------------------------------------------
+- Q. Zhang, thesis (2017).
+  https://dspace.mit.edu/handle/1721.1/111899
+  Nonlocal_Flow_Modeling (DEM)
+# ---------------------------------------------------------------------------------
 - S. W. Cranford, thesis (2012).
   https://dspace.mit.edu/handle/1721.1/78232
   Atomistic_Model
 # ---------------------------------------------------------------------------------
+- T. B. D. Lau, thesis (2012).
+  https://dspace.mit.edu/handle/1721.1/74420
+  quartz (do not easily get data from pdf) (CVFF)
+# ---------------------------------------------------------------------------------
+- T. A.- Mulla, thesis (2013).
+  https://dspace.mit.edu/handle/1721.1/109645
+  graphene (need data_file.data)
+  
 - https://research.tue.nl/files/150978464/0528792_Boomstra_M.W._MSc_thesis.pdf (LJ)
 - https://aaltodoc.aalto.fi/handle/123456789/22192 (LJ)
 - https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2562297 (LJ)
@@ -203,7 +215,7 @@
 # ---------------------------------------------------------------------------------
 - J. M. Kubiak, thesis (2016).
   https://dspace.mit.edu/handle/1721.1/140043
-  PGNPs (polymer grafted nanoparticles) (FENE, MATLAB or Octave)
+  PGNPs (polymer grafted nanoparticles) (FENE, MATLAB or Octave) (failed)
 # ---------------------------------------------------------------------------------
 - https://open.library.ubc.ca/media/stream/pdf/24/1.0166726/4 (K-G model)
 - https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0166726 (K-G model)

@@ -18,8 +18,7 @@ boundary p p p #cubic and periodic
 atom_style bond
 log log.${simname}.txt
 bond_style hybrid fene harmonic
-read_data ${fname} # extra/bond/per/atom 10 extra/special/per/atom 1000 #make extra room for 
-crosslinking bonds
+read_data ${fname} # extra/bond/per/atom 10 extra/special/per/atom 1000 #make extra room for crosslinking bonds
 group core type 2 4
 group poly type 1 3
 

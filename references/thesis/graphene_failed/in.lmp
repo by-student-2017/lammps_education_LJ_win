@@ -1,0 +1,99 @@
+# Representative LAMMPS Script (Appendix B)
+
+# processors * * 1
+
+boundary p p p
+units real
+atom_style molecular
+
+timestep 2
+
+dimension 3
+
+read_data data_file.data
+
+neighbor 5 bin
+neigh_modify every 1
+
+bond_style morse
+bond_coeff 1 114.460 2.1867 1.418
+
+angle_style cosine/squared
+angle_coeff 1 67.185 120.0
+
+dihedral_style harmonic
+dihedral_coeff 1 3.001 -1 2
+
+pair_style lj/cut 10
+pair_coeff * * 0.0861 3.4
+
+region 99 block INF INF INF INF INF -2.90 units box
+group wallsub region 99
+region 1 block INF 5 INF INF -2.90 INF units box
+group moving region 1
+region 2 block 991 INF INF INF -2.90 INF units box
+group fixed region 2
+region 3 block INF INF 93.2 INF -2.90 INF units box
+group top region 3
+region 4 block INF INF INF 4.5 -2.90 INF units box
+group bottom region 4
+
+group graphene subtract all wallsub
+
+dump realtime all dcd 5000 dump.dcd
+
+compute x_max graphene reduce max x
+compute x_min graphene reduce min x
+compute y_max graphene reduce max y
+compute y_min graphene reduce min y
+compute z_max graphene reduce max z
+compute z_min graphene reduce min z
+
+compute si graphene stress/atom
+compute pegrp graphene pe/atom
+compute pepair graphene pe/atom pair
+compute pebnd graphene pe/atom bond
+compute peang graphene pe/atom angle
+compute pedhd graphene pe/atom dihedral
+compute pesum graphene reduce sum c_pegrp
+compute sumi graphene reduce sum c_s1[11 c_sl[2] c_sl[3] c_sl[4] c_sl[5] c_sl[6]
+
+fix wallhi126 graphene wall/lj126 zlo -3.35 0.037701432 2.984511 5.00 pbc yes units box
+fix wallhi graphene wall/lj93 zlo -3.35 0.357667188 3.90272672 5.00 pbc yes units box
+fix_modify wallhi energy yes
+fix_modify wallhi126 energy yes
+
+velocity graphene create 300.00 376847 rot yes
+
+fix nosehoover graphene nvt temp 300.0 300.0 300.0
+
+thermo_style custom step pxx pyy pzz pxy pxz pyz c_suml[l] c_suml[2] c_suml[3] c_suml[4] c_suml[5] c_suml[6] lx ly lz temp c_pesum ke etotal &
+enthalpy evdwl ecoul epair ebond eangle edihed eimp emol elong etail f_wallhi f_wallhi126 pe c_x_max c_x_min c_y_max c_y_min c_z_max c_z_min
+
+thermo_modify flush yes
+thermo 100
+
+fix 23 all balance 0 xy 20 1.1
+velocity moving set 0.00 NULL 0.00 units box rot yes
+fix 1767 moving setforce 0.00 NULL 0.00
+velocity fixed set 0.00 NULL 0.00 units box rot yes
+fix 17676 fixed setforce 0.00 NULL 0.00
+velocity top set NULL 0.00 NULL units box rot yes
+fix 176789 top setforce NULL 0.00 NULL
+velocity bottom set NULL 0.00 NULL units box rot yes
+fix 1767898 bottom setforce NULL 0.00 NULL
+velocity wallsub set 0.00 0.00 0.00 units box rot yes
+fix 29999 wallsub setforce 0.00 0.00 0.00
+
+min_style cg
+min_modify dmax 0.1
+minimize 0.0 0.0 10000 10000
+
+run 100000
+
+fix compress all deform 10 x erate -2e-7 remap x
+
+run 1000000
+unfix compress
+
+run 500000
