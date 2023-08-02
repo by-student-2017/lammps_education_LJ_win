@@ -1,0 +1,185 @@
+# ----------------------------------------------------------
+#
+# PAA/PAH Atomistic Model with Explicit Waterbox
+# Prepared by: S. Cranford
+# Laboratory of Atomistic and Molecular Mechanics
+# Revised: November, 2011
+#
+# Current Model: Single PAH oligomer (50 monomers)
+# 100% ionization
+# Explicit solvent
+# ----------------------------------------------------------
+
+# Initialization/Neighbor Settings
+
+units        real
+neigh_modify delay 2 every 1
+atom_style   full
+
+# Define Force Fields and Interactions (CVFF)
+
+bond_style     harmonic
+angle_style    harmonic
+dihedral_style harmonic
+improper_style cvff
+
+pair_style     lj/cut/coul/cut 10.0
+pair_modify    mix arithmetic
+
+# Atom Definition (indicate input geometry file)
+
+read_data pahlOO.data
+
+# ----------------------------------------------------------
+
+# Water and Polymer Groups
+
+group hold id 266
+
+group backbone id 1 5 13 16 24 27 35 38 46 49 57 60 68 &
+   71 79 82 90 93 101 104 112 115 123 126 134 &
+  137 145 148 156 159 167 170 178 181 189 192 &
+  200 203 211 214 222 225 233 236 244 247 255 &
+  258 266 269 277 280 288 291 299 302 310 313 &
+  321 324 332 335 343 346 354 357 365 368 376 &
+  379 387 390 398 401 409 412 420 423 431 434 &
+  442 445 453 456 464 467 475 478 486 489 497 &
+  500 508 511 519 522 530 533 541 544 547
+
+group charges id 11 22 33 44 55 66 77 88 99 110 121 132 143 &
+  154 165 176 187 198 209 220 231 242 253 264 &
+  275 286 297 308 319 330 341 352 363 374 385 &
+  396 407 418 429 440 451 462 473 484 495 506 &
+  517 528 539 550
+
+# ----------------------------------------------------------
+
+# Output files
+
+dump 1 all xyz 2000 pah100_wb.xyz
+dump 2 backbone xyz 2000 pah100_bb.xyz
+
+dump 3 backbone dcd 2000 pah100_bb.dcd
+dump_modify 3 unwrap yes
+
+dump 4 charges dcd 2000 pah100_qq.dcd
+dump_modify 4 unwrap yes
+
+# ----------------------------------------------------------
+# END OF BASIC SET-UP
+# ----------------------------------------------------------
+
+# Optimization/minimization
+
+minstyle cg
+minimize 0.0 1.0e-8 10000 1000000
+minmodify dmax 0.2
+
+minstyle sd
+minimize 0.0 1.0e-8 10000 1000000
+
+fix en1 all nvt temp 300. 300. 100.
+velocity all create 300.0 997854
+
+fix pinbb hold setforce 0.0 0.0 0.0
+velocity hold set 0.0 0.0 0.0 units box
+
+thermo 1000
+
+timestep 0.5
+
+run 200000
+minstyle cg
+minimize 0.0 1.0e-8 10000 1000000
+
+# ----------------------------------------------------------
+# Temperature Cycles for TAS
+# ----------------------------------------------------------
+
+#RAMP TEMP 1 -------------------------------
+
+velocity all create 300.0 324458
+fix pinbb hold setforce 0.0 0.0 0.0
+velocity hold set 0.0 0.0 0.0 units box
+
+unfix en1
+fix en2 all nvt temp 300.0 1500.0 100.0
+run 25000
+
+unfix en2
+fix en3 all nvt temp 1500.0 300.0 100.0
+run 25000
+
+unfix en3
+fix en4 all nvt temp 300.0 300.0 100.0
+run 320000
+
+minstyle cg
+minimize 0.0 1.0e-8 10000 1000000
+
+#RAMP TEMP 2 -------------------------------
+
+velocity all create 300.0 9989987
+fix pinbb hold setforce 0.0 0.0 0.0
+velocity hold set 0.0 0.0 0.0 units box
+
+unfix en4
+fix en5 all nvt temp 300.0 1500.0 100.0
+run 25000
+
+unfix en5
+fix en6 all nvt temp 1500.0 300.0 100.0
+run 25000
+
+unfix en6
+fix en7 all nvt temp 300.0 300.0 200.0
+run 260000
+
+minstyle cg
+minimize 0.0 1.0e-8 10000 1000000
+
+#RAMP TEMP 3 --------------------------------
+
+velocity all create 300.0 9519153
+fix pinbb hold setforce 0.0 0.0 0.0
+velocity hold set 0.0 0.0 0.0 units box
+
+unfix en7
+fix en8 all nvt temp 300.0 1500.0 100.0
+run 25000
+
+unfix en8
+fix en9 all nvt temp 1500.0 300.0 100.0
+run 25000
+
+unfix en9
+fix en10 all nvt temp 300.0 300.0 100.0
+run 280000
+
+min_style cg
+minimize 0.0 1.0e-8 10000 1000000
+
+#RAMP TEMP 4 -------------------------------
+
+velocity all create 300.0 79879
+fix pinbb hold setforce 0.0 0.0 0.0
+velocity hold set 0.0 0.0 0.0 units box
+
+unfix en10
+fix en1l all nvt temp 300.0 1500.0 100.0
+run 25000
+
+unfix en1l
+fix en12 all nvt temp 1500.0 300.0 100.0
+run 25000
+
+unfix en12
+fix en13 all nvt temp 300.0 300.0 50.0
+run 320000
+
+minstyle cg
+minimize 0.0 1.0e-8 10000 1000000
+
+# ----------------------------------------------------------
+# END OF SIMULATION
+# ----------------------------------------------------------
