@@ -183,9 +183,21 @@
   https://research.library.mun.ca/6390/
 
 # ---------------------------------------------------------------------------------
+- M. A. R. Valle, Master Thesis (2012).
+  http://ta.twi.tudelft.nl/users/vuik/numanal/romero_afst.pdf
+  DEM_Granular_Flow_Model
+
 - Q. Zhang, thesis (2017).
   https://dspace.mit.edu/handle/1721.1/111899
   Nonlocal_Flow_Modeling (DEM)
+  
+- R. Kou, Doctor Thesis (2020).
+  https://oaktrust.library.tamu.edu/handle/1969.1/192592
+  DEM_LIGGGHTS
+# ---------------------------------------------------------------------------------
+- P. Wirnsberger, Master Thesis (2014).
+  https://pewi.org/cv/files/msc.pdf
+  NEMD (Lennard-Jones NEMD simulation)
 # ---------------------------------------------------------------------------------
 - S. W. Cranford, thesis (2012).
   https://dspace.mit.edu/handle/1721.1/78232

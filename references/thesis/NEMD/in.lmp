@@ -1,0 +1,122 @@
+# B.2 Lennard-Jones NEMD simulation
+
+# Table B.2: Relevant input parameters for a typical Lennard-Jones NEMD simulation.
+# N = 1728, rho = 0.8442, Tea = about 2.3, kappa = 300, dt = 0.001
+
+# Setup initial lattice structure
+#################################
+
+units lj
+atom_style atomic
+
+# density = 0.8842
+lattice fcc 0.8442
+region box block 0 6 0 6 0 12
+create_box 1 box
+create_atoms 1 box
+mass 1 1.0
+velocity all create 3.0 87287
+
+# Define interaction potential
+# (LJ , shifted , r_sr = 4)
+##############################
+
+pair_style lj/cut 4
+pair_coeff 1 1 1.0 1.0 4
+neighbor 0.3 bin
+neigh_modify every 20 delay 0 check no
+pair_modify shift yes
+
+# Melt initial configuration
+############################
+variable Nwarmup equal 10000
+variable dt equal 0.001
+
+# temperature = 2.3
+variable T equal 2.3
+
+# use Langevin thermostat
+fix fNVE_melt all nve
+fix fLangevin all langevin ${T} ${T} 10.0 1000101
+timestep ${dt}
+thermo 1000
+thermo_style custom step temp ke pe etotal press
+run ${Nwarmup}
+unfix fLangevin
+unfix fNVE_melt
+
+# Carry out NVE equilibration run
+#################################
+variable Nequi equal 100000
+reset_timestep 0
+fix fNVE_equi all nve
+run ${Nequi}
+unfix fNVE_equi
+
+# NEMD simulation
+#################
+
+reset_timestep 0
+
+# define variables
+variable N equal 1000000
+
+# box dimension in z - direction and resolution
+variable Lz equal zhi - zlo
+variable delta equal ${Lz}*0.2
+variable dz equal ${Lz}/100
+
+# reservoir extents in z - direction
+variable zlo_Thi equal zlo
+variable zhi_Thi equal ${zlo_Thi} + ${delta}
+variable zlo_Tlo equal ${Lz}/2.0
+variable zhi_Tlo equal ${zlo_Tlo} + ${delta}
+
+# sampling and averaging frequencies
+variable Nsamp equal 10
+variable Nevery equal 1000
+variable Nrepeat equal ${Nevery}/${Nsamp}
+
+# use NVE integration
+fix NVE all nve
+
+# define regions
+region   Thi_reg block 0 INF 0 INF ${zlo_Thi} ${zhi_Thi}
+region   Tlo_reg block 0 INF 0 INF ${zlo_Tlo} ${zhi_Tlo}
+region Tgrad_reg block 0 INF 0 INF ${zlo_Thi} ${zlo_Tlo}
+
+# compute individual temperature
+compute   cTlo all temp/region Tlo_reg
+compute   cThi all temp/region Thi_reg
+compute cTgrad all temp/region Tgrad_reg
+
+# define fixes that add/remove heat during every timestep
+fix fHi all heat 1 +300.0 region Thi_reg
+fix fLo all heat 1 -300.0 region Tlo_reg
+
+# calculate energies for spatial and temporal averaging
+variable vN equal count(all)
+compute ke all ke/atom
+compute cT all temp
+compute cP all pressure thermo_temp
+compute cPe all pe
+compute cKe all ke
+variable vpe equal c_cPe/v_vN
+variable vke equal c_cKe/v_vN
+variable  ve equal v_vke + v_vpe
+
+# write time averages to the file tavg.dat
+fix fTavg all ave/time ${Nsamp} ${Nrepeat} ${Nevery} c_cT c_cTlo c_cTgrad &
+  c_cThi c_cP v_ve v_vpe v_vke file tavg.dat
+
+# write spatial averages to the file savg.dat
+fix fSavg all ave/spatial ${Nsamp} ${Nrepeat} ${Nevery} z lower ${dz} c_ke file savg.dat units box
+
+# define timestep
+timestep ${dt}
+
+# write to console every 1000 steps
+thermo_style custom step c_cT c_cTlo c_cTgrad c_cThi c_cP v_ve v_vpe v_vke
+
+# carry out N simulation steps
+run ${N}
