@@ -228,6 +228,7 @@
 - https://thesis.unipd.it/handle/20.500.12608/33210 (LJ)
 - https://era.ed.ac.uk/handle/1842/35877 (LJ)
 - https://shareok.org/handle/11244/50751 (LJ)
+- https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/249557 (LJ) (do not use copy&paste)
 # ---------------------------------------------------------------------------------
 - J. M. Kubiak, thesis (2016).
   https://dspace.mit.edu/handle/1721.1/140043
