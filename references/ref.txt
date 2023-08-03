@@ -211,6 +211,10 @@
   https://dspace.mit.edu/handle/1721.1/109645
   graphene (need data_file.data)
   
+- S. Bose, Master Thesis (2020).
+  https://www.researchgate.net/profile/Sankhadeep-Bose-2/publication/342515066_Molecular_Dynamics_Modelling_of_Thermostatic_Properties_of_Nanoparticles/links/5ef9785145851550507b07d3/Molecular-Dynamics-Modelling-of-Thermostatic-Properties-of-Nanoparticles.pdf
+  3d_LJ_nanoslab
+  
 - https://research.tue.nl/files/150978464/0528792_Boomstra_M.W._MSc_thesis.pdf (LJ)
 - https://aaltodoc.aalto.fi/handle/123456789/22192 (LJ)
 - https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2562297 (LJ)
