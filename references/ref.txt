@@ -206,6 +206,9 @@
 - T. B. D. Lau, thesis (2012).
   https://dspace.mit.edu/handle/1721.1/74420
   quartz (do not easily get data from pdf) (CVFF)
+  
+- https://theses.lib.polyu.edu.hk/handle/200/9699
+  0.25 M (NH4)2SO4 and 0.25 Na2SO4 (CVFF)
 # ---------------------------------------------------------------------------------
 - T. A.- Mulla, thesis (2013).
   https://dspace.mit.edu/handle/1721.1/109645
@@ -215,9 +218,33 @@
   https://www.researchgate.net/profile/Sankhadeep-Bose-2/publication/342515066_Molecular_Dynamics_Modelling_of_Thermostatic_Properties_of_Nanoparticles/links/5ef9785145851550507b07d3/Molecular-Dynamics-Modelling-of-Thermostatic-Properties-of-Nanoparticles.pdf
   3d_LJ_nanoslab
   
+- https://pure.tue.nl/ws/portalfiles/portal/176688998/Boot_BEP_verslag.pdf 
+  (LJ, polymer)
+  
+- https://digitalcommons.usf.edu/etd/3343/ (colloid)
+  
 - M. T. E. Kio, Doctor Thesis (2014).
   https://dspace.lib.cranfield.ac.uk/handle/1826/9283 (LJ)
   NANOCHANNEL
+  
+- C. Hadden, Master thesis (2015).
+  https://digitalcommons.mtu.edu/etds/946/ (LJ)
+  COMPOSITES
+  
+- A. Bandyopadhyay, Master thesis (2012).
+  https://digitalcommons.mtu.edu/etds/21/ (LJ)
+  EPON 862-DETDA polymer
+  
+- M. Radue, Master thesis (2017).
+  https://digitalcommons.mtu.edu/etdr/457/
+  epondetda
+  
+- S. Chinkanjanarot, 
+  https://digitalcommons.mtu.edu/etdr/491/ (LJ)
+  (see https://github.com/schinkan/PhD_research/tree/master/BAD_script)
+  
+- https://digitalcommons.mtu.edu/etdr/885/ (LJ)
+- https://digitalcommons.mtu.edu/etds/598/ (LJ)
   
 - https://research.tue.nl/files/150978464/0528792_Boomstra_M.W._MSc_thesis.pdf (LJ)
 - https://aaltodoc.aalto.fi/handle/123456789/22192 (LJ)
@@ -233,6 +260,16 @@
 - https://era.ed.ac.uk/handle/1842/35877 (LJ)
 - https://shareok.org/handle/11244/50751 (LJ)
 - https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/249557 (LJ) (do not use copy&paste)
+- https://repository.mines.edu/handle/11124/76842 (LJ)
+- https://theses.hal.science/tel-03649130/ (LJ)
+- https://theses.hal.science/tel-04119671v1 (LJ)
+- https://jscholarship.library.jhu.edu/handle/1774.2/68027 (LJ)
+- https://opendata.uni-halle.de/bitstream/1981185920/87709/1/Thesis_FDEMYDIUK_GermanCovers.pdf (LJ)
+- https://shareok.org/handle/11244/332399 (LJ)
+- https://helda.helsinki.fi/items/d6c16df9-76c4-4392-8e10-b1a9ecfd1e7e (LJ)
+- https://library.ndsu.edu/ir/handle/10365/28721 (LJ)
+- https://www.research-collection.ethz.ch/handle/20.500.11850/258958 (LJ, He, Ar)
+- https://helda.helsinki.fi/items/b1b2e8bf-6448-4a64-ab41-cf1519875c55 (LJ)
 # ---------------------------------------------------------------------------------
 - J. M. Kubiak, thesis (2016).
   https://dspace.mit.edu/handle/1721.1/140043
@@ -243,6 +280,7 @@
 # ---------------------------------------------------------------------------------
 - https://etda.libraries.psu.edu/catalog/25081 (CG)
 - https://dspace.mit.edu/handle/1721.1/98127 (CG fit on MATLAB)
+- https://webthesis.biblio.polito.it/13857/1/tesi.pdf (CG)
 # ---------------------------------------------------------------------------------
 - https://dspace.mit.edu/handle/1721.1/82707 (NAMD)
 # ---------------------------------------------------------------------------------
