@@ -64,7 +64,7 @@ change_box all z final 0 51 boundary p p p
 
 region bottom block INF INF INF INF INF 3.0
 group all region bottom
-fix stay all box/relax z 0.5 dilate partial scaleyz yes fixdeposint 0 0 0
+fix stay all box/relax z 0.5 dilate partial scaleyz yes fixedpointt 0 0 0
 fix 7 all spring/self 1000.0
 
 fix 6 all nvt temp 1000 1000 1000
