@@ -181,7 +181,6 @@
   
 [8O13] Xu, Muyi Ant (2014).
   https://research.library.mun.ca/6390/
-
 # ---------------------------------------------------------------------------------
 - M. A. R. Valle, Master Thesis (2012).
   http://ta.twi.tudelft.nl/users/vuik/numanal/romero_afst.pdf
@@ -213,6 +212,10 @@
 - T. A. Burt, Master thesis (2017).
   https://shareok.org/handle/11244/52763 (lj)
   Green-kubo (need dummy10.lammps)
+# ---------------------------------------------------------------------------------
+- T. J. Kunene, Doctor thesis (2022).
+  https://ujcontent.uj.ac.za/esploro/outputs/doctoral/Multiscale-numerical-analysis-of-the-sticking/9925409407691 
+  ALD (atomic layer deposition) (do not copy and paste from PDF)
 # ---------------------------------------------------------------------------------
 - T. A.- Mulla, thesis (2013).
   https://dspace.mit.edu/handle/1721.1/109645

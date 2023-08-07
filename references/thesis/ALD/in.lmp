@@ -1,0 +1,96 @@
+# ALD process
+
+units real
+dimension 3
+# processors * * *
+
+boundary p p p
+
+# read data
+atom_style charge
+read_data data2.dat
+
+set type 1 charge  2.835 # Al
+set type 2 charge -1.89  # O
+set type 3 charge -0.255 # H
+
+# potential
+include pot3.mod
+
+# set timestep
+timestep 0.01
+
+velocity all create 300.0 4928459 rot yes dist gaussian
+
+thermo 1
+
+# energy minimization
+minimize 1.0e-10 1.0e-10 100000 100000
+dump mini all atom 100 minimization.atom
+
+# outputs
+thermo 100
+thermo_style custom step temp pe ke press lx ly lz density vol epair
+thermo_modify lost ignore flush yes
+
+compute e1 all ke/atom
+
+compute binchunk all chunk/atom bin/1d z lower 0.02
+compute myChunk all com/chunk binchunk
+
+# dump files for Ovito output
+dump 4a all custom 1000 cfg/dump.myALD1.one.* id type x y z c_e1
+
+fix 1 all ave/chunk 100 10 1000 binchunk density/mass file dens.profile
+
+fix mass1 all ave/time 100 10 1000 c_myChunk[*] file tmp.out mode vector
+
+fix 2 all nvt temp 5000 5000 1000
+run 500000
+unifix 2
+
+write_data ann1.dat
+write_restart ann1.rest
+
+# Wuenching at q = 47 K/ps, q = dT/dt; dt = dT/q = 470000/47 = 100000
+
+fix 3 all nvt temp 5000 300 1000
+run 100000
+unfix 3
+
+write_data quench.dat
+write_restart quench.rest
+
+# Relaxation, second annealing
+
+change_box all z final 0 51 boundary p p p
+
+region bottom block INF INF INF INF INF 3.0
+group all region bottom
+fix stay all box/relax z 0.5 dilate partial scaleyz yes fixdeposint 0 0 0
+fix 7 all spring/self 1000.0
+
+fix 6 all nvt temp 1000 1000 1000
+run 500000
+unfix 6
+
+write_data ann2.dat
+write_restart ann2.rest
+
+fix 8 all nvt temp 300 300 1000
+run 100000
+unfix 8
+
+write_data ann3.dat
+write_restart ann3.rest
+
+## cycle 2
+fix 9 all nvt temp 573 573 1000
+run 100000
+unfix 9
+
+write_data ann4.dat
+write_restart ann4.rest
+
+## end cycle 2
+
