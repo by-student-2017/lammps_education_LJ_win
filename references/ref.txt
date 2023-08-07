@@ -210,6 +210,10 @@
 - https://theses.lib.polyu.edu.hk/handle/200/9699
   0.25 M (NH4)2SO4 and 0.25 Na2SO4 (CVFF)
 # ---------------------------------------------------------------------------------
+- T. A. Burt, Master thesis (2017).
+  https://shareok.org/handle/11244/52763 (lj)
+  Green-kubo (need dummy10.lammps)
+# ---------------------------------------------------------------------------------
 - T. A.- Mulla, thesis (2013).
   https://dspace.mit.edu/handle/1721.1/109645
   graphene (need data_file.data)
