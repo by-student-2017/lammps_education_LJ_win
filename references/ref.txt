@@ -246,6 +246,10 @@
   https://digitalcommons.mtu.edu/etdr/457/
   epondetda
   
+- M. Pouvreau et al., . Phys. Chem. Lett. 2023, 14, 30, 6743-6748.
+  https://doi.org/10.1021/acs.jpclett.3c01176
+  LJ + QEq
+  
 - S. Chinkanjanarot, 
   https://digitalcommons.mtu.edu/etdr/491/ (LJ)
   (see https://github.com/schinkan/PhD_research/tree/master/BAD_script)
