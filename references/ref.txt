@@ -288,6 +288,7 @@
 - https://www.research-collection.ethz.ch/handle/20.500.11850/258958 (LJ, He, Ar)
 - https://helda.helsinki.fi/items/b1b2e8bf-6448-4a64-ab41-cf1519875c55 (LJ)
 - https://www.politesi.polimi.it/handle/10589/2021 (real unit)
+- https://opendata.uni-halle.de/bitstream/1981185920/87709/1/Thesis_FDEMYDIUK_GermanCovers.pdf (LJ)
 # ---------------------------------------------------------------------------------
 - J. M. Kubiak, thesis (2016).
   https://dspace.mit.edu/handle/1721.1/140043
