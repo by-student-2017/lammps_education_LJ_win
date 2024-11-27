@@ -12,9 +12,9 @@ LAMMPS data file. msi2lmp v3.9.7 / 24 Oct 2015 / CGCMM for 3.4
    0 dihedral types
    0 improper types
 
-    -0.307406375    29.212593625 xlo xhi
-    -0.111927032    30.488072968 ylo yhi
-     0              157          zlo zhi
+     0.0    29.212593625 xlo xhi
+     0.0    29.212593625 ylo yhi
+     0.0    157          zlo zhi
 
 Masses
 
