@@ -1,3 +1,7 @@
+#------------------------------------------------------------------------------------------
+# LAMMPS 64-bit 22Dec2022-MSMPI
+clear
+#------------------------------------------------------------------------------------------
 units real
 atom_style full
 read_data container.data extra/bond/per/atom 1 extra/angle/per/atom 0 extra/special/per/atom 2
@@ -31,3 +35,4 @@ molecule hydrogen ./molecular_files/H2.txt
 create_atoms 0 random 100 34564 box mol hydrogen 25367 overlap 2.0
 
 write_data simulation.data
+#------------------------------------------------------------------------------------------
