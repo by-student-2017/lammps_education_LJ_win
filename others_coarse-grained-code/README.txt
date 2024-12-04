@@ -53,8 +53,8 @@ Installation (Ubuntu 18.04 LTS) [FE2]
 10. make yes-PERI
 11. make yes-ASPHERE
 12. make mpi
-Å¶ lammps-14May2016 may also be OK.
-Å¶ make yes-MOLECULE
+- lammps-14May2016 may also be OK.
+- make yes-MOLECULE
 
 make data file (MATLAB code)
 1. sudo apt install octave
@@ -62,13 +62,13 @@ make data file (MATLAB code)
 3. run ("create_rbc_with_water.m")
 4. quit
   (you can get "read_data.rbc_D50AA9m12_N21702_W_water_d0_water")
-Å¶ Octave, Scilab, FreeMat, SciPy
+- Octave, Scilab, FreeMat, SciPy
 
-Å† run
+## run
 1. cd ~/fluidmembrane
 2. mpirun -np 2 ~/lammps-30Jul16/src/lmp_mpi < in_example
 
-Å† VMD 1.9.1
+## VMD 1.9.1
 1. vmd
 2. File -> New Molecule... -> Filename: dump.rbc_D...
 3. Graphics -> Representations...
