@@ -1,10 +1,11 @@
-����v�Z�p��bat�X�N���v�g�t�@�C���ł� (3�R�A�ȏオ����)
+This is written in Japanese.
+並列計算用のbatスクリプトファイルです (3コア以上が推奨)
 
-�E����v�Z�p��bat�X�N���v�g�t�@�C���ł�
-�E����v�Z�̓�Փx�� MPICH2 > OpenMP �ƂȂ�܂�
-  �ŏ���OpenMP���I�X�X�����܂��B����Ă����� MPICH2 �ł̕���v�Z�������Ă݂�Ɨǂ��ł��傤
-�E�ڍׂ� settings.txt �����ǂ݂�������
-�� �S�Ẵt�@�C�����`�F�b�N�ł��Ă��Ȃ����Ƃ�PC�̊��ˑ��̖�������܂��̂ŁA���܂荂�����҂͕����Ȃ��ł�������
+・並列計算用のbatスクリプトファイルです
+・並列計算の難易度は MPICH2 > OpenMP となります
+  最初はOpenMPをオススメします。慣れてきたら MPICH2 での並列計算も試してみると良いでしょう
+・詳細は settings.txt をお読みください
+※ 全てのファイルをチェックできていないことやPCの環境依存の問題もありますので、あまり高い期待は抱かないでください
 
-�� ���m�̖��
-  MPI�p���������[�h�Ŏ��s���Ă���ԁA��ʂւ̏o�͂̓u���b�N�o�b�t�@�����O����A�ʏ�̂悤�Ƀ��C���o�b�t�@�����O����܂���B�܂�A�o�͂͂����ɂ͕\������܂��񂪁A���ʂ̏o�͂��~�ς��ꂽ��ɂ̂ݕ\������܂��B����͌�����̗��R����s���܂��B�}���`�X���b�h�̕�����s�܂��̓V���A�����s�͉e�����󂯂܂���B�܂��Ampiexec�Ŏ��s����ꍇ�AMPICH�̓v���Z�X��P��̕���CPU�ɐ������A���s�������ቺ���邽�߁A�}���`�X���b�h���g�p���Ȃ��ł��������i����� set OMP_NUM_THREADS=1 �̏�ԂŌv�Z���Ă��������Ƃ����Ӗ��ł��B�f�B�t�H���g�ł͂��̐ݒ�ɂȂ��Ă��܂��j
+※ 既知の問題
+  MPIパラレルモードで実行している間、画面への出力はブロックバッファリングされ、通常のようにラインバッファリングされません。つまり、出力はすぐには表示されませんが、一定量の出力が蓄積された後にのみ表示されます。これは効率上の理由から行われます。マルチスレッドの並列実行またはシリアル実行は影響を受けません。また、mpiexecで実行する場合、MPICHはプロセスを単一の物理CPUに制限し、実行効率が低下するため、マルチスレッドを使用しないでください（これは set OMP_NUM_THREADS=1 の状態で計算してくださいという意味です。ディフォルトではこの設定になっています）
