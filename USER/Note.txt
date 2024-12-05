@@ -1,7 +1,53 @@
 #-----------------------------------------------------------------------------------------
 cif2lammps: https://github.com/rytheranderson/cif2lammps
+
+Installation (ubuntu 22.04 LTS or WLS2, python 3.7 version)
+0. conda deactivate
+  (conda remove -n cif2lammps_env --all)
+1. conda create -y -n cif2lammps_env python=3.7
+2. conda activate cif2lammps_env
+3. conda install -y networkx>=2.5
+4. conda install -y ase==3.20.1
+5. conda install -y pymatgen==2021.3.3
+6. git clone https://github.com/rytheranderson/cif2lammps.git
+
+Installation (ubuntu 22.04 LTS or WLS2, python 3.8 version)
+0. conda deactivate
+  (conda remove -n cif2lammps_env --all)
+1. conda create -y -n cif2lammps_env python=3.8
+2. conda activate cif2lammps_env
+3. conda install -y networkx>=2.5
+4. conda install -y ase==3.20.1
+5. conda install -y pymatgen==2021.3.3
+6. git clone https://github.com/rytheranderson/cif2lammps.git
+
+Installation (ubuntu 22.04 LTS or WLS2, python 3.9 version)
+0. conda deactivate
+  (conda remove -n cif2lammps_env --all)
+1. conda create -y -n cif2lammps_env python=3.9
+2. conda activate cif2lammps_env
+3. conda install -y networkx>=2.5
+4. conda install -y ase==3.20.1
+5. conda install -y pymatgen==2022.0.8
+6. git clone https://github.com/rytheranderson/cif2lammps.git
+
+Help
+1. python3 main_conversion.py -h
+
+Usage (get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/cif)
+1. conda activate cif2lammps_old_env
+2. cd cif2lammps
+3. python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+3. python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+3. python3 main_conversion.py --cifs ./../cifs --force_field Dreiding --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+3. python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+3. python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge
+Note: MZHB (zeolite specific), ZIF-FF (ZIF specific, using GAFF), UFF4MOF, UFF, and Dreiding
 #-----------------------------------------------------------------------------------------
 https://hal.science/hal-02171535/document
+#-----------------------------------------------------------------------------------------
+https://github.com/iRASPA/RASPA2/tree/master/structures/zeolites/cif
+BEA, CHA, DDR, FER, MFI, LTA
 #-----------------------------------------------------------------------------------------
 MOF-FF: https://www.mofplus.org/content/show/MOF-FF
 #-----------------------------------------------------------------------------------------
